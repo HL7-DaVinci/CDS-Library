@@ -1,0 +1,23 @@
+{
+    "topic": "PositiveAirwayPressureDevices",
+    "payers": [
+        "cms"
+    ],
+    "mappings": [
+        {
+            "codeSystem": "cpt",
+            "codes": [
+                "94660"
+            ]
+        },
+        {
+            "codeSystem": "hcpcs",
+            "codes": [
+                "E0470", "E0601"
+            ]
+        }
+    ],
+    "fhirVersions": [
+        "STU3", "R4"
+    ]
+}
