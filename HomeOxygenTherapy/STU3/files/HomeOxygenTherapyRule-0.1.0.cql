@@ -29,5 +29,11 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
     'urn:hl7:davinci:crd:home-oxygen-questionnaire_2'
 
+define RESULT_QuestionnaireFaceToFaceUri:
+    'urn:hl7:davinci:crd:home-oxygen-questionnaire_2'
+
+define RESULT_QuestionnaireLabUri:
+    'urn:hl7:davinci:crd:home-oxygen-questionnaire_2'     
+
 define RESULT_requestId:
   device_request
