@@ -29,7 +29,7 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireUri:
     'urn:hl7:davinci:crd:home-oxygen-questionnaire_2-r4'
 
-define RESULT_QuestionnaireF2FUri:
+define RESULT_QuestionnaireFaceToFaceUri:
     'urn:hl7:davinci:crd:home-oxygen-questionnaire_2-r4'
 
 define RESULT_QuestionnaireLabUri:
