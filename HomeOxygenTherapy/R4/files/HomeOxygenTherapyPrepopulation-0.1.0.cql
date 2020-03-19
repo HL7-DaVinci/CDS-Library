@@ -14,7 +14,7 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
 //COPD_Codes
-valueset "COPD": 'urn:hl7:davinci:crd:valueset-copd'
+valueset "COPD": 'copd'
 
 //Bronchiectasis_Codes
 code "J47": 'J47' from "ICD-10-CM"

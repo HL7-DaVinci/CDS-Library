@@ -1,8 +1,9 @@
 {
   "resourceType": "Library",
-  "id": "urn:hl7:davinci:crd:library-basic-practitioner-info-r4",
-  "version": "0.1.0",
-  "title": "Basic Practitioner Info",
+  "id": "HospitalBeds-prepopulation",
+  "name": "HospitalBeds-prepopulation",
+  "version": "0.0.1",
+  "title": "Hospital Bed Prepopulation",
   "status": "draft",
   "type": {
     "coding": [
@@ -15,14 +16,14 @@
     {
       "type": "depends-on",
       "resource": {
-        "reference": "urn:hl7:davinci:crd:library-fhir-helpers"
+        "reference": "Library/FHIRHelpers-4.0.0"
       }
     }
   ],
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "urn:hl7:davinci:crd:BasicPractitionerInfoPrepopulate-R4.cql"
+      "url": "files/HospitalBeds/r4/HospitalBedsPrepopulation-0.1.0.cql"
     }
   ]
 }

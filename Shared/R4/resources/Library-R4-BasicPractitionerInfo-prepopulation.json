@@ -1,9 +1,9 @@
 {
   "resourceType": "Library",
-  "id": "HomeOxygenTherapy-prepopulation",
-  "name": "HomeOxygenTherapy-prepopulation",
-  "version": "0.0.1",
-  "title": "Oxygen Therapy Prepopulation",
+  "id": "BasicPractitionerInfo-prepopulation",
+  "name": "BasicPractitionerInfo-prepopulation",
+  "version": "0.1.0",
+  "title": "Basic Practitioner Info",
   "status": "draft",
   "type": {
     "coding": [
@@ -16,14 +16,14 @@
     {
       "type": "depends-on",
       "resource": {
-        "reference": "Library/FHIRHelpers-3.0.0"
+        "reference": "Library/FHIRHelpers-4.0.0"
       }
     }
   ],
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "files/HomeOxygenTherapy/stu3/HomeOxygenTherapyPrepopulation-0.0.2.cql"
+      "url": "files/Shared/r4/BasicPractitionerInfoPrepopulation-0.1.0.cql"
     }
   ]
 }

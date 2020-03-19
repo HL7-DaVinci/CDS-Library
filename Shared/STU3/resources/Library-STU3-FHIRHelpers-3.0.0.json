@@ -1,6 +1,7 @@
 {
   "resourceType": "Library",
-  "id": "urn:hl7:davinci:crd:library-fhir-helpers",
+  "id": "FHIRHelpers-3.0.0",
+  "name": "FHIRHelpers-3.0.0",
   "version": "3.0.0",
   "title": "FHIR Helpers",
   "status": "draft",
@@ -14,7 +15,7 @@
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "urn:hl7:davinci:crd:FHIRHelpers.json"
+      "url": "files/Shared/stu3/FHIRHelpers-3.0.0.cql"
     }
   ]
 }

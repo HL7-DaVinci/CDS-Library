@@ -1,6 +1,7 @@
 {
   "resourceType": "Library",
-  "id": "urn:hl7:davinci:crd:library-oxygen-therapy-prepopulate-r4",
+  "id": "HomeOxygenTherapy-prepopulation",
+  "name": "HomeOxygenTherapy-prepopulation",
   "version": "0.1.0",
   "title": "Oxygen Therapy Prepopulation",
   "status": "draft",
@@ -15,7 +16,7 @@
     {
       "type": "depends-on",
       "resource": {
-        "reference": "urn:hl7:davinci:crd:library-fhir-helpers"
+        "reference": "Library/FHIRHelpers-4.0.0"
       }
     }
   ],
@@ -25,9 +26,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSetReference": {
-            "reference": "urn:hl7:davinci:crd:valueset-copd"
-          }
+          "valueSet": "<server-path>ValueSet/copd"
         }
       ]
     }
@@ -35,7 +34,7 @@
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "urn:hl7:davinci:crd:OxygenTherapyPrepopulation-R4.cql"
+      "url": "files/HomeOxygenTherapy/r4/HomeOxygenTherapyPrepopulation-0.1.0.cql"
     }
   ]
 }
