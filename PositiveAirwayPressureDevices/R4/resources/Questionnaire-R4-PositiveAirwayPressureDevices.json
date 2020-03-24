@@ -107,7 +107,7 @@
           "text": "Gender:",
           "type": "choice",
           "required": true,
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "male",
@@ -219,7 +219,7 @@
           ],
           "linkId": "4.1",
           "type": "choice",
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "OSA",
@@ -232,7 +232,7 @@
           "linkId": "4.2",
           "text": "Other:",
           "type": "choice",
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "Other",
@@ -277,7 +277,7 @@
           "linkId": "6.1",
           "text": "Device:",
           "type": "choice",
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "initial",
@@ -302,7 +302,7 @@
           "linkId": "6.2",
           "text": "Supplies:",
           "type": "choice",
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "initial",
@@ -351,8 +351,7 @@
           ],
           "linkId": "7.2",
           "type": "choice",
-          "repeats": true,
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "E0601",
