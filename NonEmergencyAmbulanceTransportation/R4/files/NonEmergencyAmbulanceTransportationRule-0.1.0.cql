@@ -25,7 +25,7 @@ define RESULT_InfoLink:
 
 // TODO - need to define the questionnaire in next story
 define RESULT_QuestionnaireOrderUri:
-  'urn:hl7:davinci:crd:non-emergency-ambulance-questionnaire-r4'
+  'Questionnaire/NonEmergencyAmbulanceTransportation'
 
 define RESULT_requestId:
   service_request

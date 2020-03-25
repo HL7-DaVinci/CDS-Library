@@ -1,4 +1,4 @@
-library BasicPatientInfo version '0.0.1'
+library BasicPatientInfoPrepopulation version '0.0.1'
 using FHIR version '3.0.0'
 include FHIRHelpers version '3.0.0' called FHIRHelpers
 
@@ -12,7 +12,9 @@ define function GetMiddleInitials(name FHIR.HumanName):
 define Today: Today()
 
 // Grab patient FHIR HumanName
-define Name: singleton from (Patient.name name where name.use.value = 'official')
+define OfficialName: singleton from (Patient.name name where name.use.value = 'official')
+define UsualName: singleton from (Patient.name name where name.use.value = 'usual')
+define Name: Coalesce(OfficialName, UsualName)
 
 // Extract useful name elements
 define LastName: "Name".family.value

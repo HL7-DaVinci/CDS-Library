@@ -1,26 +1,27 @@
 {
   "resourceType": "Questionnaire",
+  "id": "Ventilators",
+  "name": "Ventilators",
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "urn:hl7:davinci:crd:library-ventilator-prepopulate"
+        "reference": "Library/Ventilators-prepopulation"
       }
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "urn:hl7:davinci:crd:library-basic-patient-info-prepopulate"
+        "reference": "Library/BasicPatientInfo-prepopulation"
       }
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "urn:hl7:davinci:crd:library-basic-practitioner-info-prepopulate"
+        "reference": "Library/BasicPractitionerInfo-prepopulation"
       }
     }
   ],
-  "id": "urn:hl7:davinci:crd:ventilator-questionnaire",
   "title": "Ventilator Questionnaire",
   "status": "draft",
   "date": "2020-02-04",
@@ -39,7 +40,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".LastName"
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
               }
             }
           ],
@@ -54,7 +55,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".FirstName"
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
               }
             }
           ],
@@ -69,7 +70,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".MiddleInitial"
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
               }
             }
           ],
@@ -84,7 +85,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".DateOfBirth"
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
               }
             }
           ],
@@ -99,7 +100,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".Gender"
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
               }
             }
           ],
@@ -128,7 +129,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".MedicareId"
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
               }
             }
           ],
@@ -150,7 +151,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".LastName"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
               }
             }
           ],
@@ -165,7 +166,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".FirstName"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
               }
             }
           ],
@@ -180,7 +181,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".MiddleInitial"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
               }
             }
           ],
@@ -213,7 +214,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"VentilatorDevice\".RelevantDiagnoses"
+                "expression": "\"VentilatorsPrepopulation\".RelevantDiagnoses"
               }
             }
           ],
@@ -347,7 +348,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"VentilatorDevice\".VentilatorDeviceRequested"
+                "expression": "\"VentilatorsPrepopulation\".VentilatorDeviceRequested"
               }
             }
           ],
@@ -442,7 +443,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".FullName"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
               }
             }
           ],
@@ -457,7 +458,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".Today"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
               }
             }
           ],
@@ -472,7 +473,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".NPI"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
               }
             }
           ],

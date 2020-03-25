@@ -1,6 +1,6 @@
-library VentilatorsPrepopulate version '0.0.1'
-using FHIR version '3.0.0'
-include FHIRHelpers version '3.0.0' called FHIRHelpers
+library VentilatorsPrepopulation version '0.1.0'
+using FHIR version '4.0.0'
+include FHIRHelpers version '4.0.0' called FHIRHelpers
 
 codesystem "ICD-10": 'http://hl7.org/fhir/sid/icd-10'
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
@@ -82,14 +82,14 @@ define function CodesFromConditions(CondList List<Condition>):
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
-  CondList C where C.clinicalStatus.value in {'active', 'relapse'}
+  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
 
 define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
   ObsList O
     let LookBackInterval: Interval[Now() - LookBack, Now()]
     where (cast O.effective as dateTime).value in LookBackInterval
       or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
-      or O.issued in LookBackInterval
+      or FHIRHelpers."ToDateTime"(O.issued) in LookBackInterval
 
 define function NullSafeToInterval(Pd FHIR.Period):
   if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
@@ -104,7 +104,7 @@ define function HighestObservation(ObsList List<Observation>):
   Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
 
 define function Confirmed(CondList List<Condition>):
-  CondList C where C.verificationStatus.value = 'confirmed'
+  CondList C where C.verificationStatus.coding.code = 'confirmed'
 
 define function NullSafeToQuantity(Qty FHIR.Quantity):
   if Qty is not null then

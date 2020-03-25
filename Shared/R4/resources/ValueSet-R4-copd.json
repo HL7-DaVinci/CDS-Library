@@ -1,6 +1,7 @@
 {
   "resourceType": "ValueSet",
-  "id": "urn:hl7:davinci:crd:valueset-copd",
+  "id": "copd",
+  "name": "copd",
   "title": "COPD",
   "status": "draft",
   "version": "0.0.1",

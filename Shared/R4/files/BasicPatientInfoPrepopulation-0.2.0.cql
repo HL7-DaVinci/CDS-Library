@@ -1,4 +1,4 @@
-library BasicPatientInfo version '0.2.0'
+library BasicPatientInfoPrepopulation version '0.2.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
