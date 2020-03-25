@@ -1,6 +1,7 @@
 {
   "resourceType": "Library",
-  "id": "urn:hl7:davinci:crd:library-basic-patient-info",
+  "id": "BasicPatientInfo-prepopulation",
+  "name": "BasicPatientInfo-prepopulation",
   "version": "0.0.1",
   "title": "Basic Patient Info",
   "status": "draft",
@@ -15,14 +16,14 @@
     {
       "type": "depends-on",
       "resource": {
-        "reference": "urn:hl7:davinci:crd:library-fhir-helpers"
+        "reference": "Library/FHIRHelpers-3.0.0"
       }
     }
   ],
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "urn:hl7:davinci:crd:BasicPatientInfoPrepopulate.cql"
+      "url": "files/Shared/stu3/BasicPatientInfoPrepopulation-0.0.1.cql"
     }
   ]
 }

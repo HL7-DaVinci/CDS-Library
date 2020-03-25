@@ -1,10 +1,12 @@
 {
   "resourceType": "Questionnaire",
+  "id": "NonEmergencyAmbulanceTransportation",
+  "name": "NonEmergencyAmbulanceTransportation",
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "Library/PositiveAirwayPressureDevices-prepopulation"
+        "reference": "Library/NonEmergencyAmbulanceTransportation-prepopulation"
       }
     },
     {
@@ -20,16 +22,9 @@
       }
     }
   ],
-  "id": "PositiveAirwayPressureDevices",
-  "name": "PositiveAirwayPressureDevices",
-  "identifier": [
-    {
-      "id": "urn:hl7:davinci:crd:positive-airway-pressure-questionnaire-r4"
-    }
-  ],
-  "title": "Positive Airway Pressure Questionnaire",
+  "title": "Non Emergency Ambulance Transportation Questionnaire",
   "status": "draft",
-  "date": "2019-12-18",
+  "date": "2020-01-21",
   "publisher": "Da Vinci DTR",
   "subjectType": [
     "Patient"
@@ -113,7 +108,7 @@
           "text": "Gender:",
           "type": "choice",
           "required": true,
-          "answerOption": [
+          "option": [
             {
               "valueCoding": {
                 "code": "male",
@@ -147,7 +142,7 @@
     },
     {
       "linkId": "2",
-      "text": "Provider who is performing face-to-face evaluation",
+      "text": "Provider Information (Certifying Physician/Practitioner)",
       "type": "group",
       "item": [
         {
@@ -194,42 +189,235 @@
           "text": "Middle Initial",
           "type": "string",
           "required": false
+        },
+        {
+          "linkId": "2.4",
+          "text": "Place of employment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "2.5",
+          "text": "Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "2.6",
+          "text": "City",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "2.7",
+          "text": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "2.8",
+          "text": "Zip Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "2.9",
+          "text": "Telephone Number",
+          "type": "string",
+          "required": false
         }
       ]
     },
     {
       "linkId": "3",
-      "text": "Date of F2F evaluation (MM/DD/YYYY):",
+      "text": "Order Information:",
       "type": "group",
       "item": [
         {
           "linkId": "3.1",
+          "text": "Order start date, if different from date of order (MM/DD/YYYY):",
           "type": "date"
+        },
+        {
+          "linkId": "3.2",
+          "text": "Order Data",
+          "type": "date",
+          "required": false
+        },
+        {
+          "linkId": "3.3",
+          "text": "Start Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "linkId": "3.4",
+          "text": "End Date",
+          "type": "date",
+          "required": false
+        },
+        {
+          "linkId": "3.5",
+          "text": "Round Trip",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "3.6",
+          "text": "Is transport from Home",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "3.7",
+          "text": "Origin",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "3.8",
+          "text": "Destination",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "3.9",
+          "text": "Services",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "3.10",
+          "text": "Other",
+          "type": "string",
+          "required": true
         }
       ]
     },
     {
       "linkId": "4",
-      "text": "Patient diagnosis:",
+      "text": "Reasons for Transport",
       "type": "group",
       "item": [
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OsaDiagnosis"
-              }
-            }
-          ],
           "linkId": "4.1",
-          "type": "choice",
-          "answerOption": [
+          "type": "open-choice",
+          "text": "Reasons for Transport",
+          "required": true,
+          "option": [
             {
               "valueCoding": {
-                "code": "OSA",
-                "display": "Obstructive Sleep Apnea"
+                "code": "Mobility: Bed confined"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Mobility: Unable to maintain erect sitting position in a chair"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Mobility: Risk of falling off wheelchair or stretcher"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Musculoskeletal: Non-healed fractures requiring ambulance"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Musculoskeletal: Contractures that impair mobility and result in be confinement"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Musculoskeletal: Incapacitating Osteoarthritis"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Musculoskeletal: Severe muscular weakness precludes significant activity"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Musculoskeletal: Orthopedic device required in transit"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Musculoskeletal: Amputation(s)"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Cardiovascular: CVA with sequelea (late effect of CVA) that impair mobility and result in bed confinement"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Cardiovascular: DVT requires elevation of lower extremity"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Neurological: Spinal Cord Injury – Paralysis"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Neurological: Progressive demyelinating disease"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Neurological: Moderate to severe pain on movemente"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Wound: Unable to sit to Grade II or greater decubitus ulcers on buttocks"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Wound: Chronic wounds requiring immobilization"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Attendant: Morbid obesity requires additional personnel/equipment"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Attendant: Third party attendant to regulate or adjust oxygen en route"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Attendant: Special handling en route – isolation"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Attendant: IV medications/fluids required during transport"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Attendant: Restraints (physical or chemical) anticipated or used during transport"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Mental: Danger to self or others"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Mental: Confused, combative, lethargic, comatose"
               }
             }
           ]
@@ -237,29 +425,7 @@
         {
           "linkId": "4.2",
           "text": "Other:",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Other",
-                "display": "Yes"
-              }
-            }
-          ]
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
-              }
-            }
-          ],
-          "linkId": "4.3",
-          "text": "Other (describe):",
-          "type": "text"
+          "type": "string"
         }
       ]
     },
@@ -269,117 +435,6 @@
       "item": [
         {
           "linkId": "5.1",
-          "text": "Order start date, if different from date of order (MM/DD/YYYY):",
-          "type": "date"
-        }
-      ]
-    },
-    {
-      "linkId": "6",
-      "text": "Type of order:",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "6.1",
-          "text": "Device:",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "revision",
-                "display": "Revision or change in equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "replacement",
-                "display": "Replacement"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "6.2",
-          "text": "Supplies:",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "reorder",
-                "display": "Reorder"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "other",
-                "display": "Other"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "6.3",
-          "text": "Other (description):",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "linkId": "7",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "7.1",
-          "text": "Device Order (description of device):",
-          "type": "text"
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".PapDeviceRequested"
-              }
-            }
-          ],
-          "linkId": "7.2",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "E0601",
-                "display": "E0601 Continuous Positive Airway Pressure device"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "E0470",
-                "display": "E0470 Respiratory assist device, bi-level w/o backup"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "linkId": "9",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "9.1",
           "text": "Signature:",
           "type": "string"
         },
@@ -393,7 +448,7 @@
               }
             }
           ],
-          "linkId": "9.2",
+          "linkId": "5.2",
           "text": "Name (Printed):",
           "type": "string",
           "required": true
@@ -408,7 +463,7 @@
               }
             }
           ],
-          "linkId": "9.3",
+          "linkId": "5.3",
           "text": "Date (MM/DD/YYYY):",
           "type": "date",
           "required": true
@@ -423,7 +478,7 @@
               }
             }
           ],
-          "linkId": "9.4",
+          "linkId": "5.4",
           "text": "NPI:",
           "type": "string",
           "required": true

@@ -24,16 +24,16 @@ define RESULT_Details:
   'No authorization is required, as laid out at the attached link.'
 
 define RESULT_InfoLink:
-    'https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/downloads/home-oxygen-therapy-text-only.pdf'
+  'https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/downloads/home-oxygen-therapy-text-only.pdf'
 
 define RESULT_QuestionnaireOrderUri:
-    'urn:hl7:davinci:crd:home-oxygen-questionnaire_2'
+  'Questionnaire/HomeOxygenTherapy'
 
 define RESULT_QuestionnaireFaceToFaceUri:
-    'urn:hl7:davinci:crd:home-oxygen-questionnaire_2'
+  'Questionnaire/HomeOxygenTherapy'
 
 define RESULT_QuestionnaireLabUri:
-    'urn:hl7:davinci:crd:home-oxygen-questionnaire_2'     
+  'Questionnaire/HomeOxygenTherapy'
 
 define RESULT_requestId:
   device_request
