@@ -220,7 +220,6 @@
           ],
           "linkId": "4.1",
           "type": "open-choice",
-          "repeats": true,
           "option": [
             {
               "valueCoding": {
@@ -355,7 +354,6 @@
           ],
           "linkId": "6.2",
           "type": "choice",
-          "repeats": true,
           "option": [
             {
               "valueCoding": {
@@ -379,6 +377,19 @@
       "text": "Accessory Order",
       "item": [
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
           "linkId": "7.1",
           "type": "group",
           "repeats": "true",
