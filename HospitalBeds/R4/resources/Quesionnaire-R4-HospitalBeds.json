@@ -20,8 +20,7 @@
       }
     }
   ],
-  "id": "HospitalBeds",
-  "name": "HospitalBeds",
+  "id": "urn:hl7:davinci:crd:hospital-bed-questionnaire-r4",
   "title": "Hospital Bed Questionnaire",
   "status": "draft",
   "date": "2019-12-18",
@@ -40,7 +39,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                "expression": "\"BasicPatientInfo-prepopulation\".LastName"
               }
             }
           ],
@@ -55,7 +54,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+                "expression": "\"BasicPatientInfo-prepopulation\".FirstName"
               }
             }
           ],
@@ -70,7 +69,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+                "expression": "\"BasicPatientInfo-prepopulation\".MiddleInitial"
               }
             }
           ],
@@ -85,7 +84,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+                "expression": "\"BasicPatientInfo-prepopulation\".DateOfBirth"
               }
             }
           ],
@@ -100,7 +99,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+                "expression": "\"BasicPatientInfo-prepopulation\".Gender"
               }
             }
           ],
@@ -129,7 +128,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+                "expression": "\"BasicPatientInfo-prepopulation\".MedicareId"
               }
             }
           ],
@@ -142,7 +141,6 @@
     },
     {
       "linkId": "2",
-      "text": "Patient Diagnosis",
       "type": "group",
       "item": [
         {
@@ -151,7 +149,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HospitalBedsPrepopulation\".BodyWeight"
+                "expression": "\"HospitalBeds-prepopulation\".BodyWeight"
               }
             }
           ],
@@ -161,20 +159,26 @@
           "required": false
         },
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
-              }
-            }
-          ],
           "linkId": "2.2",
           "text": "Relevant Diagnosis:",
-          "type": "open-choice",
-          "repeats": true,
-          "option": [
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HospitalBeds-prepopulation\".CurrentDiagnoses"
+                  }
+                }
+              ],
+              "linkId": "2.2.1",
+              "text": "Diagnosis:",
+              "type": "open-choice",
+              "repeats": true,
+              "option": []
+            }
           ]
         }
       ]
@@ -188,13 +192,15 @@
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBedsPrepopulation\".RecentEncounters"
+              "valueString": "\"HospitalBeds-prepopulation\".EncounterList"
             }
           ],
           "linkId": "3.1",
           "text": "Face-to-face Evaluation within 6 months",
-          "type": "boolean",
-          "required": false
+          "type": "open-choice",
+          "required": false,
+          "repeats": true,
+          "option": []
         }
       ]
     },
@@ -220,44 +226,37 @@
     {
       "linkId": "5",
       "text": "Type of order:",
-      "type": "group",
-      "item": [
+      "type": "choice",
+      "answerOption": [
         {
-          "linkId": "5.1",
-          "text": "Device:",
-          "type": "choice",
-          "option": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial or original order"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "revision",
-                "display": "Revision or change order"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "replacement",
-                "display": "Replacement"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "newSupplier",
-                "display": "New Supplier"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "other",
-                "display": "Other"
-              }
-            }
-          ]
+          "valueCoding": {
+            "code": "initial",
+            "display": "Initial or original order"
+          }
+        },
+        {
+          "valueCoding": {
+            "code": "revision",
+            "display": "Revision or change order"
+          }
+        },
+        {
+          "valueCoding": {
+            "code": "replacement",
+            "display": "Replacement"
+          }
+        },
+        {
+          "valueCoding": {
+            "code": "newSupplier",
+            "display": "New Supplier"
+          }
+        },
+        {
+          "valueCoding": {
+            "code": "other",
+            "display": "Other"
+          }
         }
       ]
     },
@@ -270,14 +269,14 @@
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBedsPrepopulation\".DeviceRequested"
+              "valueString": "\"HospitalBeds-prepopulation\".DeviceRequested"
             }
           ],
           "linkId": "6.1",
           "text": "Equipment",
           "type": "choice",
           "required": false,
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "E0250",
@@ -293,13 +292,29 @@
           ]
         }
       ]
-    },  
+    },
     {
       "linkId": "7",
       "type": "group",
       "item": [
         {
           "linkId": "7.1",
+          "text": "Other equipment, accessories, or supplies:",
+          "type": "string"
+        },
+        {
+          "linkId": "7.2",
+          "text": "Additional description:",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "linkId": "8",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "8.1",
           "text": "Signature:",
           "type": "string"
         },
@@ -309,11 +324,11 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+                "expression": "\"BasicPractitionerInfo-prepopulation\".FullName"
               }
             }
           ],
-          "linkId": "7.2",
+          "linkId": "8.2",
           "text": "Name (Printed):",
           "type": "string",
           "required": true
@@ -324,11 +339,11 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
+                "expression": "\"BasicPractitionerInfo-prepopulation\".Today"
               }
             }
           ],
-          "linkId": "7.3",
+          "linkId": "8.3",
           "text": "Date (MM/DD/YYYY):",
           "type": "date",
           "required": true
@@ -339,11 +354,11 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+                "expression": "\"BasicPractitionerInfo-prepopulation\".NPI"
               }
             }
           ],
-          "linkId": "7.4",
+          "linkId": "8.4",
           "text": "NPI:",
           "type": "string",
           "required": true
