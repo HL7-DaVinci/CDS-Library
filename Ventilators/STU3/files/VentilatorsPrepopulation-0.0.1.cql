@@ -1,4 +1,4 @@
-library VentilatorsPrepopulate version '0.0.1'
+library VentilatorsPrepopulation version '0.0.1'
 using FHIR version '3.0.0'
 include FHIRHelpers version '3.0.0' called FHIRHelpers
 

@@ -1,6 +1,7 @@
 {
   "resourceType": "Library",
-  "id": "urn:hl7:davinci:crd:library-ventilator-prepopulate",
+  "id": "Ventilators-prepopulation",
+  "name": "Ventilators-prepopulation",
   "version": "0.0.1",
   "title": "Ventilator Prepopulation",
   "status": "draft",
@@ -15,14 +16,14 @@
     {
       "type": "depends-on",
       "resource": {
-        "reference": "urn:hl7:davinci:crd:library-fhir-helpers"
+        "reference": "Library/FHIRHelpers-3.0.0"
       }
     }
   ],
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "urn:hl7:davinci:crd:VentilatorPrepopulate.cql"
+      "url": "files/Ventilators/stu3/VentilatorsPrepopulation-0.0.1.cql"
     }
   ]
 }

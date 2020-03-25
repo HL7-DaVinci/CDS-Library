@@ -4,26 +4,27 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "urn:hl7:davinci:crd:library-ventilator-prepopulate"
+        "reference": "Library/HospitalBeds-prepopulation"
       }
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "urn:hl7:davinci:crd:library-basic-patient-info-prepopulate"
+        "reference": "Library/BasicPatientInfo-prepopulation"
       }
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "urn:hl7:davinci:crd:library-basic-practitioner-info-prepopulate"
+        "reference": "Library/BasicPractitionerInfo-prepopulation"
       }
     }
   ],
-  "id": "urn:hl7:davinci:crd:ventilator-questionnaire",
-  "title": "Ventilator Questionnaire",
+  "id": "HospitalBeds",
+  "name": "HospitalBeds",
+  "title": "Hospital Bed Questionnaire",
   "status": "draft",
-  "date": "2020-02-04",
+  "date": "2019-12-18",
   "publisher": "Da Vinci DTR",
   "subjectType": [
     "Patient"
@@ -39,7 +40,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".LastName"
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
               }
             }
           ],
@@ -54,7 +55,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".FirstName"
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
               }
             }
           ],
@@ -69,7 +70,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".MiddleInitial"
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
               }
             }
           ],
@@ -84,7 +85,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".DateOfBirth"
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
               }
             }
           ],
@@ -99,7 +100,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".Gender"
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
               }
             }
           ],
@@ -128,7 +129,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo\".MedicareId"
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
               }
             }
           ],
@@ -141,7 +142,7 @@
     },
     {
       "linkId": "2",
-      "text": "Provider who perfromed the in-person evaluation",
+      "text": "Patient Diagnosis",
       "type": "group",
       "item": [
         {
@@ -150,12 +151,12 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".LastName"
+                "expression": "\"HospitalBedsPrepopulation\".BodyWeight"
               }
             }
           ],
           "linkId": "2.1",
-          "text": "Last Name",
+          "text": "Patient Weight",
           "type": "string",
           "required": false
         },
@@ -165,109 +166,54 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".FirstName"
+                "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
               }
             }
           ],
           "linkId": "2.2",
-          "text": "First Name",
-          "type": "string",
-          "required": false
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".MiddleInitial"
-              }
-            }
-          ],
-          "linkId": "2.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": false
+          "text": "Relevant Diagnosis:",
+          "type": "open-choice",
+          "repeats": true,
+          "option": [
+          ]
         }
       ]
     },
     {
       "linkId": "3",
-      "text": "Date of in-person evaluation (MM/DD/YYYY):",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "3.1",
-          "type": "date"
-        }
-      ]
-    },
-    {
-      "linkId": "4",
-      "text": "Patient diagnosis:",
+      "text": "Face-to-face Evaluation",
       "type": "group",
       "item": [
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"VentilatorDevice\".RelevantDiagnoses"
-              }
+              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+              "valueString": "\"HospitalBedsPrepopulation\".RecentEncounters"
             }
           ],
+          "linkId": "3.1",
+          "text": "Face-to-face Evaluation within 6 months",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Order Date",
+      "type": "group",
+      "item": [
+        {
           "linkId": "4.1",
-          "type": "open-choice",
-          "repeats": true,
-          "option": [
-            {
-              "valueCoding": {
-                "code": "Neuromuscular Disease"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Thoracic Restrictive Disease"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "COPD"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Chest Wall Deformity"
-              }
-            }
-          ]
+          "text": "Order start date, if different from date of order",
+          "type": "date",
+          "required": false
         },
         {
           "linkId": "4.2",
-          "text": "Describe Neuromuscular Disease",
-          "type": "text",
-          "enableWhen": [
-            {
-              "question": "4.1",
-              "answerCoding": {
-                "code": "Neuromuscular Disease"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "4.3",
-          "text": "Describe Thoracic Restrictive Disease",
-          "type": "text",
-          "enableWhen": [
-            {
-              "question": "4.1",
-              "answerCoding": {
-                "code": "Thoracic Restrictive Disease"
-              }
-            }
-          ]
+          "text": "Order date, if different from date of signature",
+          "type": "date",
+          "required": false
         }
       ]
     },
@@ -284,13 +230,13 @@
             {
               "valueCoding": {
                 "code": "initial",
-                "display": "Initial"
+                "display": "Initial or original order"
               }
             },
             {
               "valueCoding": {
                 "code": "revision",
-                "display": "Revision or change in equipment"
+                "display": "Revision or change order"
               }
             },
             {
@@ -298,24 +244,11 @@
                 "code": "replacement",
                 "display": "Replacement"
               }
-            }
-          ]
-        },
-        {
-          "linkId": "5.2",
-          "text": "Supplies:",
-          "type": "choice",
-          "option": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
             },
             {
               "valueCoding": {
-                "code": "reorder",
-                "display": "Reorder"
+                "code": "newSupplier",
+                "display": "New Supplier"
               }
             },
             {
@@ -325,103 +258,48 @@
               }
             }
           ]
-        },
-        {
-          "linkId": "5.3",
-          "text": "Other (description):",
-          "type": "text"
         }
       ]
     },
     {
       "linkId": "6",
+      "text": "Order",
       "type": "group",
       "item": [
-        {
-          "linkId": "6.1",
-          "text": "Device Order (description of device):",
-          "type": "text"
-        },
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"VentilatorDevice\".VentilatorDeviceRequested"
-              }
+              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+              "valueString": "\"HospitalBedsPrepopulation\".DeviceRequested"
             }
           ],
-          "linkId": "6.2",
+          "linkId": "6.1",
+          "text": "Equipment",
           "type": "choice",
-          "repeats": true,
+          "required": false,
           "option": [
             {
               "valueCoding": {
-                "code": "E0465",
-                "display": "E0465 Home Ventilator used with invasive interface (e.g. tracheostomy tube)"
+                "code": "E0250",
+                "display": "E0250 Hospital bed, fixed height, with any type side rails, with mattress"
               }
             },
             {
               "valueCoding": {
-                "code": "E0466",
-                "display": "E0466 Home Ventilator used with non-invasive interface (e.g. mask, chest shell)"
+                "code": "E0251",
+                "display": "E0251 Hospital bed, fixed height, with any type side rails, without mattress"
               }
             }
           ]
         }
       ]
-    },
+    },  
     {
       "linkId": "7",
       "type": "group",
-      "text": "Accessory Order",
       "item": [
         {
           "linkId": "7.1",
-          "type": "group",
-          "repeats": "true",
-          "item": [
-            {
-              "linkId": "7.1.1",
-              "text": "Item Description",
-              "type": "string"
-            },
-            {
-              "linkId": "7.1.2",
-              "text": "Frequency",
-              "type": "string"
-            },
-            {
-              "linkId": "7.1.3",
-              "text": "Duration",
-              "type": "string"
-            },
-            {
-              "linkId": "7.1.4",
-              "text": "Quantity",
-              "type": "string"
-            },
-            {
-              "linkId": "7.1.5",
-              "text": "Refills",
-              "type": "string"
-            }
-          ]
-        },
-        {
-          "linkId": "7.2",
-          "text": "Other",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "linkId": "8",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "8.1",
           "text": "Signature:",
           "type": "string"
         },
@@ -431,11 +309,11 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".FullName"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
               }
             }
           ],
-          "linkId": "8.2",
+          "linkId": "7.2",
           "text": "Name (Printed):",
           "type": "string",
           "required": true
@@ -446,11 +324,11 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".Today"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
               }
             }
           ],
-          "linkId": "8.3",
+          "linkId": "7.3",
           "text": "Date (MM/DD/YYYY):",
           "type": "date",
           "required": true
@@ -461,11 +339,11 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo\".NPI"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
               }
             }
           ],
-          "linkId": "8.4",
+          "linkId": "7.4",
           "text": "NPI:",
           "type": "string",
           "required": true
