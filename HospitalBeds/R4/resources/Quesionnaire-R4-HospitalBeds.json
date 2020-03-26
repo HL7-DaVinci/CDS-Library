@@ -4,23 +4,24 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "Library/HospitalBeds-prepopulation"
+        "reference": "Library/HospitalBedsPrepopulation"
       }
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "Library/BasicPatientInfo-prepopulation"
+        "reference": "Library/BasicPatientInfoPrepopulation"
       }
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "Library/BasicPractitionerInfo-prepopulation"
+        "reference": "Library/BasicPractitionerInfoPrepopulation"
       }
     }
   ],
-  "id": "urn:hl7:davinci:crd:hospital-bed-questionnaire-r4",
+  "id": "HospitalBeds",
+  "name": "HospitalBeds",
   "title": "Hospital Bed Questionnaire",
   "status": "draft",
   "date": "2019-12-18",
@@ -39,7 +40,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo-prepopulation\".LastName"
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
               }
             }
           ],
@@ -54,7 +55,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo-prepopulation\".FirstName"
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
               }
             }
           ],
@@ -69,7 +70,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo-prepopulation\".MiddleInitial"
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
               }
             }
           ],
@@ -84,7 +85,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo-prepopulation\".DateOfBirth"
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
               }
             }
           ],
@@ -99,7 +100,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo-prepopulation\".Gender"
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
               }
             }
           ],
@@ -128,7 +129,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfo-prepopulation\".MedicareId"
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
               }
             }
           ],
@@ -149,7 +150,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HospitalBeds-prepopulation\".BodyWeight"
+                "expression": "\"HospitalBedsPrepopulation\".BodyWeight"
               }
             }
           ],
@@ -169,7 +170,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBeds-prepopulation\".CurrentDiagnoses"
+                    "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
                   }
                 }
               ],
@@ -192,7 +193,7 @@
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBeds-prepopulation\".EncounterList"
+              "valueString": "\"HospitalBedsPrepopulation\".EncounterList"
             }
           ],
           "linkId": "3.1",
@@ -269,7 +270,7 @@
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBeds-prepopulation\".DeviceRequested"
+              "valueString": "\"HospitalBedsPrepopulation\".DeviceRequested"
             }
           ],
           "linkId": "6.1",
@@ -324,7 +325,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo-prepopulation\".FullName"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
               }
             }
           ],
@@ -339,7 +340,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo-prepopulation\".Today"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
               }
             }
           ],
@@ -354,7 +355,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfo-prepopulation\".NPI"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
               }
             }
           ],
