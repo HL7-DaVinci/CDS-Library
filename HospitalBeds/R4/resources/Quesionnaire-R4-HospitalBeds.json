@@ -4,19 +4,19 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "Library/HospitalBedsPrepopulation"
+        "reference": "Library/HospitalBeds-prepopulation"
       }
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "Library/BasicPatientInfoPrepopulation"
+        "reference": "Library/BasicPatientInfo-prepopulation"
       }
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "Library/BasicPractitionerInfoPrepopulation"
+        "reference": "Library/BasicPractitionerInfo-prepopulation"
       }
     }
   ],
