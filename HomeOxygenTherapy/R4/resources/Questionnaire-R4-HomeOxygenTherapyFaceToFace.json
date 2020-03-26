@@ -1,0 +1,744 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "HomeOxygenTherapyFaceToFace",
+    "name": "HomeOxygenTherapyFaceToFace",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/cqif-questionnaire",
+            "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+        ]
+    },
+    "title": "Home Oxygen Therapy Face to Face Encounter",
+    "status": "draft",
+    "subjectType": [
+        "Patient"
+    ],
+    "date": "2019-03-26",
+    "publisher": "Da Vinci DTR",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+            "valueReference": {
+                "reference": "Library/BasicPatientInfo-prepopulation"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+            "valueReference": {
+                "reference": "Library/BasicPractitionerInfo-prepopulation"
+            }
+        }
+    ],
+    "item": [
+        {
+            "linkId": "1",
+            "type": "group",
+            "text": "Patient Information",
+            "item": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                            }
+                        }
+                    ],
+                    "linkId": "1.1",
+                    "text": "Last Name:",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+                            }
+                        }
+                    ],
+                    "linkId": "1.2",
+                    "text": "First Name:",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+                            }
+                        }
+                    ],
+                    "linkId": "1.3",
+                    "text": "Middle Initial:",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+                            }
+                        }
+                    ],
+                    "linkId": "1.4",
+                    "text": "Date of Birth:",
+                    "type": "date",
+                    "required": true
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+                            }
+                        }
+                    ],
+                    "linkId": "1.5",
+                    "text": "Gender:",
+                    "type": "choice",
+                    "required": true,
+                    "answerOption": [
+                        {
+                            "valueCoding": {
+                                "code": "male",
+                                "display": "Male"
+                            }
+                        },
+                        {
+                            "valueCoding": {
+                                "code": "female",
+                                "display": "Female"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+                            }
+                        }
+                    ],
+                    "linkId": "1.6",
+                    "text": "Medicare ID:",
+                    "type": "string",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "linkId": "2",
+            "text": "Provider who performed the face-to-face evaluation if different than signing provider",
+            "type": "group",
+            "item": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                            }
+                        }
+                    ],
+                    "linkId": "2.1",
+                    "text": "Last Name",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+                            }
+                        }
+                    ],
+                    "linkId": "2.2",
+                    "text": "First Name",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+                            }
+                        }
+                    ],
+                    "linkId": "2.3",
+                    "text": "Middle Initial",
+                    "type": "string",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "linkId": "3",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "3.1",
+                    "type": "group",
+                    "item": [
+                        {
+                            "linkId": "3.1.1",
+                            "text": "Is this a face-to-face encounter for oxygen therapy? ",
+                            "type": "boolean"
+                        },
+                        {
+                            "linkId": "3.1.2",
+                            "text": "If No, purpose of the encounter: ",
+                            "type": "text",
+                            "required": false,
+                            "enableWhen": [
+                                {
+                                    "question": "3.1.1",
+                                    "operator": "=",
+                                    "answerBoolean": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "linkId": "3.2",
+                    "text": "Is this encounter an inpatient hospital stay?",
+                    "type": "boolean"
+                },
+                {
+                    "linkId": "3.3",
+                    "type": "group",
+                    "item": [
+                        {
+                            "linkId": "3.3.1",
+                            "text": "Is patient currently mobile in their home? ",
+                            "type": "boolean"
+                        },
+                        {
+                            "linkId": "3.3.2",
+                            "text": "If No and portable O2 is required, describe:  ",
+                            "type": "text",
+                            "required": false,
+                            "enableWhen": [
+                                {
+                                    "question": "3.3.1",
+                                    "operator": "=",
+                                    "answerBoolean": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "linkId": "3.4",
+                    "type": "group",
+                    "item": [
+                        {
+                            "linkId": "3.4.1",
+                            "text": "Was blood gas study ordered and evaluated?",
+                            "type": "boolean"
+                        },
+                        {
+                            "linkId": "3.4.2",
+                            "text": "If Yes, date of testing (MM/DD/YYYY):",
+                            "type": "date",
+                            "required": false,
+                            "enableWhen": [
+                                {
+                                    "question": "3.4.1",
+                                    "operator": "=",
+                                    "answerBoolean": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "linkId": "3.5",
+                    "text": "Is patient in a chronic stable state?",
+                    "type": "boolean"
+                },
+                {
+                    "linkId": "3.6",
+                    "text": "describe:",
+                    "type": "text"
+                },
+                {
+                    "linkId": "3.7",
+                    "type": "group",
+                    "item": [
+                        {
+                            "linkId": "3.7.1",
+                            "text": "Is there an expectation that home oxygen therapy will improve O2 Saturation?",
+                            "type": "boolean"
+                        },
+                        {
+                            "linkId": "3.7.2",
+                            "text": "describe:",
+                            "type": "text"
+                        }
+                    ]
+                },
+                {
+                    "linkId": "3.8",
+                    "type": "group",
+                    "item": [
+                        {
+                            "linkId": "3.8.1",
+                            "text": "Does patient live or travel to an area at high elevation?",
+                            "type": "boolean"
+                        },
+                        {
+                            "linkId": "3.8.2",
+                            "text": "If Yes, describe if relevant:",
+                            "type": "text",
+                            "required": false,
+                            "enableWhen": [
+                                {
+                                    "question": "3.8.1",
+                                    "operator": "=",
+                                    "answerBoolean": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "linkId": "3.9",
+                    "type": "group",
+                    "item": [
+                        {
+                            "linkId": "3.9.1",
+                            "text": "Does patient have a reduced O2 carrying capacity?",
+                            "type": "boolean"
+                        },
+                        {
+                            "linkId": "3.9.2",
+                            "text": "If Yes, describe:",
+                            "type": "text",
+                            "required": false,
+                            "enableWhen": [
+                                {
+                                    "question": "3.9.1",
+                                    "operator": "=",
+                                    "answerBoolean": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "linkId": "4",
+            "type": "group",
+            "text": "Primary diagnosis (to support need for home oxygen):",
+            "item": [
+                {
+                    "type": "choice",
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+                            "valueBoolean": true
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                            "valueCodeableConcept": {
+                                "coding": [
+                                    {
+                                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                                        "code": "drop-down",
+                                        "display": "Drop down"
+                                    }
+                                ],
+                                "text": "Drop down"
+                            }
+                        }
+                    ],
+                    "required": false,
+                    "linkId": "4.1",
+                    "text": "End Stage / Severe Lung Disease",
+                    "answerOption": [
+                        {
+                            "valueCoding": {
+                                "display": "COPD"
+                            }
+                        },
+                        {
+                            "valueCoding": {
+                                "display": "Diffuse interstitial lung disease"
+                            }
+                        },
+                        {
+                            "valueCoding": {
+                                "display": "Cystic fibrosis"
+                            }
+                        },
+                        {
+                            "valueCoding": {
+                                "display": "Bronchiectasis"
+                            }
+                        },
+                        {
+                            "valueCoding": {
+                                "display": "Widespread pulmonary neoplasm"
+                            }
+                        },
+                        {
+                            "valueCoding": {
+                                "display": "Other pulmonary/lung diseases"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "group",
+                    "required": false,
+                    "linkId": "4.2",
+                    "text": "Hypoxemia (expected to improve with oxygen therapy) and supporting evidence",
+                    "item": [
+                        {
+                            "type": "group",
+                            "required": false,
+                            "linkId": "4.2.1",
+                            "text": "Pulmonary hypertension / Cor Pulmonale",
+                            "item": [
+                                {
+                                    "type": "integer",
+                                    "extension": [
+                                        {
+                                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                                            "valueCoding": {
+                                                "display": "mm[Hg]"
+                                            }
+                                        }
+                                    ],
+                                    "required": false,
+                                    "linkId": "/undefined/undefined/undefined",
+                                    "text": "Pulmonary arterial Pressure (PaP): Result:"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "choice",
+                            "extension": [
+                                {
+                                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+                                    "valueBoolean": true
+                                },
+                                {
+                                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                                    "valueCodeableConcept": {
+                                        "coding": [
+                                            {
+                                                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                                                "code": "drop-down",
+                                                "display": "Drop down"
+                                            }
+                                        ],
+                                        "text": "Drop down"
+                                    }
+                                }
+                            ],
+                            "required": false,
+                            "linkId": "4.2.2",
+                            "text": "Recurring heart failure secondary to chronic Cor Pulmonale",
+                            "answerOption": [
+                                {
+                                    "valueCoding": {
+                                        "display": "Edema"
+                                    }
+                                },
+                                {
+                                    "valueCoding": {
+                                        "display": "Pulmonary Rales"
+                                    }
+                                },
+                                {
+                                    "valueCoding": {
+                                        "display": "Fluid on CXR"
+                                    }
+                                },
+                                {
+                                    "valueCoding": {
+                                        "display": "Gated blood pool scan"
+                                    }
+                                },
+                                {
+                                    "valueCoding": {
+                                        "display": "“p” Pulmonale on ECG"
+                                    }
+                                },
+                                {
+                                    "valueCoding": {
+                                        "display": "Echocardiogram"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "group",
+                            "extension": [
+                                {
+                                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+                                    "valueBoolean": true
+                                }
+                            ],
+                            "required": false,
+                            "linkId": "4.2.3",
+                            "text": "Erythrocythemia",
+                            "answerOption": [
+                                {
+                                    "valueCoding": {
+                                        "display": "Erythrocytosis"
+                                    }
+                                },
+                                {
+                                    "valueCoding": {
+                                        "display": "Hematocrit/hemoglobin result (Hct/Hgb):"
+                                    }
+                                }
+                            ],
+                            "item": [
+                                {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "linkId": "/undefined/undefined/undefined",
+                                    "text": "Erythrocytosis"
+                                },
+                                {
+                                    "type": "integer",
+                                    "required": false,
+                                    "linkId": "/undefined/undefined/undefined",
+                                    "text": "Hematocrit/hemoglobin result (Hct/Hgb):"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "4.2.4",
+                            "text": "Cognitive impairment",
+                            "item": [
+                                {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "linkId": "/undefined/undefined/undefined",
+                                    "text": "Mental status exam"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "4.2.5",
+                            "text": "Nocturnal restlessness, morning headache, and/or daytime somnolence",
+                            "item": [
+                                {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "linkId": "4.2.5.1",
+                                    "text": "Nocturnal oximetry"
+                                },
+                                {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "linkId": "4.2.5.2",
+                                    "text": "Sleep Study"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "string",
+                            "required": false,
+                            "linkId": "4.2.6",
+                            "text": "Exertional hypoxia / desaturation",
+                            "item": [
+                                {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "linkId": "4.2.6.1",
+                                    "text": "O2 test"
+                                },
+                                {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "linkId": "4.2.6.2",
+                                    "text": "“6” minute walk (optional)"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "string",
+                            "required": false,
+                            "linkId": "4.2.7",
+                            "text": "Clinical trials",
+                            "item": [
+                                {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "linkId": "4.2.7.1",
+                                    "text": "Long-term O2 therapy"
+                                },
+                                {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "linkId": "4.2.7.2",
+                                    "text": "Cluster headache"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "required": false,
+                            "linkId": "4.2.8",
+                            "text": "Other"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "group",
+            "required": false,
+            "linkId": "5",
+            "item": [
+                {
+                    "type": "text",
+                    "required": false,
+                    "linkId": "5.1",
+                    "text": "Chief complaint / history of present illness and associated signs / symptoms:"
+                },
+                {
+                    "type": "text",
+                    "required": false,
+                    "linkId": "5.2",
+                    "text": "Related past medical / surgical history:"
+                },
+                {
+                    "type": "text",
+                    "required": false,
+                    "linkId": "5.3",
+                    "text": "Allergies / immunizations:"
+                },
+                {
+                    "type": "text",
+                    "required": false,
+                    "linkId": "5.4",
+                    "text": "Current medications:"
+                }
+            ]
+        },
+        {
+            "type": "group",
+            "required": false,
+            "linkId": "6",
+            "text": "Review of systems (Significant as per history of present problem and home oxygen need):",
+            "item": [
+                {
+                    "type": "group",
+                    "required": false,
+                    "linkId": "6.1",
+                    "text": "General",
+                    "item": [
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.1.1",
+                            "text": "weight gain"
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.1.2",
+                            "text": "weight loss"
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.1.3",
+                            "text": "sleeping problems,"
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.1.4",
+                            "text": "fatigue"
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.1.5",
+                            "text": "fever"
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.1.6",
+                            "text": "chills"
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.1.7",
+                            "text": "night sweats / diaphoresis"
+                        },
+                        {
+                            "type": "text",
+                            "required": false,
+                            "linkId": "6.1.8",
+                            "text": "other"
+                        }
+                    ]
+                },
+                {
+                    "type": "group",
+                    "required": false,
+                    "linkId": "6.2",
+                    "text": "Neck",
+                    "item": [
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.2.1",
+                            "text": "lumps"
+                        },
+                        {
+                            "type": "boolean",
+                            "required": false,
+                            "linkId": "6.2.2",
+                            "text": "pain on movement"
+                        },
+                        {
+                            "type": "string",
+                            "required": false,
+                            "linkId": "6.2.3",
+                            "text": "other"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
