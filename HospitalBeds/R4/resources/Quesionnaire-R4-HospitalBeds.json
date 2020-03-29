@@ -33,6 +33,7 @@
     {
       "linkId": "1",
       "type": "group",
+      "text": "Patient Information:",
       "item": [
         {
           "extension": [
@@ -91,8 +92,7 @@
           ],
           "linkId": "1.4",
           "text": "Date of Birth:",
-          "type": "date",
-          "required": true
+          "type": "date"
         },
         {
           "extension": [
@@ -107,8 +107,7 @@
           "linkId": "1.5",
           "text": "Gender:",
           "type": "choice",
-          "required": true,
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "male",
@@ -143,6 +142,7 @@
     {
       "linkId": "2",
       "type": "group",
+      "text": "Additional Patient Information:",
       "item": [
         {
           "extension": [
@@ -177,7 +177,10 @@
               "linkId": "2.2.1",
               "text": "Diagnosis:",
               "type": "open-choice",
-              "repeats": true,
+              "repeats": {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+                "valueBoolean": true
+              },
               "option": []
             }
           ]
@@ -200,7 +203,10 @@
           "text": "Face-to-face Evaluation within 6 months",
           "type": "open-choice",
           "required": false,
-          "repeats": true,
+          "repeats": {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+            "valueBoolean": true
+          },
           "option": []
         }
       ]
@@ -227,42 +233,58 @@
     {
       "linkId": "5",
       "text": "Type of order:",
-      "type": "choice",
-      "answerOption": [
+      "type": "group",
+      "item": [
         {
-          "valueCoding": {
-            "code": "initial",
-            "display": "Initial or original order"
-          }
+          "linkId": "5.1",
+          "type": "choice",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "initial",
+                "display": "Initial or original order"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "revision",
+                "display": "Revision or change order"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "replacement",
+                "display": "Replacement"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "newSupplier",
+                "display": "New Supplier"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "other",
+                "display": "Other"
+              }
+            }
+          ]
         },
         {
-          "valueCoding": {
-            "code": "revision",
-            "display": "Revision or change order"
-          }
-        },
-        {
-          "valueCoding": {
-            "code": "replacement",
-            "display": "Replacement"
-          }
-        },
-        {
-          "valueCoding": {
-            "code": "newSupplier",
-            "display": "New Supplier"
-          }
-        },
-        {
-          "valueCoding": {
-            "code": "other",
-            "display": "Other"
-          }
+          "linkId": "5.2",
+          "type": "text",
+          "text": "Other"
         }
       ]
     },
     {
       "linkId": "6",
+      "type": "text",
+      "text": "Order Description"
+    },
+    {
+      "linkId": "7",
       "text": "Order",
       "type": "group",
       "item": [
@@ -273,7 +295,7 @@
               "valueString": "\"HospitalBedsPrepopulation\".DeviceRequested"
             }
           ],
-          "linkId": "6.1",
+          "linkId": "7.1",
           "text": "Equipment",
           "type": "choice",
           "required": false,
@@ -291,20 +313,14 @@
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "linkId": "7",
-      "type": "group",
-      "item": [
+        },
         {
-          "linkId": "7.1",
+          "linkId": "7.2",
           "text": "Other equipment, accessories, or supplies:",
           "type": "string"
         },
         {
-          "linkId": "7.2",
+          "linkId": "7.3",
           "text": "Additional description:",
           "type": "string"
         }
@@ -317,7 +333,8 @@
         {
           "linkId": "8.1",
           "text": "Signature:",
-          "type": "string"
+          "type": "string",
+          "required": true
         },
         {
           "extension": [
@@ -361,8 +378,7 @@
           ],
           "linkId": "8.4",
           "text": "NPI:",
-          "type": "string",
-          "required": true
+          "type": "string"
         }
       ]
     }

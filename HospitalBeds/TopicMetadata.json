@@ -7,7 +7,7 @@
         {
             "codeSystem": "hcpcs",
             "codes": [
-                "E0250"
+                "E0250", "E0251"
             ]
         }
     ],
