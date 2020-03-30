@@ -172,15 +172,15 @@
                     "language": "text/cql",
                     "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
                   }
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+                  "valueBoolean": true
                 }
               ],
               "linkId": "2.2.1",
               "text": "Diagnosis:",
               "type": "open-choice",
-              "repeats": {
-                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-                "valueBoolean": true
-              },
               "option": []
             }
           ]
