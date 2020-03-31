@@ -181,7 +181,7 @@
               "linkId": "2.2.1",
               "text": "Diagnosis:",
               "type": "open-choice",
-              "option": []
+              "answerOption": []
             }
           ]
         }
@@ -207,7 +207,7 @@
           "text": "Face-to-face Evaluation within 6 months",
           "type": "open-choice",
           "required": false,
-          "option": []
+          "answerOption": []
         }
       ]
     },
