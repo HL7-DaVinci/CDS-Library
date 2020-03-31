@@ -967,6 +967,214 @@
               "text": "other"
             }
           ]
+        },
+        {
+          "type": "group",
+          "required": false,
+          "linkId": "6.7",
+          "text": "Musculoskeletal",
+          "item": [
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.1",
+              "text": "pain"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.2",
+              "text": "swelling"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.3",
+              "text": "stiffness"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.4",
+              "text": "limitation of range of motion"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.5",
+              "text": "arthritis"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.6",
+              "text": "gout"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.7",
+              "text": "cramps"
+            },
+            {
+              "type": "string",
+              "required": false,
+              "linkId": "6.7.8",
+              "text": "myalgia"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.9",
+              "text": "fasciculation"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.10",
+              "text": "atrophy"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.11",
+              "text": "fracture"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.12",
+              "text": "deformity"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "6.7.13",
+              "text": "weakness"
+            },
+            {
+              "type": "string",
+              "required": false,
+              "linkId": "6.7.14",
+              "text": "other"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "required": false,
+          "linkId": "/undefined",
+          "text": "Neurologic",
+          "item": [
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "seizures"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "poor memory"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "poor concentration"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "numbness / tingling"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "pins and needles sensation"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "hyperpathia"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "dysesthesia"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "weakness"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "paralysis"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "tremors"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "involuntary movements"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "unstable gait"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "fall"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "vertigo"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "headache"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "stroke"
+            },
+            {
+              "type": "boolean",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "speech disorders"
+            },
+            {
+              "type": "string",
+              "required": false,
+              "linkId": "/undefined/undefined",
+              "text": "other"
+            }
+          ]
         }
       ]
     }
