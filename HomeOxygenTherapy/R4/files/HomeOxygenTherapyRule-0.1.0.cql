@@ -30,7 +30,7 @@ define RESULT_QuestionnaireOrderUri:
   'Questionnaire/HomeOxygenTherapy'
 
 define RESULT_QuestionnaireFaceToFaceUri:
-  'Questionnaire/HomeOxygenTherapy'
+  'Questionnaire/HomeOxygenTherapyFaceToFace'
 
 define RESULT_QuestionnaireLabUri:
   'Questionnaire/HomeOxygenTherapy'
