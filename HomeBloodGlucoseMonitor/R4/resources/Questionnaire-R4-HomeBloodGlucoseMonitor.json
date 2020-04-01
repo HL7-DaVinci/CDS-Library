@@ -39,26 +39,21 @@
     {
       "resourceType": "ValueSet",
       "id": "gender",
-      "name": "Gender",
+      "url": "#gender",
       "status": "draft",
-      "description": "Gender",
-      "compose": {
-        "include": [
+      "expansion": {
+        "contains": [
           {
-            "concept": [
-              {
-                "code": "male",
-                "display": "Male"
-              },
-              {
-                "code": "female",
-                "display": "Female"
-              },
-              {
-                "code": "other",
-                "display": "Other"
-              }
-            ]
+            "code": "male",
+            "display": "Male"
+          },
+          {
+            "code": "female",
+            "display": "Female"
+          },
+          {
+            "code": "other",
+            "display": "Other"
           }
         ]
       }
