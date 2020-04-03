@@ -10,9 +10,7 @@
   },
   "title": "Home Oxygen Laboratory Test Results",
   "status": "draft",
-  "subjectType": [
-    "Patient"
-  ],
+  "subjectType": ["Patient"],
   "date": "2019-12-06",
   "publisher": "Da Vinci DTR",
   "extension": [
@@ -58,7 +56,7 @@
         ]
       }
     }
-  ],  
+  ],
   "item": [
     {
       "linkId": "1",
@@ -68,94 +66,129 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
               }
             }
           ],
-          "linkId": "1.1",
-          "text": "Last Name",
-          "type": "string",
-          "required": true
+          "linkId": "1a",
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                  }
+                }
+              ],
+              "linkId": "1.1",
+              "text": "Last Name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+                  }
+                }
+              ],
+              "linkId": "1.2",
+              "text": "First Name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+                  }
+                }
+              ],
+              "linkId": "1.3",
+              "text": "Middle Initial",
+              "type": "string",
+              "required": true
+            }
+          ]
         },
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
               }
             }
           ],
-          "linkId": "1.2",
-          "text": "First Name",
-          "type": "string",
-          "required": true
-          
-        },
-        {
-          "extension": [
+          "linkId": "1b",
+          "type": "group",
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ],
-          "linkId": "1.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": true
-          
-        },
-        {
-          "extension": [
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+                  }
+                }
+              ],
+              "linkId": "1.4",
+              "text": "Date Of Birth",
+              "type": "date",
+              "required": true
+            },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
-              }
-            }
-          ],
-          "linkId": "1.4",
-          "text": "Date Of Birth",
-          "type": "date",
-          "required": true
-          
-        },
-        {
-          "extension": [
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+                  }
+                }
+              ],
+              "linkId": "1.5",
+              "text": "Gender",
+              "type": "choice",
+              "answerValueSet": "#gender"
+            },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+                  }
+                }
+              ],
+              "linkId": "1.6",
+              "text": "Medicare ID",
+              "type": "string"
             }
-          ],
-          "linkId": "1.5",
-          "text": "Gender",
-          "type": "choice",       
-          "answerValueSet": "#gender"
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
-              }
-            }
-          ],
-          "linkId": "1.6",
-          "text": "Medicare ID",
-          "type": "string"
+          ]
         }
       ]
     },
@@ -167,73 +200,111 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
               }
             }
           ],
-          "linkId": "2.1",
-          "text": "Last Name",
-          "type": "string"          
+          "linkId": "2a",
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                  }
+                }
+              ],
+              "linkId": "2.1",
+              "text": "Last Name",
+              "type": "string"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+                  }
+                }
+              ],
+              "linkId": "2.2",
+              "text": "First Name",
+              "type": "string"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+                  }
+                }
+              ],
+              "linkId": "2.3",
+              "text": "Middle Initial",
+              "type": "string"
+            }
+          ]
         },
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
               }
             }
           ],
-          "linkId": "2.2",
-          "text": "First Name",
-          "type": "string"
-        },
-        {
-          "extension": [
+          "linkId": "2b",
+          "type": "group",
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ],
-          "linkId": "2.3",
-          "text": "Middle Initial",
-          "type": "string"          
-        },       
-        {
-          "extension": [
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+                  }
+                }
+              ],
+              "linkId": "2.4",
+              "text": "NPI",
+              "type": "string"
+            },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeOxygenTherapyLabPrepopulation\".Today"
+                  }
+                }
+              ],
+              "linkId": "2.5",
+              "text": "Date of Face-To-Face Evaluation",
+              "type": "date",
+              "required": true
             }
-          ],
-          "linkId": "2.4",
-          "text": "NPI",
-          "type": "string"          
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyLabPrepopulation\".Today"
-              }
-            }
-          ],
-          "linkId": "2.5",
-          "text": "Date of Face-To-Face Evaluation",
-          "type": "date",
-          "required": true          
+          ]
         }
       ]
     },
@@ -244,6 +315,19 @@
       "required": true
     },
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "4",
       "text": "Person or entity performing testing",
       "type": "group",
@@ -282,6 +366,19 @@
           "required": true
         },
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
           "linkId": "5.2",
           "text": "Flow rate",
           "type": "group",
@@ -304,13 +401,12 @@
               "text": "O2 %",
               "type": "decimal"
             }
-
           ]
         },
         {
           "linkId": "5.3",
           "text": "Means of oygen delivery",
-          "type": "group",
+          "type": "choice",
           "required": true,
           "enableWhen": [
             {
@@ -319,37 +415,47 @@
               "answerBoolean": true
             }
           ],
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Nasal cannula"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Non-rebreather"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Ventilator"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Mask"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Other"
+              }
+            }
+          ],
           "item": [
             {
               "linkId": "5.3.1",
-              "type": "choice",
-              "answerOption": [
+              "text": "Other",
+              "type": "string",
+              "enableWhen": [
                 {
-                  "valueCoding": {
-                    "code": "Nasal cannula"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "Non-rebreather"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "Ventilator"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "Mask"
+                  "question": "5.3",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "Other"
                   }
                 }
               ]
-            },
-            {
-              "linkId": "5.3.2",
-              "text": "Other",
-              "type": "string"
             }
           ]
         }
@@ -362,6 +468,19 @@
       "required": true,
       "item": [
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
           "linkId": "6.1",
           "text": "Arterial Blood Gases at rest",
           "type": "group",
@@ -376,7 +495,7 @@
                 }
               ],
               "linkId": "6.1.1",
-              "text": "O2 Sat",
+              "text": "O2 Sat [%]",
               "type": "decimal",
               "code": [
                 {
@@ -396,7 +515,7 @@
                 }
               ],
               "linkId": "6.1.2",
-              "text": "PaO2",
+              "text": "PaO2 [mmHg]",
               "type": "decimal",
               "code": [
                 {
@@ -428,7 +547,7 @@
                 }
               ],
               "linkId": "6.1.4",
-              "text": "PaCO2",
+              "text": "PaCO2 [mmHg]",
               "type": "decimal",
               "code": [
                 {
@@ -448,7 +567,7 @@
                 }
               ],
               "linkId": "6.1.5",
-              "text": "HCO3",
+              "text": "HCO3 [mmHg]",
               "type": "decimal",
               "code": [
                 {
@@ -468,7 +587,7 @@
                 }
               ],
               "linkId": "6.1.6",
-              "text": "Hematocrit",
+              "text": "Hematocrit [%]",
               "type": "decimal",
               "code": [
                 {
@@ -479,7 +598,6 @@
               ]
             }
           ]
-
         },
         {
           "extension": [
@@ -502,6 +620,19 @@
           ]
         },
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
           "linkId": "6.3",
           "text": "Exercise O2 test",
           "type": "group",
@@ -516,7 +647,7 @@
                 }
               ],
               "linkId": "6.3.1",
-              "text": "O2 Saturation results at rest without supplemental O2",
+              "text": "O2 Saturation results at rest without supplemental O2 [%]",
               "type": "decimal",
               "code": [
                 {
@@ -536,7 +667,7 @@
                 }
               ],
               "linkId": "6.3.2",
-              "text": "O2 Saturation during exercise without supplemental O2",
+              "text": "O2 Saturation during exercise without supplemental O2 [%]",
               "type": "decimal",
               "code": [
                 {
@@ -556,7 +687,7 @@
                 }
               ],
               "linkId": "6.3.3",
-              "text": "O2 Saturation  during exercise with supplemental O2",
+              "text": "O2 Saturation  during exercise with supplemental O2 [%]",
               "type": "decimal",
               "code": [
                 {
@@ -581,7 +712,7 @@
                 }
               ],
               "linkId": "6.3.5",
-              "text": "O2 Sat",
+              "text": "O2 Sat [%]",
               "type": "decimal",
               "code": [
                 {
@@ -590,36 +721,31 @@
                   "display": "SaO2 % BldA"
                 }
               ]
-            }            
+            }
           ]
         },
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "display": "%"
+              }
+            }
+          ],
           "linkId": "6.4",
-          "text": "Overnight oximetry results (while asleep and on room air) O2 Sat",
-          "type": "group",
+          "text": "Overnight oximetry results (while asleep and on room air) O2 Sat [%]",
+          "type": "decimal",
+          "code": [
+            {
+              "code": "2708-6",
+              "system": "http://loinc.org",
+              "display": "SaO2 % BldA"
+            }
+          ],
           "item": [
             {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "%"
-                  }
-                }
-              ],
               "linkId": "6.4.1",
-              "text": "O2 Saturation",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "2708-6",
-                  "system": "http://loinc.org",
-                  "display": "SaO2 % BldA"
-                }
-              ]
-            },
-            {
-              "linkId": "6.4.2",
               "text": "lowest value with total aggregate duration of no less than five (5) minutes during testing",
               "type": "display"
             }
@@ -628,6 +754,19 @@
       ]
     },
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "7",
       "text": "Signature, name, date completed and NPI",
       "type": "group",
