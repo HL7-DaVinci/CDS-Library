@@ -10,9 +10,7 @@
   },
   "title": "Home Oxygen Therapy",
   "status": "draft",
-  "subjectType": [
-    "Patient"
-  ],
+  "subjectType": ["Patient"],
   "date": "2019-12-06",
   "publisher": "Da Vinci DTR",
   "extension": [
@@ -39,26 +37,21 @@
     {
       "resourceType": "ValueSet",
       "id": "gender",
-      "name": "Gender",
+      "url": "#gender",
       "status": "draft",
-      "description": "Gender",
-      "compose": {
-        "include": [
+      "expansion": {
+        "contains": [
           {
-            "concept": [
-              {
-                "code": "male",
-                "display": "Male"
-              },
-              {
-                "code": "female",
-                "display": "Female"
-              },
-              {
-                "code": "other",
-                "display": "Other"
-              }
-            ]
+            "code": "male",
+            "display": "Male"
+          },
+          {
+            "code": "female",
+            "display": "Female"
+          },
+          {
+            "code": "other",
+            "display": "Other"
           }
         ]
       }
@@ -135,7 +128,7 @@
           "text": "Gender",
           "type": "choice",
           "required": true,
-          "answerValueSet": "#gender",          
+          "answerValueSet": "#gender",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
