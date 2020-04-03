@@ -27,6 +27,12 @@
       "valueReference": {
         "reference": "Library/BasicPractitionerInfo-prepopulation"
       }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/HomeOxygenTherapy-prepopulation"
+      }
     }
   ],
   "item": [
@@ -356,8 +362,15 @@
       "text": "Primary diagnosis (to support need for home oxygen):",
       "item": [
         {
-          "type": "choice",
+          "type": "open-choice",
           "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
+              }
+            },
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
               "valueBoolean": true
@@ -435,30 +448,17 @@
                     }
                   ],
                   "required": false,
-                  "linkId": "/undefined/undefined/undefined",
+                  "linkId": "4.2.1.1",
                   "text": "Pulmonary arterial Pressure (PaP): Result:"
                 }
               ]
             },
             {
-              "type": "choice",
+              "type": "open-choice",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
                   "valueBoolean": true
-                },
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "system": "http://hl7.org/fhir/questionnaire-item-control",
-                        "code": "drop-down",
-                        "display": "Drop down"
-                      }
-                    ],
-                    "text": "Drop down"
-                  }
                 }
               ],
               "required": false,
@@ -544,7 +544,7 @@
                 {
                   "type": "boolean",
                   "required": false,
-                  "linkId": "/undefined/undefined/undefined",
+                  "linkId": "4.2.4.1",
                   "text": "Mental status exam"
                 }
               ]
