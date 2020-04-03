@@ -33,6 +33,7 @@
     {
       "linkId": "1",
       "type": "group",
+      "text": "Patient Information:",
       "item": [
         {
           "extension": [
@@ -91,8 +92,7 @@
           ],
           "linkId": "1.4",
           "text": "Date of Birth:",
-          "type": "date",
-          "required": true
+          "type": "date"
         },
         {
           "extension": [
@@ -107,8 +107,7 @@
           "linkId": "1.5",
           "text": "Gender:",
           "type": "choice",
-          "required": true,
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "male",
@@ -142,8 +141,8 @@
     },
     {
       "linkId": "2",
-      "text": "Patient Diagnosis",
       "type": "group",
+      "text": "Additional Patient Information:",
       "item": [
         {
           "extension": [
@@ -161,20 +160,29 @@
           "required": false
         },
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
-              }
-            }
-          ],
           "linkId": "2.2",
           "text": "Relevant Diagnosis:",
-          "type": "open-choice",
-          "repeats": true,
-          "option": [
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
+                  }
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+                  "valueBoolean": true
+                }
+              ],
+              "linkId": "2.2.1",
+              "text": "Diagnosis:",
+              "type": "open-choice",
+              "answerOption": []
+            }
           ]
         }
       ]
@@ -188,13 +196,18 @@
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBedsPrepopulation\".RecentEncounters"
+              "valueString": "\"HospitalBedsPrepopulation\".EncounterList"
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+              "valueBoolean": true
             }
           ],
           "linkId": "3.1",
           "text": "Face-to-face Evaluation within 6 months",
-          "type": "boolean",
-          "required": false
+          "type": "open-choice",
+          "required": false,
+          "answerOption": []
         }
       ]
     },
@@ -224,9 +237,8 @@
       "item": [
         {
           "linkId": "5.1",
-          "text": "Device:",
           "type": "choice",
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "initial",
@@ -258,11 +270,21 @@
               }
             }
           ]
+        },
+        {
+          "linkId": "5.2",
+          "type": "text",
+          "text": "Other"
         }
       ]
     },
     {
       "linkId": "6",
+      "type": "text",
+      "text": "Order Description"
+    },
+    {
+      "linkId": "7",
       "text": "Order",
       "type": "group",
       "item": [
@@ -273,11 +295,11 @@
               "valueString": "\"HospitalBedsPrepopulation\".DeviceRequested"
             }
           ],
-          "linkId": "6.1",
+          "linkId": "7.1",
           "text": "Equipment",
           "type": "choice",
           "required": false,
-          "option": [
+          "answerOption": [
             {
               "valueCoding": {
                 "code": "E0250",
@@ -291,17 +313,28 @@
               }
             }
           ]
+        },
+        {
+          "linkId": "7.2",
+          "text": "Other equipment, accessories, or supplies:",
+          "type": "string"
+        },
+        {
+          "linkId": "7.3",
+          "text": "Additional description:",
+          "type": "string"
         }
       ]
-    },  
+    },
     {
-      "linkId": "7",
+      "linkId": "8",
       "type": "group",
       "item": [
         {
-          "linkId": "7.1",
+          "linkId": "8.1",
           "text": "Signature:",
-          "type": "string"
+          "type": "string",
+          "required": true
         },
         {
           "extension": [
@@ -313,7 +346,7 @@
               }
             }
           ],
-          "linkId": "7.2",
+          "linkId": "8.2",
           "text": "Name (Printed):",
           "type": "string",
           "required": true
@@ -328,7 +361,7 @@
               }
             }
           ],
-          "linkId": "7.3",
+          "linkId": "8.3",
           "text": "Date (MM/DD/YYYY):",
           "type": "date",
           "required": true
@@ -343,10 +376,9 @@
               }
             }
           ],
-          "linkId": "7.4",
+          "linkId": "8.4",
           "text": "NPI:",
-          "type": "string",
-          "required": true
+          "type": "string"
         }
       ]
     }

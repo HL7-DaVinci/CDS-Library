@@ -18,6 +18,24 @@ define "BodyWeight_Codes": { "29463-7" }
 define "BodyWeight": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "BodyWeight_Codes"], 6 months)), '[lb_av]'))
 
 define "RecentEncounters": EncounterLookBack([Encounter], 6 months)
+define "EncounterList": ConvertEncounterDetails("RecentEncounters")
+define function ConvertEncounterDetails(EncounterList List<Encounter>):
+  distinct(
+    flatten(
+      EncounterList E
+        let EncounterCodings:
+          (E.type.coding) CODING
+          return Tuple {
+            code: CODING.code.value,
+            system: CODING.system.value,
+            display: CODING.display.value,
+            periodStart: E.period.start.value,
+            type: 'encounter'
+          }
+        
+        return EncounterCodings
+    )
+  )
 
 define OtherDiagnoses:
   distinct(flatten(
