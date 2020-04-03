@@ -35,6 +35,7 @@
   "item": [
     {
       "linkId": "1",
+      "text": "Patient/Beneficiary Demographics",
       "type": "group",
       "item": [
         {
@@ -204,193 +205,337 @@
           "text": "Middle Initial",
           "type": "string",
           "required": false
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Suffix"
+              }
+            }
+          ],
+          "linkId": "2.5",
+          "text": "Suffix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ],
+          "linkId": "2.6",
+          "text": "Certifying Provider NPI",
+          "type": "string",
+          "required": true
         }
       ]
     },
     {
       "linkId": "3",
-      "text": "Date of F2F evaluation (MM/DD/YYYY):",
+      "text": "Encounter",
       "type": "group",
       "item": [
         {
           "linkId": "3.1",
+          "text": "Date of F2F encounter",
           "type": "date"
         }
       ]
     },
     {
       "linkId": "4",
-      "text": "Patient diagnosis:",
+      "text": "Respiratory Assist Device Diagnoses",
       "type": "group",
       "item": [
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OsaDiagnosis"
-              }
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+              "valueBoolean": true
             }
           ],
           "linkId": "4.1",
-          "type": "choice",
+          "type": "open-choice",
+          "text": "Patient diagnoses for order",
+          "required": false,
           "answerOption": [
             {
               "valueCoding": {
-                "code": "OSA",
-                "display": "Obstructive Sleep Apnea"
+                "code": "Restrictive thoracic disorder"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Severe COPD"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Hypoventilation syndrome"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Central sleep apnea"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Complex sleep apnea"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Obstructive sleep apnea (OSA)"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Other"
               }
             }
           ]
         },
         {
           "linkId": "4.2",
-          "text": "Other:",
-          "type": "choice",
-          "answerOption": [
+          "enableWhen": [
             {
-              "valueCoding": {
-                "code": "Other",
-                "display": "Yes"
-              }
-            }
-          ]
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
+              "question": "4.1",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Other"
               }
             }
           ],
-          "linkId": "4.3",
-          "text": "Other (describe):",
-          "type": "text"
+          "text": "If Other, describe",
+          "type": "string",
+          "required": true
         }
       ]
     },
     {
       "linkId": "5",
+      "text": "RAD for OSA Order Information",
       "type": "group",
       "item": [
-        {
-          "linkId": "5.1",
-          "text": "Order start date, if different from date of order (MM/DD/YYYY):",
-          "type": "date"
-        }
-      ]
-    },
-    {
-      "linkId": "6",
-      "text": "Type of order:",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "6.1",
-          "text": "Device:",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "revision",
-                "display": "Revision or change in equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "replacement",
-                "display": "Replacement"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "6.2",
-          "text": "Supplies:",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "reorder",
-                "display": "Reorder"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "other",
-                "display": "Other"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "6.3",
-          "text": "Other (description):",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "linkId": "7",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "7.1",
-          "text": "Device Order (description of device):",
-          "type": "text"
-        },
         {
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".PapDeviceRequested"
+                "expression": "Today"
               }
             }
           ],
-          "linkId": "7.2",
-          "type": "choice",
+          "linkId": "5.1",
+          "text": "Start date if different from order date",
+          "type": "date",
+          "required": false
+        },
+        {
+          "linkId": "5.2",
+          "type": "open-choice",
+          "text": "Type of Device Order",
+          "required": true,
           "answerOption": [
             {
               "valueCoding": {
-                "code": "E0601",
-                "display": "E0601 Continuous Positive Airway Pressure device"
+                "code": "Initial"
               }
             },
             {
               "valueCoding": {
-                "code": "E0470",
-                "display": "E0470 Respiratory assist device, bi-level w/o backup"
+                "code": "Revision or Change in Equipment"
               }
+            },
+            {
+              "valueCoding": {
+                "code": "Replacement"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "type": "open-choice",
+          "text": "Type of Supply Order",
+          "required": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Initial"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Reorder"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Other"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.4",
+          "enableWhen": [
+            {
+              "question": "5.3",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Other"
+              }
+            }
+          ],
+          "text": "If Other, describe",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "5.5",
+          "text": "Device Order (description of device)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "5.6",
+          "text": "Specific Device",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "5.6.1",
+              "text": "Specify",
+              "type": "choice",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"RespiratoryAssistDevice\".RadDeviceRequested"
+                  }
+                }
+              ],
+              "required": false,
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "E0470",
+                    "display": "E0470 - Respiratory assist device, bi-level without backup rate"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "E0471",
+                    "display": "E0471 - Respiratory assist device, bi-level with backup rate (not covered for OSA)"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "5.6.2",
+              "text": "Note:  RAD (E0470 and E0471) require Written Order Prior to Delivery and F2F Evaluation",
+              "type": "display"
+            },
+            {
+              "linkId": "5.6.3",
+              "text": "Note:  E0471 is not covered for OSA",
+              "type": "display",
+              "enableWhen": [
+                {
+                  "question": "5.6.1",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "E0471"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "5.7",
+          "type": "group",
+          "text": "Supply Order",
+          "item": [
+            {
+              "linkId": "5.7.1",
+              "text": "Note:  Items dispensed on a periodic basis — repeat multiple times",
+              "type": "display"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "5.7.2",
+              "type": "group",
+              "text": "List",
+              "repeats": "true",
+              "item": [
+                {
+                  "linkId": "5.7.2.1",
+                  "text": "Item Description",
+                  "type": "string"
+                },
+                {
+                  "linkId": "5.7.2.2",
+                  "text": "Frequency",
+                  "type": "string"
+                },
+                {
+                  "linkId": "5.7.2.3",
+                  "text": "Duration",
+                  "type": "string"
+                },
+                {
+                  "linkId": "5.7.2.4",
+                  "text": "Quantity",
+                  "type": "string"
+                },
+                {
+                  "linkId": "5.7.2.5",
+                  "text": "Refills",
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.3",
+              "text": "Other",
+              "type": "text"
             }
           ]
         }
       ]
     },
     {
-      "linkId": "9",
+      "linkId": "6",
+      "text": "Physician/NPP Signature Elements",
       "type": "group",
       "item": [
         {
-          "linkId": "9.1",
-          "text": "Signature:",
+          "linkId": "6.1",
+          "text": "Physician/NPP Signature",
           "type": "string"
         },
         {
@@ -403,8 +548,8 @@
               }
             }
           ],
-          "linkId": "9.2",
-          "text": "Name (Printed):",
+          "linkId": "6.2",
+          "text": "Physician/NPP Printed Name (Note:  Required if DWO)",
           "type": "string",
           "required": true
         },
@@ -418,8 +563,8 @@
               }
             }
           ],
-          "linkId": "9.3",
-          "text": "Date (MM/DD/YYYY):",
+          "linkId": "6.3",
+          "text": "Date of Order",
           "type": "date",
           "required": true
         },
@@ -433,8 +578,8 @@
               }
             }
           ],
-          "linkId": "9.4",
-          "text": "NPI:",
+          "linkId": "6.4",
+          "text": "Physician/NPP NPI (Note: Required if WOPD)",
           "type": "string",
           "required": true
         }
