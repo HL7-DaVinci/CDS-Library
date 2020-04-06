@@ -248,6 +248,7 @@
           "text": "Relevant Patient Diagnoses (conditions that might be expected to improve with oxygen therapy)",
           "type": "open-choice",
           "required": true,
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -302,10 +303,6 @@
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
               }
-            },
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
             }
           ]
         },
@@ -544,6 +541,7 @@
           "text": "Frequency of use (choose all that apply)",
           "type": "open-choice",
           "required": true,
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -559,12 +557,6 @@
               "valueCoding": {
                 "code": "During sleep"
               }
-            }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
             }
           ]
         }
@@ -633,6 +625,7 @@
           "text": "Means of oxygen delivery and accessories",
           "type": "open-choice",
           "required": true,
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -669,12 +662,6 @@
                 "code": "High flow oxygen therapy"
               }
             }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
           ]
         },
         {
@@ -710,6 +697,7 @@
           "text": "Reason for Change in Status",
           "type": "open-choice",
           "required": true,
+          "repeats": true,
           "enableWhen": [
             {
               "question": "5.4",
@@ -730,12 +718,6 @@
                 "code": "Different supplier"
               }
             }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
           ]
         },
         {
@@ -743,6 +725,7 @@
           "text": "Reason for Revision or change in equipment",
           "type": "open-choice",
           "required": true,
+          "repeats": true,
           "enableWhen": [
             {
               "question": "5.4",
@@ -763,12 +746,6 @@
                 "code": "Beneficiary requested upgrade with signed ABN"
               }
             }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
           ]
         },
         {
@@ -776,6 +753,7 @@
           "text": "Reason for Replacement",
           "type": "open-choice",
           "required": true,
+          "repeats": true,
           "enableWhen": [
             {
               "question": "5.4",
@@ -800,12 +778,6 @@
               "valueCoding": {
                 "code": "Repair exceeds 60% of cost"
               }
-            }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
             }
           ]
         }
