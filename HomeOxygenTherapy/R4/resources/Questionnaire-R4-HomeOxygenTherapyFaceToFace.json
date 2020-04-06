@@ -153,45 +153,18 @@
       "type": "group",
       "item": [
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
-              }
-            }
-          ],
           "linkId": "2.1",
           "text": "Last Name",
           "type": "string",
           "required": false
         },
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
-              }
-            }
-          ],
           "linkId": "2.2",
           "text": "First Name",
           "type": "string",
           "required": false
         },
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ],
           "linkId": "2.3",
           "text": "Middle Initial",
           "type": "string",
@@ -202,155 +175,165 @@
     {
       "linkId": "3",
       "type": "group",
+      "text": "General questions",
       "item": [
         {
           "linkId": "3.1",
-          "type": "group",
-          "item": [
+          "text": "Is this a face-to-face encounter for oxygen therapy? ",
+          "type": "boolean",
+          "extension": [
             {
-              "linkId": "3.1.1",
-              "text": "Is this a face-to-face encounter for oxygen therapy? ",
-              "type": "boolean"
-            },
-            {
-              "linkId": "3.1.2",
-              "text": "If No, purpose of the encounter: ",
-              "type": "text",
-              "required": false,
-              "enableWhen": [
-                {
-                  "question": "3.1.1",
-                  "operator": "=",
-                  "answerBoolean": false
-                }
-              ]
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".True"
+              }
             }
           ]
         },
         {
           "linkId": "3.2",
-          "text": "Is this encounter an inpatient hospital stay?",
-          "type": "boolean"
-        },
-        {
-          "linkId": "3.3",
-          "type": "group",
-          "item": [
+          "text": "If No, purpose of the encounter: ",
+          "type": "text",
+          "required": false,
+          "enableWhen": [
             {
-              "linkId": "3.3.1",
-              "text": "Is patient currently mobile in their home? ",
-              "type": "boolean"
-            },
-            {
-              "linkId": "3.3.2",
-              "text": "If No and portable O2 is required, describe:  ",
-              "type": "text",
-              "required": false,
-              "enableWhen": [
-                {
-                  "question": "3.3.1",
-                  "operator": "=",
-                  "answerBoolean": false
-                }
-              ]
+              "question": "3.1",
+              "operator": "=",
+              "answerBoolean": false
             }
           ]
         },
         {
+          "linkId": "3.3",
+          "text": "Is this encounter an inpatient hospital stay?",
+          "type": "boolean"
+        },
+        {
           "linkId": "3.4",
-          "type": "group",
-          "item": [
+          "text": "Is patient currently mobile in their home? ",
+          "type": "boolean",
+          "extension": [
             {
-              "linkId": "3.4.1",
-              "text": "Was blood gas study ordered and evaluated?",
-              "type": "boolean"
-            },
-            {
-              "linkId": "3.4.2",
-              "text": "If Yes, date of testing (MM/DD/YYYY):",
-              "type": "date",
-              "required": false,
-              "enableWhen": [
-                {
-                  "question": "3.4.1",
-                  "operator": "=",
-                  "answerBoolean": true
-                }
-              ]
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".PatientMobile"
+              }
             }
           ]
         },
         {
           "linkId": "3.5",
-          "text": "Is patient in a chronic stable state?",
-          "type": "boolean"
+          "text": "If No and portable O2 is required, describe:  ",
+          "type": "text",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "3.4",
+              "operator": "=",
+              "answerBoolean": false
+            }
+          ]
         },
         {
           "linkId": "3.6",
-          "text": "describe:",
-          "type": "text"
+          "text": "Was blood gas study ordered and evaluated?",
+          "type": "boolean",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".BloodGasOrderedAndEvaluated"
+              }
+            }
+          ]
         },
         {
           "linkId": "3.7",
-          "type": "group",
-          "item": [
+          "text": "If Yes, date of testing (MM/DD/YYYY):",
+          "type": "date",
+          "required": false,
+          "enableWhen": [
             {
-              "linkId": "3.7.1",
-              "text": "Is there an expectation that home oxygen therapy will improve O2 Saturation?",
-              "type": "boolean"
-            },
+              "question": "3.6",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
             {
-              "linkId": "3.7.2",
-              "text": "describe:",
-              "type": "text"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".Today"
+              }
             }
           ]
         },
         {
           "linkId": "3.8",
-          "type": "group",
-          "item": [
+          "text": "Is patient in a chronic stable state?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "3.9",
+          "text": "describe:",
+          "type": "text"
+        },
+        {
+          "linkId": "3.10",
+          "text": "Is there an expectation that home oxygen therapy will improve O2 Saturation?",
+          "type": "boolean",
+          "extension": [
             {
-              "linkId": "3.8.1",
-              "text": "Does patient live or travel to an area at high elevation?",
-              "type": "boolean"
-            },
-            {
-              "linkId": "3.8.2",
-              "text": "If Yes, describe if relevant:",
-              "type": "text",
-              "required": false,
-              "enableWhen": [
-                {
-                  "question": "3.8.1",
-                  "operator": "=",
-                  "answerBoolean": true
-                }
-              ]
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".True"
+              }
             }
           ]
         },
         {
-          "linkId": "3.9",
-          "type": "group",
-          "item": [
+          "linkId": "3.11",
+          "text": "describe:",
+          "type": "text"
+        },
+        {
+          "linkId": "3.12",
+          "text": "Does patient live or travel to an area at high elevation?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "3.13",
+          "text": "If Yes, describe if relevant:",
+          "type": "text",
+          "required": false,
+          "enableWhen": [
             {
-              "linkId": "3.9.1",
-              "text": "Does patient have a reduced O2 carrying capacity?",
-              "type": "boolean"
-            },
+              "question": "3.12",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "3.14",
+          "text": "Does patient have a reduced O2 carrying capacity?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "3.15",
+          "text": "If Yes, describe:",
+          "type": "text",
+          "required": false,
+          "enableWhen": [
             {
-              "linkId": "3.9.2",
-              "text": "If Yes, describe:",
-              "type": "text",
-              "required": false,
-              "enableWhen": [
-                {
-                  "question": "3.9.1",
-                  "operator": "=",
-                  "answerBoolean": true
-                }
-              ]
+              "question": "3.14",
+              "operator": "=",
+              "answerBoolean": true
             }
           ]
         }
@@ -441,9 +424,10 @@
                   "type": "integer",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                      "valueCoding": {
-                        "display": "mm[Hg]"
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"HomeOxygenTherapyPrepopulation\".PulmonaryArteryPressure"
                       }
                     }
                   ],
@@ -531,7 +515,16 @@
                   "type": "integer",
                   "required": false,
                   "linkId": "4.2.3.2",
-                  "text": "Hematocrit/hemoglobin result (Hct/Hgb):"
+                  "text": "Hematocrit/hemoglobin result (Hct/Hgb):",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"HomeOxygenTherapyPrepopulation\".HematocritThatIsGreaterThanThreshold"
+                      }
+                    }
+                  ]
                 }
               ]
             },
@@ -570,21 +563,44 @@
               ]
             },
             {
-              "type": "string",
-              "required": false,
+              "type": "group",
               "linkId": "4.2.6",
               "text": "Exertional hypoxia / desaturation",
               "item": [
                 {
-                  "type": "boolean",
+                  "type": "string",
                   "required": false,
                   "linkId": "4.2.6.1",
-                  "text": "O2 test"
+                  "text": "Value",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"HomeOxygenTherapyPrepopulation\".ArterialOxygenSaturationExercise"
+                      }
+                    }
+                  ]
                 },
                 {
                   "type": "boolean",
                   "required": false,
                   "linkId": "4.2.6.2",
+                  "text": "O2 test",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"HomeOxygenTherapyPrepopulation\".IsArterialOxygenSaturationExerciseTested"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "boolean",
+                  "required": false,
+                  "linkId": "4.2.6.3",
                   "text": "“6” minute walk (optional)"
                 }
               ]
