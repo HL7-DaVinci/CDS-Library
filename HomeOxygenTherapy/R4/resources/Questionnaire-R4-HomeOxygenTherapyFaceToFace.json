@@ -35,8 +35,45 @@
       }
     }
   ],
+  "contained": [
+    {
+      "resourceType": "ValueSet",
+      "id": "gender",
+      "url": "#gender",
+      "status": "draft",
+      "expansion": {
+        "contains": [
+          {
+            "code": "male",
+            "display": "Male"
+          },
+          {
+            "code": "female",
+            "display": "Female"
+          },
+          {
+            "code": "other",
+            "display": "Other"
+          }
+        ]
+      }
+    }
+  ],
   "item": [
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "1",
       "type": "group",
       "text": "Patient Information",
@@ -115,20 +152,7 @@
           "text": "Gender:",
           "type": "choice",
           "required": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "male",
-                "display": "Male"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "female",
-                "display": "Female"
-              }
-            }
-          ]
+          "answerValueSet": "#gender"
         },
         {
           "extension": [
@@ -148,9 +172,22 @@
       ]
     },
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "2",
-      "text": "Provider who performed the face-to-face evaluation if different than signing provider",
       "type": "group",
+      "text": "Provider who performed the face-to-face evaluation if different than signing provider",
       "item": [
         {
           "linkId": "2.1",
@@ -1748,8 +1785,22 @@
       "text": "Treatment plan"
     },
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "11",
       "type": "group",
+      "text": "Order Provider Information",
       "item": [
         {
           "linkId": "11.1",
