@@ -104,10 +104,6 @@ code "8510008": '8510008' from "SNOMED-CT"
 
 //Pulmonary artery Mean blood pressure
 code "8414-5": '8414-5' from "LOINC"
-//Pulmonary artery Diastolic blood pressure
-code "8385-7": '8385-7' from "LOINC"
-//Pulmonary artery systolic blood pressure
-code "8440-0": '8440-0' from "LOINC"
 
 parameter device_request DeviceRequest
 
@@ -131,7 +127,7 @@ define "Hematocrit_Codes": {"31100-1"}
 // Other codes
 define "Immobilization_Codes": { "102491009", "129857008", "129859006", "160685001", "371632003", "8510008" }
 
-define "Pulmonary_artery_pressure_Codes": {"8414-5", "8385-7", "8440-0"}
+define "Pulmonary_artery_pressure_Codes": {"8414-5"}
 
 context Patient
 
@@ -156,8 +152,6 @@ define "VerifiedArterialPartialPressureOfOxygen": Verified(ObservationLookBack([
 define ArterialPartialPressureOfOxygen: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months)), 'mm[Hg]'))
 define "VerifiedArterialOxygenSaturationExercise": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months))
 define ArterialOxygenSaturationExercise: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)), '%'))
-
-define "O2SatList": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months))
 
 define PatientMobile: not exists(Confirmed(ActiveOrRecurring([Condition: "Immobilization_Codes"])))
 

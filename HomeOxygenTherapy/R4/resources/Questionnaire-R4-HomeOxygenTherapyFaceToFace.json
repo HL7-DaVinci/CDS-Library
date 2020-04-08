@@ -390,28 +390,12 @@
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
               }
-            },
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            },
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "drop-down",
-                    "display": "Drop down"
-                  }
-                ],
-                "text": "Drop down"
-              }
             }
           ],
           "required": false,
           "linkId": "4.1",
           "text": "End Stage / Severe Lung Disease",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -476,12 +460,7 @@
             },
             {
               "type": "open-choice",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-                  "valueBoolean": true
-                }
-              ],
+              "repeats": true,
               "required": false,
               "linkId": "4.2.2",
               "text": "Recurring heart failure secondary to chronic Cor Pulmonale",
@@ -753,12 +732,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
@@ -777,12 +751,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
@@ -828,12 +797,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
@@ -874,12 +838,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
@@ -913,12 +872,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
@@ -999,12 +953,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
@@ -1085,18 +1034,14 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
           "required": false,
           "linkId": "6.8",
           "text": "Neurologic:",
+          "repeats": true,
           "code": [
             {
               "code": "71416-2",
@@ -1190,12 +1135,6 @@
                 "code": "speech disorders"
               }
             }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
           ]
         },
         {
@@ -1239,12 +1178,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
@@ -1275,12 +1209,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         },
         {
           "type": "open-choice",
@@ -1316,12 +1245,7 @@
               }
             }
           ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ]
+          "repeats": true
         }
       ]
     },
