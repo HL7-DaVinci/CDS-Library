@@ -172,15 +172,12 @@
                     "language": "text/cql",
                     "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
                   }
-                },
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-                  "valueBoolean": true
                 }
               ],
               "linkId": "2.2.1",
               "text": "Diagnosis:",
               "type": "open-choice",
+              "repeats": true,
               "answerOption": []
             }
           ]
@@ -197,16 +194,13 @@
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
               "valueString": "\"HospitalBedsPrepopulation\".EncounterList"
-            },
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
             }
           ],
           "linkId": "3.1",
           "text": "Face-to-face Evaluation within 6 months",
           "type": "open-choice",
           "required": false,
+          "repeats": true,
           "answerOption": []
         }
       ]

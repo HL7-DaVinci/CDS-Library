@@ -206,15 +206,12 @@
             "language": "text/cql",
             "expression": "\"VentilatorsPrepopulation\".RelevantDiagnoses"
           }
-        },
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-          "valueBoolean": true
         }
       ],
       "linkId": "4",
       "text": "Patient diagnosis:",
       "type": "open-choice",
+      "repeats": true,
       "answerOption": [
       ]
     },
