@@ -2,14 +2,14 @@
   "resourceType": "Library",
   "id": "RespiratoryAssistDevices-prepopulation",
   "name": "RespiratoryAssistDevices-prepopulation",
+  "version": "0.0.1",
+  "title": "RAD Prepopulation",
+  "status": "draft",
   "identifier": [
     {
       "id": "urn:hl7:davinci:crd:library-respiratory-assist-devices-prepopulation-r4"
     }
   ],
-  "version": "0.0.1",
-  "title": "RAD Prepopulation",
-  "status": "draft",
   "type": {
     "coding": [
       {
@@ -23,6 +23,17 @@
       "resource": {
         "reference": "Library/FHIRHelpers-4.0.0"
       }
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/copd"
+        }
+      ]
     }
   ],
   "content": [
