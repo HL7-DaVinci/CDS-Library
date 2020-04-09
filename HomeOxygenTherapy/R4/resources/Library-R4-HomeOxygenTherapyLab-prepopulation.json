@@ -1,0 +1,40 @@
+{
+  "resourceType": "Library",
+  "id": "HomeOxygenTherapyLab-prepopulation",
+  "name": "HomeOxygenTherapyLab-prepopulation",
+  "version": "0.1.0",
+  "title": "Oxygen Therapy Lab Prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/copd"
+        }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/HomeOxygenTherapy/r4/HomeOxygenTherapyLabPrepopulation-0.1.0.cql"
+    }
+  ]
+}

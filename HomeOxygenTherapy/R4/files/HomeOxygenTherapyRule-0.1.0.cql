@@ -33,7 +33,7 @@ define RESULT_QuestionnaireFaceToFaceUri:
   'Questionnaire/HomeOxygenTherapyFaceToFace'
 
 define RESULT_QuestionnaireLabUri:
-  'Questionnaire/HomeOxygenTherapy'
+  'Questionnaire/HomeOxygenTherapyLab'
 
 define RESULT_requestId:
   device_request
