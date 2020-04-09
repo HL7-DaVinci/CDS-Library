@@ -406,7 +406,7 @@
         {
           "linkId": "5.3",
           "text": "Means of oygen delivery",
-          "type": "choice",
+          "type": "open-choice",
           "required": true,
           "enableWhen": [
             {
@@ -435,27 +435,6 @@
               "valueCoding": {
                 "code": "Mask"
               }
-            },
-            {
-              "valueCoding": {
-                "code": "Other"
-              }
-            }
-          ],
-          "item": [
-            {
-              "linkId": "5.3.1",
-              "text": "Other",
-              "type": "string",
-              "enableWhen": [
-                {
-                  "question": "5.3",
-                  "operator": "=",
-                  "answerCoding": {
-                    "code": "Other"
-                  }
-                }
-              ]
             }
           ]
         }

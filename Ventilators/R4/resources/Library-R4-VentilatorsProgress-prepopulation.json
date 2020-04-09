@@ -1,0 +1,29 @@
+{
+  "resourceType": "Library",
+  "id": "VentilatorsProgress-prepopulation",
+  "name": "VentilatorsProgress-prepopulation",
+  "version": "0.1.0",
+  "title": "Ventilator Progress Note Prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/Ventilators/r4/VentilatorProgressPrepopulation-0.1.0.cql"
+    }
+  ]
+}

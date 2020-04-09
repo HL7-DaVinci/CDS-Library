@@ -26,5 +26,8 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
     'Questionnaire/Ventilators'
 
+define RESULT_QuestionnaireProgressUri:
+    'Questionnaire/VentilatorProgress'
+
 define RESULT_requestId:
   device_request
