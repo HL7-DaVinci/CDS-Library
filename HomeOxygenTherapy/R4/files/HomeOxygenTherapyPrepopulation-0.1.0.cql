@@ -102,6 +102,8 @@ code "160685001": '160685001' from "SNOMED-CT"
 code "371632003": '371632003' from "SNOMED-CT"
 code "8510008": '8510008' from "SNOMED-CT"
 
+//Pulmonary artery Mean blood pressure
+code "8414-5": '8414-5' from "LOINC"
 
 parameter device_request DeviceRequest
 
@@ -121,10 +123,11 @@ define "Arterial_partial_pressure_of_oxygen_Codes": { "2703-7" }
 define "Arterial_oxygen_saturation_during_exercise_Codes": { "89276-0" }
 
 define "Hematocrit_lab_test_Codes": { "20570-8", "31100-1", "32354-3", "41654-5", "41655-2", "4544-3", "4545-0", "71829-6", "71830-4", "71832-0", "71833-8" }
-
+define "Hematocrit_Codes": {"31100-1"}
 // Other codes
 define "Immobilization_Codes": { "102491009", "129857008", "129859006", "160685001", "371632003", "8510008" }
 
+define "Pulmonary_artery_pressure_Codes": {"8414-5"}
 
 context Patient
 
@@ -143,8 +146,11 @@ define RelevantDiagnoses: {
   if exists(Confirmed(ActiveOrRecurring([Condition: "Hypoxemia_Codes"]))) then 'Hypoxemia' else 'null'
 } except { 'null' } // except 'null' is a workaround since I don't see how to remove actual nulls
 
+define "VerifiedArterialOxygenSatuation": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months))
 define ArterialOxygenSaturation: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months)), '%'))
+define "VerifiedArterialPartialPressureOfOxygen": Verified(ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months))
 define ArterialPartialPressureOfOxygen: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months)), 'mm[Hg]'))
+define "VerifiedArterialOxygenSaturationExercise": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months))
 define ArterialOxygenSaturationExercise: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)), '%'))
 
 define PatientMobile: not exists(Confirmed(ActiveOrRecurring([Condition: "Immobilization_Codes"])))
@@ -152,7 +158,11 @@ define PatientMobile: not exists(Confirmed(ActiveOrRecurring([Condition: "Immobi
 define HematocritThatIsGreaterThanThreshold: HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Hematocrit_lab_test_Codes"], 3 months)), '%'))
 define PatientHasHematocritThatIsGreaterThanThreshold: exists("HematocritThatIsGreaterThanThreshold")
 
+define "OxygenSatExercise": ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)
+define "OxygenSatExerciseDate": ObservationLatestDate("OxygenSatExercise")
+define "IsArterialOxygenSaturationExerciseTested": "ArterialOxygenSaturationExercise" is not null
 
+define "PulmonaryArteryPressure": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Pulmonary_artery_pressure_Codes"], 3 months)), 'mm[Hg]'))
 
 // device request info
 define DeviceRequestHcpcsCoding: singleton from (
@@ -163,6 +173,15 @@ define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.valu
 define DeviceRequestedIsPortable: "DeviceRequestHcpcsCoding".code.value in { 'E0433', 'E0434', 'E0444', 'EO431', 'K0738', 'E0443', 'E1392' }
 define DeviceRequestedIsStationary: "DeviceRequestHcpcsCoding".code.value in { 'E0439', 'E0442', 'E0424', 'E0441', 'E1390', 'E1391' }
 
+define "True": true
+
+define "BloodGasOrderedAndEvaluated": "ArterialOxygenSaturation" is not null or "ArterialPartialPressureOfOxygen" is not null or "ArterialOxygenSaturationExercise" is not null
+
+define "BloodTestObservations": "VerifiedArterialOxygenSatuation" union "VerifiedArterialPartialPressureOfOxygen" union "VerifiedArterialOxygenSaturationExercise"
+/// Find the observation date for the blood gas test
+define "BloodGasTestDate": ObservationLatestDate("BloodTestObservations")
+define function ObservationLatestDate(ObsList List<Observation>):
+  Max(ObsList O return FHIRHelpers."ToDateTime"(O.issued))
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with stu3 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
