@@ -17,10 +17,7 @@ codesystem "SNOMED-CT": 'http://snomed.info/sct'
 valueset "COPD": 'copd'
 
 //Bronchiectasis_Codes
-code "J47": 'J47' from "ICD-10-CM"
-code "J47.0": 'J47.0' from "ICD-10-CM"
-code "J47.1": 'J47.1' from "ICD-10-CM"
-code "J47.9": 'J47.9' from "ICD-10-CM"
+valueset "Bronchiectasis": '2.16.840.1.113762.1.4.1219.3'
 
 //Diffuse_interstitial_lung_disease_Codes
 code "J84": 'J84' from "ICD-10-CM"
@@ -108,7 +105,6 @@ code "8414-5": '8414-5' from "LOINC"
 parameter device_request DeviceRequest
 
 // Relevant Diagnosis Code Lists
-define "Bronchiectasis_Codes": { "J47", "J47.0", "J47.1", "J47.9" }
 define "Diffuse_interstitial_lung_disease_Codes": { "J84", "J84.0", "J84.01", "J84.02", "J84.03",
   "J84.09", "J84.1", "J84.10", "J84.11", "J84.111", "J84.112", "J84.113", "J84.114", "J84.115",
   "J84.116", "J84.117", "J84.17", "J84.2", "J84.8", "J84.81", "J84.82", "J84.83", "J84.84",
@@ -139,7 +135,7 @@ define "AllCOPD":
 // coverage requirement info
 define RelevantDiagnoses: {
   if exists(Confirmed(ActiveOrRecurring([Condition: "COPD"]))) then 'COPD' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Bronchiectasis_Codes"]))) then 'Bronchiectasis' else 'null',
+  if exists(Confirmed(ActiveOrRecurring([Condition: "Bronchiectasis"]))) then 'Bronchiectasis' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Diffuse_interstitial_lung_disease_Codes"]))) then 'Diffuse Interstitial Lung Disease' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Cystic_fibrosis_Codes"]))) then 'Cystic Fibrosis' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Pulmonary_hypertension_Codes"]))) then 'Pulmonary Hypertension' else 'null',
