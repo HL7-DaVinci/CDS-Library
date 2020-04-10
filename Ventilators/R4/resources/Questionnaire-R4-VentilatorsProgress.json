@@ -71,6 +71,19 @@
   ],
   "item": [
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "1",
       "text": "Patient Information",
       "type": "group",
@@ -78,133 +91,108 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
               }
             }
           ],
-          "linkId": "PBD1",
-          "type": "group",
-          "item": [
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPatientInfoPrepopulation\".LastName"
-                  }
-                }
-              ],
-              "linkId": "PDB1.1",
-              "text": "Last Name",
-              "type": "string",
-              "required": true
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
-                  }
-                }
-              ],
-              "linkId": "PDB1.2",
-              "text": "First Name",
-              "type": "string",
-              "required": true
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
-                  }
-                }
-              ],
-              "linkId": "PDB1.3",
-              "text": "Middle Initial",
-              "type": "string",
-              "required": true
-            }
-          ]
+          "linkId": "1.1",
+          "text": "Last Name",
+          "type": "string",
+          "required": true
         },
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
               }
             }
           ],
-          "linkId": "1b",
-          "type": "group",
-          "item": [
+          "linkId": "1.2",
+          "text": "First Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "extension": [
             {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
-                  }
-                }
-              ],
-              "linkId": "PBD2",
-              "text": "Date Of Birth",
-              "type": "date",
-              "required": true
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPatientInfoPrepopulation\".Gender"
-                  }
-                }
-              ],
-              "linkId": "PBD3",
-              "text": "Gender",
-              "type": "choice",
-              "answerValueSet": "#gender"
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
-                  }
-                }
-              ],
-              "linkId": "PBD4",
-              "text": "Medicare ID",
-              "type": "string"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              }
             }
-          ]
+          ],
+          "linkId": "1.3",
+          "text": "Middle Initial",
+          "type": "string",
+          "required": true
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              }
+            }
+          ],
+          "linkId": "1.4",
+          "text": "Date Of Birth",
+          "type": "date",
+          "required": true
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+              }
+            }
+          ],
+          "linkId": "1.5",
+          "text": "Gender",
+          "type": "choice",
+          "answerValueSet": "#gender"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              }
+            }
+          ],
+          "linkId": "1.6",
+          "text": "Medicare ID",
+          "type": "string"
         }
       ]
     },
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "2",
       "text": "Provider (physician/NPP) who performed the in-person evaluation if different from the signing provider",
       "type": "group",
@@ -212,111 +200,73 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
               }
             }
           ],
-          "linkId": "PND1",
-          "type": "group",
-          "item": [
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPatientInfoPrepopulation\".LastName"
-                  }
-                }
-              ],
-              "linkId": "PND1.1",
-              "text": "Last Name",
-              "type": "string"
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
-                  }
-                }
-              ],
-              "linkId": "PND1.2",
-              "text": "First Name",
-              "type": "string"
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
-                  }
-                }
-              ],
-              "linkId": "PND1.3",
-              "text": "Middle Initial",
-              "type": "string"
-            }
-          ]
+          "linkId": "2.1",
+          "text": "Last Name",
+          "type": "string"
         },
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
               }
             }
           ],
-          "linkId": "2b",
-          "type": "group",
-          "item": [
+          "linkId": "2.2",
+          "text": "First Name",
+          "type": "string"
+        },
+        {
+          "extension": [
             {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-                  }
-                }
-              ],
-              "linkId": "PND2",
-              "text": "NPI",
-              "type": "string"
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"HomeOxygenTherapyLabPrepopulation\".Today"
-                  }
-                }
-              ],
-              "linkId": "2.5",
-              "text": "Date of Face-To-Face Evaluation",
-              "type": "date",
-              "required": true
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+              }
             }
-          ]
+          ],
+          "linkId": "2.3",
+          "text": "Middle Initial",
+          "type": "string"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ],
+          "linkId": "2.4",
+          "text": "NPI",
+          "type": "string"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyLabPrepopulation\".Today"
+              }
+            }
+          ],
+          "linkId": "2.5",
+          "text": "Date of Face-To-Face Evaluation",
+          "type": "date",
+          "required": true
         }
       ]
     },
@@ -328,7 +278,7 @@
           "linkId": "3.1",
           "text": "Date of encounter (MM/DD/YYYY):",
           "type": "date",
-          "required":"true"
+          "required": "true"
         },
         {
           "extension": [
@@ -349,7 +299,7 @@
           "required": "true",
           "type": "choice",
           "answerValueSet": "#yesNo",
-          "item":[
+          "item": [
             {
               "extension": [
                 {
@@ -366,7 +316,7 @@
               ],
               "linkId": "3.2.1",
               "text": "If Yes, is this an initial evaluation?",
-              "enableWhen":[
+              "enableWhen": [
                 {
                   "question": "3.2",
                   "operator": "=",
@@ -375,10 +325,10 @@
                   }
                 }
               ],
-              "type": "choice",     
+              "type": "choice",
               "required": "true",
               "answerValueSet": "#yesNo",
-              "item":[
+              "item": [
                 {
                   "linkId": "3.2.1.1",
                   "text": "If re-evaluation, is there evidence of continued use of the ventilator and accessories?",
@@ -406,7 +356,7 @@
             {
               "linkId": "3.2.2",
               "text": "If No, purpose of the encounter",
-              "type":"string",
+              "type": "string",
               "require": "true",
               "enableWhen": [
                 {
@@ -431,22 +381,23 @@
           "linkId": "4.1",
           "text": "Ventilator Diagnoses",
           "type": "choice",
+          "require": "true",
           "repeats": "true",
-          "answerOption":[
+          "answerOption": [
             {
-              "valueCoding":{
+              "valueCoding": {
                 "code": "Neuromuscular disease",
                 "display": "Neuromuscular disease"
               }
             },
             {
-              "valueCoding":{
+              "valueCoding": {
                 "code": "Thoracic Restrictive disease",
                 "display": "Thoracic Restrictive disease"
               }
             },
             {
-              "valueCoding":{
+              "valueCoding": {
                 "code": "COPD",
                 "display": "Chronic respiratory failure consequent to COPD"
               }
@@ -458,8 +409,55 @@
           "text": "Other Diagnoses",
           "type": "open-choice",
           "repeats": "true",
-          "answerOption":[
-          ]
+          "answerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "For continued coverage",
+      "type": "group",
+      "item": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "radio-button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "5.1",
+          "text": "Demonstrated benefit from continued use?",
+          "type": "choice",
+          "answerValueSet": "#yesNo"
+        },
+        {
+          "linkId": "5.2",
+          "text": "Describe",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "text": "Sujective",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "6.1",
+          "text": "Chief complaint / history of present illness and associated signs / symptoms",
+          "type": "string"
+        },
+        {
+          "linkId": "6.2",
+          "text": "Related past medical / surgical history",
+          "type": "string"
         }
       ]
     }
