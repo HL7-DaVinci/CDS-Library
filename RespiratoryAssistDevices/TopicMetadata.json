@@ -1,0 +1,11 @@
+{
+  "topic": "RespiratoryAssistDevices",
+  "payers": ["cms"],
+  "mappings": [
+    {
+      "codeSystem": "hcpcs",
+      "codes": ["E0470", "E0471"]
+    }
+  ],
+  "fhirVersions": ["R4"]
+}
