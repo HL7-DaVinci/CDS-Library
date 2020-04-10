@@ -21,6 +21,7 @@ context Patient
 define OsaDiagnosis:
   if exists(Confirmed(ActiveOrRecurring([Condition: "OSA_Codes"]))) then 'OSA' else 'null'
 
+define OsaDiagnosisExists: exists(Confirmed(ActiveOrRecurring([Condition: "OSA_Codes"])))
 
 define OtherDiagnoses:
   distinct(flatten(
@@ -47,6 +48,9 @@ define PapDeviceRequested:
   else if  "DeviceRequestHcpcsCoding".code.value = 'E0601' then 'E0601'
   else 'null'
 
+define "Today": Today()
+
+define "True": true
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
