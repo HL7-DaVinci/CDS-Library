@@ -17,7 +17,7 @@ valueset "COPD": 'copd'
 // value set placeholder for RADORD5a
 // reference:  https://www.cms.gov/Research-Statistics-Data-and-Systems/Computer-Data-and-Systems/Electronic-Clinical-Templates/Downloads/Respiratory-Assist-Device-Appendices-A-and-B-Draft-20180412-R10b.pdf, Appendix B
 // Notes in worksheet to make this into a multi open choice, but awaiting value set
-valueset "RAD_THERAPY_ACCESSORIES": 'rad_therappy_accessories'
+// valueset "RAD_THERAPY_ACCESSORIES": 'rad_therappy_accessories'
 // A4604 Tubing With Integrated Heating Element for Use With Positive Airway Pressure Device
 // A7027 Combination Oral / nasal Mask, Used With Continuous Positive Airway Pressure Device, Each
 // A7028 Oral Cushion for Combination Oral / nasal Mask, Replacement Only, Each
