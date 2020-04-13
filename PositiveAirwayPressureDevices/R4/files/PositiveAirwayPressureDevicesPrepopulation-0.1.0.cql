@@ -51,6 +51,8 @@ define PapDeviceRequested:
 define "Today": Today()
 
 define "True": true
+
+define "False": false
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}

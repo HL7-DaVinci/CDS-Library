@@ -268,6 +268,15 @@
               "linkId": "3.3.2",
               "text": "Is there evidence of continued use of the PAP/CPAP device and supplies?",
               "type": "boolean",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"PositiveAirwayPressureDevicePrepopulation\".True"
+                  }
+                }
+              ],
               "enableWhen": [
                 {
                   "question": "3.3.1",
@@ -349,109 +358,160 @@
     {
       "linkId": "5",
       "type": "group",
+      "text": "Sleep study results",
       "item": [
         {
           "linkId": "5.1",
-          "text": "Order start date, if different from date of order (MM/DD/YYYY):",
-          "type": "date"
+          "text": "Apnea-Hypopnea Index (AHI) units of events per hour",
+          "type": "integer"
+        },
+        {
+          "linkId": "5.2",
+          "text": "Respiratory Disturbance index (RDI) units of events per hour",
+          "type": "integer"
+        },
+        {
+          "linkId": "5.3",
+          "text": "Symptoms",
+          "type": "open-choice",
+          "repeats": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "excessive daytime sleepiness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "impaired cognition"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "mood disorder"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "insomnia"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.4",
+          "text": "History",
+          "type": "open-choice",
+          "repeats": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "hypertension"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "ischemic heart disease"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "stroke"
+              }
+            }
+          ]
         }
       ]
     },
     {
       "linkId": "6",
-      "text": "Type of order:",
+      "text": "Re-evaluation for a bi-level pressure device E0470 (BiPAP without backup rate):",
       "type": "group",
       "item": [
         {
           "linkId": "6.1",
-          "text": "Device:",
+          "text": "Was E0601 (CPAP) tried on therapeutic trial conducted in ",
           "type": "choice",
           "answerOption": [
             {
               "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
+                "display": "facility"
               }
             },
             {
               "valueCoding": {
-                "code": "revision",
-                "display": "Revision or change in equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "replacement",
-                "display": "Replacement"
+                "display": "a home setting"
               }
             }
           ]
         },
         {
           "linkId": "6.2",
-          "text": "Supplies:",
+          "text": "Was E0601 (CPAP) tried not effective on therapeutic trial conducted above ",
+          "type": "boolean"
+        },
+        {
+          "linkId": "6.3",
+          "text": "E0601 patient is not tolerating the therapy at current settings and lower pressures settings were tried and failed to",
           "type": "choice",
           "answerOption": [
             {
               "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
+                "display": "adequately control the symptoms of OSA"
               }
             },
             {
               "valueCoding": {
-                "code": "reorder",
-                "display": "Reorder"
+                "display": "improve sleep quality"
               }
             },
             {
               "valueCoding": {
-                "code": "other",
-                "display": "Other"
+                "display": "reduce the AHI/RDI to acceptable levels"
               }
             }
           ]
         },
         {
-          "linkId": "6.3",
-          "text": "Other (description):",
-          "type": "text"
+          "linkId": "6.4",
+          "text": "Have you reviewed and signed the written report of adherence data?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "6.5",
+          "text": "Did patient use PAP device>= 4 hours per night on 70% of nights during consecutive 30-day period during the first three months of initial use?",
+          "type": "boolean"
         }
       ]
     },
     {
-      "linkId": "7",
+      "linkId": "8",
       "type": "group",
+      "text": "Ability of being trained",
       "item": [
         {
-          "linkId": "7.1",
-          "text": "Device Order (description of device):",
-          "type": "text"
-        },
-        {
+          "linkId": "8.1",
+          "text": "Is the patient capable of being trained to use the device in an appropriate manner?",
+          "type": "boolean",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".PapDeviceRequested"
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".False"
               }
             }
-          ],
-          "linkId": "7.2",
-          "type": "choice",
-          "answerOption": [
+          ]
+        },
+        {
+          "linkId": "8.2",
+          "text": "Is there a responsible care giver?",
+          "type": "boolean",
+          "enableWhen": [
             {
-              "valueCoding": {
-                "code": "E0601",
-                "display": "E0601 Continuous Positive Airway Pressure device"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "E0470",
-                "display": "E0470 Respiratory assist device, bi-level w/o backup"
-              }
+              "question": "8.1",
+              "operator": "=",
+              "answerBoolean": false
             }
           ]
         }
@@ -460,9 +520,135 @@
     {
       "linkId": "9",
       "type": "group",
+      "text": "Medical History",
       "item": [
         {
           "linkId": "9.1",
+          "type": "text",
+          "text": "Chief complaint / history of present illness and associated signs / symptoms:"
+        },
+        {
+          "linkId": "9.2",
+          "type": "text",
+          "text": "Related past medical / surgical history:"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "linkId": "10",
+      "type": "group",
+      "repeats": true,
+      "text": "Medication",
+      "item": [
+        {
+          "linkId": "10.1",
+          "text": "RxNorm",
+          "type": "string"
+        },
+        {
+          "linkId": "10.2",
+          "text": "Description",
+          "type": "string"
+        },
+        {
+          "linkId": "10.3",
+          "text": "Dose",
+          "type": "string"
+        },
+        {
+          "linkId": "10.4",
+          "text": "Frequency",
+          "type": "string"
+        },
+        {
+          "linkId": "10.5",
+          "text": "Route",
+          "type": "string"
+        },
+        {
+          "linkId": "10.6",
+          "text": "Status",
+          "type": "choice",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "New"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "Current"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "Modified"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "Discontinued"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "linkId": "11",
+      "type": "group",
+      "repeats": true,
+      "text": "Allergies",
+      "item": [
+        {
+          "linkId": "11.1",
+          "text": "Item allergic to",
+          "type": "string"
+        },
+        {
+          "linkId": "11.2",
+          "text": "Description",
+          "type": "string"
+        },
+        {
+          "linkId": "11.3",
+          "text": "Prescribed Medicine",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "linkId": "11",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "11.1",
           "text": "Signature:",
           "type": "string"
         },
@@ -476,7 +662,7 @@
               }
             }
           ],
-          "linkId": "9.2",
+          "linkId": "11.2",
           "text": "Name (Printed):",
           "type": "string",
           "required": true
@@ -491,7 +677,7 @@
               }
             }
           ],
-          "linkId": "9.3",
+          "linkId": "11.3",
           "text": "Date (MM/DD/YYYY):",
           "type": "date",
           "required": true
@@ -506,7 +692,7 @@
               }
             }
           ],
-          "linkId": "9.4",
+          "linkId": "11.4",
           "text": "NPI:",
           "type": "string",
           "required": true
