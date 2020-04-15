@@ -1,0 +1,613 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "RespiratoryAssistDevices",
+  "name": "RespiratoryAssistDevices",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqif-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "title": "Respiratory Assist Device Questionnaire",
+  "status": "draft",
+  "subjectType": ["Patient"],
+  "date": "2020-04-02",
+  "publisher": "Da Vinci DTR",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/RespiratoryAssistDevices-prepopulation"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPatientInfo-prepopulation"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPractitionerInfo-prepopulation"
+      }
+    }
+  ],
+  "contained": [
+    {
+      "resourceType": "ValueSet",
+      "id": "gender",
+      "url": "#gender",
+      "status": "draft",
+      "expansion": {
+        "contains": [
+          {
+            "code": "male",
+            "display": "Male"
+          },
+          {
+            "code": "female",
+            "display": "Female"
+          },
+          {
+            "code": "other",
+            "display": "Other"
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "text": "Patient/Beneficiary Demographics",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "1.1",
+          "text": "Last Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.2",
+          "text": "First Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.3",
+          "text": "Middle Initial",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.4",
+          "text": "Date of Birth",
+          "type": "date",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.5",
+          "text": "Gender",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "#gender",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.6",
+          "text": "Medicare ID",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "2",
+      "text": "Provider/NPP Demographics",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "2.1",
+          "text": "Did the same provider perform the F2F and Order?",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "linkId": "2.2",
+          "text": "Last Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.3",
+          "text": "First Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.4",
+          "text": "Middle Initial",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.5",
+          "text": "Suffix",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Suffix"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.6",
+          "text": "Certifying Provider NPI",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "text": "Encounter",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "3.1",
+          "text": "Date of F2F encounter",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".Today"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Respiratory Assist Device Diagnoses",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "type": "open-choice",
+          "text": "Patient diagnoses for order",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
+              "valueBoolean": true
+            }
+          ],
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Restrictive thoracic disorder"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Severe COPD"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Hypoventilation syndrome"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Central sleep apnea"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Complex sleep apnea"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Obstructive sleep apnea (OSA)"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Other"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "4.2",
+          "text": "If Other, describe",
+          "type": "string",
+          "required": true,
+          "enableWhen": [
+            {
+              "question": "4.1",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Other"
+              }
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnoses"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "RAD for OSA Order Information",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "5.1",
+          "text": "Start date if different from order date",
+          "type": "date",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "Today"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.2",
+          "type": "open-choice",
+          "text": "Type of Device Order",
+          "required": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Initial"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Revision or Change in Equipment"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Replacement"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "type": "open-choice",
+          "text": "Type of Supply Order",
+          "required": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Initial"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Reorder"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Other"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.4",
+          "text": "If Other, describe",
+          "type": "string",
+          "required": true,
+          "enableWhen": [
+            {
+              "question": "5.3",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Other"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.5",
+          "text": "Device Order (description of device)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "5.6",
+          "text": "Specific Device",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "5.6.1",
+              "text": "Specify",
+              "type": "choice",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".RadDeviceRequested"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "E0470",
+                    "display": "E0470 - Respiratory assist device, bi-level without backup rate"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "E0471",
+                    "display": "E0471 - Respiratory assist device, bi-level with backup rate (not covered for OSA)"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "5.6.2",
+              "text": "Note:  RAD (E0470 and E0471) require Written Order Prior to Delivery and F2F Evaluation",
+              "type": "display"
+            },
+            {
+              "linkId": "5.6.3",
+              "text": "Note:  E0471 is not covered for OSA",
+              "type": "display",
+              "enableWhen": [
+                {
+                  "question": "5.6.1",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "E0471"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "5.7",
+          "type": "group",
+          "text": "Supply Order",
+          "item": [
+            {
+              "linkId": "5.7.1",
+              "text": "Note:  Items dispensed on a periodic basis — repeat multiple times",
+              "type": "display"
+            },
+            {
+              "linkId": "5.7.2",
+              "type": "group",
+              "text": "List",
+              "repeats": "true",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "5.7.2.1",
+                  "text": "Item Description",
+                  "type": "string"
+                },
+                {
+                  "linkId": "5.7.2.2",
+                  "text": "Frequency",
+                  "type": "string"
+                },
+                {
+                  "linkId": "5.7.2.3",
+                  "text": "Duration",
+                  "type": "string"
+                },
+                {
+                  "linkId": "5.7.2.4",
+                  "text": "Quantity",
+                  "type": "string"
+                },
+                {
+                  "linkId": "5.7.2.5",
+                  "text": "Refills",
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.3",
+              "text": "Other",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "text": "Physician/NPP Signature Elements",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "6.1",
+          "text": "Physician/NPP Signature",
+          "type": "string"
+        },
+        {
+          "linkId": "6.2",
+          "text": "Physician/NPP Printed Name (Note:  Required if DWO)",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "6.3",
+          "text": "Date of Order",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "6.4",
+          "text": "Physician/NPP NPI (Note: Required if WOPD)",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
