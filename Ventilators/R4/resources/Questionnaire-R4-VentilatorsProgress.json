@@ -52,18 +52,44 @@
     },
     {
       "resourceType": "ValueSet",
-      "id": "yesNo",
-      "url": "#yesNo",
+      "id": "yesno",
+      "url": "#yesno",
       "status": "draft",
       "expansion": {
         "contains": [
           {
-            "code": "yes",
+            "code": "Y",
             "display": "Yes"
           },
           {
-            "code": "no",
+            "code": "N",
             "display": "No"
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "ValueSet",
+      "id": "medicationStatus",
+      "url": "#medicationStatus",
+      "status": "draft",
+      "expansion": {
+        "contains": [
+          {
+            "code": "new",
+            "display": "New"
+          },
+          {
+            "code": "current",
+            "display": "Current"
+          },
+          {
+            "code": "modified",
+            "display": "Modified"
+          },
+          {
+            "code": "discontinued",
+            "display": "Discontinued"
           }
         ]
       }
@@ -298,7 +324,7 @@
           "text": "Is this an evaluation of the patient’s need for a ventilator?",
           "required": "true",
           "type": "choice",
-          "answerValueSet": "#yesNo",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow",
           "item": [
             {
               "extension": [
@@ -321,28 +347,41 @@
                   "question": "3.2",
                   "operator": "=",
                   "answerCoding": {
-                    "code": "yes"
+                    "code": "Y"
                   }
                 }
               ],
               "type": "choice",
               "required": "true",
-              "answerValueSet": "#yesNo",
+              "answerValueSet": "#yesno",
               "item": [
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "code": "radio-button",
+                            "system": "http://hl7.org/fhir/questionnaire-item-control"
+                          }
+                        ]
+                      }
+                    }
+                  ],
                   "linkId": "3.2.1.1",
                   "text": "If re-evaluation, is there evidence of continued use of the ventilator and accessories?",
                   "enableWhen": [
                     {
-                      "question": "VENTENC1.a",
+                      "question": "3.2.1",
                       "operator": "=",
                       "answerCoding": {
-                        "code": "no"
+                        "code": "N"
                       }
                     }
                   ],
                   "type": "choice",
-                  "answerValueSet": "#yesNo",
+                  "answerValueSet": "#yesno",
                   "item": [
                     {
                       "linkId": "3.2.1.2",
@@ -363,7 +402,7 @@
                   "question": "3.2",
                   "operator": "=",
                   "answerCoding": {
-                    "code": "no"
+                    "code": "N"
                   }
                 }
               ]
@@ -435,7 +474,7 @@
           "linkId": "5.1",
           "text": "Demonstrated benefit from continued use?",
           "type": "choice",
-          "answerValueSet": "#yesNo"
+          "answerValueSet": "#yesno"
         },
         {
           "linkId": "5.2",
@@ -458,6 +497,109 @@
           "linkId": "6.2",
           "text": "Related past medical / surgical history",
           "type": "string"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "linkId": "7",
+      "text": "Medication",
+      "type": "group",
+      "repeats": true,
+      "item":[
+        {
+          "linkId": "7.1",
+          "text": "RxNorm",
+          "type": "string"
+        },
+        {
+          "linkId": "7.2",
+          "text": "Description",
+          "type": "string"
+        },
+        {
+          "linkId": "7.3",
+          "text": "Dose",
+          "type": "string"
+        },
+        {
+          "linkId": "7.4",
+          "text": "Frequency",
+          "type": "string"
+        },
+        {
+          "linkId": "7.5",
+          "text": "Route",
+          "type": "string"
+        },
+        {
+          "linkId": "7.6",
+          "text": "Status",
+          "type": "choice",
+          "answerValueSet": "#medicationStatus"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "linkId": "8",
+      "text": "Allergy",
+      "type": "group",
+      "repeats": true,
+      "item":[
+        {
+          "linkId": "8.1",
+          "text": "RxNorm",
+          "type": "string"
+        },
+        {
+          "linkId": "8.2",
+          "text": "Description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "linkId": "9",
+      "text": "Review of systems",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "9.1",
+          "text": "General",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": ""
+              }
+            }
+          ]
         }
       ]
     }
