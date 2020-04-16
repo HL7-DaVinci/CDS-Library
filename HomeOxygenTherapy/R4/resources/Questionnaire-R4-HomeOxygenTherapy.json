@@ -252,47 +252,47 @@
           "answerOption": [
             {
               "valueCoding": {
-                "code": "COPD"
+                "display": "COPD"
               }
             },
             {
               "valueCoding": {
-                "code": "Bronchiectasis"
+                "display": "Bronchiectasis"
               }
             },
             {
               "valueCoding": {
-                "code": "Hypoxemia"
+                "display": "Hypoxemia"
               }
             },
             {
               "valueCoding": {
-                "code": "Diffuse interstitial lung disease"
+                "display": "Diffuse interstitial lung disease"
               }
             },
             {
               "valueCoding": {
-                "code": "Cystic fibrosis"
+                "display": "Cystic fibrosis"
               }
             },
             {
               "valueCoding": {
-                "code": "Pulmonary neoplasm"
+                "display": "Pulmonary neoplasm"
               }
             },
             {
               "valueCoding": {
-                "code": "Erythrocytosis"
+                "display": "Erythrocytosis"
               }
             },
             {
               "valueCoding": {
-                "code": "Pulmonary hypertension"
+                "display": "Pulmonary hypertension"
               }
             },
             {
               "valueCoding": {
-                "code": "Recurring CHF d/t Cor Pulmonale"
+                "display": "Recurring CHF d/t Cor Pulmonale"
               }
             }
           ],

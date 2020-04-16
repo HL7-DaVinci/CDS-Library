@@ -1,0 +1,13 @@
+{
+  "name": "dtr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "fsh-sushi": "^0.8.0"
+  },
+  "scripts": {
+    "build-fhir": "node_modules/.bin/sushi fsh-tank && java -jar org.hl7.fhir.validator.jar build/input/resources -version 4.0 -ig hl7.fhir.uv.sdc",
+    "build": "node_modules/.bin/sushi fsh-tank"
+  }
+}
