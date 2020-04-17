@@ -1,7 +1,7 @@
 {
   "resourceType": "Questionnaire",
-  "id": "VentilatorsProgress",
-  "name": "VentilatorsProgress",
+  "id": "VentilatorsProgressNote",
+  "name": "VentilatorsProgressNote",
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
@@ -67,36 +67,11 @@
           }
         ]
       }
-    },
-    {
-      "resourceType": "ValueSet",
-      "id": "medicationStatus",
-      "url": "#medicationStatus",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "new",
-            "display": "New"
-          },
-          {
-            "code": "current",
-            "display": "Current"
-          },
-          {
-            "code": "modified",
-            "display": "Modified"
-          },
-          {
-            "code": "discontinued",
-            "display": "Discontinued"
-          }
-        ]
-      }
     }
   ],
   "item": [
     {
+      "linkId": "1",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -110,11 +85,11 @@
           }
         }
       ],
-      "linkId": "1",
       "text": "Patient Information",
       "type": "group",
       "item": [
         {
+          "linkId": "1.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -124,12 +99,12 @@
               }
             }
           ],
-          "linkId": "1.1",
           "text": "Last Name",
           "type": "string",
           "required": true
         },
         {
+          "linkId": "1.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -139,12 +114,12 @@
               }
             }
           ],
-          "linkId": "1.2",
           "text": "First Name",
           "type": "string",
           "required": true
         },
         {
+          "linkId": "1.3",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -154,12 +129,12 @@
               }
             }
           ],
-          "linkId": "1.3",
           "text": "Middle Initial",
           "type": "string",
           "required": true
         },
         {
+          "linkId": "1.4",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -169,12 +144,12 @@
               }
             }
           ],
-          "linkId": "1.4",
           "text": "Date Of Birth",
           "type": "date",
           "required": true
         },
         {
+          "linkId": "1.5",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -184,12 +159,12 @@
               }
             }
           ],
-          "linkId": "1.5",
           "text": "Gender",
           "type": "choice",
           "answerValueSet": "#gender"
         },
         {
+          "linkId": "1.6",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -199,13 +174,13 @@
               }
             }
           ],
-          "linkId": "1.6",
           "text": "Medicare ID",
           "type": "string"
         }
       ]
     },
     {
+      "linkId": "2",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -219,25 +194,25 @@
           }
         }
       ],
-      "linkId": "2",
       "text": "Provider (physician/NPP) who performed the in-person evaluation if different from the signing provider",
       "type": "group",
       "item": [
         {
+          "linkId": "2.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
               }
             }
           ],
-          "linkId": "2.1",
           "text": "Last Name",
           "type": "string"
         },
         {
+          "linkId": "2.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -247,11 +222,11 @@
               }
             }
           ],
-          "linkId": "2.2",
           "text": "First Name",
           "type": "string"
         },
         {
+          "linkId": "2.3",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -261,11 +236,11 @@
               }
             }
           ],
-          "linkId": "2.3",
           "text": "Middle Initial",
           "type": "string"
         },
         {
+          "linkId": "2.4",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -275,38 +250,33 @@
               }
             }
           ],
-          "linkId": "2.4",
           "text": "NPI",
           "type": "string"
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyLabPrepopulation\".Today"
-              }
-            }
-          ],
-          "linkId": "2.5",
-          "text": "Date of Face-To-Face Evaluation",
-          "type": "date",
-          "required": true
         }
       ]
     },
     {
       "linkId": "3",
+      "text": "Encounter",
       "type": "group",
       "item": [
         {
           "linkId": "3.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".Today"
+              }
+            }
+          ],
           "text": "Date of encounter (MM/DD/YYYY):",
           "type": "date",
           "required": "true"
         },
         {
+          "linkId": "3.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -320,13 +290,13 @@
               }
             }
           ],
-          "linkId": "3.2",
           "text": "Is this an evaluation of the patient’s need for a ventilator?",
           "required": "true",
           "type": "choice",
-          "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow",
+          "answerValueSet": "#yesno",
           "item": [
             {
+              "linkId": "3.2a",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -340,8 +310,7 @@
                   }
                 }
               ],
-              "linkId": "3.2.1",
-              "text": "If Yes, is this an initial evaluation?",
+              "text": "If Yes, type of evaluation",
               "enableWhen": [
                 {
                   "question": "3.2",
@@ -353,9 +322,21 @@
               ],
               "type": "choice",
               "required": "true",
-              "answerValueSet": "#yesno",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "initial"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "re-evaluation"
+                  }
+                }
+              ],
               "item": [
                 {
+                  "linkId": "3.3",
                   "extension": [
                     {
                       "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -369,14 +350,13 @@
                       }
                     }
                   ],
-                  "linkId": "3.2.1.1",
                   "text": "If re-evaluation, is there evidence of continued use of the ventilator and accessories?",
                   "enableWhen": [
                     {
-                      "question": "3.2.1",
+                      "question": "3.2a",
                       "operator": "=",
                       "answerCoding": {
-                        "code": "N"
+                        "display": "re-evaluation"
                       }
                     }
                   ],
@@ -384,18 +364,18 @@
                   "answerValueSet": "#yesno",
                   "item": [
                     {
-                      "linkId": "3.2.1.2",
+                      "linkId": "3.3a",
                       "text": "Describe",
-                      "type": "string"
+                      "type": "text"
                     }
                   ]
                 }
               ]
             },
             {
-              "linkId": "3.2.2",
+              "linkId": "3.2b",
               "text": "If No, purpose of the encounter",
-              "type": "string",
+              "type": "text",
               "require": "true",
               "enableWhen": [
                 {
@@ -413,38 +393,37 @@
     },
     {
       "linkId": "4",
-      "text": "Patient Diagnoses related to need for a ventilator",
+      "text": "Diagnoses",
       "type": "group",
       "item": [
         {
           "linkId": "4.1",
-          "text": "Ventilator Diagnoses",
-          "type": "choice",
-          "require": "true",
-          "repeats": "true",
-          "answerOption": [
+          "extension": [
             {
-              "valueCoding": {
-                "code": "Neuromuscular disease",
-                "display": "Neuromuscular disease"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Thoracic Restrictive disease",
-                "display": "Thoracic Restrictive disease"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "COPD",
-                "display": "Chronic respiratory failure consequent to COPD"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".RelevantDiagnoses"
               }
             }
-          ]
+          ],
+          "text": "Patient Diagnoses related to need for a ventilator",
+          "type": "open-choice",
+          "require": "true",
+          "repeats": "true",
+          "answerOption": []
         },
         {
           "linkId": "4.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
+              }
+            }
+          ],          
           "text": "Other Diagnoses",
           "type": "open-choice",
           "repeats": "true",
@@ -458,6 +437,7 @@
       "type": "group",
       "item": [
         {
+          "linkId": "5.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -471,7 +451,6 @@
               }
             }
           ],
-          "linkId": "5.1",
           "text": "Demonstrated benefit from continued use?",
           "type": "choice",
           "answerValueSet": "#yesno"
@@ -479,7 +458,7 @@
         {
           "linkId": "5.2",
           "text": "Describe",
-          "type": "string"
+          "type": "text"
         }
       ]
     },
@@ -491,95 +470,101 @@
         {
           "linkId": "6.1",
           "text": "Chief complaint / history of present illness and associated signs / symptoms",
-          "type": "string"
+          "type": "text"
         },
         {
           "linkId": "6.2",
           "text": "Related past medical / surgical history",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "extension": [
+          "type": "text"
+        },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/questionnaire-item-control",
-                "code": "gtable"
+          "linkId": "6.3",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
               }
-            ]
-          }
-        }
-      ],
-      "linkId": "7",
-      "text": "Medication",
-      "type": "group",
-      "repeats": true,
-      "item":[
-        {
-          "linkId": "7.1",
-          "text": "RxNorm",
-          "type": "string"
+            }
+          ],
+          "text": "Medication",
+          "type": "group",
+          "repeats": true,
+          "item": [
+            {
+              "linkId": "6.3.1",
+              "text": "RxNorm",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.2",
+              "text": "Description",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.3",
+              "text": "Dose",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.4",
+              "text": "Frequency",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.5",
+              "text": "Route",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.6",
+              "text": "Status",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "New"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Current"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Modified"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Discountinued"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
-          "linkId": "7.2",
-          "text": "Description",
-          "type": "string"
-        },
-        {
-          "linkId": "7.3",
-          "text": "Dose",
-          "type": "string"
-        },
-        {
-          "linkId": "7.4",
-          "text": "Frequency",
-          "type": "string"
-        },
-        {
-          "linkId": "7.5",
-          "text": "Route",
-          "type": "string"
-        },
-        {
-          "linkId": "7.6",
-          "text": "Status",
-          "type": "choice",
-          "answerValueSet": "#medicationStatus"
-        }
-      ]
-    },
-    {
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/questionnaire-item-control",
-                "code": "gtable"
+          "linkId": "6.4",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".Allergies"
               }
-            ]
-          }
-        }
-      ],
-      "linkId": "8",
-      "text": "Allergy",
-      "type": "group",
-      "repeats": true,
-      "item":[
-        {
-          "linkId": "8.1",
-          "text": "RxNorm",
-          "type": "string"
-        },
-        {
-          "linkId": "8.2",
-          "text": "Description",
-          "type": "string"
+            }
+          ],              
+          "text": "Allergy",
+          "type": "open-choice",
+          "repeats": true,
+          "anwerOption": []
         }
       ]
     },
@@ -1705,7 +1690,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "BasicPractitionerInfoPrepopulation.FullName"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
               }
             }
           ],
@@ -1720,7 +1705,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "BasicPractitionerInfoPrepopulation.Today"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
               }
             }
           ],
@@ -1735,7 +1720,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "BasicPractitionerInfoPrepopulation.NPI"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
               }
             }
           ],

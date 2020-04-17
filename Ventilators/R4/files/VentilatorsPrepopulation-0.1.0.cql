@@ -52,9 +52,17 @@ define "All_Codes": "Neuromuscular_Codes" union "COPD_Codes" union "Thoracic_Res
 
 context Patient
 
+define Today: Today()
+
 // coverage requirement info
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "All_Codes"]))) 
+
+define OtherDiagnoses:
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
+
+define Allergies:
+  CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -78,6 +86,17 @@ define function CodesFromConditions(CondList List<Condition>):
           }
           return FHIRHelpers.ToCode(CODING)
       return DiagnosesCodings
+  ))
+
+define function CodesFromAllergies(AllergyList List<AllergyIntolerance>):
+  distinct(flatten(
+    AllergyList C
+      let AllergyCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'http://www.nlm.nih.gov/research/umls/rxnorm'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return AllergyCodings
   ))
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
@@ -105,6 +124,9 @@ define function HighestObservation(ObsList List<Observation>):
 
 define function Confirmed(CondList List<Condition>):
   CondList C where C.verificationStatus.coding.code = 'confirmed'
+
+define function ConfirmedAllergies(AllergyList List<AllergyIntolerance>):
+  AllergyList C where C.verificationStatus.coding.code = 'confirmed'
 
 define function NullSafeToQuantity(Qty FHIR.Quantity):
   if Qty is not null then

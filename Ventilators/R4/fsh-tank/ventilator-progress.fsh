@@ -189,7 +189,7 @@ Title:      "Ventilator Progress Note Questionnaire"
 * item[2].item[1].linkId = "12.2"
 * item[2].item[1].extension[0].url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
 * item[2].item[1].extension[0].valueExpression.language = http://hl7.org/fhir/expression-language#text/cql
-* item[2].item[1].extension[0].valueExpression.expression = "BasicPractitionerInfoPrepopulation.FullName"
+* item[2].item[1].extension[0].valueExpression.expression = "\"BasicPractitionerInfoPrepopulation\".FullName"
 * item[2].item[1].text = "Name (Printed)"
 * item[2].item[1].type = http://hl7.org/fhir/item-type#string
 * item[2].item[1].required = true
@@ -197,7 +197,7 @@ Title:      "Ventilator Progress Note Questionnaire"
 * item[2].item[2].linkId = "12.3"
 * item[2].item[2].extension[0].url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
 * item[2].item[2].extension[0].valueExpression.language = http://hl7.org/fhir/expression-language#text/cql
-* item[2].item[2].extension[0].valueExpression.expression = "BasicPractitionerInfoPrepopulation.Today"
+* item[2].item[2].extension[0].valueExpression.expression = "\"BasicPractitionerInfoPrepopulation\".Today"
 * item[2].item[2].text = "Date"
 * item[2].item[2].type = http://hl7.org/fhir/item-type#date
 * item[2].item[2].required = true
@@ -205,7 +205,7 @@ Title:      "Ventilator Progress Note Questionnaire"
 * item[2].item[3].linkId = "12.4"
 * item[2].item[3].extension[0].url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
 * item[2].item[3].extension[0].valueExpression.language = http://hl7.org/fhir/expression-language#text/cql
-* item[2].item[3].extension[0].valueExpression.expression = "BasicPractitionerInfoPrepopulation.NPI"
+* item[2].item[3].extension[0].valueExpression.expression = "\"BasicPractitionerInfoPrepopulation\".NPI"
 * item[2].item[3].text = "NPI"
 * item[2].item[3].type = http://hl7.org/fhir/item-type#string
 * item[2].item[3].required = true
