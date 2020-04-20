@@ -9,11 +9,18 @@ codesystem "SNOMED-CT": 'http://snomed.info/sct'
 //Obstructive Sleep Apnea
 code "G47.33": 'G47.33' from "ICD-10-CM"
 
+// AHI codes
+code "LP145624-5" :'LP145624-5' from "LOINC"
+//RDI codes
+code "90566-1": '90566-1' from "LOINC"
 
 parameter device_request DeviceRequest
 
 
 define "OSA_Codes": { "G47.33" }
+
+define "AHI_Codes": { "LP145624-5" }
+define "RDI_Codes": { "90566-1" }
 
 context Patient
 
@@ -53,6 +60,28 @@ define "Today": Today()
 define "True": true
 
 define "False": false
+
+define "AHI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "AHI_Codes"], 3 months)), '/h'))
+define "RDI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "RDI_Codes"], 3 months)), '/h'))
+
+define "AllAlergy": ActiveAllergy([AllergyIntolerance])
+
+define "AllAllergyWithCode": 
+  distinct(flatten(
+    [AllergyIntolerance] A
+      let Codings: 
+        (A.code.coding) CODING where CODING.system.value in {
+          'http://snomed.info/sct'
+        }
+        return CODING.display.value
+      where exists(Codings)
+      return Codings 
+  ))
+
+define "FirstAllergyWithCode": 
+  if Count("AllAllergyWithCode") > 0 then "AllAllergyWithCode"[0] 
+  else ''
+
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
@@ -89,3 +118,6 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
 
 define function LowestObservation(ObsList List<Observation>):
   Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
+
+define function ActiveAllergy(AllergyList List<AllergyIntolerance>):
+  AllergyList A where A.clinicalStatus.coding.code in {'active'}

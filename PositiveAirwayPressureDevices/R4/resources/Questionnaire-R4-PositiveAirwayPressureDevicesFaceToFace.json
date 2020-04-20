@@ -363,12 +363,30 @@
         {
           "linkId": "5.1",
           "text": "Apnea-Hypopnea Index (AHI) units of events per hour",
-          "type": "integer"
+          "type": "integer",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".AHI"
+              }
+            }
+          ]
         },
         {
           "linkId": "5.2",
           "text": "Respiratory Disturbance index (RDI) units of events per hour",
-          "type": "integer"
+          "type": "integer",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".RDI"
+              }
+            }
+          ]
         },
         {
           "linkId": "5.3",
@@ -619,7 +637,7 @@
               }
             ]
           }
-        }
+        }     
       ],
       "linkId": "11",
       "type": "group",
@@ -627,6 +645,15 @@
       "text": "Allergies",
       "item": [
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".FirstAllergyWithCode"
+              }
+            }
+          ],
           "linkId": "11.1",
           "text": "Item allergic to",
           "type": "string"
