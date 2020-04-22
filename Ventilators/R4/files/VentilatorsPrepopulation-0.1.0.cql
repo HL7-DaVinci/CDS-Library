@@ -99,6 +99,11 @@ define function CodesFromAllergies(AllergyList List<AllergyIntolerance>):
       return AllergyCodings
   ))
 
+define AnswerYes:
+  System.Code {
+    code: 'Y',
+    display: 'Yes'
+  }
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}

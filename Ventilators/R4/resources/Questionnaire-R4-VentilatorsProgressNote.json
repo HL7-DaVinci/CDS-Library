@@ -279,6 +279,13 @@
           "linkId": "3.2",
           "extension": [
             {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".AnswerYes"
+              }
+            },
+            {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
               "valueCodeableConcept": {
                 "coding": [
