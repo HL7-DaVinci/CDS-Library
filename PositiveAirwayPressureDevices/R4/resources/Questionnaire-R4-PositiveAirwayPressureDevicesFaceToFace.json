@@ -206,6 +206,12 @@
           "text": "Middle Initial",
           "type": "string",
           "required": false
+        },
+        {
+          "linkId": "2.4",
+          "text": "NPI",
+          "type": "string",
+          "required": false
         }
       ]
     },
@@ -246,6 +252,13 @@
           "linkId": "3.3",
           "text": "Order purpose: ",
           "type": "group",
+          "enableWhen": [
+            {
+              "question": "3.2",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
           "item": [
             {
               "linkId": "3.3.1",
@@ -310,7 +323,7 @@
           "required": false,
           "enableWhen": [
             {
-              "question": "3.1",
+              "question": "3.2",
               "operator": "=",
               "answerBoolean": false
             }
@@ -322,6 +335,7 @@
       "linkId": "4",
       "text": "Patient diagnosis:",
       "type": "group",
+      "required": true,
       "item": [
         {
           "extension": [
@@ -350,6 +364,7 @@
           "linkId": "4.2",
           "text": "Other diagnoses:",
           "type": "open-choice",
+          "required": true,
           "repeats": true,
           "answerOption": []
         }
@@ -511,6 +526,7 @@
           "linkId": "8.1",
           "text": "Is the patient capable of being trained to use the device in an appropriate manner?",
           "type": "boolean",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -644,7 +660,7 @@
             "language": "text/cql",
             "expression": "\"PositiveAirwayPressureDevicePrepopulation\".AllAllergyWithCode"
           }
-        }     
+        }
       ],
       "linkId": "11",
       "type": "open-choice",

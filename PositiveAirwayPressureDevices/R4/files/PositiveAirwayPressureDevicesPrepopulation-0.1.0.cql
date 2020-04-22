@@ -71,7 +71,8 @@ define "AllAllergyWithCode":
     [AllergyIntolerance] A
       let Codings: 
         (A.code.coding) CODING where CODING.system.value in {
-          'http://snomed.info/sct'
+          'http://snomed.info/sct',
+          'http://www.nlm.nih.gov/research/umls/rxnorm'
         }
         return CODING.display.value + '-' + CODING.code.value
       where exists(Codings)
