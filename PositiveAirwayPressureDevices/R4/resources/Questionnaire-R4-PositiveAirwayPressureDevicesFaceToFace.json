@@ -637,38 +637,20 @@
               }
             ]
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"PositiveAirwayPressureDevicePrepopulation\".AllAllergyWithCode"
+          }
         }     
       ],
       "linkId": "11",
-      "type": "group",
+      "type": "open-choice",
       "repeats": true,
       "text": "Allergies",
-      "item": [
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".FirstAllergyWithCode"
-              }
-            }
-          ],
-          "linkId": "11.1",
-          "text": "Item allergic to",
-          "type": "string"
-        },
-        {
-          "linkId": "11.2",
-          "text": "Description",
-          "type": "string"
-        },
-        {
-          "linkId": "11.3",
-          "text": "Prescribed Medicine",
-          "type": "string"
-        }
-      ]
+      "answerOption": []
     },
     {
       "type": "group",

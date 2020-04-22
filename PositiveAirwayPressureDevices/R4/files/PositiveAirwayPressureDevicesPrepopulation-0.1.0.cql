@@ -73,7 +73,7 @@ define "AllAllergyWithCode":
         (A.code.coding) CODING where CODING.system.value in {
           'http://snomed.info/sct'
         }
-        return CODING.display.value
+        return CODING.display.value + '-' + CODING.code.value
       where exists(Codings)
       return Codings 
   ))
