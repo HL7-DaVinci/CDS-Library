@@ -26,7 +26,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSet": "<server-path>ValueSet/copd"
+          "valueSet": "<server-path>ValueSet/2.16.840.1.113762.1.4.1219.6"
         }
       ]
     },
@@ -36,6 +36,15 @@
         {
           "path": "code",
           "valueSet": "<server-path>ValueSet/2.16.840.1.113762.1.4.1219.3"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/2.16.840.1.113762.1.4.1219.9"
         }
       ]
     }

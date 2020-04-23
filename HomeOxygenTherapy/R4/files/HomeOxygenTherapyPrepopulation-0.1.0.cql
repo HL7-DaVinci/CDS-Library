@@ -14,10 +14,13 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
 //COPD_Codes
-valueset "COPD": 'copd'
+valueset "COPD": '2.16.840.1.113762.1.4.1219.6'
 
 //Bronchiectasis_Codes
 valueset "Bronchiectasis": '2.16.840.1.113762.1.4.1219.3'
+
+//Hypoxemia_Codes
+valueset "Hypoxemia Disorder": '2.16.840.1.113762.1.4.1219.9'
 
 //Diffuse_interstitial_lung_disease_Codes
 code "J84": 'J84' from "ICD-10-CM"
@@ -62,9 +65,6 @@ code "E84.9": 'E84.9' from "ICD-10-CM"
 //Pulmonary_hypertension_Codes
 code "I27.0": 'I27.0' from "ICD-10-CM"
 code "I27.2": 'I27.2' from "ICD-10-CM"
-
-//Hypoxemia_Codes
-code "R09.02": 'R09.02' from "ICD-10-CM"
 
 
 //  Loinc codes for observations
@@ -111,7 +111,6 @@ define "Diffuse_interstitial_lung_disease_Codes": { "J84", "J84.0", "J84.01", "J
   "J84.841", "J84.842", "J84.843", "J84.848", "J84.89", "J84.9" }
 define "Cystic_fibrosis_Codes": { "E84", "E84.0", "E84.1", "E84.11", "E84.19", "E84.8", "E84.9" }
 define "Pulmonary_hypertension_Codes": { "I27.0", "I27.2" }
-define "Hypoxemia_Codes": { "R09.02" }
 
 // Observation code lists
 define "Arterial_oxygen_saturation_Codes": { "59408-5" }
@@ -139,7 +138,7 @@ define RelevantDiagnoses: {
   if exists(Confirmed(ActiveOrRecurring([Condition: "Diffuse_interstitial_lung_disease_Codes"]))) then 'Diffuse Interstitial Lung Disease' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Cystic_fibrosis_Codes"]))) then 'Cystic Fibrosis' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Pulmonary_hypertension_Codes"]))) then 'Pulmonary Hypertension' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Hypoxemia_Codes"]))) then 'Hypoxemia' else 'null'
+  if exists(Confirmed(ActiveOrRecurring([Condition: "Hypoxemia Disorder"]))) then 'Hypoxemia' else 'null'
 } except { 'null' } // except 'null' is a workaround since I don't see how to remove actual nulls
 
 define "VerifiedArterialOxygenSatuation": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months))
