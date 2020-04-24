@@ -52,9 +52,17 @@ define "All_Codes": "Neuromuscular_Codes" union "COPD_Codes" union "Thoracic_Res
 
 context Patient
 
+define Today: Today()
+
 // coverage requirement info
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "All_Codes"]))) 
+
+define OtherDiagnoses:
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
+
+define Allergies:
+  CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -63,8 +71,7 @@ define DeviceRequestHcpcsCoding: singleton from (
 define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
 
 define VentilatorDeviceRequested:
-  if "DeviceRequestHcpcsCoding".code.value = 'E0465' then 'E0465'
-  else if  "DeviceRequestHcpcsCoding".code.value = 'E0466' then 'E0466'
+  if "DeviceRequestHcpcsCoding".code.value in {'E0465', 'E0466'} then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):
@@ -80,6 +87,22 @@ define function CodesFromConditions(CondList List<Condition>):
       return DiagnosesCodings
   ))
 
+define function CodesFromAllergies(AllergyList List<AllergyIntolerance>):
+  distinct(flatten(
+    AllergyList C
+      let AllergyCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'http://www.nlm.nih.gov/research/umls/rxnorm'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return AllergyCodings
+  ))
+
+define AnswerYes:
+  System.Code {
+    code: 'Y',
+    display: 'Yes'
+  }
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
@@ -105,6 +128,9 @@ define function HighestObservation(ObsList List<Observation>):
 
 define function Confirmed(CondList List<Condition>):
   CondList C where C.verificationStatus.coding.code = 'confirmed'
+
+define function ConfirmedAllergies(AllergyList List<AllergyIntolerance>):
+  AllergyList C where C.verificationStatus.coding.code = 'confirmed'
 
 define function NullSafeToQuantity(Qty FHIR.Quantity):
   if Qty is not null then
