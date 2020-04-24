@@ -64,24 +64,19 @@ define "False": false
 define "AHI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "AHI_Codes"], 3 months)), '/h'))
 define "RDI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "RDI_Codes"], 3 months)), '/h'))
 
-define "AllAlergy": ActiveAllergy([AllergyIntolerance])
+define "AllAlergy": ConfirmedAllergy([AllergyIntolerance])
 
-define "AllAllergyWithCode": 
+define "AllDrugAllergyWithCode": 
   distinct(flatten(
     [AllergyIntolerance] A
       let Codings: 
         (A.code.coding) CODING where CODING.system.value in {
-          'http://snomed.info/sct',
           'http://www.nlm.nih.gov/research/umls/rxnorm'
         }
         return CODING.display.value + '-' + CODING.code.value
       where exists(Codings)
       return Codings 
   ))
-
-define "FirstAllergyWithCode": 
-  if Count("AllAllergyWithCode") > 0 then "AllAllergyWithCode"[0] 
-  else ''
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
@@ -120,5 +115,5 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
 define function LowestObservation(ObsList List<Observation>):
   Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
 
-define function ActiveAllergy(AllergyList List<AllergyIntolerance>):
-  AllergyList A where A.clinicalStatus.coding.code in {'active'}
+define function ConfirmedAllergy(AllergyList List<AllergyIntolerance>):
+  AllergyList A where A.verificationStatus.coding.code in {'confirmed'}
