@@ -26,7 +26,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSet": "<server-path>ValueSet/2.16.840.1.113762.1.4.1219.6"
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.6"
         }
       ]
     },
@@ -35,7 +35,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSet": "<server-path>ValueSet/2.16.840.1.113762.1.4.1219.3"
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.3"
         }
       ]
     },
@@ -44,7 +44,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSet": "<server-path>ValueSet/2.16.840.1.113762.1.4.1219.9"
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.9"
         }
       ]
     }

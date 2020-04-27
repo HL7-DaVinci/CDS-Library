@@ -14,13 +14,13 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
 //COPD_Codes
-valueset "COPD": '2.16.840.1.113762.1.4.1219.6'
+valueset "COPD": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.6'
 
 //Bronchiectasis_Codes
-valueset "Bronchiectasis": '2.16.840.1.113762.1.4.1219.3'
+valueset "Bronchiectasis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.3'
 
 //Hypoxemia_Codes
-valueset "Hypoxemia Disorder": '2.16.840.1.113762.1.4.1219.9'
+valueset "Hypoxemia Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.9'
 
 //Diffuse_interstitial_lung_disease_Codes
 code "J84": 'J84' from "ICD-10-CM"
