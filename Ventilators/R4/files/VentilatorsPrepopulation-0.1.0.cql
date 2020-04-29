@@ -39,6 +39,7 @@ code "J96.90": 'J96.90' from "ICD-10-CM"
 code "J96.91": 'J96.91' from "ICD-10-CM"
 code "J96.92": 'J96.92' from "ICD-10-CM"
 
+valueset "VentilatorDiagnoses": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.48'
 
 parameter device_request DeviceRequest
 
@@ -56,7 +57,7 @@ define Today: Today()
 
 // coverage requirement info
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "All_Codes"]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "VentilatorDiagnoses"]))) 
 
 define OtherDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
