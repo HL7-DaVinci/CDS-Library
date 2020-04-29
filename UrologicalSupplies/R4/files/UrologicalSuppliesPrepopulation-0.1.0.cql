@@ -72,8 +72,7 @@ define DeviceRequestHcpcsCoding: singleton from (
 define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
 
 define UrologicalSuppliesRequested:
-  if "DeviceRequestHcpcsCoding".code.value = 'E0465' then 'E0465'
-  else if  "DeviceRequestHcpcsCoding".code.value = 'E0466' then 'E0466'
+  if "DeviceRequestHcpcsCoding".code.value in {'A4217'} then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):
