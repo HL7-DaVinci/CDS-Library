@@ -59,7 +59,7 @@ define Today: Today()
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "All_Codes"]))) 
 
-define OtherDiagnoses:
+define CurrentDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
 
 define Allergies:
