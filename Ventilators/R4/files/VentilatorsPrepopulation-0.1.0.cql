@@ -2,7 +2,10 @@ library VentilatorsPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
-valueset "VentilatorDiagnoses": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.48'
+valueset "RelevantDiagnoses": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.48'
+valueset "Devices": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
+
+parameter device_request DeviceRequest
 
 context Patient
 
@@ -10,7 +13,7 @@ define Today: Today()
 
 // coverage requirement info
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "VentilatorDiagnoses"]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "RelevantDiagnoses"]))) 
 
 define OtherDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
@@ -19,13 +22,11 @@ define Allergies:
   CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))
 
 define DeviceRequestHcpcsCoding: singleton from (
-  ((cast DeviceRequest.code as CodeableConcept).coding) coding
+  ((cast device_request.code as CodeableConcept).coding) coding
     where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
-define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
-
-define VentilatorDeviceRequested:
-  if "DeviceRequestHcpcsCoding".code.value in {'E0465', 'E0466'} then "DeviceRequestHcpcsCoding".code.value
+define DeviceRequested:
+  if "DeviceRequestHcpcsCoding".code in "Devices" then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):
@@ -51,6 +52,18 @@ define function CodesFromAllergies(AllergyList List<AllergyIntolerance>):
           return FHIRHelpers.ToCode(CODING)
       return AllergyCodings
   ))
+
+define function CodesFromDeviceRequest(DeviceRequest List<DeviceRequest>):
+  distinct(flatten(
+    DeviceRequest C
+      let HcpcsCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return HcpcsCodings
+  ))
+
 
 define AnswerYes:
   System.Code {
