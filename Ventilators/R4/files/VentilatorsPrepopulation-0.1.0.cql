@@ -53,18 +53,6 @@ define function CodesFromAllergies(AllergyList List<AllergyIntolerance>):
       return AllergyCodings
   ))
 
-define function CodesFromDeviceRequest(DeviceRequest List<DeviceRequest>):
-  distinct(flatten(
-    DeviceRequest C
-      let HcpcsCodings:
-          (C.code.coding) CODING where CODING.system.value in {
-            'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
-          }
-          return FHIRHelpers.ToCode(CODING)
-      return HcpcsCodings
-  ))
-
-
 define AnswerYes:
   System.Code {
     code: 'Y',
