@@ -26,5 +26,8 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
     'Questionnaire/PositiveAirwayPressureDevices'
 
+define RESULT_QuestionnaireFaceToFaceUri:
+    'Questionnaire/PositiveAirwayPressureDevicesFaceToFace'
+
 define RESULT_requestId:
   device_request

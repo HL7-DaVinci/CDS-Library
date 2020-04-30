@@ -231,19 +231,43 @@
     },
     {
       "linkId": "4",
-      "extension": [
+      "text": "Ventilator Diagnoses",
+      "type": "group",
+      "required": "true",
+      "item":[
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-          "valueExpression": {
-            "language": "text/cql",
-            "expression": "\"VentilatorsPrepopulation\".RelevantDiagnoses"
-          }
+          "linkId": "4.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".RelevantDiagnoses"
+              }
+            }
+          ],
+          "text": "Diagnoses for order",
+          "type": "open-choice",
+          "repeats": true,
+          "answerOption": []
+        },
+        {
+          "linkId": "4.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
+              }
+            }
+          ],
+          "text": "Other Diagnoses",
+          "type": "open-choice",
+          "repeats": true,
+          "answerOption": []
         }
-      ],
-      "text": "Patient diagnosis:",
-      "type": "open-choice",
-      "repeats": true,
-      "answerOption": []
+      ]
     },
     {
       "linkId": "5",
@@ -312,7 +336,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"VentilatorsPrepopulation\".VentilatorDeviceRequested"
+                "expression": "\"VentilatorsPrepopulation\".DeviceRequested"
               }
             }
           ],
