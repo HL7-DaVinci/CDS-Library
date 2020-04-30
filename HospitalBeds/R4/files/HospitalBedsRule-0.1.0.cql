@@ -26,5 +26,8 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
     'Questionnaire/HospitalBeds'
 
+define RESULT_QuestionnaireFaceToFaceUri:
+    'Questionnaire/HospitalBedsFaceToFace'
+
 define RESULT_requestId:
   device_request

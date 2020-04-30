@@ -63,6 +63,13 @@ define "DeviceRequested":
   else if "DeviceRequestHcpcsCoding".code.value = 'E0251' then 'E0251'
   else 'null'
 
+define "FixedHeightBedsOrdered": "DeviceRequested" in {'E0250', 'E0251', 'E0290', 'E0291', 'E0328'}
+define "VariableHeightBedsOrdered": "DeviceRequested" in {'E0255', 'E0256', 'E0292', 'E0293'}
+define "SemiElectricBedsOrdered": "DeviceRequested" in {'E0260', 'E0261', 'E0294', 'E0295', 'E0329'}
+define "TrapezeOrdered": "DeviceRequested" in {'E0910', 'E0911', 'E0912', 'E0940'}
+define "BedcradleOrdered": "DeviceRequested" in {'E0280'}
+define "SafetyrailOrdered": "DeviceRequested" in {'E0305','E0310','E0316'}
+
 define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
   distinct(
     flatten(
@@ -85,12 +92,30 @@ define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
     )
   )
 
-  define function EncounterLookBack(EncounterList List<Encounter>, LookBack System.Quantity):
+define function EncounterLookBack(EncounterList List<Encounter>, LookBack System.Quantity):
   EncounterList E
     let LookBackInterval: Interval[Now() - LookBack, Now()]
     where (cast E.period.start as dateTime).value in LookBackInterval
       or NullSafeToInterval(cast E.period as Period) overlaps LookBackInterval
 
+define "True": true
+
+define "AllAlergy": ConfirmedAllergy([AllergyIntolerance])
+
+define "AllDrugAllergyWithCode": 
+  distinct(flatten(
+    [AllergyIntolerance] A
+      let Codings: 
+        (A.code.coding) CODING where CODING.system.value in {
+          'http://www.nlm.nih.gov/research/umls/rxnorm'
+        }
+        return CODING.display.value + '-' + CODING.code.value
+      where exists(Codings)
+      return Codings 
+  ))
+
+define function ConfirmedAllergy(AllergyList List<AllergyIntolerance>):
+  AllergyList A where A.verificationStatus.coding.code in {'confirmed'}
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
@@ -128,3 +153,5 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
 
 define function LowestObservation(ObsList List<Observation>):
   Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
+
+
