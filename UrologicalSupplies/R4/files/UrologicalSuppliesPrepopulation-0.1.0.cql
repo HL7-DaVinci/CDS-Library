@@ -8,9 +8,9 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 
-valueset "RelevantDiagnoses": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.70'
+valueset "Urinary Incontinence or Chronic Urinary Retention Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.70'
 // TODO: Update HCPCS codes
-valueset "Devices": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
+valueset "Urinary Collection and Irrigation System Device or Supply": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
 
 parameter device_request DeviceRequest
 
@@ -20,7 +20,7 @@ define Today: Today()
 
 // coverage requirement info
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "RelevantDiagnoses"]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Urinary Incontinence or Chronic Urinary Retention Disorder"]))) 
 
 define CurrentDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
@@ -35,7 +35,7 @@ define DeviceRequestHcpcsCoding: singleton from (
 define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
 
 define UrologicalSuppliesRequested:
-  if "DeviceRequestHcpcsCoding".code.value in {'A4217'} then "DeviceRequestHcpcsCoding".code.value
+  if "DeviceRequestHcpcsCoding".code in "Urinary Collection and Irrigation System Device or Supply" then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):

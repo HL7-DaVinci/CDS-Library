@@ -71,7 +71,7 @@
   ],
   "item": [
     {
-      "linkId": "1",
+      "linkId": "PBD",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -89,7 +89,7 @@
       "type": "group",
       "item": [
         {
-          "linkId": "1.1",
+          "linkId": "PBD.1a",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -104,7 +104,7 @@
           "required": true
         },
         {
-          "linkId": "1.2",
+          "linkId": "PBD.1b",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -119,7 +119,7 @@
           "required": true
         },
         {
-          "linkId": "1.3",
+          "linkId": "PBD.1c",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -134,7 +134,7 @@
           "required": true
         },
         {
-          "linkId": "1.4",
+          "linkId": "PBD.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -149,7 +149,7 @@
           "required": true
         },
         {
-          "linkId": "1.5",
+          "linkId": "PBD.3",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -164,7 +164,7 @@
           "answerValueSet": "#gender"
         },
         {
-          "linkId": "1.6",
+          "linkId": "PBD.4",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -180,7 +180,7 @@
       ]
     },
     {
-      "linkId": "2",
+      "linkId": "PND",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -198,7 +198,7 @@
       "type": "group",
       "item": [
         {
-          "linkId": "2.1",
+          "linkId": "PND.1a",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -212,7 +212,7 @@
           "type": "string"
         },
         {
-          "linkId": "2.2",
+          "linkId": "PND.1b",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -226,7 +226,7 @@
           "type": "string"
         },
         {
-          "linkId": "2.3",
+          "linkId": "PND.1c",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -240,7 +240,7 @@
           "type": "string"
         },
         {
-          "linkId": "2.4",
+          "linkId": "PND.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -256,12 +256,12 @@
       ]
     },
     {
-      "linkId": "3",
+      "linkId": "ENC",
       "text": "Encounter",
       "type": "group",
       "item": [
         {
-          "linkId": "3.1",
+          "linkId": "ENC.4",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -276,7 +276,7 @@
           "required": true
         },
         {
-          "linkId": "3.2",
+          "linkId": "UROENC.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -303,13 +303,13 @@
           "answerValueSet": "#yesno",
           "item": [
             {
-              "linkId": "3.2b",
+              "linkId": "UROENC.1a",
               "text": "If No, purpose of the encounter",
               "type": "text",
               "require": true,
               "enableWhen": [
                 {
-                  "question": "3.2",
+                  "question": "UROENC.1",
                   "operator": "=",
                   "answerCoding": {
                     "code": "N"
@@ -322,12 +322,12 @@
       ]
     },
     {
-      "linkId": "4",
+      "linkId": "DIAG",
       "text": "Diagnoses",
       "type": "group",
       "item": [
         {
-          "linkId": "DIAG1",
+          "linkId": "DIAG.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -344,7 +344,7 @@
           "answerOption": []
         },
         {
-          "linkId": "UROQUAL1",
+          "linkId": "UROQUAL.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -353,7 +353,7 @@
                 "expression": "\"VentilatorsPrepopulation\".RelatedDiagnoese"
               }
             }
-          ],          
+          ],
           "text": "Patient Qualifying Diagnoses",
           "type": "open-choice",
           "repeats": true,
@@ -363,22 +363,22 @@
       ]
     },
     {
-      "linkId": "5",
+      "linkId": "SUB",
       "text": "Sujective",
       "type": "group",
       "item": [
         {
-          "linkId": "SUB1",
+          "linkId": "SUB1.",
           "text": "Chief complaint / history of present illness and associated signs / symptoms",
           "type": "text"
         },
         {
-          "linkId": "SUB2",
+          "linkId": "SUB.2",
           "text": "Related past medical / surgical history",
           "type": "text"
         },
         {
-          "linkId": "MED1",
+          "linkId": "MED.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -397,32 +397,32 @@
           "repeats": true,
           "item": [
             {
-              "linkId": "MED1.1",
+              "linkId": "MED.1.1",
               "text": "RxNorm",
               "type": "string"
             },
             {
-              "linkId": "MED1.2",
+              "linkId": "MED.1.2",
               "text": "Description",
               "type": "string"
             },
             {
-              "linkId": "MED1.3",
+              "linkId": "MED.1.3",
               "text": "Dose",
               "type": "string"
             },
             {
-              "linkId": "MED1.4",
+              "linkId": "MED.1.4",
               "text": "Frequency",
               "type": "string"
             },
             {
-              "linkId": "MED1.5",
+              "linkId": "MED.1.5",
               "text": "Route",
               "type": "string"
             },
             {
-              "linkId": "MED1.6",
+              "linkId": "MED.1.6",
               "text": "Status",
               "type": "choice",
               "answerOption": [
@@ -451,7 +451,7 @@
           ]
         },
         {
-          "linkId": "ALL1",
+          "linkId": "ALL.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -460,7 +460,7 @@
                 "expression": "\"VentilatorsPrepopulation\".Allergies"
               }
             }
-          ],              
+          ],
           "text": "Allergy",
           "type": "open-choice",
           "repeats": true,
@@ -1438,26 +1438,21 @@
       ]
     },
     {
-      "linkId": "ASM.1",
-      "text": "Assessment/Summary",
-      "type": "text"
-    },
-    {
       "linkId": "UROINFO",
       "text": "Urologic Supplies Information",
       "type": "group",
-      "item": [        
+      "item": [
         {
-          "linkId": "UROINFO.1",
+          "linkId": "UROINFO.1a",
           "text": "Indwelling catheters",
           "type": "group",
-          "item":[
+          "item": [
             {
-              "linkId": "UROINFO.1.1",
-              "text":"Check any of the following that have occurred",
+              "linkId": "UROINFO.1",
+              "text": "Check any of the following that have occurred",
               "type": "open-choice",
               "repeats": true,
-              "answerOption":[
+              "answerOption": [
                 {
                   "valueCoding": {
                     "display": "Catheter was accidentally removed (e.g., pulled out by beneficiary)"
@@ -1476,12 +1471,12 @@
                 {
                   "valueCoding": {
                     "display": "There is a history of recurrent obstruction or urinary tract infection for which it has been established that an acute event is prevented by a scheduled change frequency of more than once per month"
-                  }                  
+                  }
                 }
               ]
             },
             {
-              "linkId": "UROINFO.1.2",
+              "linkId": "UROINFO.2",
               "text": "A specialty indwelling catheter or silicone catheter is necessary to prevent (check all relevant items)",
               "type": "open-choice",
               "repeats": true,
@@ -1506,32 +1501,203 @@
           ]
         },
         {
-          "linkId": "11.3",
+          "linkId": "UROINFO.3a",
+          "text": "Urinary drainage collection systems",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "UROINFO.3",
+              "text": "Is there evidence of the following?",
+              "type": "open-choice",
+              "repeats": true,
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "obstruction"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "sluding"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "clotting of blood"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "chronic, recurrent urinary tract infection"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "UROINFO.4",
+              "text": "Is the patient ambulatory/chair-bound and requires a leg bag?",
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "linkId": "UROINFO.5",
+          "text": "Irrigation of indwelling catheters",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "UROINFO.5.1",
+              "text": "There is evidence of occasional obstruction of the catheter requiring intermittent irrigation to remove or prevent",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.5.2",
+              "text": "There is a history of recurring obstruction of the catheter and the patency of the catheter cannot be maintained by intermittent irrigation in conjunction with reasonable and necessary catheter changes, requiring continuous irrigation",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.6",
+              "text": "Describe",
+              "type": "text"
+            },
+            {
+              "linkId": "UROINFO.7",
+              "text": "For continuous irrigation",
+              "type": "group",
+              "item": [
+                {
+                  "linkId": "UROINFO.7.1",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "ml/hr"
+                      }
+                    }
+                  ],
+                  "text": "rate of solution administration (ml/hr)",
+                  "type": "decimal"
+                },
+                {
+                  "linkId": "UROINFO.7.2",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "days"
+                      }
+                    }
+                  ],
+                  "text": "duration of need (typically less than two weeks) (days)",
+                  "type": "integer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "UROINFO.8",
+          "text": "Intermittent catheterization. Check any of the following that support the need/use of intermittent catherization",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "UROINFO.8.1",
+              "text": "A beneficiary or caregiver is available to perform the procedure",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.8.2",
+              "text": "The beneficiary resides in a nursing facility",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.8.3",
+              "text": "The beneficiary is immunosuppressed, for example (not all-inclusive)",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.8.4",
+              "text": "The beneficiary has radiologically documented vesico-ureteral reflux while on a program of intermittent catheterization",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.8.5",
+              "text": "The beneficiary is a spinal cord injured female with neurogenic bladder who is pregnant (for duration of pregnancy only)",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.8.4",
+              "text": "The beneficiary has had distinct, recurrent urinary tract infections, while on a program of sterile intermittent catheterization with A4351/A4352 and sterile lubricant A4332, twice within the 12-month prior to the initiation of sterile intermittent catheter kits",
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "linkId": "UROINFO.9a",
+          "text": "Miscellaneous",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "UROINFO.9",
+              "text": "Is a Coude tip catheter is necessary because patient cannot be catheterized with a straight tip catheter (rare for female)?",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.10",
+              "text": "Does patient (female only) have diagnosis of stress incontinence?",
+              "type": "boolean"
+            },
+            {
+              "linkId": "UROINFO.10a",
+              "text": "Note: Contraindication for the use of urethral inserts:",
+              "type": "display"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "APO",
+      "text": "Accessment and Plan",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "ASM.1",
+          "text": "Assessment/Summary",
+          "type": "text"
+        },
+        {
+          "linkId": "PLAN.1",
+          "text": "Treatment Paln",
+          "type": "text"
+        },
+        {
+          "linkId": "ORD",
           "text": "Orders",
           "type": "group",
           "item": [
             {
-              "linkId": "11.3.1",
+              "linkId": "ORD.1",
               "text": "Medications",
               "type": "text"
             },
             {
-              "linkId": "11.3.2",
+              "linkId": "ORD.2",
               "text": "Supplies",
               "type": "text"
             },
             {
-              "linkId": "11.3.3",
+              "linkId": "ORD.3",
               "text": " Investigations / diagnostic testing",
               "type": "text"
             },
             {
-              "linkId": "11.3.4",
+              "linkId": "ORD.4",
               "text": "Consults",
               "type": "text"
             },
             {
-              "linkId": "11.3.5",
+              "linkId": "ORD.5",
               "text": "Other",
               "type": "text"
             }
@@ -1540,18 +1706,18 @@
       ]
     },
     {
-      "linkId": "12",
+      "linkId": "SIGPNP",
       "text": "Provider Signature",
       "type": "group",
       "item": [
         {
-          "linkId": "12.1",
+          "linkId": "SIGPNP.1",
           "text": "Signature",
           "type": "string",
           "required": true
         },
         {
-          "linkId": "12.2",
+          "linkId": "SIGPNP.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -1566,7 +1732,7 @@
           "required": true
         },
         {
-          "linkId": "12.3",
+          "linkId": "SIGPNP.3",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -1581,7 +1747,7 @@
           "required": true
         },
         {
-          "linkId": "12.4",
+          "linkId": "SIGPNP.4",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
