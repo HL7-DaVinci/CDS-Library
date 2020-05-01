@@ -13,7 +13,7 @@ define Today: Today()
 
 // coverage requirement info
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "RelevantDiagnoses"]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Ventilator Therapy Qualifying Condition"]))) 
 
 define OtherDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
