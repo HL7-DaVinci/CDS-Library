@@ -26,7 +26,7 @@ define DeviceRequestHcpcsCoding: singleton from (
     where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
 define DeviceRequested:
-  if "DeviceRequestHcpcsCoding".code in "Devices" then "DeviceRequestHcpcsCoding".code.value
+  if "DeviceRequestHcpcsCoding".code in "Ventilator Device" then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):
