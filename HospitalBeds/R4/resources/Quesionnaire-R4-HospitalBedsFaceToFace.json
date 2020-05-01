@@ -213,7 +213,7 @@
     {
       "linkId": "3",
       "type": "group",
-      "text": "General questions",
+      "text": "Purpose of Encounter",
       "item": [
         {
           "linkId": "3.1",
@@ -1529,7 +1529,7 @@
     },
     {
       "linkId": "13",
-      "type": "text",
+      "type": "group",
       "text": "Orders",
       "item": [
         {
@@ -1671,6 +1671,7 @@
     {
       "linkId": "14",
       "type": "group",
+      "text": "Provider Information",
       "item": [
         {
           "linkId": "14.1",
