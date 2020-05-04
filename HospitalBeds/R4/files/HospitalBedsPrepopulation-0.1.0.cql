@@ -6,6 +6,13 @@ codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
+valueset "FixedHeightBedsCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.50'
+valueset "VariableHeightBedsCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.51'
+valueset "SemiElectricBedsCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.52'
+valueset "TrapezeCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.55'
+valueset "BedcradleCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.56'
+valueset "SafetyrailCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.57'
+
 //Body Weight code
 code "29463-7": '29463-7' from "LOINC"
 
@@ -63,12 +70,12 @@ define "DeviceRequested":
   else if "DeviceRequestHcpcsCoding".code.value = 'E0251' then 'E0251'
   else 'null'
 
-define "FixedHeightBedsOrdered": "DeviceRequested" in {'E0250', 'E0251', 'E0290', 'E0291', 'E0328'}
-define "VariableHeightBedsOrdered": "DeviceRequested" in {'E0255', 'E0256', 'E0292', 'E0293'}
-define "SemiElectricBedsOrdered": "DeviceRequested" in {'E0260', 'E0261', 'E0294', 'E0295', 'E0329'}
-define "TrapezeOrdered": "DeviceRequested" in {'E0910', 'E0911', 'E0912', 'E0940'}
-define "BedcradleOrdered": "DeviceRequested" in {'E0280'}
-define "SafetyrailOrdered": "DeviceRequested" in {'E0305','E0310','E0316'}
+define "FixedHeightBedsOrdered": "DeviceRequestHcpcsCoding" in "FixedHeightBedsCodes"
+define "VariableHeightBedsOrdered": "DeviceRequestHcpcsCoding" in "VariableHeightBedsCodes"
+define "SemiElectricBedsOrdered": "DeviceRequestHcpcsCoding" in "SemiElectricBedsCodes"
+define "TrapezeOrdered": "DeviceRequestHcpcsCoding" in "TrapezeCodes"
+define "BedcradleOrdered": "DeviceRequestHcpcsCoding" in "BedcradleCodes"
+define "SafetyrailOrdered": "DeviceRequestHcpcsCoding" in "SafetyrailCodes"
 
 define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
   distinct(
