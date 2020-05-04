@@ -12,7 +12,7 @@ valueset "Urinary Incontinence or Chronic Urinary Retention Disorder": 'http://c
 // TODO: Update HCPCS codes after VSAC value set is done
 valueset "Urinary Collection and Irrigation System Device or Supply": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
 
-parameter device_request DeviceRequest
+parameter service_request ServiceRequest
 
 context Patient
 
@@ -28,13 +28,11 @@ define CurrentDiagnoses:
 define Allergies:
   CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))
 
-define DeviceRequestHcpcsCoding: singleton from (
-  ((cast device_request.code as CodeableConcept).coding) coding
+define ServiceRequestHcpcsCoding: singleton from (
+  ((cast service_request.code as CodeableConcept).coding) coding
     where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
-define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
-
-define DevicesRequested:
+define ServiceRequested:
   if "DeviceRequestHcpcsCoding".code in "Urinary Collection and Irrigation System Device or Supply" then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
