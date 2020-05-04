@@ -34,7 +34,7 @@ define DeviceRequestHcpcsCoding: singleton from (
 
 define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
 
-define UrologicalSuppliesRequested:
+define DevicesRequested:
   if "DeviceRequestHcpcsCoding".code in "Urinary Collection and Irrigation System Device or Supply" then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
