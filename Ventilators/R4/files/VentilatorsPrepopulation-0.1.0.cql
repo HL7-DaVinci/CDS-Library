@@ -2,8 +2,8 @@ library VentilatorsPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
-valueset "RelevantDiagnoses": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.48'
-valueset "Devices": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
+valueset "Ventilator Therapy Qualifying Condition": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.48'
+valueset "Ventilator Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
 
 parameter device_request DeviceRequest
 
@@ -13,7 +13,7 @@ define Today: Today()
 
 // coverage requirement info
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "RelevantDiagnoses"]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Ventilator Therapy Qualifying Condition"]))) 
 
 define OtherDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
@@ -26,7 +26,7 @@ define DeviceRequestHcpcsCoding: singleton from (
     where CODING.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
 define DeviceRequested:
-  if "DeviceRequestHcpcsCoding".code in "Devices" then "DeviceRequestHcpcsCoding".code.value
+  if "DeviceRequestHcpcsCoding".code in "Ventilator Device" then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):
