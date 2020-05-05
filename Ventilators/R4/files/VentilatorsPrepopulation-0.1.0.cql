@@ -2,53 +2,10 @@ library VentilatorsPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
-codesystem "ICD-10": 'http://hl7.org/fhir/sid/icd-10'
-codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
-codesystem "LOINC": 'http://loinc.org'
-codesystem "SNOMED-CT": 'http://snomed.info/sct'
-
-// Neuromuscular disease
-code "G12.0": 'G12.0' from "ICD-10-CM"
-code "G12.1": 'G12.1' from "ICD-10-CM"
-code "G12.20": 'G12.20' from "ICD-10-CM"
-code "G12.21": 'G12.21' from "ICD-10-CM"
-code "G12.22": 'G12.22' from "ICD-10-CM"
-code "G12.23": 'G12.23' from "ICD-10-CM"
-code "G12.24": 'G12.24' from "ICD-10-CM"
-code "G12.25": 'G12.25' from "ICD-10-CM"
-code "G12.29": 'G12.29' from "ICD-10-CM"
-code "G12.8": 'G12.8' from "ICD-10-CM"
-code "G12.9": 'G12.9' from "ICD-10-CM"
-
-// Thoracic restrictive disease
-code "J98.4": 'J98.4' from "ICD-10-CM"
-code "36485005": '36485005' from "SNOMED-CT"
-
-// Chest Wall Deformity
-code "M95.4": 'M95.4' from "ICD-10-CM"
-code "Q67.8": 'Q67.8' from "ICD-10-CM"
-
-// Chronic respiratory failure consequent to COPD
-code "J96.10": 'J96.10' from "ICD-10-CM"
-code "J96.11": 'J96.11' from "ICD-10-CM"
-code "J96.12": 'J96.12' from "ICD-10-CM"
-code "J96.20": 'J96.20' from "ICD-10-CM"
-code "J96.21": 'J96.21' from "ICD-10-CM"
-code "J96.22": 'J96.22' from "ICD-10-CM"
-code "J96.90": 'J96.90' from "ICD-10-CM"
-code "J96.91": 'J96.91' from "ICD-10-CM"
-code "J96.92": 'J96.92' from "ICD-10-CM"
-
+valueset "Ventilator Therapy Qualifying Condition": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.48'
+valueset "Ventilator Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
 
 parameter device_request DeviceRequest
-
-
-define "Neuromuscular_Codes": { "G12.0", "G12.1", "G12.20", "G12.21", "G12.22", "G12.23", "G12.24", "G12.25", "G12.29", "G12.8", "G12.9"}
-define "COPD_Codes": { "J96.10", "J96.11", "J96.12", "J96.20", "J96.21", "J96.22", "J96.90", "J96.91", "J96.22"}
-define "Thoracic_Restrictive_Codes": { "J98.4", "36485005" }
-define "Chest_Wall_Codes": {"M95.4", "Q67.8"}
-
-define "All_Codes": "Neuromuscular_Codes" union "COPD_Codes" union "Thoracic_Restrictive_Codes" union "Chest_Wall_Codes"
 
 context Patient
 
@@ -56,7 +13,7 @@ define Today: Today()
 
 // coverage requirement info
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "All_Codes"]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Ventilator Therapy Qualifying Condition"]))) 
 
 define OtherDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
@@ -68,10 +25,8 @@ define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
     where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
-define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
-
-define VentilatorDeviceRequested:
-  if "DeviceRequestHcpcsCoding".code.value in {'E0465', 'E0466'} then "DeviceRequestHcpcsCoding".code.value
+define DeviceRequested:
+  if "DeviceRequestHcpcsCoding".code in "Ventilator Device" then "DeviceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):
