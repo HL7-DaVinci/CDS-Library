@@ -33,7 +33,7 @@ define ServiceRequestHcpcsCoding: singleton from (
     where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
 define ServiceRequested:
-  if "DeviceRequestHcpcsCoding".code in "Urinary Collection and Irrigation System Device or Supply" then "DeviceRequestHcpcsCoding".code.value
+  if "ServiceRequestHcpcsCoding".code in "Urinary Collection and Irrigation System Device or Supply" then "ServiceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):

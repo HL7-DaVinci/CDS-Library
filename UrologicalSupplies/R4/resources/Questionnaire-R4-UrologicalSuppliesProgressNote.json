@@ -1,7 +1,7 @@
 {
   "resourceType": "Questionnaire",
-  "id": "VentilatorsProgressNote",
-  "name": "VentilatorsProgressNote",
+  "id": "UrologicalSuppliesProgressNote",
+  "name": "UrologicalSuppliesProgressNote",
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
@@ -457,7 +457,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"VentilatorsPrepopulation\".Allergies"
+                "expression": "\"UrologicalSuppliesPrepopulation\".Allergies"
               }
             }
           ],
@@ -1626,7 +1626,7 @@
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.8.4",
+              "linkId": "UROINFO.8.6",
               "text": "The beneficiary has had distinct, recurrent urinary tract infections, while on a program of sterile intermittent catheterization with A4351/A4352 and sterile lubricant A4332, twice within the 12-month prior to the initiation of sterile intermittent catheter kits",
               "type": "boolean"
             }
@@ -1650,7 +1650,39 @@
             {
               "linkId": "UROINFO.10a",
               "text": "Note: Contraindication for the use of urethral inserts:",
-              "type": "display"
+              "type": "display",
+              "item": [
+                {
+                  "linkId": "UROINFO.10a.1",
+                  "type": "display",
+                  "text": "bladder or other urinary tract infections (UTI)"
+                },
+                {
+                  "linkId": "UROINFO.10a.2",
+                  "type": "display",
+                  "text": "history of urethral stricture, bladder augmentation, pelvic radiation or other conditions where urethral catheterization is not clinically advisable"
+                },
+                {
+                  "linkId": "UROINFO.10a.3",
+                  "type": "display",
+                  "text": "immunocompromised, at significant risk from UTI, interstitial cystitis, or pyelonephritis, or who have severely compromised urinary mucosa"
+                },
+                {
+                  "linkId": "UROINFO.10a.4",
+                  "type": "display",
+                  "text": "unable to tolerate antibiotic therapy"
+                },
+                {
+                  "linkId": "UROINFO.10a.5",
+                  "type": "display",
+                  "text": "on anticoagulants"
+                },
+                {
+                  "linkId": "UROINFO.10a.6",
+                  "type": "display",
+                  "text": "on anticoagulants"
+                }
+              ]
             }
           ]
         }
