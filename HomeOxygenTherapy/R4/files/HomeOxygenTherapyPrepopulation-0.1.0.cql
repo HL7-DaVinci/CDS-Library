@@ -12,6 +12,8 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
+codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
+codesystem "FHIRRequestIntent": 'http://hl7.org/fhir/request-intent'
 
 //COPD_Codes
 valueset "COPD": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.6'
@@ -23,49 +25,24 @@ valueset "Bronchiectasis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.1137
 valueset "Hypoxemia Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.9'
 
 //Diffuse_interstitial_lung_disease_Codes
-code "J84": 'J84' from "ICD-10-CM"
-code "J84.0": 'J84.0' from "ICD-10-CM"
-code "J84.01": 'J84.01' from "ICD-10-CM"
-code "J84.02": 'J84.02' from "ICD-10-CM"
-code "J84.03": 'J84.03' from "ICD-10-CM"
-code "J84.09": 'J84.09' from "ICD-10-CM"
-code "J84.1": 'J84.1' from "ICD-10-CM"
-code "J84.10": 'J84.10' from "ICD-10-CM"
-code "J84.11": 'J84.11' from "ICD-10-CM"
-code "J84.111": 'J84.111' from "ICD-10-CM"
-code "J84.112": 'J84.112' from "ICD-10-CM"
-code "J84.113": 'J84.113' from "ICD-10-CM"
-code "J84.114": 'J84.114' from "ICD-10-CM"
-code "J84.115": 'J84.115' from "ICD-10-CM"
-code "J84.116": 'J84.116' from "ICD-10-CM"
-code "J84.117": 'J84.117' from "ICD-10-CM"
-code "J84.17": 'J84.17' from "ICD-10-CM"
-code "J84.2": 'J84.2' from "ICD-10-CM"
-code "J84.8": 'J84.8' from "ICD-10-CM"
-code "J84.81": 'J84.81' from "ICD-10-CM"
-code "J84.82": 'J84.82' from "ICD-10-CM"
-code "J84.83": 'J84.83' from "ICD-10-CM"
-code "J84.84": 'J84.84' from "ICD-10-CM"
-code "J84.841": 'J84.841' from "ICD-10-CM"
-code "J84.842": 'J84.842' from "ICD-10-CM"
-code "J84.843": 'J84.843' from "ICD-10-CM"
-code "J84.848": 'J84.848' from "ICD-10-CM"
-code "J84.89": 'J84.89' from "ICD-10-CM"
-code "J84.9": 'J84.9' from "ICD-10-CM"
+valueset "Interstitial Lung Disease": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.12'
 
 //Cystic_fibrosis_Codes
-code "E84": 'E84' from "ICD-10-CM"
-code "E84.0": 'E84.0' from "ICD-10-CM"
-code "E84.1": 'E84.1' from "ICD-10-CM"
-code "E84.11": 'E84.11' from "ICD-10-CM"
-code "E84.19": 'E84.19' from "ICD-10-CM"
-code "E84.8": 'E84.8' from "ICD-10-CM"
-code "E84.9": 'E84.9' from "ICD-10-CM"
+valueset "Cystic Fibrosis Lung Disease": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.15'
+
+// All Devices
+valueset "Home Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.74'
+
+// Device Categories
+valueset "Stationary Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.28'
+valueset "Portable Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.27'
+valueset "Liquid Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.71'
+valueset "Compressed Gas Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.72'
+valueset "Oxygen Concentrator Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.73'
 
 //Pulmonary_hypertension_Codes
 code "I27.0": 'I27.0' from "ICD-10-CM"
 code "I27.2": 'I27.2' from "ICD-10-CM"
-
 
 //  Loinc codes for observations
 //Arterial_oxygen_saturation_Codes
@@ -102,14 +79,13 @@ code "8510008": '8510008' from "SNOMED-CT"
 //Pulmonary artery Mean blood pressure
 code "8414-5": '8414-5' from "LOINC"
 
+// FHIR Request Intent Codes
+code "Intent Original Order code": 'original-order' from "FHIRRequestIntent" display 'Original Order'
+concept "Intent Original Order": { "Intent Original Order code" } display 'Original Order'
+
 parameter device_request DeviceRequest
 
 // Relevant Diagnosis Code Lists
-define "Diffuse_interstitial_lung_disease_Codes": { "J84", "J84.0", "J84.01", "J84.02", "J84.03",
-  "J84.09", "J84.1", "J84.10", "J84.11", "J84.111", "J84.112", "J84.113", "J84.114", "J84.115",
-  "J84.116", "J84.117", "J84.17", "J84.2", "J84.8", "J84.81", "J84.82", "J84.83", "J84.84",
-  "J84.841", "J84.842", "J84.843", "J84.848", "J84.89", "J84.9" }
-define "Cystic_fibrosis_Codes": { "E84", "E84.0", "E84.1", "E84.11", "E84.19", "E84.8", "E84.9" }
 define "Pulmonary_hypertension_Codes": { "I27.0", "I27.2" }
 
 // Observation code lists
@@ -135,8 +111,8 @@ define "AllCOPD":
 define RelevantDiagnoses: {
   if exists(Confirmed(ActiveOrRecurring([Condition: "COPD"]))) then 'COPD' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Bronchiectasis"]))) then 'Bronchiectasis' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Diffuse_interstitial_lung_disease_Codes"]))) then 'Diffuse Interstitial Lung Disease' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Cystic_fibrosis_Codes"]))) then 'Cystic Fibrosis' else 'null',
+  if exists(Confirmed(ActiveOrRecurring([Condition: "Interstitial Lung Disease"]))) then 'Interstitial Lung Disease' else 'null',
+  if exists(Confirmed(ActiveOrRecurring([Condition: "Cystic Fibrosis Lung Disease"]))) then 'Cystic Fibrosis' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Pulmonary_hypertension_Codes"]))) then 'Pulmonary Hypertension' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Hypoxemia Disorder"]))) then 'Hypoxemia' else 'null'
 } except { 'null' } // except 'null' is a workaround since I don't see how to remove actual nulls
@@ -162,13 +138,49 @@ define "PulmonaryArteryPressure": HighestObservation(WithUnit(Verified(Observati
 // device request info
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
-    where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
+    where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
+    return FHIRHelpers."ToCode"(coding))
 
-define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
-define DeviceRequestedIsPortable: "DeviceRequestHcpcsCoding".code.value in { 'E0433', 'E0434', 'E0444', 'EO431', 'K0738', 'E0443', 'E1392' }
-define DeviceRequestedIsStationary: "DeviceRequestHcpcsCoding".code.value in { 'E0439', 'E0442', 'E0424', 'E0441', 'E1390', 'E1391' }
+define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code + ' - ' + Coalesce("DeviceRequestHcpcsCoding".display)
+define DeviceRequestedIsPortable: "DeviceRequestHcpcsCoding" in "Portable Oxygen Therapy Device"
+define DeviceRequestedIsStationary: "DeviceRequestHcpcsCoding" in "Stationary Oxygen Therapy Device"
 
-define "True": true
+define "DeviceType":
+  if DeviceRequestHcpcsCoding in "Compressed Gas Oxygen Therapy Device"
+    then 'Compressed Gas'
+  else if DeviceRequestHcpcsCoding in "Liquid Oxygen Therapy Device"
+    then 'Liquid'
+  else if DeviceRequestHcpcsCoding in "Oxygen Concentrator Therapy Device"
+    then 'Concentrator'
+  else
+    null
+
+define "DeviceOrderType":
+  if device_request.intent.value = 'original-order'
+    then 'Initial or original order for certification'
+    else null
+
+// prescribed use
+define "OccurrenceTimingDuration": (device_request.occurrence as FHIR.Timing).repeat.bounds as FHIR.Duration
+
+define "OccurrenceTimingQuantity":
+  if "OccurrenceTimingDuration" is not null
+  then System.Quantity { value: "OccurrenceTimingDuration".value.value, unit: "OccurrenceTimingDuration".unit.value }
+  else null
+
+define "LengthOfNeed":
+  ConvertQuantity("OccurrenceTimingQuantity", 'mo').value
+
+define "FrequencyOfUseText":
+  (device_request.occurrence as FHIR.Timing).code.text.value
+
+define "FrequencyOfUseList":
+  Split("FrequencyOfUseText", ' AND ')
+
+// filters out invalid frequencies
+define "FrequencyOfUse":
+  "FrequencyOfUseList" FrequencyText
+    where FrequencyText in { 'During sleep', 'During exertion', 'At rest and awake' }
 
 define "BloodGasOrderedAndEvaluated": "ArterialOxygenSaturation" is not null or "ArterialPartialPressureOfOxygen" is not null or "ArterialOxygenSaturationExercise" is not null
 
