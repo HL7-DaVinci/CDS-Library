@@ -71,7 +71,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.28"
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.80"
         }
       ]
     },
@@ -80,7 +80,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.27"
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.79"
         }
       ]
     },
@@ -89,25 +89,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.71"
-        }
-      ]
-    },
-    {
-      "type": "DeviceRequest",
-      "codeFilter": [
-        {
-          "path": "code",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.72"
-        }
-      ]
-    },
-    {
-      "type": "DeviceRequest",
-      "codeFilter": [
-        {
-          "path": "code",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.73"
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.77"
         }
       ]
     },
@@ -117,6 +99,15 @@
         {
           "path": "code",
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.74"
+        }
+      ]
+    },
+    {
+      "type": "DeviceRequest",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.78"
         }
       ]
     }
