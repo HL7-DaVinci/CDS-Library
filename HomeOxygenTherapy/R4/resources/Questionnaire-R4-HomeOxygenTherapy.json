@@ -483,16 +483,7 @@
           "linkId": "4.2",
           "text": "Length of need: (months) (99 = lifetime)",
           "type": "integer",
-          "required": false,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".LengthOfNeed"
-              }
-            }
-          ]
+          "required": false
         },
         {
           "linkId": "4.4",
@@ -567,15 +558,6 @@
                 "code": "During sleep"
               }
             }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".FrequencyOfUse"
-              }
-            }
           ]
         }
       ]
@@ -620,7 +602,6 @@
           "text": "Type",
           "type": "choice",
           "required": true,
-          "readOnly": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -635,15 +616,6 @@
             {
               "valueCoding": {
                 "code": "Concentrator"
-              }
-            }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceType"
               }
             }
           ]
@@ -716,15 +688,6 @@
             {
               "valueCoding": {
                 "code": "Replacement"
-              }
-            }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
               }
             }
           ]
