@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "id": "PractitionerInfo",
+  "id": "practitioner-info",
   "name": "Practitioner Module",
   "extension": [
     {

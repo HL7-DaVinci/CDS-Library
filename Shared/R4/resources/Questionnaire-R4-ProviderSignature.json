@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "id": "ProviderSignature",
+  "id": "provider-signature",
   "name": "Provider Signature",
   "extension": [
     {

@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "id": "PatientInfo",
+  "id": "patient-info",
   "name": "Patient Module",
   "extension": [
     {
