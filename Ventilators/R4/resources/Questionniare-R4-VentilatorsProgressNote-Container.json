@@ -1,0 +1,1494 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "VentilatorsProgressNote",
+  "name": "VentilatorsProgressNote",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/Ventilators-prepopulation"
+      }
+    }
+  ],
+  "title": "Ventilator Progress Note Questionnaire",
+  "status": "draft",
+  "date": "2020-04-09",
+  "publisher": "Da Vinci DTR",
+  "subjectType": ["Patient"],
+  "contained": [
+    {
+      "resourceType": "ValueSet",
+      "id": "yesno",
+      "url": "#yesno",
+      "status": "draft",
+      "expansion": {
+        "contains": [
+          {
+            "code": "Y",
+            "display": "Yes"
+          },
+          {
+            "code": "N",
+            "display": "No"
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "Questionnaire/PatientInfo"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "Questionnaire/PractitionerInfo"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "3",
+      "text": "Encounter",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "3.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".Today"
+              }
+            }
+          ],
+          "text": "Date of encounter (MM/DD/YYYY):",
+          "type": "date",
+          "required": "true"
+        },
+        {
+          "linkId": "3.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".AnswerYes"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "radio-button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Is this an evaluation of the patient’s need for a ventilator?",
+          "required": "true",
+          "type": "choice",
+          "answerValueSet": "#yesno",
+          "item": [
+            {
+              "linkId": "3.2a",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "code": "radio-button",
+                        "system": "http://hl7.org/fhir/questionnaire-item-control"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "text": "If Yes, type of evaluation",
+              "enableWhen": [
+                {
+                  "question": "3.2",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "Y"
+                  }
+                }
+              ],
+              "type": "choice",
+              "required": "true",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "initial"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "re-evaluation"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "3.3",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "code": "radio-button",
+                            "system": "http://hl7.org/fhir/questionnaire-item-control"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "text": "If re-evaluation, is there evidence of continued use of the ventilator and accessories?",
+                  "enableWhen": [
+                    {
+                      "question": "3.2a",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "re-evaluation"
+                      }
+                    }
+                  ],
+                  "type": "choice",
+                  "answerValueSet": "#yesno",
+                  "item": [
+                    {
+                      "linkId": "3.3a",
+                      "text": "Describe",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "3.2b",
+              "text": "If No, purpose of the encounter",
+              "type": "text",
+              "require": "true",
+              "enableWhen": [
+                {
+                  "question": "3.2",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "N"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Diagnoses",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".RelevantDiagnoses"
+              }
+            }
+          ],
+          "text": "Patient Diagnoses related to need for a ventilator",
+          "type": "open-choice",
+          "require": "true",
+          "repeats": "true",
+          "answerOption": []
+        },
+        {
+          "linkId": "4.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
+              }
+            }
+          ],          
+          "text": "Other Diagnoses",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "For continued coverage",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "5.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "radio-button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Demonstrated benefit from continued use?",
+          "type": "choice",
+          "answerValueSet": "#yesno"
+        },
+        {
+          "linkId": "5.2",
+          "text": "Describe",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "text": "Sujective",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "6.1",
+          "text": "Chief complaint / history of present illness and associated signs / symptoms",
+          "type": "text"
+        },
+        {
+          "linkId": "6.2",
+          "text": "Related past medical / surgical history",
+          "type": "text"
+        },
+        {
+          "linkId": "6.3",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Medication",
+          "type": "group",
+          "repeats": true,
+          "item": [
+            {
+              "linkId": "6.3.1",
+              "text": "RxNorm",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.2",
+              "text": "Description",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.3",
+              "text": "Dose",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.4",
+              "text": "Frequency",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.5",
+              "text": "Route",
+              "type": "string"
+            },
+            {
+              "linkId": "6.3.6",
+              "text": "Status",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "New"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Current"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Modified"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Discountinued"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "6.4",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".Allergies"
+              }
+            }
+          ],              
+          "text": "Allergy",
+          "type": "open-choice",
+          "repeats": true,
+          "anwerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "9",
+      "text": "Review of systems",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "9.1",
+          "text": "General",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "weight gain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "weight loss"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "sleeping problems"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fatigue"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fever"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "chills"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "night sweats / disphoresis"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.2",
+          "text": "Skin",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "pressure ulcers"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "rashes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "changes in nails/hair"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "eczema"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "pruritus"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.3",
+          "text": "Lymphatic",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "9.3.1",
+              "text": "swollen glands/masses",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "in the neck"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "axilla"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "groin"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "9.3.2",
+              "text": "other",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "linkId": "9.4",
+          "text": "Head",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "fainting"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "dizziness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "headaches"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.5",
+          "text": "Eyes",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "diplopia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "glasses/contact lenses"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "redness/discharge"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "blurred vision"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.6",
+          "text": "Ears",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "tinnitus"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "discharge"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hearing loss"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.7",
+          "text": "Nose",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "epistaxis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "sinus infections"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "discharge"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "polyps"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.8",
+          "text": "Oral",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "dysphagia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hoarseness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "teeth/dentures"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.9",
+          "text": "Neck",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "lumps"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "pain on movement"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.10",
+          "text": "Breast",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "masses/tumors"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "tenderness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "discharge"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "gynecomastia"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.11",
+          "text": "Pulmonary",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "cough"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "shortness of breath"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "wheezing"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hemoptysis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "sputum production"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "history of obstructive sleep apnea"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.12",
+          "text": "Cardiac",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "chest pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "palpitations"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "orthopnea"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "murmur"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "syncope"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.13",
+          "text": "Vascular",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "edema"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "claudication"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "varicose veins"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "thrombophlebitis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "ulcers"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.14",
+          "text": "Gastrointestinal",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "swallowing problems"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "abdominal pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "constipation"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "diarrhea"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "incontinence"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "nausea"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "vomiting"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "ulcers"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "melena"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "rectal bleeding"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "jaundice"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "heartburn"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hematemesis"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.15",
+          "text": "Renal",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "dysuria"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "frequency"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "urgency"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hesitation"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "flank pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hematuria"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "incontinence"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "nocturia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "polyuria"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.16",
+          "text": "Musculoskeletal",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "swelling"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "stiffness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "limitation of range of motion"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "arthritis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "gout"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "cramps"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "myalgia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fasciculation"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "strophy"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fracture"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "deformity"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "weakness"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.17",
+          "text": "Neurologic",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "seizures"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "poor memory"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "poor concentration"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "numbness / tingling"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "pins and needles sensation"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hyperpathia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "dysesthesia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "weakness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "paralysis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "tremors"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "involuntary movements"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "unstable gait"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fall"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "vertigo"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "headache"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "stroke"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "speech disorders"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.18",
+          "text": "Psychiatric",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "hallucinations"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "delusions"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "anxiety"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "nervous breakdown"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "mood changes"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.19",
+          "text": "Hematology",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "anemia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "bruising"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "bleeding disorders (conditional)"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.20",
+          "text": "Endocrine",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "heat or cold intolerance"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "diabetes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "lipid disorders"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "goiter"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.21",
+          "text": "Other",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "10",
+      "text": "Physical examination",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "10.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "gtable",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Vital signs",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "10.1.1",
+              "code": [
+                {
+                  "code": "8310-5",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Temperature",
+              "type": "string"
+            },
+            {
+              "linkId": "10.1.2",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "{beats}/min",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8867-4",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Pulse (beats/min)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.1.3",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "{Breaths}/min",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "9279-1",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Respiration (Breaths/min)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.1.4",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "mm[Hg]",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8480-6",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "BP sys (mm[Hg])",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.1.5",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "mm[Hg]",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8462-4",
+                  "system": "http://loinc.org",
+                  "display": "BP dias"
+                }
+              ],
+              "text": "BP dias (mm[Hg])",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.1.6",
+              "code": [
+                {
+                  "code": "8302-2",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Height",
+              "type": "string"
+            },
+            {
+              "linkId": "10.1.6",
+              "code": [
+                {
+                  "code": "3141-9",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Weight",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "linkId": "10.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "gtable",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "O2 Related Measurements",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "10.2.1",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "%",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "text": "O2 Sat RA at Rest (%)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.2.2",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "%",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "text": "O2 Sat with supplemental O2 (%)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.2.3",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "L/min",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "text": "Supplemental O2 (LPM)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.2.4",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "cm",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "text": "Neck circumference (cm)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.2.5",
+              "text": "Body mass index BMI",
+              "type": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "10.3",
+          "text": "General Appearance",
+          "type": "text"
+        },
+        {
+          "linkId": "10.4",
+          "text": "Had and Neck",
+          "type": "text"
+        },
+        {
+          "linkId": "10.5",
+          "text": "Chest/lungs",
+          "type": "text"
+        },
+        {
+          "linkId": "10.6",
+          "text": "Cardiovascular",
+          "type": "text"
+        },
+        {
+          "linkId": "10.7",
+          "text": "Abdominal",
+          "type": "text"
+        },
+        {
+          "linkId": "10.8",
+          "text": "Musculoskeletal/extremities (including gait exam)",
+          "type": "text"
+        },
+        {
+          "linkId": "10.9",
+          "text": "Neurological",
+          "type": "text"
+        },
+        {
+          "linkId": "10.10",
+          "text": "Psychiatric",
+          "type": "text"
+        },
+        {
+          "linkId": "10.11",
+          "text": "Visual",
+          "type": "text"
+        },
+        {
+          "linkId": "10.12",
+          "text": "Test Results (e.g. pulmonary function, pulse oximetry)",
+          "type": "text"
+        },
+        {
+          "linkId": "10.13",
+          "text": "Other",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "11",
+      "text": "Assessment and Plan",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "11.1",
+          "text": "Assessment/Status",
+          "type": "text"
+        },
+        {
+          "linkId": "11.2",
+          "text": "Treatment Plan",
+          "type": "text"
+        },
+        {
+          "linkId": "11.3",
+          "text": "Orders",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "11.3.1",
+              "text": "Medications",
+              "type": "text"
+            },
+            {
+              "linkId": "11.3.2",
+              "text": "Supplies",
+              "type": "text"
+            },
+            {
+              "linkId": "11.3.3",
+              "text": " Investigations / diagnostic testing",
+              "type": "text"
+            },
+            {
+              "linkId": "11.3.4",
+              "text": "Consults",
+              "type": "text"
+            },
+            {
+              "linkId": "11.3.5",
+              "text": "Other",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "12",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "Questionnaire/PractitionerSignature"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}
