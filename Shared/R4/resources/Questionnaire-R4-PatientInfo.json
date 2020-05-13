@@ -127,7 +127,14 @@
           ],
           "text": "Gender",
           "type": "choice",
-          "answerValueSet": "#gender"
+          "answerValueSet": "#gender",
+          "initial": [
+            {
+              "valueReference": {
+                "reference": "#gender"
+              }
+            }
+          ]
         },
         {
           "linkId": "PBD.6",
