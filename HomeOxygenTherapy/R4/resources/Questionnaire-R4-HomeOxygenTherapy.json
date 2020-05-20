@@ -33,30 +33,6 @@
       }
     }
   ],
-  "contained": [
-    {
-      "resourceType": "ValueSet",
-      "id": "gender",
-      "url": "#gender",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "male",
-            "display": "Male"
-          },
-          {
-            "code": "female",
-            "display": "Female"
-          },
-          {
-            "code": "other",
-            "display": "Other"
-          }
-        ]
-      }
-    }
-  ],
   "item": [
     {
       "linkId": "1",
@@ -128,7 +104,7 @@
           "text": "Gender",
           "type": "choice",
           "required": true,
-          "answerValueSet": "#gender",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -483,7 +459,16 @@
           "linkId": "4.2",
           "text": "Length of need: (months) (99 = lifetime)",
           "type": "integer",
-          "required": false
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".LengthOfNeed"
+              }
+            }
+          ]
         },
         {
           "linkId": "4.4",
@@ -558,6 +543,15 @@
                 "code": "During sleep"
               }
             }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".FrequencyOfUse"
+              }
+            }
           ]
         }
       ]
@@ -602,6 +596,7 @@
           "text": "Type",
           "type": "choice",
           "required": true,
+          "readOnly": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -616,6 +611,15 @@
             {
               "valueCoding": {
                 "code": "Concentrator"
+              }
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceType"
               }
             }
           ]
@@ -688,6 +692,15 @@
             {
               "valueCoding": {
                 "code": "Replacement"
+              }
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
               }
             }
           ]
