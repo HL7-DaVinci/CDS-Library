@@ -1,0 +1,786 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "review-of-system",
+  "name": "Review Of System",
+  "status": "draft",
+  "item": [
+    {
+      "linkId": "ROS",
+      "text": "Review of systems",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "ROS.1",
+          "text": "General",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "weight gain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "weight loss"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "sleeping problems"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fatigue"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fever"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "chills"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "night sweats / disphoresis"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.2",
+          "text": "Skin",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "pressure ulcers"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "rashes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "changes in nails/hair"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "eczema"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "pruritus"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.3",
+          "text": "Lymphatic",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "ROS.3.1",
+              "text": "swollen glands/masses",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "in the neck"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "axilla"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "groin"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "ROS.3.2",
+              "text": "other",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.4",
+          "text": "Head",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "fainting"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "dizziness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "headaches"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.5",
+          "text": "Eyes",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "diplopia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "glasses/contact lenses"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "redness/discharge"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "blurred vision"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.6",
+          "text": "Ears",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "tinnitus"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "discharge"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hearing loss"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.7",
+          "text": "Nose",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "epistaxis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "sinus infections"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "discharge"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "polyps"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.8",
+          "text": "Oral",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "dysphagia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hoarseness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "teeth/dentures"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.9",
+          "text": "Neck",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "lumps"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "pain on movement"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.10",
+          "text": "Breast",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "masses/tumors"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "tenderness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "discharge"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "gynecomastia"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.11",
+          "text": "Pulmonary",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "cough"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "shortness of breath"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "wheezing"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hemoptysis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "sputum production"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "history of obstructive sleep apnea"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.12",
+          "text": "Cardiac",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "chest pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "palpitations"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "orthopnea"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "murmur"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "syncope"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.13",
+          "text": "Vascular",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "edema"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "claudication"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "varicose veins"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "thrombophlebitis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "ulcers"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.14",
+          "text": "Gastrointestinal",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "swallowing problems"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "abdominal pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "constipation"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "diarrhea"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "incontinence"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "nausea"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "vomiting"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "ulcers"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "melena"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "rectal bleeding"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "jaundice"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "heartburn"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hematemesis"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.15",
+          "text": "Renal",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "dysuria"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "frequency"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "urgency"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hesitation"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "flank pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hematuria"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "incontinence"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "nocturia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "polyuria"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.16",
+          "text": "Musculoskeletal",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "swelling"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "stiffness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "limitation of range of motion"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "arthritis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "gout"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "cramps"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "myalgia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fasciculation"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "strophy"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fracture"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "deformity"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "weakness"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.17",
+          "text": "Neurologic",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "seizures"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "poor memory"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "poor concentration"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "numbness / tingling"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "pins and needles sensation"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "hyperpathia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "dysesthesia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "weakness"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "paralysis"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "tremors"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "involuntary movements"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "unstable gait"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "fall"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "vertigo"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "headache"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "stroke"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "speech disorders"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.18",
+          "text": "Psychiatric",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "hallucinations"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "delusions"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "anxiety"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "nervous breakdown"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "mood changes"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.19",
+          "text": "Hematology",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "anemia"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "bruising"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "bleeding disorders (conditional)"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.20",
+          "text": "Endocrine",
+          "type": "open-choice",
+          "repeats": "true",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "heat or cold intolerance"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "diabetes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "lipid disorders"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "goiter"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ROS.21",
+          "text": "Other",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
