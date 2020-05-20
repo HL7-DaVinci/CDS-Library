@@ -8,18 +8,6 @@
       "valueReference": {
         "reference": "Library/UrologicalSupplies-prepopulation"
       }
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicPatientInfo-prepopulation"
-      }
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicPractitionerInfo-prepopulation"
-      }
     }
   ],
   "title": "UrologicalSupplies Progress Note Questionnaire",
@@ -27,29 +15,7 @@
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
   "subjectType": ["Patient"],
-  "contained": [
-    {
-      "resourceType": "ValueSet",
-      "id": "gender",
-      "url": "#gender",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "male",
-            "display": "Male"
-          },
-          {
-            "code": "female",
-            "display": "Female"
-          },
-          {
-            "code": "other",
-            "display": "Other"
-          }
-        ]
-      }
-    },
+  "contained": [    
     {
       "resourceType": "ValueSet",
       "id": "yesno",
@@ -71,203 +37,38 @@
   ],
   "item": [
     {
-      "linkId": "PBD",
+      "linkId": "1",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/questionnaire-item-control",
-                "code": "gtable"
-              }
-            ]
-          }
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
         }
       ],
-      "text": "Patient Information",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "PBD.1a",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
-              }
-            }
-          ],
-          "text": "Last Name",
-          "type": "string",
-          "required": true
-        },
-        {
-          "linkId": "PBD.1b",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
-              }
-            }
-          ],
-          "text": "First Name",
-          "type": "string",
-          "required": true
-        },
-        {
-          "linkId": "PBD.1c",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ],
-          "text": "Middle Initial",
-          "type": "string",
-          "required": true
-        },
-        {
-          "linkId": "PBD.2",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
-              }
-            }
-          ],
-          "text": "Date Of Birth",
-          "type": "date",
-          "required": true
-        },
-        {
-          "linkId": "PBD.3",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
-              }
-            }
-          ],
-          "text": "Gender",
-          "type": "choice",
-          "answerValueSet": "#gender"
-        },
-        {
-          "linkId": "PBD.4",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
-              }
-            }
-          ],
-          "text": "Medicare ID",
-          "type": "string"
-        }
-      ]
+      "type": "display"
     },
     {
-      "linkId": "PND",
+      "linkId": "2",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/questionnaire-item-control",
-                "code": "gtable"
-              }
-            ]
-          }
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
         }
       ],
-      "text": "Provider (physician/NPP) who performed the in-person evaluation if different from the signing provider",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "PND.1a",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
-              }
-            }
-          ],
-          "text": "Last Name",
-          "type": "string"
-        },
-        {
-          "linkId": "PND.1b",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
-              }
-            }
-          ],
-          "text": "First Name",
-          "type": "string"
-        },
-        {
-          "linkId": "PND.1c",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ],
-          "text": "Middle Initial",
-          "type": "string"
-        },
-        {
-          "linkId": "PND.2",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
-            }
-          ],
-          "text": "NPI",
-          "type": "string"
-        }
-      ]
+      "type": "display"
     },
     {
-      "linkId": "ENC",
+      "linkId": "3",
       "text": "Encounter",
       "type": "group",
       "item": [
         {
-          "linkId": "ENC.4",
+          "linkId": "3.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"VentilatorsPrepopulation\".Today"
+                "expression": "\"UrologicalSuppliesPrepopulation\".Today"
               }
             }
           ],
@@ -276,7 +77,7 @@
           "required": true
         },
         {
-          "linkId": "UROENC.1",
+          "linkId": "3.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -303,13 +104,13 @@
           "answerValueSet": "#yesno",
           "item": [
             {
-              "linkId": "UROENC.1a",
+              "linkId": "3.2.1",
               "text": "If No, purpose of the encounter",
               "type": "text",
               "require": true,
               "enableWhen": [
                 {
-                  "question": "UROENC.1",
+                  "question": "3.2",
                   "operator": "=",
                   "answerCoding": {
                     "code": "N"
@@ -322,18 +123,18 @@
       ]
     },
     {
-      "linkId": "DIAG",
+      "linkId": "4",
       "text": "Diagnoses",
       "type": "group",
       "item": [
         {
-          "linkId": "DIAG.1",
+          "linkId": "4.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"VentilatorsPrepopulation\".CurrentDiagnoses"
+                "expression": "\"UrologicalSuppliesPrepopulation\".CurrentDiagnoses"
               }
             }
           ],
@@ -344,13 +145,13 @@
           "answerOption": []
         },
         {
-          "linkId": "UROQUAL.1",
+          "linkId": "4.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"VentilatorsPrepopulation\".RelatedDiagnoese"
+                "expression": "\"UrologicalSuppliesPrepopulation\".RelatedDiagnoese"
               }
             }
           ],
@@ -363,22 +164,22 @@
       ]
     },
     {
-      "linkId": "SUB",
+      "linkId": "5",
       "text": "Sujective",
       "type": "group",
       "item": [
         {
-          "linkId": "SUB1.",
+          "linkId": "5.1",
           "text": "Chief complaint / history of present illness and associated signs / symptoms",
           "type": "text"
         },
         {
-          "linkId": "SUB.2",
+          "linkId": "5.2",
           "text": "Related past medical / surgical history",
           "type": "text"
         },
         {
-          "linkId": "MED.1",
+          "linkId": "5.3",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -397,32 +198,32 @@
           "repeats": true,
           "item": [
             {
-              "linkId": "MED.1.1",
+              "linkId": "5.3.1",
               "text": "RxNorm",
               "type": "string"
             },
             {
-              "linkId": "MED.1.2",
+              "linkId": "5.3.2",
               "text": "Description",
               "type": "string"
             },
             {
-              "linkId": "MED.1.3",
+              "linkId": "5.3.3",
               "text": "Dose",
               "type": "string"
             },
             {
-              "linkId": "MED.1.4",
+              "linkId": "5.3.4",
               "text": "Frequency",
               "type": "string"
             },
             {
-              "linkId": "MED.1.5",
+              "linkId": "5.3.5",
               "text": "Route",
               "type": "string"
             },
             {
-              "linkId": "MED.1.6",
+              "linkId": "5.3.6",
               "text": "Status",
               "type": "choice",
               "answerOption": [
@@ -451,7 +252,7 @@
           ]
         },
         {
-          "linkId": "ALL.1",
+          "linkId": "5.4",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -469,790 +270,22 @@
       ]
     },
     {
-      "linkId": "ROS",
-      "text": "Review of systems",
-      "type": "group",
-      "item": [
+      "linkId": "9",
+      "extension": [
         {
-          "linkId": "ROS.1",
-          "text": "General",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "weight gain"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "weight loss"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "sleeping problems"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "fatigue"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "fever"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "chills"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "night sweats / disphoresis"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.2",
-          "text": "Skin",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "pressure ulcers"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "rashes"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "changes in nails/hair"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "eczema"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "pruritus"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.3",
-          "text": "Lymphatic",
-          "type": "group",
-          "item": [
-            {
-              "linkId": "ROS.3.1",
-              "text": "swollen glands/masses",
-              "type": "choice",
-              "answerOption": [
-                {
-                  "valueCoding": {
-                    "display": "in the neck"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "axilla"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "groin"
-                  }
-                }
-              ]
-            },
-            {
-              "linkId": "ROS.3.2",
-              "text": "other",
-              "type": "text"
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.4",
-          "text": "Head",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "fainting"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "dizziness"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "headaches"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.5",
-          "text": "Eyes",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "diplopia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "glasses/contact lenses"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "redness/discharge"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "blurred vision"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.6",
-          "text": "Ears",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "tinnitus"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "discharge"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hearing loss"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.7",
-          "text": "Nose",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "epistaxis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "sinus infections"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "discharge"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "polyps"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.8",
-          "text": "Oral",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "dysphagia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hoarseness"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "teeth/dentures"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.9",
-          "text": "Neck",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "lumps"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "pain on movement"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.10",
-          "text": "Breast",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "masses/tumors"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "tenderness"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "discharge"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "gynecomastia"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.11",
-          "text": "Pulmonary",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "cough"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "shortness of breath"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "pain"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "wheezing"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hemoptysis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "sputum production"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "history of obstructive sleep apnea"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.12",
-          "text": "Cardiac",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "chest pain"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "palpitations"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "orthopnea"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "murmur"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "syncope"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.13",
-          "text": "Vascular",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "edema"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "claudication"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "varicose veins"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "thrombophlebitis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "ulcers"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.14",
-          "text": "Gastrointestinal",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "swallowing problems"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "abdominal pain"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "constipation"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "diarrhea"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "incontinence"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "nausea"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "vomiting"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "ulcers"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "melena"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "rectal bleeding"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "jaundice"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "heartburn"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hematemesis"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.15",
-          "text": "Renal",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "dysuria"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "frequency"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "urgency"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hesitation"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "flank pain"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hematuria"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "incontinence"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "nocturia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "polyuria"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.16",
-          "text": "Musculoskeletal",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "pain"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "swelling"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "stiffness"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "limitation of range of motion"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "arthritis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "gout"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "cramps"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "myalgia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "fasciculation"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "strophy"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "fracture"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "deformity"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "weakness"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.17",
-          "text": "Neurologic",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "seizures"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "poor memory"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "poor concentration"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "numbness / tingling"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "pins and needles sensation"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hyperpathia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "dysesthesia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "weakness"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "paralysis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "tremors"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "involuntary movements"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "unstable gait"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "fall"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "vertigo"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "headache"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "stroke"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "speech disorders"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.18",
-          "text": "Psychiatric",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "hallucinations"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "delusions"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "anxiety"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "nervous breakdown"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "mood changes"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.19",
-          "text": "Hematology",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "anemia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "bruising"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "bleeding disorders (conditional)"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.20",
-          "text": "Endocrine",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "heat or cold intolerance"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "diabetes"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "lipid disorders"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "goiter"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.21",
-          "text": "Other",
-          "type": "text"
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/review-of-system"
         }
-      ]
+      ],
+      "type": "display"
     },
     {
-      "linkId": "OBJ",
+      "linkId": "10",
       "text": "Physical examination",
       "type": "group",
       "item": [
         {
-          "linkId": "OBJ.1",
+          "linkId": "10.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -1270,7 +303,7 @@
           "type": "group",
           "item": [
             {
-              "linkId": "OBJ.1a",
+              "linkId": "10.1.1",
               "code": [
                 {
                   "code": "8310-5",
@@ -1281,7 +314,7 @@
               "type": "string"
             },
             {
-              "linkId": "OBJ.1b",
+              "linkId": "10.1.2",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -1301,7 +334,7 @@
               "type": "decimal"
             },
             {
-              "linkId": "OBJ.1c",
+              "linkId": "10.1.3",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -1321,7 +354,7 @@
               "type": "decimal"
             },
             {
-              "linkId": "OBJ.1d.1",
+              "linkId": "10.1.4",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -1341,7 +374,7 @@
               "type": "decimal"
             },
             {
-              "linkId": "OBJ.1d.2",
+              "linkId": "10.1.5",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -1362,7 +395,7 @@
               "type": "decimal"
             },
             {
-              "linkId": "OBJ.1e",
+              "linkId": "10.1.6",
               "code": [
                 {
                   "code": "8302-2",
@@ -1373,7 +406,7 @@
               "type": "string"
             },
             {
-              "linkId": "OBJ.1f",
+              "linkId": "10.1.7",
               "code": [
                 {
                   "code": "3141-9",
@@ -1386,69 +419,69 @@
           ]
         },
         {
-          "linkId": "OBJ.2",
+          "linkId": "10.2",
           "text": "General Appearance",
           "type": "text"
         },
         {
-          "linkId": "OBJ.3",
+          "linkId": "10.3",
           "text": "Had and Neck",
           "type": "text"
         },
         {
-          "linkId": "OBJ.4",
+          "linkId": "10.4",
           "text": "Chest/lungs",
           "type": "text"
         },
         {
-          "linkId": "OBJ.5",
+          "linkId": "10.5",
           "text": "Cardiovascular",
           "type": "text"
         },
         {
-          "linkId": "OBJ.6",
+          "linkId": "10.6",
           "text": "Abdominal",
           "type": "text"
         },
         {
-          "linkId": "OBJ.7",
+          "linkId": "10.7",
           "text": "Musculoskeletal/extremities (including gait exam)",
           "type": "text"
         },
         {
-          "linkId": "OBJ.8",
+          "linkId": "10.8",
           "text": "Neurological",
           "type": "text"
         },
         {
-          "linkId": "OBJ.9",
+          "linkId": "10.9",
           "text": "Psychiatric",
           "type": "text"
         },
         {
-          "linkId": "OBJ.10",
+          "linkId": "10.10",
           "text": "Visual",
           "type": "text"
         },
         {
-          "linkId": "OBJ.11",
+          "linkId": "10.11",
           "text": "Other",
           "type": "text"
         }
       ]
     },
     {
-      "linkId": "UROINFO",
+      "linkId": "11",
       "text": "Urologic Supplies Information",
       "type": "group",
       "item": [
         {
-          "linkId": "UROINFO.1a",
+          "linkId": "11.1a",
           "text": "Indwelling catheters",
           "type": "group",
           "item": [
             {
-              "linkId": "UROINFO.1",
+              "linkId": "11.1",
               "text": "Check any of the following that have occurred",
               "type": "open-choice",
               "repeats": true,
@@ -1476,7 +509,7 @@
               ]
             },
             {
-              "linkId": "UROINFO.2",
+              "linkId": "11.2",
               "text": "A specialty indwelling catheter or silicone catheter is necessary to prevent (check all relevant items)",
               "type": "open-choice",
               "repeats": true,
@@ -1501,12 +534,12 @@
           ]
         },
         {
-          "linkId": "UROINFO.3a",
+          "linkId": "11.3a",
           "text": "Urinary drainage collection systems",
           "type": "group",
           "item": [
             {
-              "linkId": "UROINFO.3",
+              "linkId": "11.3",
               "text": "Is there evidence of the following?",
               "type": "open-choice",
               "repeats": true,
@@ -1534,39 +567,39 @@
               ]
             },
             {
-              "linkId": "UROINFO.4",
+              "linkId": "11.4",
               "text": "Is the patient ambulatory/chair-bound and requires a leg bag?",
               "type": "boolean"
             }
           ]
         },
         {
-          "linkId": "UROINFO.5",
+          "linkId": "11.5",
           "text": "Irrigation of indwelling catheters",
           "type": "group",
           "item": [
             {
-              "linkId": "UROINFO.5.1",
+              "linkId": "11.5.1",
               "text": "There is evidence of occasional obstruction of the catheter requiring intermittent irrigation to remove or prevent",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.5.2",
+              "linkId": "11.5.2",
               "text": "There is a history of recurring obstruction of the catheter and the patency of the catheter cannot be maintained by intermittent irrigation in conjunction with reasonable and necessary catheter changes, requiring continuous irrigation",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.6",
+              "linkId": "11.6",
               "text": "Describe",
               "type": "text"
             },
             {
-              "linkId": "UROINFO.7",
+              "linkId": "11.7",
               "text": "For continuous irrigation",
               "type": "group",
               "item": [
                 {
-                  "linkId": "UROINFO.7.1",
+                  "linkId": "11.7.1",
                   "extension": [
                     {
                       "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -1579,7 +612,7 @@
                   "type": "decimal"
                 },
                 {
-                  "linkId": "UROINFO.7.2",
+                  "linkId": "11.7.2",
                   "extension": [
                     {
                       "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -1596,89 +629,89 @@
           ]
         },
         {
-          "linkId": "UROINFO.8",
+          "linkId": "11.8",
           "text": "Intermittent catheterization. Check any of the following that support the need/use of intermittent catherization",
           "type": "group",
           "item": [
             {
-              "linkId": "UROINFO.8.1",
+              "linkId": "11.8.1",
               "text": "A beneficiary or caregiver is available to perform the procedure",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.8.2",
+              "linkId": "11.8.2",
               "text": "The beneficiary resides in a nursing facility",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.8.3",
+              "linkId": "11.8.3",
               "text": "The beneficiary is immunosuppressed, for example (not all-inclusive)",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.8.4",
+              "linkId": "11.8.4",
               "text": "The beneficiary has radiologically documented vesico-ureteral reflux while on a program of intermittent catheterization",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.8.5",
+              "linkId": "11.8.5",
               "text": "The beneficiary is a spinal cord injured female with neurogenic bladder who is pregnant (for duration of pregnancy only)",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.8.6",
+              "linkId": "11.8.6",
               "text": "The beneficiary has had distinct, recurrent urinary tract infections, while on a program of sterile intermittent catheterization with A4351/A4352 and sterile lubricant A4332, twice within the 12-month prior to the initiation of sterile intermittent catheter kits",
               "type": "boolean"
             }
           ]
         },
         {
-          "linkId": "UROINFO.9a",
+          "linkId": "11.9a",
           "text": "Miscellaneous",
           "type": "group",
           "item": [
             {
-              "linkId": "UROINFO.9",
+              "linkId": "11.9",
               "text": "Is a Coude tip catheter is necessary because patient cannot be catheterized with a straight tip catheter (rare for female)?",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.10",
+              "linkId": "11.10",
               "text": "Does patient (female only) have diagnosis of stress incontinence?",
               "type": "boolean"
             },
             {
-              "linkId": "UROINFO.10a",
+              "linkId": "11.10a",
               "text": "Note: Contraindication for the use of urethral inserts:",
               "type": "display",
               "item": [
                 {
-                  "linkId": "UROINFO.10a.1",
+                  "linkId": "11.10a.1",
                   "type": "display",
                   "text": "bladder or other urinary tract infections (UTI)"
                 },
                 {
-                  "linkId": "UROINFO.10a.2",
+                  "linkId": "11.10a.2",
                   "type": "display",
                   "text": "history of urethral stricture, bladder augmentation, pelvic radiation or other conditions where urethral catheterization is not clinically advisable"
                 },
                 {
-                  "linkId": "UROINFO.10a.3",
+                  "linkId": "11.10a.3",
                   "type": "display",
                   "text": "immunocompromised, at significant risk from UTI, interstitial cystitis, or pyelonephritis, or who have severely compromised urinary mucosa"
                 },
                 {
-                  "linkId": "UROINFO.10a.4",
+                  "linkId": "11.10a.4",
                   "type": "display",
                   "text": "unable to tolerate antibiotic therapy"
                 },
                 {
-                  "linkId": "UROINFO.10a.5",
+                  "linkId": "11.10a.5",
                   "type": "display",
                   "text": "on anticoagulants"
                 },
                 {
-                  "linkId": "UROINFO.10a.6",
+                  "linkId": "11.10a.6",
                   "type": "display",
                   "text": "on anticoagulants"
                 }
@@ -1738,62 +771,14 @@
       ]
     },
     {
-      "linkId": "SIGPNP",
-      "text": "Provider Signature",
-      "type": "group",
-      "item": [
+      "linkId": "12",
+      "extension": [
         {
-          "linkId": "SIGPNP.1",
-          "text": "Signature",
-          "type": "string",
-          "required": true
-        },
-        {
-          "linkId": "SIGPNP.2",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
-              }
-            }
-          ],
-          "text": "Name (Printed)",
-          "type": "string",
-          "required": true
-        },
-        {
-          "linkId": "SIGPNP.3",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
-              }
-            }
-          ],
-          "text": "Date",
-          "type": "date",
-          "required": true
-        },
-        {
-          "linkId": "SIGPNP.4",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
-            }
-          ],
-          "text": "NPI",
-          "type": "string",
-          "required": true
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
         }
-      ]
+      ],
+      "type": "display"
     }
   ]
 }
