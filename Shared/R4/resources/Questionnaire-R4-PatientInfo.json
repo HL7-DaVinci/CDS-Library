@@ -11,30 +11,6 @@
     }
   ],
   "status": "draft",
-  "contained": [
-    {
-      "resourceType": "ValueSet",
-      "id": "gender",
-      "url": "#gender",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "male",
-            "display": "Male"
-          },
-          {
-            "code": "female",
-            "display": "Female"
-          },
-          {
-            "code": "other",
-            "display": "Other"
-          }
-        ]
-      }
-    }
-  ],
   "item": [
     {
       "linkId": "PBD",
@@ -127,14 +103,7 @@
           ],
           "text": "Gender",
           "type": "choice",
-          "answerValueSet": "#gender",
-          "initial": [
-            {
-              "valueReference": {
-                "reference": "#gender"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
         },
         {
           "linkId": "PBD.6",
