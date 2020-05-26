@@ -1,0 +1,784 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "UrologicalSuppliesProgressNote",
+  "name": "UrologicalSuppliesProgressNote",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/UrologicalSupplies-prepopulation"
+      }
+    }
+  ],
+  "title": "UrologicalSupplies Progress Note Questionnaire",
+  "status": "draft",
+  "date": "2020-04-09",
+  "publisher": "Da Vinci DTR",
+  "subjectType": ["Patient"],
+  "contained": [    
+    {
+      "resourceType": "ValueSet",
+      "id": "yesno",
+      "url": "#yesno",
+      "status": "draft",
+      "expansion": {
+        "contains": [
+          {
+            "code": "Y",
+            "display": "Yes"
+          },
+          {
+            "code": "N",
+            "display": "No"
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "3",
+      "text": "Encounter",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "3.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".Today"
+              }
+            }
+          ],
+          "text": "Date of encounter (MM/DD/YYYY):",
+          "type": "date",
+          "required": true
+        },
+        {
+          "linkId": "3.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".AnswerYes"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "radio-button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Is this an evaluation of the patient’s need for urological supplies?",
+          "required": true,
+          "type": "choice",
+          "answerValueSet": "#yesno",
+          "item": [
+            {
+              "linkId": "3.2.1",
+              "text": "If No, purpose of the encounter",
+              "type": "text",
+              "require": true,
+              "enableWhen": [
+                {
+                  "question": "3.2",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "N"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Diagnoses",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".CurrentDiagnoses"
+              }
+            }
+          ],
+          "text": "Current Patient Diagnoses",
+          "type": "open-choice",
+          "require": true,
+          "repeats": true,
+          "answerOption": []
+        },
+        {
+          "linkId": "4.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".RelatedDiagnoese"
+              }
+            }
+          ],
+          "text": "Patient Qualifying Diagnoses",
+          "type": "open-choice",
+          "repeats": true,
+          "required": true,
+          "answerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "Sujective",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "5.1",
+          "text": "Chief complaint / history of present illness and associated signs / symptoms",
+          "type": "text"
+        },
+        {
+          "linkId": "5.2",
+          "text": "Related past medical / surgical history",
+          "type": "text"
+        },
+        {
+          "linkId": "5.3",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Medication",
+          "type": "group",
+          "repeats": true,
+          "item": [
+            {
+              "linkId": "5.3.1",
+              "text": "RxNorm",
+              "type": "string"
+            },
+            {
+              "linkId": "5.3.2",
+              "text": "Description",
+              "type": "string"
+            },
+            {
+              "linkId": "5.3.3",
+              "text": "Dose",
+              "type": "string"
+            },
+            {
+              "linkId": "5.3.4",
+              "text": "Frequency",
+              "type": "string"
+            },
+            {
+              "linkId": "5.3.5",
+              "text": "Route",
+              "type": "string"
+            },
+            {
+              "linkId": "5.3.6",
+              "text": "Status",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "New"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Current"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Modified"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Discountinued"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "5.4",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".Allergies"
+              }
+            }
+          ],
+          "text": "Allergy",
+          "type": "open-choice",
+          "repeats": true,
+          "anwerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "9",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/review-of-system"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "10",
+      "text": "Physical examination",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "10.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "gtable",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Vital signs",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "10.1.1",
+              "code": [
+                {
+                  "code": "8310-5",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Temperature",
+              "type": "string"
+            },
+            {
+              "linkId": "10.1.2",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "{beats}/min",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8867-4",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Pulse (beats/min)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.1.3",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "{Breaths}/min",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "9279-1",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Respiration (Breaths/min)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.1.4",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "mm[Hg]",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8480-6",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "BP sys (mm[Hg])",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.1.5",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "mm[Hg]",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8462-4",
+                  "system": "http://loinc.org",
+                  "display": "BP dias"
+                }
+              ],
+              "text": "BP dias (mm[Hg])",
+              "type": "decimal"
+            },
+            {
+              "linkId": "10.1.6",
+              "code": [
+                {
+                  "code": "8302-2",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Height",
+              "type": "string"
+            },
+            {
+              "linkId": "10.1.7",
+              "code": [
+                {
+                  "code": "3141-9",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Weight",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "linkId": "10.2",
+          "text": "General Appearance",
+          "type": "text"
+        },
+        {
+          "linkId": "10.3",
+          "text": "Had and Neck",
+          "type": "text"
+        },
+        {
+          "linkId": "10.4",
+          "text": "Chest/lungs",
+          "type": "text"
+        },
+        {
+          "linkId": "10.5",
+          "text": "Cardiovascular",
+          "type": "text"
+        },
+        {
+          "linkId": "10.6",
+          "text": "Abdominal",
+          "type": "text"
+        },
+        {
+          "linkId": "10.7",
+          "text": "Musculoskeletal/extremities (including gait exam)",
+          "type": "text"
+        },
+        {
+          "linkId": "10.8",
+          "text": "Neurological",
+          "type": "text"
+        },
+        {
+          "linkId": "10.9",
+          "text": "Psychiatric",
+          "type": "text"
+        },
+        {
+          "linkId": "10.10",
+          "text": "Visual",
+          "type": "text"
+        },
+        {
+          "linkId": "10.11",
+          "text": "Other",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "11",
+      "text": "Urologic Supplies Information",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "11.1a",
+          "text": "Indwelling catheters",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "11.1",
+              "text": "Check any of the following that have occurred",
+              "type": "open-choice",
+              "repeats": true,
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "Catheter was accidentally removed (e.g., pulled out by beneficiary)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Catheter malfunctioned (e.g., balloon does not stay inflated, hole in catheter)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Catheter was obstructed by encrustation, mucous plug, or blood clot"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "There is a history of recurrent obstruction or urinary tract infection for which it has been established that an acute event is prevented by a scheduled change frequency of more than once per month"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "11.2",
+              "text": "A specialty indwelling catheter or silicone catheter is necessary to prevent (check all relevant items)",
+              "type": "open-choice",
+              "repeats": true,
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "Recurrent encrustation"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Inability to pass a straight catheter"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "Sensitivity to latex"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "11.3a",
+          "text": "Urinary drainage collection systems",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "11.3",
+              "text": "Is there evidence of the following?",
+              "type": "open-choice",
+              "repeats": true,
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "obstruction"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "sluding"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "clotting of blood"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "display": "chronic, recurrent urinary tract infection"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "11.4",
+              "text": "Is the patient ambulatory/chair-bound and requires a leg bag?",
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "linkId": "11.5",
+          "text": "Irrigation of indwelling catheters",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "11.5.1",
+              "text": "There is evidence of occasional obstruction of the catheter requiring intermittent irrigation to remove or prevent",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.5.2",
+              "text": "There is a history of recurring obstruction of the catheter and the patency of the catheter cannot be maintained by intermittent irrigation in conjunction with reasonable and necessary catheter changes, requiring continuous irrigation",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.6",
+              "text": "Describe",
+              "type": "text"
+            },
+            {
+              "linkId": "11.7",
+              "text": "For continuous irrigation",
+              "type": "group",
+              "item": [
+                {
+                  "linkId": "11.7.1",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "ml/hr"
+                      }
+                    }
+                  ],
+                  "text": "rate of solution administration (ml/hr)",
+                  "type": "decimal"
+                },
+                {
+                  "linkId": "11.7.2",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "days"
+                      }
+                    }
+                  ],
+                  "text": "duration of need (typically less than two weeks) (days)",
+                  "type": "integer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "11.8",
+          "text": "Intermittent catheterization. Check any of the following that support the need/use of intermittent catherization",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "11.8.1",
+              "text": "A beneficiary or caregiver is available to perform the procedure",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.8.2",
+              "text": "The beneficiary resides in a nursing facility",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.8.3",
+              "text": "The beneficiary is immunosuppressed, for example (not all-inclusive)",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.8.4",
+              "text": "The beneficiary has radiologically documented vesico-ureteral reflux while on a program of intermittent catheterization",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.8.5",
+              "text": "The beneficiary is a spinal cord injured female with neurogenic bladder who is pregnant (for duration of pregnancy only)",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.8.6",
+              "text": "The beneficiary has had distinct, recurrent urinary tract infections, while on a program of sterile intermittent catheterization with A4351/A4352 and sterile lubricant A4332, twice within the 12-month prior to the initiation of sterile intermittent catheter kits",
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "linkId": "11.9a",
+          "text": "Miscellaneous",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "11.9",
+              "text": "Is a Coude tip catheter is necessary because patient cannot be catheterized with a straight tip catheter (rare for female)?",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.10",
+              "text": "Does patient (female only) have diagnosis of stress incontinence?",
+              "type": "boolean"
+            },
+            {
+              "linkId": "11.10a",
+              "text": "Note: Contraindication for the use of urethral inserts:",
+              "type": "display",
+              "item": [
+                {
+                  "linkId": "11.10a.1",
+                  "type": "display",
+                  "text": "bladder or other urinary tract infections (UTI)"
+                },
+                {
+                  "linkId": "11.10a.2",
+                  "type": "display",
+                  "text": "history of urethral stricture, bladder augmentation, pelvic radiation or other conditions where urethral catheterization is not clinically advisable"
+                },
+                {
+                  "linkId": "11.10a.3",
+                  "type": "display",
+                  "text": "immunocompromised, at significant risk from UTI, interstitial cystitis, or pyelonephritis, or who have severely compromised urinary mucosa"
+                },
+                {
+                  "linkId": "11.10a.4",
+                  "type": "display",
+                  "text": "unable to tolerate antibiotic therapy"
+                },
+                {
+                  "linkId": "11.10a.5",
+                  "type": "display",
+                  "text": "on anticoagulants"
+                },
+                {
+                  "linkId": "11.10a.6",
+                  "type": "display",
+                  "text": "on anticoagulants"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "APO",
+      "text": "Accessment and Plan",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "ASM.1",
+          "text": "Assessment/Summary",
+          "type": "text"
+        },
+        {
+          "linkId": "PLAN.1",
+          "text": "Treatment Paln",
+          "type": "text"
+        },
+        {
+          "linkId": "ORD",
+          "text": "Orders",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "ORD.1",
+              "text": "Medications",
+              "type": "text"
+            },
+            {
+              "linkId": "ORD.2",
+              "text": "Supplies",
+              "type": "text"
+            },
+            {
+              "linkId": "ORD.3",
+              "text": " Investigations / diagnostic testing",
+              "type": "text"
+            },
+            {
+              "linkId": "ORD.4",
+              "text": "Consults",
+              "type": "text"
+            },
+            {
+              "linkId": "ORD.5",
+              "text": "Other",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "12",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}

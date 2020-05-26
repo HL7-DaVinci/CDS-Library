@@ -1,0 +1,79 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "practitioner-info",
+  "name": "Practitioner Module",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPractitionerInfo-prepopulation"
+      }
+    }
+  ],
+  "status": "draft",
+  "item": [
+    {
+      "linkId": "PND",
+      "text": "Provider who perfromed the in-person evaluation",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "PND.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
+              }
+            }
+          ],
+          "text": "Last Name",
+          "type": "string"
+        },
+        {
+          "linkId": "PND.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              }
+            }
+          ],
+          "text": "First Name",
+          "type": "string"
+        },
+        {
+          "linkId": "PND.3",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+              }
+            }
+          ],
+          "text": "Middle Initial",
+          "type": "string"
+        },
+        {
+          "linkId": "PND.4",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ],
+          "text": "NPI",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

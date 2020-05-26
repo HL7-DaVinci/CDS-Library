@@ -1,0 +1,74 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "provider-signature",
+  "name": "Provider Signature",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPractitionerInfo-prepopulation"
+      }
+    }
+  ],
+  "status": "draft",
+  "item": [
+    {
+      "linkId": "SIGPNP",
+      "text": "Provider Signature",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "SIGPNP.1",
+          "text": "Signature",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "SIGPNP.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+              }
+            }
+          ],
+          "text": "Name (Printed)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "SIGPNP.3",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
+              }
+            }
+          ],
+          "text": "Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "linkId": "SIGPNP.4",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ],
+          "text": "NPI",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,18 @@
-library VentilatorsPrepopulation version '0.1.0'
+library UrologicalSuppliesPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
-valueset "Ventilator Therapy Qualifying Condition": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.48'
-valueset "Ventilator Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
+codesystem "ICD-10": 'http://hl7.org/fhir/sid/icd-10'
+codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
+codesystem "LOINC": 'http://loinc.org'
+codesystem "SNOMED-CT": 'http://snomed.info/sct'
+codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 
-parameter device_request DeviceRequest
+valueset "Urinary Incontinence or Chronic Urinary Retention Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.70'
+// TODO: Update HCPCS codes after VSAC value set is done
+valueset "Urinary Collection and Irrigation System Device or Supply": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.49'
+
+parameter service_request ServiceRequest
 
 context Patient
 
@@ -13,20 +20,20 @@ define Today: Today()
 
 // coverage requirement info
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Ventilator Therapy Qualifying Condition"]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Urinary Incontinence or Chronic Urinary Retention Disorder"]))) 
 
-define OtherDiagnoses:
+define CurrentDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
 
 define Allergies:
   CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))
 
-define DeviceRequestHcpcsCoding: singleton from (
-  (DeviceRequest.code.coding) CODING
-    where CODING.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
+define ServiceRequestHcpcsCoding: singleton from (
+  ((cast service_request.code as CodeableConcept).coding) coding
+    where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
-define DeviceRequested:
-  if "DeviceRequestHcpcsCoding".code in "Ventilator Device" then "DeviceRequestHcpcsCoding".code.value
+define ServiceRequested:
+  if "ServiceRequestHcpcsCoding".code in "Urinary Collection and Irrigation System Device or Supply" then "ServiceRequestHcpcsCoding".code.value
   else 'null'
 
 define function CodesFromConditions(CondList List<Condition>):

@@ -1,0 +1,126 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "patient-info",
+  "name": "Patient Module",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPatientInfo-prepopulation"
+      }
+    }
+  ],
+  "status": "draft",
+  "item": [
+    {
+      "linkId": "PBD",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "type": "group",
+      "text": "Patient Information",
+      "item": [
+        {
+          "linkId": "PBD.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              }
+            }
+          ],
+          "text": "Last Name:",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "PBD.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+              }
+            }
+          ],
+          "text": "First Name:",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "PBD.3",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              }
+            }
+          ],
+          "text": "Middle Initial:",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "PBD.4",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              }
+            }
+          ],
+          "text": "Date of Birth:",
+          "type": "date",
+          "required": true
+        },
+        {
+          "linkId": "PBD.5",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+              }
+            }
+          ],
+          "text": "Gender",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+        },
+        {
+          "linkId": "PBD.6",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              }
+            }
+          ],
+          "text": "Medicare ID:",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
