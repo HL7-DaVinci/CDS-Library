@@ -33,30 +33,6 @@
       }
     }
   ],
-  "contained": [
-    {
-      "resourceType": "ValueSet",
-      "id": "gender",
-      "url": "#gender",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "male",
-            "display": "Male"
-          },
-          {
-            "code": "female",
-            "display": "Female"
-          },
-          {
-            "code": "other",
-            "display": "Other"
-          }
-        ]
-      }
-    }
-  ],
   "item": [
     {
       "linkId": "1",
@@ -128,7 +104,7 @@
           "text": "Gender",
           "type": "choice",
           "required": true,
-          "answerValueSet": "#gender",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
