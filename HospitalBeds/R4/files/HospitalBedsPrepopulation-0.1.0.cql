@@ -6,6 +6,13 @@ codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
+valueset "FixedHeightBedsCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.50'
+valueset "VariableHeightBedsCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.51'
+valueset "SemiElectricBedsCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.52'
+valueset "TrapezeCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.55'
+valueset "BedcradleCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.56'
+valueset "SafetyrailCodes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.57'
+
 //Body Weight code
 code "29463-7": '29463-7' from "LOINC"
 
@@ -63,6 +70,13 @@ define "DeviceRequested":
   else if "DeviceRequestHcpcsCoding".code.value = 'E0251' then 'E0251'
   else 'null'
 
+define "FixedHeightBedsOrdered": "DeviceRequestHcpcsCoding" in "FixedHeightBedsCodes"
+define "VariableHeightBedsOrdered": "DeviceRequestHcpcsCoding" in "VariableHeightBedsCodes"
+define "SemiElectricBedsOrdered": "DeviceRequestHcpcsCoding" in "SemiElectricBedsCodes"
+define "TrapezeOrdered": "DeviceRequestHcpcsCoding" in "TrapezeCodes"
+define "BedcradleOrdered": "DeviceRequestHcpcsCoding" in "BedcradleCodes"
+define "SafetyrailOrdered": "DeviceRequestHcpcsCoding" in "SafetyrailCodes"
+
 define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
   distinct(
     flatten(
@@ -85,12 +99,30 @@ define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
     )
   )
 
-  define function EncounterLookBack(EncounterList List<Encounter>, LookBack System.Quantity):
+define function EncounterLookBack(EncounterList List<Encounter>, LookBack System.Quantity):
   EncounterList E
     let LookBackInterval: Interval[Now() - LookBack, Now()]
     where (cast E.period.start as dateTime).value in LookBackInterval
       or NullSafeToInterval(cast E.period as Period) overlaps LookBackInterval
 
+define "True": true
+
+define "AllAlergy": ConfirmedAllergy([AllergyIntolerance])
+
+define "AllDrugAllergyWithCode": 
+  distinct(flatten(
+    [AllergyIntolerance] A
+      let Codings: 
+        (A.code.coding) CODING where CODING.system.value in {
+          'http://www.nlm.nih.gov/research/umls/rxnorm'
+        }
+        return CODING.display.value + '-' + CODING.code.value
+      where exists(Codings)
+      return Codings 
+  ))
+
+define function ConfirmedAllergy(AllergyList List<AllergyIntolerance>):
+  AllergyList A where A.verificationStatus.coding.code in {'confirmed'}
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
@@ -128,3 +160,5 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
 
 define function LowestObservation(ObsList List<Observation>):
   Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
+
+

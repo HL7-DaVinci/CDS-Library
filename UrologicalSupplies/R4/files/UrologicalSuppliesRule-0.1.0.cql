@@ -1,12 +1,12 @@
-library HospitalBedsRule version '0.1.0'
+library UrologicalSuppliesRule version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
 parameter Patient Patient
-parameter device_request DeviceRequest
+parameter service_request ServiceRequest
 
 define RULE_APPLIES:
-    true
+  true
 
 define PRIORAUTH_REQUIRED:
   false
@@ -21,13 +21,13 @@ define RESULT_Details:
   'Documentation Required, please complete form via Smart App link.'
 
 define RESULT_InfoLink:
-    'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/ProviderComplianceTipsforHospitalBedsandAccessories-ICN909476.pdf'
+    'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/ProviderComplianceTipsforVentilators-MLN9725344Print-Friendly.pdf'
 
 define RESULT_QuestionnaireOrderUri:
-    'Questionnaire/HospitalBeds'
+    'Questionnaire/UrologicalSuppliesProgressNote'
 
-define RESULT_QuestionnaireFaceToFaceUri:
-    'Questionnaire/HospitalBedsFaceToFace'
+define RESULT_QuestionnaireProgressNoteUri:
+    'Questionnaire/UrologicalSuppliesProgressNote'
 
 define RESULT_requestId:
-  device_request
+  service_request
