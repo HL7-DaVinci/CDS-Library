@@ -25,5 +25,61 @@
       "contentType": "application/elm+json",
       "url": "files/HospitalBeds/r4/HospitalBedsPrepopulation-0.1.0.cql"
     }
+  ],
+  "dataRequirement": [
+    {
+      "type": "DeviceRequest",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.50"
+        }
+      ]
+    },
+    {
+      "type": "DeviceRequest",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.51"
+        }
+      ]
+    },
+    {
+      "type": "DeviceRequest",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.52"
+        }
+      ]
+    },
+    {
+      "type": "DeviceRequest",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.55"
+        }
+      ]
+    },
+    {
+      "type": "DeviceRequest",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.56"
+        }
+      ]
+    },
+    {
+      "type": "DeviceRequest",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.57"
+        }
+      ]
+    }
   ]
 }
