@@ -1,0 +1,40 @@
+{
+    "resourceType": "Library",
+    "id": "ImmunosuppressiveDrugs-prepopulation",
+    "name": "ImmunosuppressiveDrugss-prepopulation",
+    "version": "0.1.0",
+    "title": "ImmunosuppressiveDrugs Prepopulation",
+    "status": "draft",
+    "type": {
+        "coding": [
+            {
+                "code": "logic-library"
+            }
+        ]
+    },
+    "relatedArtifact": [
+        {
+            "type": "depends-on",
+            "resource": {
+                "reference": "Library/FHIRHelpers-4.0.0"
+            }
+        }
+    ],
+    "dataRequirement": [
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.81"
+                }
+            ]
+        }
+    ],
+    "content": [
+        {
+            "contentType": "application/elm+json",
+            "url": "files/ImmunosuppressiveDrugs/r4/ImmunosuppressiveDrugsPrepopulation-0.1.0.cql"
+        }
+    ]
+}

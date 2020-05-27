@@ -24,7 +24,7 @@ define RESULT_InfoLink:
     'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/ProviderComplianceTipsforHospitalBedsandAccessories-ICN909476.pdf'
 
 define RESULT_QuestionnaireOrderUri:
-    'Questionnaire/HospitalBeds'
+    'Questionnaire/ImmunosuppressiveDrugs'
 
 define RESULT_requestId:
   medication_request

@@ -1,0 +1,63 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "ImmunosuppressiveDrugs",
+  "name": "ImmunosuppressiveDrugs",
+  "title": "Immunosuppressive Drugs",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2020-05-20",
+  "publisher": "Da Vinci DTR",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/ImmunosuppressiveDrugs-prepopulation"
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "text": "Qualifying Transplants",
+      "type": "text"
+    },
+    {
+      "linkId": "3",
+      "text": "Date of transplant",
+      "type": "date"
+    },
+    {
+      "linkId": "4",
+      "text": "Type of order",
+      "type": "choice",
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/medicationrequest-intent"
+    },
+    {
+      "linkId": "5",
+      "text": "Order",
+      "type": "text"
+    },
+    {
+      "linkId": "6",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}
