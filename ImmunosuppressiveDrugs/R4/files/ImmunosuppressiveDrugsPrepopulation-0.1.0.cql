@@ -48,6 +48,27 @@ define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
     )
   )
 
+
+
+define "MedicationRequest": medication_request
+
+define "Medication": MedicationRequest.medication
+
+define "MedicationName": Medication.coding[0].display.value
+
+define "MedicationHCPCS" : Medication.coding[0].code.value
+
+define "MedicationDosage": MedicationRequest.dosageInstruction[0]
+
+define "MedicationDoseAndRate": MedicationDosage.doseAndRate[0]
+
+define "MedicationDoseWithUnit": ToString(MedicationDoseAndRate.dose.value.value) + '' + MedicationDoseAndRate.dose.unit
+
+define "MedicationRoute": MedicationDosage.route.coding[0].display.value
+
+define "MedicationFrequency" : ToString(MedicationDosage.timing.repeat.frequency.value) + ' per ' + ToString(MedicationDosage.timing.repeat.period.value) + '' + MedicationDosage.timing.repeat.periodUnit.value
+
+
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}

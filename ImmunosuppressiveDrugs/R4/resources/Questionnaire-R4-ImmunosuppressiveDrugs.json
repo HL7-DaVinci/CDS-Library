@@ -47,7 +47,79 @@
     {
       "linkId": "5",
       "text": "Order",
-      "type": "text"
+      "type": "group",
+      "item": [
+        {
+          "linkId": "5.1",
+          "type": "text",
+          "text": "HCPCS Code",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationHCPCS"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.2",
+          "type": "text",
+          "text": "Drug",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "type": "text",
+          "text": "Route",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationRoute"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.4",
+          "type": "text",
+          "text": "Dose",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationDoseWithUnit"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.5",
+          "type": "text",
+          "text": "Frequency",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationFrequency"
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "linkId": "6",
