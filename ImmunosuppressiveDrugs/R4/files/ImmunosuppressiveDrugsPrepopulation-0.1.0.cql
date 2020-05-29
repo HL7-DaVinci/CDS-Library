@@ -6,50 +6,37 @@ codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
+valueset "OrganTransplantHistoryValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.81'
+
 parameter medication_request MedicationRequest
 
 context Patient
 
-define OtherDiagnoses:
-  distinct(flatten(
-    [Condition] C
-      let ICD10Codings:
-        ((C.code.coding) CODING where CODING.system.value in {
-          'http://hl7.org/fhir/sid/icd-10',
-          'http://hl7.org/fhir/sid/icd-10-cm'
-        }
-        return CODING.code.value + ' - ' + CODING.display.value)
-      where C.clinicalStatus.coding.code = 'active'
-      and exists(ICD10Codings)
-      return ICD10Codings
-  ))
+define "QualifyingTransplant": [Condition: "OrganTransplantHistoryValueSet"] 
 
-define CurrentDiagnoses: ActiveConfirmedDiagnoese([Condition])
+define "QualifyingTransplantCodings": ConditionCoding("QualifyingTransplant")
 
-define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
+// get the first transplant date
+define "TransplantDate": 
+  if exists("QualifyingTransplant") then First("QualifyingTransplant").recordedDate.value
+  else null
+
+define function ConditionCoding(CondList List<FHIR.Condition>):
   distinct(
     flatten(
       CondList C
         let DiagnosesCodings:
-          (C.code.coding) CODING where CODING.system.value in {
-            'http://hl7.org/fhir/sid/icd-10',
-            'http://hl7.org/fhir/sid/icd-10-cm',
-            'http://snomed.info/sct'
-          }
+          (C.code.coding) CODING 
           return Tuple {
             code: CODING.code.value,
             system: CODING.system.value,
             display: CODING.display.value
           }
-        where C.verificationStatus.coding.code = 'confirmed'
-          and C.clinicalStatus.coding.code in {'active', 'relapse'}
-          and exists(DiagnosesCodings)
         return DiagnosesCodings
     )
   )
 
-
-
+// Get all medication related information
 define "MedicationRequest": medication_request
 
 define "Medication": MedicationRequest.medication

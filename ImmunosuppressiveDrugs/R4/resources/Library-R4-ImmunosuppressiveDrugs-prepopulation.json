@@ -22,7 +22,7 @@
     ],
     "dataRequirement": [
         {
-            "type": "Procedure",
+            "type": "Condition",
             "codeFilter": [
                 {
                     "path": "code",

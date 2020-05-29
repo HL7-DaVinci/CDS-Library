@@ -31,12 +31,32 @@
     {
       "linkId": "2",
       "text": "Qualifying Transplants",
-      "type": "text"
+      "type": "open-choice",
+      "repeats": true,
+      "answerOption": [],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"ImmunosuppressiveDrugsPrepopulation\".QualifyingTransplantCodings"
+          }
+        }
+      ]
     },
     {
       "linkId": "3",
       "text": "Date of transplant",
-      "type": "date"
+      "type": "date",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"ImmunosuppressiveDrugsPrepopulation\".TransplantDate"
+          }
+        }
+      ]
     },
     {
       "linkId": "4",
