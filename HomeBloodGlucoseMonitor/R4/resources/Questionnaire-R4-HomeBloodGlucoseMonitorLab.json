@@ -61,145 +61,98 @@
   ],
   "item": [
     {
-      "type": "group",
-      "code": [
-        {
-          "code": "1",
-          "display": "Patient Information"
-        }
-      ],
-      "required": false,
       "linkId": "1",
       "text": "Patient Information",
+      "type": "group",
       "item": [
         {
-          "type": "group",
-          "code": [
+          "linkId": "1.1",
+          "text": "Last Name",
+          "type": "string",
+          "required": true,
+          "extension": [
             {
-              "code": "1a"
-            }
-          ],
-          "required": false,
-          "linkId": "1a",
-          "item": [
-            {
-              "type": "string",
-              "code": [
-                {
-                  "code": "1.1",
-                  "display": "Last Name"
-                }
-              ],
-              "required": true,
-              "linkId": "1.1",
-              "text": "Last Name"
-            },
-            {
-              "type": "string",
-              "code": [
-                {
-                  "code": "1.2",
-                  "display": "First Name"
-                }
-              ],
-              "required": true,
-              "linkId": "1.2",
-              "text": "First Name"
-            },
-            {
-              "type": "string",
-              "code": [
-                {
-                  "code": "1.3",
-                  "display": "Middle Initial"
-                }
-              ],
-              "required": true,
-              "linkId": "1.3",
-              "text": "Middle Initial"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              }
             }
           ]
         },
         {
-          "type": "group",
-          "code": [
+          "linkId": "1.2",
+          "text": "First Name",
+          "type": "string",
+          "required": true,
+          "extension": [
             {
-              "code": "1b"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+              }
             }
-          ],
-          "required": false,
-          "linkId": "1b",
-          "item": [
+          ]
+        },
+        {
+          "linkId": "1.3",
+          "text": "Middle Initial",
+          "type": "string",
+          "required": true,
+          "extension": [
             {
-              "type": "date",
-              "code": [
-                {
-                  "code": "1.4",
-                  "display": "Date of Birth"
-                }
-              ],
-              "required": true,
-              "linkId": "1.4",
-              "text": "Date of Birth"
-            },
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.4",
+          "text": "Date Of Birth",
+          "type": "date",
+          "required": true,
+          "extension": [
             {
-              "type": "choice",
-              "code": [
-                {
-                  "code": "1.5",
-                  "display": "Gender"
-                }
-              ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "system": "http://hl7.org/fhir/questionnaire-item-control",
-                        "code": "drop-down",
-                        "display": "Drop down"
-                      }
-                    ],
-                    "text": "Drop down"
-                  }
-                }
-              ],
-              "required": true,
-              "linkId": "1.5",
-              "text": "Gender",
-              "answerOption": [
-                {
-                  "valueCoding": {
-                    "code": "male",
-                    "display": "Male"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "female",
-                    "display": "Female"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "other",
-                    "display": "Other"
-                  }
-                }
-              ]
-            },
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.5",
+          "text": "Gender",
+          "type": "choice",
+          "required": true,
+          "answerValueSet": "#gender", 
+          "extension": [
             {
-              "type": "string",
-              "code": [
-                {
-                  "code": "1.6",
-                  "display": "Medicare ID"
-                }
-              ],
-              "required": false,
-              "linkId": "1.6",
-              "text": "Medicare ID"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.6",
+          "text": "Medicare ID",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              }
             }
           ]
         }
