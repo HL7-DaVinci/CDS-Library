@@ -7,6 +7,7 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
 valueset "OrganTransplantHistoryValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.81'
+valueset "OrganTransplantProcedureValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.90'
 
 parameter medication_request MedicationRequest
 
@@ -14,7 +15,9 @@ context Patient
 
 define "QualifyingTransplant": [Condition: "OrganTransplantHistoryValueSet"] 
 
-define "QualifyingTransplantCodings": ConditionCoding("QualifyingTransplant")
+define "QualifyingTransplantProcedures": [Procedure: "OrganTransplantProcedureValueSet"]
+
+define "QualifyingTransplantCodings": ConditionCoding("QualifyingTransplant") union ProcedureCoding("QualifyingTransplantProcedures")
 
 // get the first transplant date
 define "TransplantDate": 
@@ -27,6 +30,21 @@ define function ConditionCoding(CondList List<FHIR.Condition>):
       CondList C
         let DiagnosesCodings:
           (C.code.coding) CODING 
+          return Tuple {
+            code: CODING.code.value,
+            system: CODING.system.value,
+            display: CODING.display.value
+          }
+        return DiagnosesCodings
+    )
+  )
+
+define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
+  distinct(
+    flatten(
+      ProcedureList P
+        let DiagnosesCodings:
+          (P.code.coding) CODING 
           return Tuple {
             code: CODING.code.value,
             system: CODING.system.value,
