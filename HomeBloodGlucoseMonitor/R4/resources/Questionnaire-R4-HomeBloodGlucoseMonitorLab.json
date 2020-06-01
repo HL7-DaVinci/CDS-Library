@@ -1,0 +1,551 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "HomeBloodGlucoseMonitorLab",
+  "name": "HomeBloodGlucoseMonitorLab",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqif-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "title": "Blood Glucose Laboratory Test Results",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2019-11-14",
+  "publisher": "Da Vinci DTR",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/HomeBloodGlucoseMonitor-prepopulation"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPatientInfo-prepopulation"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPractitionerInfo-prepopulation"
+      }
+    }
+  ],
+  "contained": [
+    {
+      "resourceType": "ValueSet",
+      "id": "gender",
+      "url": "#gender",
+      "status": "draft",
+      "expansion": {
+        "contains": [
+          {
+            "code": "male",
+            "display": "Male"
+          },
+          {
+            "code": "female",
+            "display": "Female"
+          },
+          {
+            "code": "other",
+            "display": "Other"
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "type": "group",
+      "code": [
+        {
+          "code": "1",
+          "display": "Patient Information"
+        }
+      ],
+      "required": false,
+      "linkId": "1",
+      "text": "Patient Information",
+      "item": [
+        {
+          "type": "group",
+          "code": [
+            {
+              "code": "1a"
+            }
+          ],
+          "required": false,
+          "linkId": "1a",
+          "item": [
+            {
+              "type": "string",
+              "code": [
+                {
+                  "code": "1.1",
+                  "display": "Last Name"
+                }
+              ],
+              "required": true,
+              "linkId": "1.1",
+              "text": "Last Name"
+            },
+            {
+              "type": "string",
+              "code": [
+                {
+                  "code": "1.2",
+                  "display": "First Name"
+                }
+              ],
+              "required": true,
+              "linkId": "1.2",
+              "text": "First Name"
+            },
+            {
+              "type": "string",
+              "code": [
+                {
+                  "code": "1.3",
+                  "display": "Middle Initial"
+                }
+              ],
+              "required": true,
+              "linkId": "1.3",
+              "text": "Middle Initial"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [
+            {
+              "code": "1b"
+            }
+          ],
+          "required": false,
+          "linkId": "1b",
+          "item": [
+            {
+              "type": "date",
+              "code": [
+                {
+                  "code": "1.4",
+                  "display": "Date of Birth"
+                }
+              ],
+              "required": true,
+              "linkId": "1.4",
+              "text": "Date of Birth"
+            },
+            {
+              "type": "choice",
+              "code": [
+                {
+                  "code": "1.5",
+                  "display": "Gender"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "drop-down",
+                        "display": "Drop down"
+                      }
+                    ],
+                    "text": "Drop down"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "1.5",
+              "text": "Gender",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "male",
+                    "display": "Male"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "female",
+                    "display": "Female"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "other",
+                    "display": "Other"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "code": [
+                {
+                  "code": "1.6",
+                  "display": "Medicare ID"
+                }
+              ],
+              "required": false,
+              "linkId": "1.6",
+              "text": "Medicare ID"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "code": [
+        {
+          "code": "2",
+          "display": "Provider"
+        }
+      ],
+      "required": false,
+      "linkId": "2",
+      "text": "Provider",
+      "item": [
+        {
+          "type": "group",
+          "code": [
+            {
+              "code": "2a"
+            }
+          ],
+          "required": false,
+          "linkId": "2a",
+          "item": [
+            {
+              "type": "string",
+              "code": [
+                {
+                  "code": "2.1",
+                  "display": "Last Name"
+                }
+              ],
+              "required": false,
+              "linkId": "2.1",
+              "text": "Last Name"
+            },
+            {
+              "type": "string",
+              "code": [
+                {
+                  "code": "2.2",
+                  "display": "First Name"
+                }
+              ],
+              "required": false,
+              "linkId": "2.2",
+              "text": "First Name"
+            },
+            {
+              "type": "string",
+              "code": [
+                {
+                  "code": "2.3",
+                  "display": "Middle Initial"
+                }
+              ],
+              "required": false,
+              "linkId": "2.3",
+              "text": "Middle Initial"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [
+            {
+              "code": "2b"
+            }
+          ],
+          "required": false,
+          "linkId": "2b",
+          "item": [
+            {
+              "type": "string",
+              "code": [
+                {
+                  "code": "2.4",
+                  "display": "NPI"
+                }
+              ],
+              "required": false,
+              "linkId": "2.4",
+              "text": "NPI"
+            },
+            {
+              "type": "date",
+              "code": [
+                {
+                  "code": "2.5",
+                  "display": "Date of face-to-face evaluation"
+                }
+              ],
+              "required": false,
+              "linkId": "2.5",
+              "text": "Date of face-to-face evaluation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "code": [
+        {
+          "code": "3",
+          "display": "Person or entity performing testing"
+        }
+      ],
+      "required": false,
+      "linkId": "3",
+      "text": "Person or entity performing testing",
+      "item": [
+        {
+          "type": "string",
+          "code": [
+            {
+              "code": "3.1",
+              "display": "Laboratory"
+            }
+          ],
+          "required": false,
+          "linkId": "3.1",
+          "text": "Laboratory"
+        },
+        {
+          "type": "string",
+          "code": [
+            {
+              "code": "3.2",
+              "display": "NPI"
+            }
+          ],
+          "required": false,
+          "linkId": "3.2",
+          "text": "NPI"
+        },
+        {
+          "type": "string",
+          "code": [
+            {
+              "code": "3.3",
+              "display": "Name of tester"
+            }
+          ],
+          "required": false,
+          "linkId": "3.3",
+          "text": "Name of tester"
+        },
+        {
+          "type": "string",
+          "code": [
+            {
+              "code": "3.4",
+              "display": "Tester credentials"
+            }
+          ],
+          "required": false,
+          "linkId": "3.4",
+          "text": "Tester credentials"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "code": [
+        {
+          "code": "4",
+          "display": "Test results"
+        }
+      ],
+      "required": false,
+      "linkId": "4",
+      "text": "Test results",
+      "item": [
+        {
+          "type": "group",
+          "code": [
+            {
+              "code": "4a",
+              "display": "Initial test results"
+            }
+          ],
+          "required": false,
+          "linkId": "4a",
+          "text": "Initial test results",
+          "item": [
+            {
+              "type": "date",
+              "code": [
+                {
+                  "code": "4.1",
+                  "display": "Date of initial test"
+                }
+              ],
+              "required": true,
+              "linkId": "4.1",
+              "text": "Date of initial test"
+            },
+            {
+              "type": "decimal",
+              "code": [
+                {
+                  "code": "4.2",
+                  "display": "Fasting plasma glucose level [mg/dl]"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "mg/dL"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "4.2",
+              "text": "Fasting plasma glucose level [mg/dl]"
+            },
+            {
+              "type": "decimal",
+              "code": [
+                {
+                  "code": "4.3",
+                  "display": "Random plasma glucose level [mg/dl]"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "mg/dL"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "4.3",
+              "text": "Random plasma glucose level [mg/dl]"
+            },
+            {
+              "type": "decimal",
+              "code": [
+                {
+                  "code": "4.4",
+                  "display": "Two-hour oral glucose tolerance test, plasma glucose level [mg/dl]"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "mg/dL"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "4.4",
+              "text": "Two-hour oral glucose tolerance test, plasma glucose level [mg/dl]"
+            },
+            {
+              "type": "decimal",
+              "code": [
+                {
+                  "code": "4.5",
+                  "display": "A1c level [%]"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "%"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "4.5",
+              "text": "A1c level [%]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "code": [
+        {
+          "code": "5",
+          "display": "Provider signature"
+        }
+      ],
+      "required": false,
+      "linkId": "5",
+      "text": "Provider signature",
+      "item": [
+        {
+          "type": "string",
+          "code": [
+            {
+              "code": "5.1",
+              "display": "Signature"
+            }
+          ],
+          "required": true,
+          "linkId": "5.1",
+          "text": "Signature"
+        },
+        {
+          "type": "string",
+          "code": [
+            {
+              "code": "5.2",
+              "display": "Name (printed)"
+            }
+          ],
+          "required": true,
+          "linkId": "5.2",
+          "text": "Name (printed)"
+        },
+        {
+          "type": "date",
+          "code": [
+            {
+              "code": "5.3",
+              "display": "Date (MM/DD/YY)"
+            }
+          ],
+          "required": true,
+          "linkId": "5.3",
+          "text": "Date (MM/DD/YY)"
+        },
+        {
+          "type": "string",
+          "code": [
+            {
+              "code": "5.4",
+              "display": "NPI"
+            }
+          ],
+          "required": true,
+          "linkId": "5.4",
+          "text": "NPI"
+        }
+      ]
+    }
+  ]
+}
