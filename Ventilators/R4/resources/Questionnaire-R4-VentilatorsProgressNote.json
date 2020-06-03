@@ -16,7 +16,7 @@
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-        "valueCanonical": "Library/BasicClinicalInfo-prepopulation"
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "title": "Ventilator Progress Note Questionnaire",
@@ -53,7 +53,8 @@
           "valueCanonical": "questionnaire/patient-info"
         }
       ],
-      "type": "display"
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
     },
     {
       "linkId": "2",
@@ -63,7 +64,8 @@
           "valueCanonical": "questionnaire/practitioner-info"
         }
       ],
-      "type": "display"
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
     },
     {
       "linkId": "3",
