@@ -1,6 +1,7 @@
 {
   "resourceType": "Library",
   "id": "UrologicalSupplies-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/UrologicalSupplies-prepopulation",
   "name": "UrologicalSupplies-prepopulation",
   "version": "0.1.0",
   "title": "UrologicalSupplies Prepopulation",

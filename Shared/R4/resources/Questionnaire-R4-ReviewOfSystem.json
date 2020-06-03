@@ -2,6 +2,12 @@
   "resourceType": "Questionnaire",
   "id": "review-of-system",
   "name": "Review Of System",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
   "status": "draft",
   "item": [
     {

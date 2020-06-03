@@ -1,6 +1,7 @@
 {
   "resourceType": "Library",
   "id": "HospitalBeds-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBeds-prepopulation",
   "name": "HospitalBeds-prepopulation",
   "version": "0.0.1",
   "title": "Hospital Bed Prepopulation",
