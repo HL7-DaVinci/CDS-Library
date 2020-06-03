@@ -4,10 +4,8 @@
   "name": "UrologicalSuppliesProgressNote",
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/UrologicalSupplies-prepopulation"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/UrologicalSupplies-prepopulation"
     }
   ],
   "title": "UrologicalSupplies Progress Note Questionnaire",

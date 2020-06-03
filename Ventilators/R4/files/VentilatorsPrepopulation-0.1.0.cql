@@ -22,7 +22,7 @@ define Allergies:
   CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))
 
 define DeviceRequestHcpcsCoding: singleton from (
-  (DeviceRequest.code.coding) CODING
+  (device_request.code.coding) CODING
     where CODING.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
 define DeviceRequested:
