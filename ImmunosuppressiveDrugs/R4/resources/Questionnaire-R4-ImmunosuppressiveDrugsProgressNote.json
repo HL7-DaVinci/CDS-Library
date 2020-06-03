@@ -1,16 +1,22 @@
 {
   "resourceType": "Questionnaire",
-  "id": "UrologicalSuppliesProgressNote",
-  "name": "UrologicalSuppliesProgressNote",
+  "id": "ImmunosuppressiveDrugsProgressNote",
+  "name": "ImmunosuppressiveDrugsProgressNote",
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "Library/UrologicalSupplies-prepopulation"
+        "reference": "Library/ImmunosuppressiveDrugs-prepopulation"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicClinicalInfo-prepopulation"
       }
     }
   ],
-  "title": "UrologicalSupplies Progress Note Questionnaire",
+  "title": "ImmunosuppressiveDrugs Progress Note Questionnaire",
   "status": "draft",
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
@@ -70,7 +76,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".Today"
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".Today"
               }
             }
           ],
@@ -85,7 +91,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".AnswerYes"
               }
             },
             {
@@ -136,7 +142,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"UrologicalSuppliesPrepopulation\".CurrentDiagnoses"
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".CurrentDiagnoses"
               }
             }
           ],
@@ -153,7 +159,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"UrologicalSuppliesPrepopulation\".RelatedDiagnoese"
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".RelatedDiagnoese"
               }
             }
           ],
@@ -199,17 +205,17 @@
       "text": "This is a placeholder for Physican Examination"
     },
     {
-      "linkId": "8",
+      "linkId": "11",
       "text": "Urologic Supplies Information",
       "type": "group",
       "item": [
         {
-          "linkId": "8.1a",
+          "linkId": "11.1a",
           "text": "Indwelling catheters",
           "type": "group",
           "item": [
             {
-              "linkId": "8.1",
+              "linkId": "11.1",
               "text": "Check any of the following that have occurred",
               "type": "open-choice",
               "repeats": true,
@@ -237,7 +243,7 @@
               ]
             },
             {
-              "linkId": "8.2",
+              "linkId": "11.2",
               "text": "A specialty indwelling catheter or silicone catheter is necessary to prevent (check all relevant items)",
               "type": "open-choice",
               "repeats": true,
@@ -262,12 +268,12 @@
           ]
         },
         {
-          "linkId": "8.3a",
+          "linkId": "11.3a",
           "text": "Urinary drainage collection systems",
           "type": "group",
           "item": [
             {
-              "linkId": "8.3",
+              "linkId": "11.3",
               "text": "Is there evidence of the following?",
               "type": "open-choice",
               "repeats": true,
@@ -295,39 +301,39 @@
               ]
             },
             {
-              "linkId": "8.4",
+              "linkId": "11.4",
               "text": "Is the patient ambulatory/chair-bound and requires a leg bag?",
               "type": "boolean"
             }
           ]
         },
         {
-          "linkId": "8.5",
+          "linkId": "11.5",
           "text": "Irrigation of indwelling catheters",
           "type": "group",
           "item": [
             {
-              "linkId": "8.5.1",
+              "linkId": "11.5.1",
               "text": "There is evidence of occasional obstruction of the catheter requiring intermittent irrigation to remove or prevent",
               "type": "boolean"
             },
             {
-              "linkId": "8.5.2",
+              "linkId": "11.5.2",
               "text": "There is a history of recurring obstruction of the catheter and the patency of the catheter cannot be maintained by intermittent irrigation in conjunction with reasonable and necessary catheter changes, requiring continuous irrigation",
               "type": "boolean"
             },
             {
-              "linkId": "8.6",
+              "linkId": "11.6",
               "text": "Describe",
               "type": "text"
             },
             {
-              "linkId": "8.7",
+              "linkId": "11.7",
               "text": "For continuous irrigation",
               "type": "group",
               "item": [
                 {
-                  "linkId": "8.7.1",
+                  "linkId": "11.7.1",
                   "extension": [
                     {
                       "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -340,7 +346,7 @@
                   "type": "decimal"
                 },
                 {
-                  "linkId": "8.7.2",
+                  "linkId": "11.7.2",
                   "extension": [
                     {
                       "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -357,89 +363,89 @@
           ]
         },
         {
-          "linkId": "8.8",
+          "linkId": "11.8",
           "text": "Intermittent catheterization. Check any of the following that support the need/use of intermittent catherization",
           "type": "group",
           "item": [
             {
-              "linkId": "8.8.1",
+              "linkId": "11.8.1",
               "text": "A beneficiary or caregiver is available to perform the procedure",
               "type": "boolean"
             },
             {
-              "linkId": "8.8.2",
+              "linkId": "11.8.2",
               "text": "The beneficiary resides in a nursing facility",
               "type": "boolean"
             },
             {
-              "linkId": "8.8.3",
+              "linkId": "11.8.3",
               "text": "The beneficiary is immunosuppressed, for example (not all-inclusive)",
               "type": "boolean"
             },
             {
-              "linkId": "8.8.4",
+              "linkId": "11.8.4",
               "text": "The beneficiary has radiologically documented vesico-ureteral reflux while on a program of intermittent catheterization",
               "type": "boolean"
             },
             {
-              "linkId": "8.8.5",
+              "linkId": "11.8.5",
               "text": "The beneficiary is a spinal cord injured female with neurogenic bladder who is pregnant (for duration of pregnancy only)",
               "type": "boolean"
             },
             {
-              "linkId": "8.8.6",
+              "linkId": "11.8.6",
               "text": "The beneficiary has had distinct, recurrent urinary tract infections, while on a program of sterile intermittent catheterization with A4351/A4352 and sterile lubricant A4332, twice within the 12-month prior to the initiation of sterile intermittent catheter kits",
               "type": "boolean"
             }
           ]
         },
         {
-          "linkId": "8.9a",
+          "linkId": "11.9a",
           "text": "Miscellaneous",
           "type": "group",
           "item": [
             {
-              "linkId": "8.9",
+              "linkId": "11.9",
               "text": "Is a Coude tip catheter is necessary because patient cannot be catheterized with a straight tip catheter (rare for female)?",
               "type": "boolean"
             },
             {
-              "linkId": "8.10",
+              "linkId": "11.10",
               "text": "Does patient (female only) have diagnosis of stress incontinence?",
               "type": "boolean"
             },
             {
-              "linkId": "8.10a",
+              "linkId": "11.10a",
               "text": "Note: Contraindication for the use of urethral inserts:",
               "type": "display",
               "item": [
                 {
-                  "linkId": "8.10a.1",
+                  "linkId": "11.10a.1",
                   "type": "display",
                   "text": "bladder or other urinary tract infections (UTI)"
                 },
                 {
-                  "linkId": "8.10a.2",
+                  "linkId": "11.10a.2",
                   "type": "display",
                   "text": "history of urethral stricture, bladder augmentation, pelvic radiation or other conditions where urethral catheterization is not clinically advisable"
                 },
                 {
-                  "linkId": "8.10a.3",
+                  "linkId": "11.10a.3",
                   "type": "display",
                   "text": "immunocompromised, at significant risk from UTI, interstitial cystitis, or pyelonephritis, or who have severely compromised urinary mucosa"
                 },
                 {
-                  "linkId": "8.10a.4",
+                  "linkId": "11.10a.4",
                   "type": "display",
                   "text": "unable to tolerate antibiotic therapy"
                 },
                 {
-                  "linkId": "8.10a.5",
+                  "linkId": "11.10a.5",
                   "type": "display",
                   "text": "on anticoagulants"
                 },
                 {
-                  "linkId": "8.10a.6",
+                  "linkId": "11.10a.6",
                   "type": "display",
                   "text": "on anticoagulants"
                 }
@@ -450,7 +456,7 @@
       ]
     },
     {
-      "linkId": "9",
+      "linkId": "11",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -461,7 +467,7 @@
       "text": "This is a placeholder for Assessment and Plan"
     },
     {
-      "linkId": "10",
+      "linkId": "12",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
