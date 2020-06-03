@@ -1,6 +1,7 @@
 {
   "resourceType": "Library",
   "id": "BasicPractitionerInfo-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation",
   "name": "BasicPractitionerInfo-prepopulation",
   "version": "0.1.0",
   "title": "Basic Practitioner Info",

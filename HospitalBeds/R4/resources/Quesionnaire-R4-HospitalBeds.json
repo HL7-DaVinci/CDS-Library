@@ -2,22 +2,16 @@
   "resourceType": "Questionnaire",
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/HospitalBeds-prepopulation"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBeds-prepopulation"
     },
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicPatientInfo-prepopulation"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
     },
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicPractitionerInfo-prepopulation"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
     }
   ],
   "id": "HospitalBeds",

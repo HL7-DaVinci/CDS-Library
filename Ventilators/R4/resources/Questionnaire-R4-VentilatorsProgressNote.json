@@ -2,18 +2,21 @@
   "resourceType": "Questionnaire",
   "id": "VentilatorsProgressNote",
   "name": "VentilatorsProgressNote",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },  
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/Ventilators-prepopulation"
-      }
+
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/Ventilators-prepopulation"
     },
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicClinicalInfo-prepopulation"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "title": "Ventilator Progress Note Questionnaire",
