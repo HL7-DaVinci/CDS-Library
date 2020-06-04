@@ -55,15 +55,13 @@ define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
   )
 
 // Get all medication related information
-define "MedicationRequest": medication_request
-
-define "Medication": MedicationRequest.medication
+define "Medication": medication_request.medication
 
 define "MedicationName": Medication.coding[0].display.value
 
 define "MedicationHCPCS" : Medication.coding[0].code.value
 
-define "MedicationDosage": MedicationRequest.dosageInstruction[0]
+define "MedicationDosage": medication_request.dosageInstruction[0]
 
 define "MedicationDoseAndRate": MedicationDosage.doseAndRate[0]
 
