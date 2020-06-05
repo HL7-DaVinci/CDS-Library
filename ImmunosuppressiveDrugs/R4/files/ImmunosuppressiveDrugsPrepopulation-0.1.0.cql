@@ -65,7 +65,7 @@ define "MedicationDosage": medication_request.dosageInstruction[0]
 
 define "MedicationDoseAndRate": MedicationDosage.doseAndRate[0]
 
-define "MedicationDoseWithUnit": ToString(MedicationDoseAndRate.dose.value.value) + '' + MedicationDoseAndRate.dose.unit
+define "MedicationDoseWithUnit": ToString(MedicationDoseAndRate.dose.value.value) + '' + MedicationDoseAndRate.dose.unit.value
 
 define "MedicationRoute": MedicationDosage.route.coding[0].display.value
 
