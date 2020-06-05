@@ -17,27 +17,12 @@ define "QualifyingTransplant": [Condition: "OrganTransplantHistoryValueSet"]
 
 define "QualifyingTransplantProcedures": [Procedure: "OrganTransplantProcedureValueSet"]
 
-define "QualifyingTransplantCodings": ConditionCoding("QualifyingTransplant") union ProcedureCoding("QualifyingTransplantProcedures")
+define "QualifyingTransplantCodings": CodesFromConditions("QualifyingTransplant") union ProcedureCoding("QualifyingTransplantProcedures")
 
 // get the first transplant date
 define "TransplantDate": 
-  if exists("QualifyingTransplant") then First("QualifyingTransplant").recordedDate.value
-  else null
+  First("QualifyingTransplant").recordedDate.value
 
-define function ConditionCoding(CondList List<FHIR.Condition>):
-  distinct(
-    flatten(
-      CondList C
-        let DiagnosesCodings:
-          (C.code.coding) CODING 
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
-        return DiagnosesCodings
-    )
-  )
 
 define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
   distinct(
@@ -71,7 +56,21 @@ define "MedicationRoute": MedicationDosage.route.coding[0].display.value
 
 define "MedicationFrequency" : ToString(MedicationDosage.timing.repeat.frequency.value) + ' per ' + ToString(MedicationDosage.timing.repeat.period.value) + '' + MedicationDosage.timing.repeat.periodUnit.value
 
+define CurrentDiagnoses:
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except QualifyingTransplant
 
+define function CodesFromConditions(CondList List<Condition>):
+  distinct(flatten(
+    CondList C
+      let DiagnosesCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'http://hl7.org/fhir/sid/icd-10',
+            'http://hl7.org/fhir/sid/icd-10-cm',
+            'http://snomed.info/sct'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return DiagnosesCodings
+  ))
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}

@@ -90,13 +90,6 @@
           "linkId": "3.2",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"
-              }
-            },
-            {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
               "valueCodeableConcept": {
                 "coding": [
@@ -173,6 +166,46 @@
         }
       ]
     },
+    {
+      "linkId": "5",
+      "text": "Qualifying Transplants",
+      "type": "group",
+      "required": true,
+      "item": [
+        {  
+          "linkId": "5.1",
+          "text": "Diagnoses for Order",
+          "type": "open-choice",
+          "repeats": true,
+          "answerOption": [],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".QualifyingTransplantCodings"
+              }
+            }
+          ] 
+        },
+        {
+          "linkId": "5.2",
+          "text": "Date of transplant",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".TransplantDate"
+              }
+            }
+          ]
+        },   
+      ]
+    },
+
     {
       "linkId": "5",
       "extension": [

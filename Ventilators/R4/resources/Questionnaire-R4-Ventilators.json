@@ -64,7 +64,7 @@
       "linkId": "4",
       "text": "Ventilator Diagnoses",
       "type": "group",
-      "required": "true",
+      "required": true,
       "item":[
         {
           "linkId": "4.1",
@@ -208,7 +208,7 @@
       "linkId": "7",
       "type": "group",
       "text": "Accessory Order",
-      "repeats": "true",
+      "repeats": true,
       "item": [
         {
           "linkId": "7.1.1",

@@ -85,7 +85,7 @@
           ],
           "text": "Date of encounter (MM/DD/YYYY):",
           "type": "date",
-          "required": "true"
+          "required": true
         },
         {
           "linkId": "3.2",
@@ -110,7 +110,7 @@
             }
           ],
           "text": "Is this an evaluation of the patient’s need for a ventilator?",
-          "required": "true",
+          "required": true,
           "type": "choice",
           "answerValueSet": "#yesno",
           "item": [
@@ -140,7 +140,7 @@
                 }
               ],
               "type": "choice",
-              "required": "true",
+              "required": true,
               "answerOption": [
                 {
                   "valueCoding": {
@@ -195,7 +195,7 @@
               "linkId": "3.2b",
               "text": "If No, purpose of the encounter",
               "type": "text",
-              "require": "true",
+              "required": true,
               "enableWhen": [
                 {
                   "question": "3.2",
@@ -228,8 +228,8 @@
           ],
           "text": "Patient Diagnoses related to need for a ventilator",
           "type": "open-choice",
-          "require": "true",
-          "repeats": "true",
+          "required": true,
+          "repeats": true,
           "answerOption": []
         },
         {
@@ -245,7 +245,7 @@
           ],          
           "text": "Other Diagnoses",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": []
         }
       ]
