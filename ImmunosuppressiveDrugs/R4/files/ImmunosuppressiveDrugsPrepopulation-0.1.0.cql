@@ -21,7 +21,8 @@ define "QualifyingTransplantCodings": CodesFromConditions("QualifyingTransplant"
 
 // get the first transplant date
 define "TransplantDate": 
-  First("QualifyingTransplant").recordedDate.value
+  if exists("QualifyingTransplant") then First("QualifyingTransplant").recordedDate.value
+  else First("QualifyingTransplantProcedures").performed.value union First("QualifyingTransplantProcedures").performed.start.value
 
 
 define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
