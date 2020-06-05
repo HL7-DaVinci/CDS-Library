@@ -1,0 +1,33 @@
+{
+  "resourceType": "Library",
+  "id": "HomeHealthServicesPlanOfCare-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServicesPlanOfCare-prepopulation",
+  "name": "HomeHealthServicesPlanOfCare-prepopulation",
+  "version": "0.0.1",
+  "title": "Home Health Services Plan of Care Prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    }
+  ],
+  "dataRequirement": [
+    
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/HomeHealthServices/r4/HomeHealthServicesPlanOfCarePrepopulation-0.0.1.cql"
+    }
+  ]
+}

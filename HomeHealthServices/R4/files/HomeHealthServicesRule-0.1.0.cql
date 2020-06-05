@@ -25,5 +25,8 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
   'Questionnaire/HomeHealthServices'
 
+define RESULT_QuestionnairePlanOfCareUri:
+  'Questionnaire/HomeHealthServicesPlanOfCare'
+
 define RESULT_requestId:
   service_request

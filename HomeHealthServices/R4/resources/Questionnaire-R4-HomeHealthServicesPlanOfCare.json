@@ -1,0 +1,55 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "HomeHealthServicesPlanOfCare",
+    "name": "HomeHealthServicesPlanOfCare",
+    "meta": {
+      "profile": [
+        "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+        "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+      ]
+    },  
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServicesPlanOfCare-prepopulation"
+      }
+    ],
+    "title": "Home Health Plan of Care / Certification",
+    "status": "draft",
+    "date": "2020-06-04",
+    "publisher": "Da Vinci DTR",
+    "subjectType": ["Patient"],
+    "item": [
+      {
+        "linkId": "1",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+            "valueCanonical": "questionnaire/patient-info"
+          }
+        ],
+        "type": "display"
+      },
+      {
+        "linkId": "2",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+            "valueCanonical": "questionnaire/practitioner-info"
+          }
+        ],
+        "type": "display"
+      }, 
+      {
+        "linkId": "12",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+            "valueCanonical": "questionnaire/provider-signature"
+          }
+        ],
+        "type": "display"
+      }
+    ]
+  }
+  
