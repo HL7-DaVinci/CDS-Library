@@ -25,6 +25,12 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
+        "reference": "Library/HomeBloodGlucoseMonitorLab-prepopulation"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
         "reference": "Library/BasicPatientInfo-prepopulation"
       }
     },
@@ -75,7 +81,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".TestVar"
               }
             }
           ]
@@ -159,98 +165,82 @@
       ]
     },
     {
-      "type": "group",
-      "code": [
-        {
-          "code": "2",
-          "display": "Provider"
-        }
-      ],
-      "required": false,
       "linkId": "2",
-      "text": "Provider",
+      "text": "Provider who is performing face-to-face evaluation",
+      "type": "group",
       "item": [
         {
-          "type": "group",
-          "code": [
+          "linkId": "2.1",
+          "text": "Last Name",
+          "type": "string",
+          "required": true,
+          "extension": [
             {
-              "code": "2a"
-            }
-          ],
-          "required": false,
-          "linkId": "2a",
-          "item": [
-            {
-              "type": "string",
-              "code": [
-                {
-                  "code": "2.1",
-                  "display": "Last Name"
-                }
-              ],
-              "required": false,
-              "linkId": "2.1",
-              "text": "Last Name"
-            },
-            {
-              "type": "string",
-              "code": [
-                {
-                  "code": "2.2",
-                  "display": "First Name"
-                }
-              ],
-              "required": false,
-              "linkId": "2.2",
-              "text": "First Name"
-            },
-            {
-              "type": "string",
-              "code": [
-                {
-                  "code": "2.3",
-                  "display": "Middle Initial"
-                }
-              ],
-              "required": false,
-              "linkId": "2.3",
-              "text": "Middle Initial"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
+              }
             }
           ]
         },
         {
-          "type": "group",
-          "code": [
+          "linkId": "2.2",
+          "text": "First Name",
+          "type": "string",
+          "required": true,
+          "extension": [
             {
-              "code": "2b"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              }
             }
-          ],
-          "required": false,
-          "linkId": "2b",
-          "item": [
+          ]
+        },
+        {
+          "linkId": "2.3",
+          "text": "Middle Initial",
+          "type": "string",
+          "required": true,
+          "extension": [
             {
-              "type": "string",
-              "code": [
-                {
-                  "code": "2.4",
-                  "display": "NPI"
-                }
-              ],
-              "required": false,
-              "linkId": "2.4",
-              "text": "NPI"
-            },
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.4",
+          "text": "NPI",
+          "type": "string",
+          "required": true,
+          "extension": [
             {
-              "type": "date",
-              "code": [
-                {
-                  "code": "2.5",
-                  "display": "Date of face-to-face evaluation"
-                }
-              ],
-              "required": false,
-              "linkId": "2.5",
-              "text": "Date of face-to-face evaluation"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.5",
+          "text": "Date of Face-To-Face Evaluation",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorPrepopulation\".Today"
+              }
             }
           ]
         }
@@ -432,6 +422,112 @@
               ],
               "required": true,
               "linkId": "4.5",
+              "text": "A1c level [%]"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [
+            {
+              "code": "4b",
+              "display": "Confirmatory test results"
+            }
+          ],
+          "required": false,
+          "linkId": "4b",
+          "text": "Confirmatory test results",
+          "item": [
+            {
+              "type": "date",
+              "code": [
+                {
+                  "code": "4.6",
+                  "display": "Date of initial test"
+                }
+              ],
+              "required": true,
+              "linkId": "4.6",
+              "text": "Date of initial test"
+            },
+            {
+              "type": "decimal",
+              "code": [
+                {
+                  "code": "4.7",
+                  "display": "Fasting plasma glucose level [mg/dl]"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "mg/dL"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "4.7",
+              "text": "Fasting plasma glucose level [mg/dl]"
+            },
+            {
+              "type": "decimal",
+              "code": [
+                {
+                  "code": "4.8",
+                  "display": "Random plasma glucose level [mg/dl]"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "mg/dL"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "4.8",
+              "text": "Random plasma glucose level [mg/dl]"
+            },
+            {
+              "type": "decimal",
+              "code": [
+                {
+                  "code": "4.9",
+                  "display": "Two-hour oral glucose tolerance test, plasma glucose level [mg/dl]"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "mg/dL"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "4.9",
+              "text": "Two-hour oral glucose tolerance test, plasma glucose level [mg/dl]"
+            },
+            {
+              "type": "decimal",
+              "code": [
+                {
+                  "code": "4.10",
+                  "display": "A1c level [%]"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "%"
+                  }
+                }
+              ],
+              "required": true,
+              "linkId": "4.10",
               "text": "A1c level [%]"
             }
           ]

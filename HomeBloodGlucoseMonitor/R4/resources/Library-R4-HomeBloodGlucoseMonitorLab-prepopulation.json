@@ -1,0 +1,32 @@
+{
+    "resourceType": "Library",
+    "id": "HomeBloodGlucoseMonitorLab-prepopulation",
+    "name": "HomeBloodGlucoseMonitorLab-prepopulation",
+    "version": "0.0.1",
+    "title": "Blood Glucose Monitor Lab Prepopulation",
+    "status": "draft",
+    "type": {
+      "coding": [
+        {
+          "code": "logic-library"
+        }
+      ]
+    },
+    "relatedArtifact": [
+      {
+        "type": "depends-on",
+        "resource": {
+          "reference": "Library/FHIRHelpers-4.0.0"
+        }
+      }
+    ],
+    "dataRequirement": [
+      
+    ],
+    "content": [
+      {
+        "contentType": "application/elm+json",
+        "url": "files/HomeBloodGlucoseMonitor/r4/HomeBloodGlucoseMonitorLabPrepopulation-0.0.1.cql"
+      }
+    ]
+  }
