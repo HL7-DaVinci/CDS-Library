@@ -1,7 +1,7 @@
 {
   "resourceType": "Questionnaire",
   "id": "review-of-system",
-  "name": "Review Of System",
+  "name": "Review Of System Module",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
@@ -12,7 +12,7 @@
   "item": [
     {
       "linkId": "ROS",
-      "text": "Review of systems",
+      "text": "Review of Systems",
       "type": "group",
       "item": [
         {
