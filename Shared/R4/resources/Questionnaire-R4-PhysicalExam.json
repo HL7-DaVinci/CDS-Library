@@ -1,0 +1,205 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "physical-exam",
+  "name": "Physican Exam Module",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },  
+  "status": "draft",
+  "item":[
+    {
+      "linkId": "OBJ",
+      "text": "Physical Examination",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "OBJ.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "gtable",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Vital Signs",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "OBJ.1.1",
+              "code": [
+                {
+                  "code": "8310-5",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Temperature",
+              "type": "string"
+            },
+            {
+              "linkId": "OBJ.1.2",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "{beats}/min",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8867-4",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Pulse (beats/min)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "OBJ.1.3",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "{Breaths}/min",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "9279-1",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Respiration (Breaths/min)",
+              "type": "decimal"
+            },
+            {
+              "linkId": "OBJ.1.4",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "mm[Hg]",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8480-6",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "BP sys (mm[Hg])",
+              "type": "decimal"
+            },
+            {
+              "linkId": "OBJ.1.5",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "mm[Hg]",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "8462-4",
+                  "system": "http://loinc.org",
+                  "display": "BP dias"
+                }
+              ],
+              "text": "BP dias (mm[Hg])",
+              "type": "decimal"
+            },
+            {
+              "linkId": "OBJ.1.6",
+              "code": [
+                {
+                  "code": "8302-2",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Height",
+              "type": "string"
+            },
+            {
+              "linkId": "OBJ.1.7",
+              "code": [
+                {
+                  "code": "3141-9",
+                  "system": "http://loinc.org"
+                }
+              ],
+              "text": "Weight",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "linkId": "OBJ.2",
+          "text": "General Appearance",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.3",
+          "text": "Had and Neck",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.4",
+          "text": "Chest/lungs",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.5",
+          "text": "Cardiovascular",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.6",
+          "text": "Abdominal",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.7",
+          "text": "Musculoskeletal/extremities (including gait exam)",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.8",
+          "text": "Neurological",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.9",
+          "text": "Psychiatric",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.10",
+          "text": "Visual",
+          "type": "text"
+        },
+        {
+          "linkId": "OBJ.11",
+          "text": "Other",
+          "type": "text"
+        }
+      ]
+    }
+ ]
+}
