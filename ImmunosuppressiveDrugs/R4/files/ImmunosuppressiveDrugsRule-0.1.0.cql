@@ -26,5 +26,8 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
     'Questionnaire/ImmunosuppressiveDrugs'
 
+define RESULT_QuestionnaireProgressNoteUri:
+    'Questionnaire/ImmunosuppressiveDrugsProgressNote'
+
 define RESULT_requestId:
   medication_request
