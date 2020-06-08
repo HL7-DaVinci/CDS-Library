@@ -1,55 +1,311 @@
 {
-    "resourceType": "Questionnaire",
-    "id": "HomeHealthServicesPlanOfCare",
-    "name": "HomeHealthServicesPlanOfCare",
-    "meta": {
-      "profile": [
-        "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
-        "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
-      ]
-    },  
-    "extension": [
-      {
-        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServicesPlanOfCare-prepopulation"
-      }
-    ],
-    "title": "Home Health Plan of Care / Certification",
-    "status": "draft",
-    "date": "2020-06-04",
-    "publisher": "Da Vinci DTR",
-    "subjectType": ["Patient"],
-    "item": [
-      {
-        "linkId": "1",
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-            "valueCanonical": "questionnaire/patient-info"
-          }
-        ],
-        "type": "display"
-      },
-      {
-        "linkId": "2",
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-            "valueCanonical": "questionnaire/practitioner-info"
-          }
-        ],
-        "type": "display"
-      }, 
-      {
-        "linkId": "12",
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-            "valueCanonical": "questionnaire/provider-signature"
-          }
-        ],
-        "type": "display"
-      }
+  "resourceType": "Questionnaire",
+  "id": "HomeHealthServicesPlanOfCare",
+  "name": "HomeHealthServicesPlanOfCare",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
-  }
-  
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServicesPlanOfCare-prepopulation"
+    }
+  ],
+  "title": "Home Health Plan of Care / Certification",
+  "status": "draft",
+  "date": "2020-06-04",
+  "publisher": "Da Vinci DTR",
+  "subjectType": [
+    "Patient"
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "group": "date",
+      "text": "F2F evaluation information",
+      "item": [
+        {
+          "linkId": "2.1",
+          "text": "Date of F2F visit",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "text": "Other relevant information",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "3.1",
+          "text": "Patient HI Claim No",
+          "type": "text"
+        },
+        {
+          "linkId": "3.2",
+          "text": "Medical Record Number",
+          "type": "text"
+        },
+        {
+          "linkId": "3.3",
+          "text": "Initial start of care date",
+          "type": "text"
+        },
+        {
+          "linkId": "3.4",
+          "text": "For recertification: start/end of this episode of care",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Advanced Directives",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "text": "Has advanced directives",
+          "type": "boolean"
+        },
+        {
+          "linkId": "4.2",
+          "text": "Description",
+          "type": "text",
+          "enableWhen": [
+            {
+              "question": "4.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "Pertinent diagnoses",
+      "type": "text"
+    },
+    {
+      "linkId": "6",
+      "text": "Relevant procedures",
+      "type": "text"
+    },
+    {
+      "linkId": "7",
+      "text": "Pertinent medications",
+      "type": "text"
+    },
+    {
+      "linkId": "8",
+      "text": "Allergies",
+      "type": "text"
+    },
+    {
+      "linkId": "9",
+      "text": "Functional assessment",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "9.1",
+          "text": "Functional limitations",
+          "type": "text"
+        },
+        {
+          "linkId": "9.2",
+          "text": "Activities permitted",
+          "type": "text"
+        },
+        {
+          "linkId": "9.3",
+          "text": "Mental status",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "10",
+      "text": "",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "10.1",
+          "text": "DME and supplies",
+          "type": "text"
+        },
+        {
+          "linkId": "10.2",
+          "text": "Safety measures",
+          "type": "text"
+        },
+        {
+          "linkId": "10.3",
+          "text": "Nutritional requirements",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "11",
+      "text": "Prognosis",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "11.1",
+          "text": "Prognosis",
+          "type": "text"
+        },
+        {
+          "linkId": "11.2",
+          "text": "Additional clarification",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "12",
+      "text": "Description of risk for emergency department visits and hospital readmission and all necessary interventions to address risk",
+      "type": "text"
+    },
+    {
+      "linkId": "13",
+      "text": "Patient and caregiver education and training to facilitate timely discharge",
+      "type": "text"
+    },
+    {
+      "linkId": "14",
+      "text": "Patient-specific interventions and education",
+      "type": "text"
+    },
+    {
+      "linkId": "15",
+      "text": "Orders",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "15.1",
+          "text": "Intermittent skilled nursing services",
+          "type": "text"
+        },
+        {
+          "linkId": "15.2",
+          "text": "Justification ",
+          "type": "text"
+        },
+        {
+          "linkId": "15.3",
+          "text": "Physician’s Signature",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "16",
+      "text": "Therapy services",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "16.1",
+          "text": "Physical therapy",
+          "type": "text"
+        },
+        {
+          "linkId": "16.2",
+          "text": "Occupational therapy",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "17",
+      "text": "Verbal orders",
+      "type": "text"
+    },
+    {
+      "linkId": "18",
+      "text": "Frequency, Duration and Purpose of Visits",
+      "type": "text"
+    },
+    {
+      "linkId": "19",
+      "text": "Additional Items from the HHA and/or physician",
+      "type": "text"
+    },
+    {
+      "linkId": "20",
+      "text": "Rehabilitation potential",
+      "type": "text"
+    },
+    {
+      "linkId": "21",
+      "text": "Discharge plans",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "21.1",
+          "text": "Plan",
+          "type": "text"
+        },
+        {
+          "linkId": "21.2",
+          "text": "Communicated to primary care physician",
+          "type": "boolean"
+        },
+        {
+          "linkId": "21.3",
+          "text": "Provider name",
+          "type": "text"
+        },
+        {
+          "linkId": "21.4",
+          "text": "Date",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "linkId": "22",
+      "text": "Preparer signature",
+      "type": "text"
+    },
+    {
+      "linkId": "23",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "24",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "25",
+      "text": "Revisions of the POC communicated to",
+      "type": "text"
+    }
+  ]
+}
