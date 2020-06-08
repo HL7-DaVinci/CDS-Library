@@ -8,16 +8,16 @@ parameter service_request ServiceRequest
 define RULE_APPLIES:
   true
 define PRIORAUTH_REQUIRED:
-  true 
+  false 
 
 define DOCUMENTATION_REQUIRED:
   true
 
 define RESULT_Summary:
-  'Prior Authorization required.'
+  'Documentation Required.'
 
 define RESULT_Details:
-  'Authorization is required, follow the link for more information.'
+  'Documentation Required, please complete form via Smart App link.'
 
 define RESULT_InfoLink:
   'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/Medicare-Home-Health-Benefit-Text-Only.pdf'
