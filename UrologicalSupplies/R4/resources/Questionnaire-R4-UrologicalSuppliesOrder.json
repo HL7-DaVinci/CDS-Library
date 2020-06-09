@@ -1,0 +1,651 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "UrologicalSuppliesOrder",
+  "name": "UrologicalSuppliesOrder",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPractitionerInfo-prepopulation"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
+      "valueReference": {
+        "reference": "Library/BasicPatientInfo-prepopulation"
+      }
+    }
+  ],
+  "title": "UrologicalSupplies Order Questionnaire",
+  "status": "draft",
+  "date": "2020-04-09",
+  "publisher": "Da Vinci DTR",
+  "subjectType": ["Patient"],
+  "contained": [    
+    {
+      "resourceType": "ValueSet",
+      "id": "yesno",
+      "url": "#yesno",
+      "status": "draft",
+      "expansion": {
+        "contains": [
+          {
+            "code": "Y",
+            "display": "Yes"
+          },
+          {
+            "code": "N",
+            "display": "No"
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "text": "Patient Information",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "1.1",
+          "text": "Last Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.2",
+          "text": "First Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.3",
+          "text": "Middle Initial",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.4",
+          "text": "Date Of Birth",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.5",
+          "text": "Gender",
+          "type": "choice",
+          "required": true,
+          "answerValueSet": "#gender",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.6",
+          "text": "Medicare ID",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "required": false,
+      "text": "Diagnosis",
+      "item": [
+        {
+          "type": "open-choice",
+          "code": [],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "2.1",
+          "text": "Patient Diagnosis",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Yes",
+                "display": "Permanent urinary incontinence, not expected to be medically or surgically corrected within 3 mo."
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Yes",
+                "display": "Permanent urinary retention, not expected to be medically or surgically corrected within 3 months"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "other",
+                "display": "Other"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "required": false,
+      "text": "Order Start Date",
+      "item": [
+        {
+          "type": "date",
+          "code": [],
+          "required": false,
+          "linkId": "3.1",
+          "text": "Order start date, if different from date of order"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "required": false,
+      "text": "Order Type",
+      "item": [
+        {
+          "type": "choice",
+          "code": [],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": true,
+          "linkId": "4.1",
+          "text": "Type of Order",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "initial",
+                "display": "Initial or original order"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "renewal",
+                "display": "Renewal order"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "revision",
+                "display": "Revision or change order"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "other",
+                "display": "Other"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "required": false,
+      "text": "Order",
+      "item": [
+        {
+          "type": "choice",
+          "code": [],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "5.1",
+          "text": "Order: Indwelling catheters",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "A4311",
+                "display": "A4311 INSERTION TRAY WITHOUT DRAINAGE BAG WITH INDWELLING CATHETER, FOLEY TYPE, TWO-WAY LATEX WITH COATING (TEFLON, SILICONE, SILICONE ELASTOMER OR HYDROPHILIC, ETC.)"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4312",
+                "display": "A4312 INSERTION TRAY WITHOUT DRAINAGE BAG WITH INDWELLING CATHETER, FOLEY TYPE, TWO-WAY, ALL SILICONE"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4313",
+                "display": "A4313 INSERTION TRAY WITHOUT DRAINAGE BAG WITH INDWELLING CATHETER, FOLEY TYPE, THREE-WAY, FOR CONTINUOUS IRRIGATION"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4314",
+                "display": "A4314 INSERTION TRAY WITH DRAINAGE BAG WITH INDWELLING CATHETER, FOLEY TYPE, TWO-WAY LATEX WITH COATING (TEFLON, SILICONE, SILICONE ELASTOMER OR HYDROPHILIC, ETC.)"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4315",
+                "display": "A4315 INSERTION TRAY WITH DRAINAGE BAG WITH INDWELLING CATHETER, FOLEY TYPE, TWO-WAY, ALL SILICONE"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4316",
+                "display": "A4316 INSERTION TRAY WITH DRAINAGE BAG WITH INDWELLING CATHETER, FOLEY TYPE, THREE-WAY, FOR CONTINUOUS IRRIGATION"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4338",
+                "display": "A4338 INDWELLING CATHETER; FOLEY TYPE, TWO-WAY LATEX WITH COATING (TEFLON, SILICONE, SILICONE ELASTOMER, OR HYDROPHILIC, ETC.), EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4340",
+                "display": "A4340 INDWELLING CATHETER; SPECIALTY TYPE, (E.G., COUDE, MUSHROOM, WING, ETC.), EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4344",
+                "display": "A4344 INDWELLING CATHETER, FOLEY TYPE, TWO-WAY, ALL SILICONE, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4346",
+                "display": "A4346 INDWELLING CATHETER; FOLEY TYPE, THREE WAY FOR CONTINUOUS IRRIGATION, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4354",
+                "display": "A4354 INSERTION TRAY WITH DRAINAGE BAG BUT WITHOUT CATHETER"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4357",
+                "display": "A4357 BEDSIDE DRAINAGE BAG, DAY OR NIGHT, WITH OR WITHOUT ANTI-REFLUX DEVICE, WITH OR WITHOUT TUBE, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4358",
+                "display": "A4358 URINARY DRAINAGE BAG, LEG OR ABDOMEN, VINYL, WITH OR WITHOUT TUBE, WITH STRAPS, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A5102",
+                "display": "A5102 BEDSIDE DRAINAGE BOTTLE WITH OR WITHOUT TUBING, RIGID OR EXPANDABLE, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A5112",
+                "display": "A5112 URINARY DRAINAGE BAG, LEG OR ABDOMEN, LATEX, WITH OR WITHOUT TUBE, WITH STRAPS, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4320",
+                "display": "A4320 IRRIGATION TRAY WITH BULB OR PISTON SYRINGE, ANY PURPOSE"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4322",
+                "display": "A4322 IRRIGATION SYRINGE, BULB OR PISTON, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4217",
+                "display": "A4217 STERILE WATER/SALINE, 500 ML"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4321",
+                "display": "A4321 THERAPEUTIC AGENT FOR URINARY CATHETER IRRIGATION"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4355",
+                "display": "A4355 IRRIGATION TUBING SET FOR CONTINUOUS BLADDER IRRIGATION THROUGH A THREE-WAYINDWELLING FOLEY CATHETER, EACH"
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "code": [],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "5.2",
+          "text": "Order: Intermittent catheterization",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "A4351",
+                "display": "A4351 INTERMITTENT URINARY CATHETER; STRAIGHT TIP, WITH OR WITHOUT COATING (TEFLON, SILICONE, SILICONE ELASTOMER, OR HYDROPHILIC, ETC.), EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4352",
+                "display": "A4352 INTERMITTENT URINARY CATHETER; COUDE (CURVED) TIP, WITH OR WITHOUT COATING (TEFLON, SILICONE, SILICONE ELASTOMERIC, OR HYDROPHILIC, ETC.), EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4332",
+                "display": "A4332 LUBRICANT, INDIVIDUAL STERILE PACKET, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4353",
+                "display": "A4353 INTERMITTENT URINARY CATHETER, WITH INSERTION SUPPLIES"
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "code": [],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "5.3",
+          "text": "Order: External catheters/urinary collection devices",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "A4349",
+                "display": "A4349 MALE EXTERNAL CATHETER, WITH OR WITHOUT ADHESIVE, DISPOSABLE, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4326",
+                "display": "A4326 MALE EXTERNAL CATHETER WITH INTEGRAL COLLECTION CHAMBER, ANY TYPE, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4327",
+                "display": "A4327 FEMALE EXTERNAL URINARY COLLECTION DEVICE; MEATAL CUP, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4328",
+                "display": "A4328 FEMALE EXTERNAL URINARY COLLECTION DEVICE; POUCH, EACH"
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "code": [],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "5.4",
+          "text": "Order: Miscellaneous urological supplies",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "A5131",
+                "display": "A5131 APPLIANCE CLEANER, INCONTINENCE AND OSTOMY APPLIANCES, PER 16 OZ."
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A5102",
+                "display": "A5102 BEDSIDE DRAINAGE BOTTLE WITH OR WITHOUT TUBING, RIGID OR EXPANDABLE, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A5105",
+                "display": "A5105 URINARY SUSPENSORY WITH LEG BAG, WITH OR WITHOUT TUBE, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4450",
+                "display": "A4450 TAPE, NON-WATERPROOF, PER 18 SQUARE INCHES"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4452",
+                "display": "A4452 TAPE, WATERPROOF, PER 18 SQUARE INCHES"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4333",
+                "display": "A4333 URINARY CATHETER ANCHORING DEVICE, ADHESIVE SKIN ATTACHMENT, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4334",
+                "display": "A4334 URINARY CATHETER ANCHORING DEVICE, LEG STRAP, EACH"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A5200",
+                "display": "A5200 PERCUTANEOUS CATHETER/TUBE ANCHORING DEVICE, ADHESIVE SKIN ATTACHMENT"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "A4336",
+                "display": "A4336 INCONTINENCE SUPPLY, URETHRAL INSERT, ANY TYPE, EACH"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "code": [],
+          "required": false,
+          "linkId": "5.5",
+          "text": "Other Order"
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "text": "Physician/NPP Signature Elements",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "6.1",
+          "text": "Physician/NPP Signature",
+          "type": "string"
+        },
+        {
+          "linkId": "6.2",
+          "text": "Full Name (Printed): ",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "6.3",
+          "text": "Date of Order",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "6.4",
+          "text": "Physician/NPP NPI",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
