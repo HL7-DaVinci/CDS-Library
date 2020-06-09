@@ -2,15 +2,21 @@ library BasicClinicalInfoPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
+codesystem "HL7-V2-0136": 'http://terminology.hl7.org/CodeSystem/v2-0136' 
+
+code "Yes": 'Y' from "HL7-V2-0136" display 'Yes'
+
 context Patient
 
 define Today: Today()
 
-define AnswerYes:
-  System.Code {
-    code: 'Y',
-    display: 'Yes'
-  }
+/* This is a work around to prepopulate with Yes answer for Yes/No question.
+   The blocking issue is that when LHC form control merge Questionnaire (the compiled static form)
+   and QuestionnaireResponse (the CQL expression results) to create a form representation, 
+   the initial value in Questionnaire are ingored. 
+   So we cannot use Questionnaire initial to setup the default value. 
+*/
+define AnswerYes: "Yes"
 
 define Allergies:
   CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))

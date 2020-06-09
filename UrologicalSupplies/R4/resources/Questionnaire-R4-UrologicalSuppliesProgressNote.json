@@ -93,7 +93,8 @@
                   "question": "3.2",
                   "operator": "=",
                   "answerCoding": {
-                    "code": "N"
+                    "code": "N",
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
                   }
                 }
               ]
