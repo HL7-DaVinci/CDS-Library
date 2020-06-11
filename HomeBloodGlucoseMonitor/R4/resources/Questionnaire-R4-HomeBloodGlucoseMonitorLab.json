@@ -347,7 +347,7 @@
             {
               "linkId": "4.2",
               "text": "Fasting plasma glucose level [mg/dl]",
-              "type": "integer",
+              "type": "decimal",
               "required": true,
               "extension": [
                 {
@@ -355,6 +355,13 @@
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Fasting_Plasma_Glucose_Level"
+                  }
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "mg/dL",
+                    "system": "http://unitsofmeasure.org"
                   }
                 }
               ]
