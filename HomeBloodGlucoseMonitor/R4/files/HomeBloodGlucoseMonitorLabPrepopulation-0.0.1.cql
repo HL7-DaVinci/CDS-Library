@@ -1,20 +1,36 @@
 library HomeBloodGlucoseMonitorLabPrepopulation version '0.0.1'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
-/*
-This example is based on CMS122v7 - Diabetes: Hemoglobin A1c (HbA1c) Poor Control (> 9%).
-The example illustrates finding a most recent lab result.
-*/
 
-// using QDM version '5.3'
+// 	Code system definition
+codesystem "LOINC": 'http://loinc.org'
 
-// valueset "HbA1c Laboratory Test": 'urn:oid:2.16.840.1.113883.3.464.1003.198.12.1013'
+// Fasting Plasma Glucose Code taken from LOINC
+code "1558-6": '1558-6' from "LOINC"
 
-// parameter "Measurement Period" Interval<DateTime>
+parameter device_request DeviceRequest
+
+// Set LOINC code to var
+define "Fasting_Plasma_Glucose_Codes": { "1558-6" }
 
 context Patient
 
-define "TestVar": 'Hello World'
+// define "TestVar": 'Hello world'
+
+// Get fasting plasma glucose level
+define "Fasting_Plasma_Glucose_Level": FHIRHelpers.ToQuantity((First([Observation: "Fasting_Plasma_Glucose_Codes"]).value as Quantity)).value
+
+// Get Random plasma glucose level
+
+// Get two-hour oral glucose tolerance test results
+
+// Get A1c level
+
+
+
+
+
+
 
 /*
 define "Has Most Recent Elevated Hba1c":
@@ -24,3 +40,14 @@ define "Has Most Recent Elevated Hba1c":
 			sort by resultDatetime
 	).result > 9 '%'
 */
+
+/*
+define "InitialFastingPlasmaGlucose": 
+	Last("Observation").issued
+*/
+ // Get all observations for patient
+
+ // Filter out obersation using LOINC code
+
+ define function GetVal(ObsList List<Observation>):
+  ObsList O return cast O.value as Quantity

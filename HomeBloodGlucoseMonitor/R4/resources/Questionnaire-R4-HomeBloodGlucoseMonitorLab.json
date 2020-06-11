@@ -81,7 +81,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".TestVar"
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
               }
             }
           ]
@@ -345,24 +345,19 @@
               "text": "Date of initial test"
             },
             {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "4.2",
-                  "display": "Fasting plasma glucose level [mg/dl]"
-                }
-              ],
+              "linkId": "4.2",
+              "text": "Fasting plasma glucose level [mg/dl]",
+              "type": "integer",
+              "required": true,
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mg/dL"
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Fasting_Plasma_Glucose_Level"
                   }
                 }
-              ],
-              "required": true,
-              "linkId": "4.2",
-              "text": "Fasting plasma glucose level [mg/dl]"
+              ]
             },
             {
               "type": "decimal",
