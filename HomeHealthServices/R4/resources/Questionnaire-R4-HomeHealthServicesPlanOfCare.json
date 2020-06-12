@@ -12,6 +12,10 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServicesPlanOfCare-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "title": "Home Health Plan of Care / Certification",
@@ -40,7 +44,16 @@
         {
           "linkId": "2.1",
           "text": "Date of F2F visit",
-          "type": "date"
+          "type": "date",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FDate"
+              }
+            }
+          ]
         }
       ]
     },
@@ -52,22 +65,58 @@
         {
           "linkId": "3.1",
           "text": "Patient HI Claim No",
-          "type": "text"
+          "type": "text",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".PatientMedicalRecordNumber"
+              }
+            }
+          ]
         },
         {
           "linkId": "3.2",
           "text": "Medical Record Number",
-          "type": "text"
+          "type": "text",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".PatientMedicalRecordNumber"
+              }
+            }
+          ]
         },
         {
           "linkId": "3.3",
           "text": "Initial start of care date",
-          "type": "text"
+          "type": "date",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FStartDate"
+              }
+            }
+          ]
         },
         {
           "linkId": "3.4",
           "text": "For recertification: start/end of this episode of care",
-          "type": "date"
+          "type": "date",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FEndDate"
+              }
+            }
+          ]
         }
       ]
     },
@@ -79,7 +128,16 @@
         {
           "linkId": "4.1",
           "text": "Has advanced directives",
-          "type": "boolean"
+          "type": "boolean",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ACDSigned"
+              }
+            }
+          ]
         },
         {
           "linkId": "4.2",
@@ -91,6 +149,15 @@
               "operator": "=",
               "answerBoolean": true
             }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ACDDetails"
+              }
+            }
           ]
         }
       ]
@@ -98,12 +165,34 @@
     {
       "linkId": "5",
       "text": "Pertinent diagnoses",
-      "type": "text"
+      "type": "open-choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".RelavantDiagnosisCoding"
+          }
+        }
+      ],
+      "repeats": "true",
+      "answerOption": []
     },
     {
       "linkId": "6",
       "text": "Relevant procedures",
-      "type": "text"
+      "type": "open-choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"BasicClinicalInfoPrepopulation\".AllProcedures"
+          }
+        }
+      ],
+      "repeats": "true",
+      "answerOption": []
     },
     {
       "linkId": "7",
@@ -113,7 +202,18 @@
     {
       "linkId": "8",
       "text": "Allergies",
-      "type": "text"
+      "type": "open-choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"BasicClinicalInfoPrepopulation\".Allergies"
+          }
+        }
+      ],
+      "repeats": "true",
+      "answerOption": []
     },
     {
       "linkId": "9",
@@ -189,50 +289,6 @@
     {
       "linkId": "14",
       "text": "Patient-specific interventions and education",
-      "type": "text"
-    },
-    {
-      "linkId": "15",
-      "text": "Orders",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "15.1",
-          "text": "Intermittent skilled nursing services",
-          "type": "text"
-        },
-        {
-          "linkId": "15.2",
-          "text": "Justification ",
-          "type": "text"
-        },
-        {
-          "linkId": "15.3",
-          "text": "Physician’s Signature",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "linkId": "16",
-      "text": "Therapy services",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "16.1",
-          "text": "Physical therapy",
-          "type": "text"
-        },
-        {
-          "linkId": "16.2",
-          "text": "Occupational therapy",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "linkId": "17",
-      "text": "Verbal orders",
       "type": "text"
     },
     {
