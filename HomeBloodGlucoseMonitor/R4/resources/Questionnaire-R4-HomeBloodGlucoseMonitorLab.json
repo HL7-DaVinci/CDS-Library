@@ -371,17 +371,19 @@
             },
             {
               "type": "decimal",
-              "code": [
-                {
-                  "code": "4.3",
-                  "display": "Random plasma glucose level [mg/dl]"
-                }
-              ],
               "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Random_Plasma_Glucose_Level"
+                  }
+                },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
                   "valueCoding": {
-                    "display": "mg/dL"
+                    "code": "mg/dL",
+                    "system": "http://unitsofmeasure.org"
                   }
                 }
               ],
@@ -391,17 +393,19 @@
             },
             {
               "type": "decimal",
-              "code": [
-                {
-                  "code": "4.4",
-                  "display": "Two-hour oral glucose tolerance test, plasma glucose level [mg/dl]"
-                }
-              ],
               "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Two_hour_Glucose_Tolerance_Level"
+                  }
+                },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
                   "valueCoding": {
-                    "display": "mg/dL"
+                    "code": "mg/dL",
+                    "system": "http://unitsofmeasure.org"
                   }
                 }
               ],
@@ -419,9 +423,17 @@
               ],
               "extension": [
                 {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".A1c_Level"
+                  }
+                },
+                {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
                   "valueCoding": {
-                    "display": "%"
+                    "code": "%",
+                    "system": "http://unitsofmeasure.org"
                   }
                 }
               ],
@@ -448,12 +460,12 @@
               "code": [
                 {
                   "code": "4.6",
-                  "display": "Date of initial test"
+                  "display": "Date of confirmatory test"
                 }
               ],
               "required": true,
               "linkId": "4.6",
-              "text": "Date of initial test"
+              "text": "Date of confirmatory test"
             },
             {
               "type": "decimal",
