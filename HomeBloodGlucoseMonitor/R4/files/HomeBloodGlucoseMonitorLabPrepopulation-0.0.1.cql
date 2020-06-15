@@ -15,7 +15,10 @@ define "Fasting_Plasma_Glucose_Codes": { "1558-6" }
 
 context Patient
 
-// define "TestVar": 'Hello world'
+// Get date of initial test
+
+define "Fasting_Plasma_Glucose_Date": FHIRHelpers."ToDateTime"((First([Observation: "Fasting_Plasma_Glucose_Codes"]).issued))
+
 
 // Get fasting plasma glucose level
 define "Fasting_Plasma_Glucose_Quantity": FHIRHelpers.ToQuantity((First([Observation: "Fasting_Plasma_Glucose_Codes"]).value as Quantity))

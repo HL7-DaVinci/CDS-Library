@@ -334,10 +334,13 @@
           "item": [
             {
               "type": "date",
-              "code": [
+              "extension": [
                 {
-                  "code": "4.1",
-                  "display": "Date of initial test"
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Fasting_Plasma_Glucose_Date"
+                  }
                 }
               ],
               "required": true,
