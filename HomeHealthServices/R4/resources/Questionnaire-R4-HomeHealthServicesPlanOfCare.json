@@ -245,17 +245,50 @@
         {
           "linkId": "10.1",
           "text": "DME and supplies",
-          "type": "text"
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForDeviceRequestsCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
         },
         {
           "linkId": "10.2",
           "text": "Safety measures",
-          "type": "text"
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForSafetyCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
         },
         {
           "linkId": "10.3",
           "text": "Nutritional requirements",
-          "type": "text"
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForNutritionOrderCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
         }
       ]
     },
@@ -267,7 +300,17 @@
         {
           "linkId": "11.1",
           "text": "Prognosis",
-          "type": "text"
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ClinicalImpression"
+              }
+            }
+          ],
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis"
         },
         {
           "linkId": "11.2",

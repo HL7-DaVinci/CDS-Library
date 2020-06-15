@@ -60,6 +60,7 @@ define function ConvertConditionDetails(CondList List<Condition>):
 
 define "MedicationStatementList": [MedicationStatement]
 
+// TODO 
 //define "MedicationList": GetMedicationsList("MedicationStatementList")
 // only work for the assumption that the medication statement contains the medication in contained
 /*define function GetMedicationsList(MedStatementList List<MedicationStatement>):
@@ -92,10 +93,67 @@ define "RequestCarePlan": singleton from (
   [CarePlan] carePlan
     where ('CarePlan/' + carePlan.id) = service_request.basedOn[0].reference.value)
 
-define "CarePlanActivityList": "RequestCarePlan".activity    
+define "CarePlanActivityList": "RequestCarePlan".activity  
 
+define "CarePlanActivityForDeviceRequestsCodings": 
+  distinct(
+      flatten(
+      "CarePlanActivityList" activity
+        let activityCodings:
+          (activity.detail.code.coding) CODING
+          return Tuple {
+            code: CODING.code.value,
+            system: CODING.system.value,
+            display: CODING.display.value
+          }
+        where activity.detail.kind = 'DeviceRequest'  
+        return activityCodings
+        )
+  )
+
+define "CarePlanActivityForSafetyCodings": 
+  distinct(
+    flatten(
+      "CarePlanActivityList" activity
+        let activityCodings:
+          (activity.detail.code.coding) CODING
+          return Tuple {
+            code: CODING.code.value,
+            system: CODING.system.value,
+            display: CODING.display.value
+          }
+        where activity.detail.kind = 'Task'  
+        return activityCodings
+    )
+  )
+
+define "CarePlanActivityForNutritionOrderCodings": 
+  distinct(
+    flatten(
+      "CarePlanActivityList" activity
+        let activityCodings:
+          (activity.detail.code.coding) CODING
+          return Tuple {
+            code: CODING.code.value,
+            system: CODING.system.value,
+            display: CODING.display.value
+          }
+        where activity.detail.kind = 'NutritionOrder'  
+        return activityCodings
+    )
+  )        
 
 define "ClinicalImpression": singleton from (
   [ClinicalImpression] impression
-    where impression.encounter.reference.value = service_request.encounter.reference.value)    
+    let impressionCodings:
+      (impression.prognosisCodeableConcept[0].coding[0]) CODING
+      return CODING.display.value + '-' + CODING.code.value
+    where impression.encounter.reference.value = service_request.encounter.reference.value
+    return impressionCodings  
+  )  
 
+// TODO 
+define "RequestProvenance": singleton from (
+  [Provenance] provenance
+    where ('Provenance/' + provenance.id) = service_request.relevantHistory[0].reference
+  )
