@@ -10,7 +10,7 @@ codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 
 valueset "Urinary Incontinence or Chronic Urinary Retention Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.70'
 //valueset "Administrative Gender (HL7 V3)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.1.11.1'
-valueset "Urinary Collection and Irrigation System Device or Supply	": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.61'
+valueset "Urinary Collection and Irrigation System Device or Supply": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.61'
 valueset "Intermittent Urinary Catheter or Urological Supply for Intermittent Urinary Catheter Supply": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.59'
 valueset "External Catheter or Urinary Collection Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.62'
 valueset "Miscellaneous Urinary Catheter Supply": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.63'
