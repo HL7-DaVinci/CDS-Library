@@ -17,6 +17,8 @@ define "RequestEncounter": singleton from (
   [Encounter] encounter
     where ('Encounter/' + encounter.id) = service_request.encounter.reference.value)
 
+define "RequestAuthoredOnDate": service_request.authoredOn.value
+
 define "F2FDate": RequestEncounter.period.start.value
 
 define "F2FStartDate": RequestEncounter.period.start.value
@@ -54,37 +56,6 @@ define function ConvertConditionDetails(CondList List<Condition>):
           }
         
         return ConditionCodings
-    )
-  )
-
-
-define "MedicationStatementList": [MedicationStatement]
-
-// TODO 
-//define "MedicationList": GetMedicationsList("MedicationStatementList")
-// only work for the assumption that the medication statement contains the medication in contained
-/*define function GetMedicationsList(MedStatementList List<MedicationStatement>):
-  distinct(
-    flatten(
-      MedStatementList MedStatement
-        let MedicationList:
-          return MedStatement.category.coding
-        return MedicationList  
-    )
-  )*/
-define function MedicationCodings(MedList List<Medication>):
-  distinct(
-    flatten(
-      MedList M
-        let MedicationCodings:
-          (M.code.coding) CODING
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
-        
-        return MedicationCodings
     )
   )
 
@@ -147,7 +118,7 @@ define "ClinicalImpression": singleton from (
   [ClinicalImpression] impression
     let impressionCodings:
       (impression.prognosisCodeableConcept[0].coding[0]) CODING
-      return CODING.display.value + '-' + CODING.code.value
+      return CODING.display.value
     where impression.encounter.reference.value = service_request.encounter.reference.value
     return impressionCodings  
   )  
