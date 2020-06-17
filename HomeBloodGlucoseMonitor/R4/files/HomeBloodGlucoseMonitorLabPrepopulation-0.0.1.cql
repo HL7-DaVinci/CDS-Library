@@ -7,12 +7,9 @@ codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 
 // Value set definitions
-/*
-valueset "Home Blood Glucose Monitor Laboratory Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.94'
-*/
-
 valueset "Diabetes Mellitus Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35'
 
+// Individual code definitions
 code "Fasting Plasma Glucose Lab": '14771-0' from "LOINC"
 code "Random Plasma Glucose Lab": '34059-6' from "LOINC"
 code "Two-hour Glucose Tolerance Lab": '72171-2' from "LOINC" 
