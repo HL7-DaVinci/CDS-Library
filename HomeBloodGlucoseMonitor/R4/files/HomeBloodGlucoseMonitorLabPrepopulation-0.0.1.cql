@@ -3,71 +3,108 @@ using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
 // 	Code system definition
+codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 
-// Fasting Plasma Glucose Code taken from LOINC
-code "1558-6": '1558-6' from "LOINC"
-code "34059-6": '34059-6' from "LOINC"
-code "72171-2": '72171-2' from "LOINC"
-code "41995-2": '41995-2' from "LOINC"
+// Value set definitions
+/*
+valueset "Home Blood Glucose Monitor Laboratory Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.94'
+*/
+
+valueset "Diabetes Mellitus Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35'
+
+code "Fasting Plasma Glucose Lab": '14771-0' from "LOINC"
+code "Random Plasma Glucose Lab": '34059-6' from "LOINC"
+code "Two-hour Glucose Tolerance Lab": '72171-2' from "LOINC" 
+code "A1c Lab": '41995-2' from "LOINC"
 
 parameter device_request DeviceRequest
 
-// Set LOINC code to var
-define "Fasting_Plasma_Glucose_Codes": { "1558-6" }
-define "Random_Plasma_Glucose_Codes": { "34059-6" }
-define "Two_hour_Glucose_Tolerance_Codes": { "72171-2" }
-define "A1c_Codes": { "41995-2" }
-
 context Patient
 
+// Check for qualifying diagnosis (Diabetes Mellitus)
+define RelevantDiagnoses: {
+	if exists(Confirmed(ActiveOrRecurring([Condition: "Diabetes Mellitus Disorder"]))) then 'Diabetes confirmed' else null
+} except { null }
+
+/*
+ * *****************************************************************************
+ * Lab information *************************************************************
+ * *****************************************************************************
+ */
+define "Laboratory": 'Quest Diagnostics'
+define "Lab_Tech_NPI": '7852907749'
+define "Lab_Tech_Name": 'John S Doe'
+
+/*
+ * *****************************************************************************
+ * Initial test data ***********************************************************
+ * *****************************************************************************
+ */
+
 // Get date of initial test
-define "Fasting_Plasma_Glucose_Date": FHIRHelpers."ToDateTime"((First([Observation: "Fasting_Plasma_Glucose_Codes"]).issued))
+define "Fasting_Plasma_Glucose_Date": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers."ToDateTime"((First([Observation: "Fasting Plasma Glucose Lab"]).issued))
+} except { null }
 
-// Get fasting plasma glucose level
-define "Fasting_Plasma_Glucose_Quantity": FHIRHelpers.ToQuantity((First([Observation: "Fasting_Plasma_Glucose_Codes"]).value as Quantity))
+// Get initial fasting plasma glucose level
+define "Fasting_Plasma_Glucose_Level": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((First([Observation: "Fasting Plasma Glucose Lab"]).value as Quantity)).value
+} except { null }
 
-define "Fasting_Plasma_Glucose_Level": "Fasting_Plasma_Glucose_Quantity".value
+// define "Fasting_Plasma_Glucose_Unit": "Fasting_Plasma_Glucose_Quantity".unit
 
-define "Fasting_Plasma_Glucose_Unit": "Fasting_Plasma_Glucose_Quantity".unit
+// Get initial random plasma glucose level
+define "Random_Plasma_Glucose_Level": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((First([Observation: "Random Plasma Glucose Lab"]).value as Quantity)).value
+} except { null }
 
-// Get Random plasma glucose level
-define "Random_Plasma_Glucose_Quantity": FHIRHelpers.ToQuantity((First([Observation: "Random_Plasma_Glucose_Codes"]).value as Quantity))
+// Get initial two-hour oral glucose tolerance test results
+define "Two_hour_Glucose_Tolerance_Level": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((First([Observation: "Two-hour Glucose Tolerance Lab"]).value as Quantity)).value
+} except { null }
 
-define "Random_Plasma_Glucose_Level": "Random_Plasma_Glucose_Quantity".value
-
-// Get two-hour oral glucose tolerance test results
-define "Two_hour_Glucose_Tolerance_Quantity": FHIRHelpers.ToQuantity((First([Observation: "Two_hour_Glucose_Tolerance_Codes"]).value as Quantity))
-
-define "Two_hour_Glucose_Tolerance_Level": "Two_hour_Glucose_Tolerance_Quantity".value
-
-// Get A1c level
-define "A1c_Quantity": FHIRHelpers.ToQuantity((First([Observation: "A1c_Codes"]).value as Quantity))
-
-define "A1c_Level": "A1c_Quantity".value
-
-
-
-
-
-
+// Get initial A1c level 
+define "A1c_Level": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((First([Observation: "A1c Lab"]).value as Quantity)).value
+} except { null }
 
 /*
-define "Has Most Recent Elevated Hba1c":
-	Last(["Laboratory Test, Performed": "HbA1c Laboratory Test"] HbA1c
-			where HbA1c.relevantPeriod during "Measurement Period"
-				and HbA1c.result is not null
-			sort by resultDatetime
-	).result > 9 '%'
-*/
+ * *****************************************************************************
+ * Confirmatory test data ******************************************************
+ * *****************************************************************************
+ */
 
-/*
-define "InitialFastingPlasmaGlucose": 
-	Last("Observation").issued
-*/
- // Get all observations for patient
+// Get date of confirmatory test
+define "Confirmed_Fasting_Plasma_Glucose_Date": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers."ToDateTime"((Last([Observation: "Fasting Plasma Glucose Lab"]).issued))
+} except { null }
 
- // Filter out obersation using LOINC code
+// Get confirmatory fasting plasma glucose level
+define "Confirmed_Fasting_Plasma_Glucose_Level": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((Last([Observation: "Fasting Plasma Glucose Lab"]).value as Quantity)).value
+} except { null }
 
- define function GetVal(ObsList List<Observation>):
-  ObsList O return cast O.value as Quantity
+// define "Fasting_Plasma_Glucose_Unit": "Fasting_Plasma_Glucose_Quantity".unit
+
+// Get confirmatory random plasma glucose level
+define "Confirmed_Random_Plasma_Glucose_Level": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((Last([Observation: "Random Plasma Glucose Lab"]).value as Quantity)).value
+} except { null }
+
+// Get confirmatory two-hour oral glucose tolerance test results
+define "Confirmed_Two_hour_Glucose_Tolerance_Level": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((Last([Observation: "Two-hour Glucose Tolerance Lab"]).value as Quantity)).value
+} except { null }
+
+// Get confirmatory A1c level 
+define "Confirmed_A1c_Level": {
+  if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((Last([Observation: "A1c Lab"]).value as Quantity)).value
+} except { null }
+
+// Helpers
+define function ActiveOrRecurring(CondList List<Condition>):
+  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
+
+define function Confirmed(CondList List<Condition>):
+  CondList C where C.verificationStatus.coding.code = 'confirmed'

@@ -415,12 +415,6 @@
             },
             {
               "type": "decimal",
-              "code": [
-                {
-                  "code": "4.5",
-                  "display": "A1c level [%]"
-                }
-              ],
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -457,49 +451,56 @@
           "item": [
             {
               "type": "date",
-              "code": [
-                {
-                  "code": "4.6",
-                  "display": "Date of confirmatory test"
-                }
-              ],
-              "required": true,
-              "linkId": "4.6",
-              "text": "Date of confirmatory test"
-            },
-            {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "4.7",
-                  "display": "Fasting plasma glucose level [mg/dl]"
-                }
-              ],
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mg/dL"
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_Fasting_Plasma_Glucose_Date"
                   }
                 }
               ],
               "required": true,
-              "linkId": "4.7",
-              "text": "Fasting plasma glucose level [mg/dl]"
+              "linkId": "4.6",
+              "text": "Date of test"
             },
             {
+              "linkId": "4.7",
+              "text": "Fasting plasma glucose level [mg/dl]",
               "type": "decimal",
-              "code": [
-                {
-                  "code": "4.8",
-                  "display": "Random plasma glucose level [mg/dl]"
-                }
-              ],
+              "required": true,
               "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_Fasting_Plasma_Glucose_Level"
+                  }
+                },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
                   "valueCoding": {
-                    "display": "mg/dL"
+                    "code": "mg/dL",
+                    "system": "http://unitsofmeasure.org"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "decimal",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_Random_Plasma_Glucose_Level"
+                  }
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "code": "mg/dL",
+                    "system": "http://unitsofmeasure.org"
                   }
                 }
               ],
@@ -509,17 +510,19 @@
             },
             {
               "type": "decimal",
-              "code": [
-                {
-                  "code": "4.9",
-                  "display": "Two-hour oral glucose tolerance test, plasma glucose level [mg/dl]"
-                }
-              ],
               "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_Two_hour_Glucose_Tolerance_Level"
+                  }
+                },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
                   "valueCoding": {
-                    "display": "mg/dL"
+                    "code": "mg/dL",
+                    "system": "http://unitsofmeasure.org"
                   }
                 }
               ],
@@ -529,17 +532,19 @@
             },
             {
               "type": "decimal",
-              "code": [
-                {
-                  "code": "4.10",
-                  "display": "A1c level [%]"
-                }
-              ],
               "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_A1c_Level"
+                  }
+                },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
                   "valueCoding": {
-                    "display": "%"
+                    "code": "%",
+                    "system": "http://unitsofmeasure.org"
                   }
                 }
               ],
@@ -576,40 +581,49 @@
           "text": "Signature"
         },
         {
-          "type": "string",
-          "code": [
-            {
-              "code": "5.2",
-              "display": "Name (printed)"
-            }
-          ],
-          "required": true,
           "linkId": "5.2",
-          "text": "Name (printed)"
-        },
-        {
-          "type": "date",
-          "code": [
-            {
-              "code": "5.3",
-              "display": "Date (MM/DD/YY)"
-            }
-          ],
-          "required": true,
-          "linkId": "5.3",
-          "text": "Date (MM/DD/YY)"
-        },
-        {
+          "text": "Provider Name",
           "type": "string",
-          "code": [
-            {
-              "code": "5.4",
-              "display": "NPI"
-            }
-          ],
           "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "text": "Date of Face-To-Face Evaluation",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorPrepopulation\".Today"
+              }
+            }
+          ]
+        },
+        {
           "linkId": "5.4",
-          "text": "NPI"
+          "text": "NPI",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ]
         }
       ]
     }
