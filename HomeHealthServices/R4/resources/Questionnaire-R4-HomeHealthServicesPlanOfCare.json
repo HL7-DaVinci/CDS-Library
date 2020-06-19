@@ -258,7 +258,7 @@
     },
     {
       "linkId": "10",
-      "text": "",
+      "text": "Care plan activities",
       "type": "group",
       "item": [
         {
@@ -410,6 +410,11 @@
       "type": "group",
       "item": [
         {
+          "linkId": "22.1",
+          "text": "Name",
+          "type": "text"
+        },
+        {
           "linkId": "22.2",
           "text": "Date",
           "type": "date",
@@ -422,6 +427,11 @@
               }
             }
           ]
+        },
+        {
+          "linkId": "22.3",
+          "text": "Signature",
+          "type": "text"
         }
       ]
     },

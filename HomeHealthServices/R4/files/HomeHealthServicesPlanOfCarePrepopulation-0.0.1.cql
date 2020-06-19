@@ -10,9 +10,6 @@ parameter service_request ServiceRequest
 
 context Patient
 
-define "service_requestInput": service_request
-define "PatientInput": Patient
-
 define "RequestEncounter": singleton from (
   [Encounter] encounter
     where ('Encounter/' + encounter.id) = service_request.encounter.reference.value)
@@ -87,13 +84,11 @@ define "CarePlanActivityForSafetyCodings":
     flatten(
       "CarePlanActivityList" activity
         let activityCodings:
-          (activity.detail.code.coding) CODING
+          (activity.detail.code) CODE
           return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
+            display: CODE.text.value
           }
-        where activity.detail.kind = 'Task'  
+        where activity.detail.kind = 'Task' and activity.detail.reasonCode[0].text = 'Safety measures'
         return activityCodings
     )
   )
