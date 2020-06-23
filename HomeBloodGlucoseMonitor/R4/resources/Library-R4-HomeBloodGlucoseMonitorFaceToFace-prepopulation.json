@@ -1,0 +1,33 @@
+{
+  "resourceType": "Library",
+  "id": "HomeBloodGlucoseMonitorFaceToFace-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorFaceToFace-prepopulation",
+  "name": "HomeBloodGlucoseMonitorFaceToFace-prepopulation",
+  "version": "0.0.1",
+  "title": "Blood Glucose Monitor Face To Face Prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    }
+  ],
+  "dataRequirement": [
+    
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/HomeBloodGlucoseMonitor/r4/HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql"
+    }
+  ]
+}

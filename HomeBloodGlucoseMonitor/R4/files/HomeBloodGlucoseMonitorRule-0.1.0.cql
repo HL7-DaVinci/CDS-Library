@@ -29,5 +29,8 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
   'Questionnaire/HomeBloodGlucoseMonitor'
 
+define RESULT_QuestionnaireFaceToFaceUri:
+  'Questionnaire/HomeBloodGlucoseMonitorFaceToFace'  
+
 define RESULT_requestId:
   device_request

@@ -1,0 +1,138 @@
+{
+    "resourceType": "Questionnaire",
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorFaceToFace-prepopulation"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+      }
+    ],
+    "id": "HomeBloodGlucoseMonitorFaceToFace",
+    "name": "HomeBloodGlucoseMonitorFaceToFace",
+    "title": "Home Blood Glucose Face to Face Questionnaire",
+    "status": "draft",
+    "date": "2020-06-23",
+    "publisher": "Da Vinci DTR",
+    "subjectType": [
+      "Patient"
+    ],
+    "item": [
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/questionnaire-item-control",
+                  "code": "gtable"
+                }
+              ]
+            }
+          }
+        ],
+        "linkId": "1",
+        "type": "group",
+        "text": "Patient Information:",
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                }
+              }
+            ],
+            "linkId": "1.1",
+            "text": "Last Name:",
+            "type": "string",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+                }
+              }
+            ],
+            "linkId": "1.2",
+            "text": "First Name:",
+            "type": "string",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+                }
+              }
+            ],
+            "linkId": "1.3",
+            "text": "Middle Initial:",
+            "type": "string",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+                }
+              }
+            ],
+            "linkId": "1.4",
+            "text": "Date of Birth:",
+            "type": "date",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+                }
+              }
+            ],
+            "linkId": "1.5",
+            "text": "Gender:",
+            "type": "choice",
+            "required": true,
+            "answerValueSet": "#gender"
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+                }
+              }
+            ],
+            "linkId": "1.6",
+            "text": "Medicare ID:",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
