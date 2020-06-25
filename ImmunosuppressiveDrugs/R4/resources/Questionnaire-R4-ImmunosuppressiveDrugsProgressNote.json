@@ -7,7 +7,7 @@
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
-  },  
+  },
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
@@ -28,7 +28,7 @@
       "linkId": "1",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",          
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
           "valueCanonical": "questionnaire/patient-info"
         }
       ],
@@ -160,7 +160,7 @@
       "type": "group",
       "required": true,
       "item": [
-        {  
+        {
           "linkId": "5.1",
           "text": "Diagnoses for Order",
           "type": "open-choice",
@@ -174,7 +174,7 @@
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".QualifyingTransplantCodings"
               }
             }
-          ] 
+          ]
         },
         {
           "linkId": "5.2",
@@ -235,7 +235,7 @@
               }
             }
           ],
-          "enableWhen":[
+          "enableWhen": [
             {
               "question": "5.1",
               "operator": "=",
@@ -251,7 +251,7 @@
                 "code": "62438007",
                 "system": "http://snomed.info/sct"
               }
-            },            
+            },
             {
               "question": "5.1",
               "operator": "=",
@@ -259,7 +259,7 @@
                 "code": "67562009",
                 "system": "http://snomed.info/sct"
               }
-            },            
+            },
             {
               "question": "5.1",
               "operator": "=",
@@ -297,14 +297,32 @@
     },
     {
       "linkId": "8",
-      "extension": [
+      "type": "group",
+      "text": "Physical Examination With Vital Signs",
+      "item": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/physical-exam"
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/vital-signs"
+            }
+          ],
+          "linkId": "8.1",
+          "type": "display",
+          "text": "This is a placeholder for Vital Signs"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/physical-exam"
+            }
+          ],
+          "linkId": "8.2",
+          "type": "display",
+          "text": "This is a placeholder for Physican Examination"
         }
-      ],
-      "type": "display",
-      "text": "This is a placeholder for Physican Examination"
+      ]
     },
     {
       "linkId": "9",

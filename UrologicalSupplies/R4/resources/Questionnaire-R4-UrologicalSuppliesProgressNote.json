@@ -168,14 +168,32 @@
     },
     {
       "linkId": "7",
-      "extension": [
+      "type": "group",
+      "text": "Physical Examination With Vital Signs",
+      "item": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/physical-exam"
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/vital-signs"
+            }
+          ],
+          "linkId": "7.1",
+          "type": "display",
+          "text": "This is a placeholder for Vital Signs"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/physical-exam"
+            }
+          ],
+          "linkId": "7.2",
+          "type": "display",
+          "text": "This is a placeholder for Physican Examination"
         }
-      ],
-      "type": "display",
-      "text": "This is a placeholder for Physican Examination"
+      ]
     },
     {
       "linkId": "8",
