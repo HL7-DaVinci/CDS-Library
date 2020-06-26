@@ -1,0 +1,17 @@
+{
+    "topic": "HomeBloodGlucoseMonitor",
+    "payers": [
+        "cms"
+    ],
+    "mappings": [
+        {
+            "codeSystem": "cpt",
+            "codes": [
+                "82947", "95259"
+            ]
+        }
+    ],
+    "fhirVersions": [
+        "R4"
+    ]
+}

@@ -11,10 +11,8 @@
   "publisher": "Da Vinci DTR",
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/ImmunosuppressiveDrugs-prepopulation"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/ImmunosuppressiveDrugs-prepopulation"
     }
   ],
   "item": [

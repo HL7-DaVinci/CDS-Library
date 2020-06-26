@@ -392,7 +392,7 @@
           ],
           "linkId": "7.1",
           "type": "group",
-          "repeats": "true",
+          "repeats": true,
           "item": [
             {
               "linkId": "7.1.1",
