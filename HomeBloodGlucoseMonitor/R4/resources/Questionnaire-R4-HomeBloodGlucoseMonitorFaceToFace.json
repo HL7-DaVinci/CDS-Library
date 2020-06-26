@@ -81,8 +81,17 @@
         {
           "linkId": "4.1",
           "text": "Diabetes Mellitus",
-          "type": "choice",
-          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35"
+          "type": "open-choice",
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".DiabetesMellitusDiagnoses"
+              }
+            }
+          ]
         },
         {
           "linkId": "4.2",

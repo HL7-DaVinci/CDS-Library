@@ -12,7 +12,7 @@ parameter device_request DeviceRequest
 
 context Patient
 
-define "AllDiagnoses":
+define "OtherDiagnoses":
   distinct(flatten(
     [Condition] C
       let ICD10Codings:
@@ -21,14 +21,24 @@ define "AllDiagnoses":
           'http://hl7.org/fhir/sid/icd-10-cm'
         }
         return CODING.code.value + ' - ' + CODING.display.value)
-      where C.clinicalStatus.coding.code = 'active'
-      and exists(ICD10Codings)
+      where C.clinicalStatus.coding.code = 'active' and exists(ICD10Codings) and ((C.code.coding[0].code in "DiabetesMellitusValueSet") = false)
       return ICD10Codings
   ))
 
+define "DiabetesMellitusDiagnoses":
+  distinct(flatten(
+    [Condition] C
+      let ICD10Codings:
+        ((C.code.coding) CODING where CODING.system.value in {
+          'http://hl7.org/fhir/sid/icd-10',
+          'http://hl7.org/fhir/sid/icd-10-cm'
+        }
+        return CODING.code.value + ' - ' + CODING.display.value)
+      where C.clinicalStatus.coding.code = 'active' and exists(ICD10Codings) and (C.code.coding[0].code in "DiabetesMellitusValueSet") = true
+      return ICD10Codings
+  ))
+
+define "DMConditions": [Condition: "DiabetesMellitusValueSet"]  
+
 define "DM": "DiabetesMellitusValueSet"
-
-define "DMDiagnosis": ["AllDiagnoses": "DiabetesMellitusValueSet"]
-
-define "": 
 
