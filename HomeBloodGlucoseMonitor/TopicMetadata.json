@@ -5,10 +5,15 @@
     ],
     "mappings": [
         {
-            "codeSystem": "cpt",
+            "codeSystem": "hcpcs",
             "codes": [
-                "82947", "95259"
+                "E0607",
+                "E2100",
+                "E2101",
+                "K0554",
+                "S1031"
             ]
+
         }
     ],
     "fhirVersions": [
