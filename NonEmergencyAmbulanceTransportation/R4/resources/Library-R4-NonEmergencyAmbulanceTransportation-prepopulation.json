@@ -23,7 +23,7 @@
   ],
   "dataRequirement": [
     {
-      "type": "Procedure",
+      "type": "ServiceRequest",
       "codeFilter": [
         {
           "path": "code",
