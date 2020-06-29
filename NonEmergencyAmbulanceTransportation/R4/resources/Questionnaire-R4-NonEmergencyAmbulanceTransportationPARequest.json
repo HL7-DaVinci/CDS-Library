@@ -387,6 +387,15 @@
           "type": "group",
           "item": [
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".NeatServiceRequestedCoding"
+                  }
+                }
+              ],
               "linkId": "NEATPROC.1",
               "text": "Procedure Code",
               "type": "open-choice",

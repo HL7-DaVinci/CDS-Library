@@ -22,6 +22,9 @@ define "NeatServiceRequested":
   else if  "ServiceRequestHcpcsCoding".code.value = 'A0428' then 'A0428'
   else 'null'
 
+define "NeatServiceRequestedCoding":
+  {FHIRHelpers.ToCode(ServiceRequestHcpcsCoding)}
+
 define "ServiceRequestReason": service_request.reasonCode[0].text.value
 
 define "ServiceStartDate": FHIRHelpers.ToDateTime(
