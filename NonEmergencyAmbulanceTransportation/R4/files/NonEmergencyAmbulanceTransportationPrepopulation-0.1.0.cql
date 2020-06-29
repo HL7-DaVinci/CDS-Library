@@ -24,3 +24,17 @@ define "NeatServiceRequested":
 
 define "ServiceRequestReason": service_request.reasonCode[0].text.value
 
+define "ServiceStartDate": FHIRHelpers.ToDateTime(
+    Coalesce(
+      service_request.occurrence as FHIR.dateTime, 
+      (service_request.occurrence as FHIR.Period).start
+    )
+  )
+
+define "ServiceEndDate": FHIRHelpers.ToDateTime(
+    Coalesce(
+      service_request.occurrence as FHIR.dateTime, 
+      (service_request.occurrence as FHIR.Period).end
+    )
+  )
+  

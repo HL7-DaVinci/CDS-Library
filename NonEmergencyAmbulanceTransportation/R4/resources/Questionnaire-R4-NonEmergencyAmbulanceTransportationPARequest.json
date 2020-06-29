@@ -9,16 +9,14 @@
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
     }
   ],
   "title": "Non Emergency Ambulance Transportation Questionnaire",
   "status": "draft",
   "date": "2020-01-21",
   "publisher": "Da Vinci DTR",
-  "subjectType": [
-    "Patient"
-  ],
+  "subjectType": ["Patient"],
   "item": [
     {
       "extension": [
@@ -62,6 +60,7 @@
             }
           ],
           "linkId": "2.2",
+          "text": "Address",
           "type": "group",
           "item": [
             {
@@ -70,24 +69,60 @@
               "type": "string"
             },
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".Line"
+                  }
+                }
+              ],
               "linkId": "PND.6",
               "text": "Address",
               "type": "string",
               "required": true
             },
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".City"
+                  }
+                }
+              ],
               "linkId": "PND.7",
               "text": "City",
               "type": "string",
               "required": true
             },
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".State"
+                  }
+                }
+              ],
               "linkId": "PND.8",
               "text": "State",
               "type": "string",
               "required": true
             },
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".Zip"
+                  }
+                }
+              ],
               "linkId": "PND.9",
               "text": "Zip Code",
               "type": "string",
@@ -110,6 +145,7 @@
             }
           ],
           "linkId": "2.3",
+          "text": "Contact Information",
           "type": "group",
           "item": [
             {
@@ -118,11 +154,29 @@
               "type": "integer"
             },
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".Phone"
+                  }
+                }
+              ],
               "linkId": "PND.11",
               "text": "Telephone Number",
               "type": "string"
             },
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".Email"
+                  }
+                }
+              ],
               "linkId": "PND.12",
               "text": "Direct address",
               "type": "string"
@@ -149,7 +203,7 @@
                 ]
               }
             }
-          ],          
+          ],
           "linkId": "3.1",
           "type": "group",
           "item": [
@@ -164,7 +218,7 @@
               "type": "string",
               "text": "NPI",
               "required": true
-            },        
+            },
             {
               "linkId": "SUPL.3",
               "text": "Address",
@@ -204,10 +258,10 @@
                 ]
               }
             }
-          ],          
+          ],
           "linkId": "3.2",
           "type": "group",
-          "item": [        
+          "item": [
             {
               "linkId": "SUPL.7",
               "text": "PTAN",
@@ -246,18 +300,36 @@
                 ]
               }
             }
-          ],  
+          ],
           "linkId": "4.1",
           "text": "NEAT Order/PCS Information",
           "type": "group",
           "item": [
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".ServiceStartDate"
+                  }
+                }
+              ],
               "linkId": "NEATORD.1",
               "text": "Start date (MM/DD/YYYY):",
               "type": "date",
               "required": true
             },
             {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".ServiceEndDate"
+                  }
+                }
+              ],
               "linkId": "NEATORD.2",
               "text": "End Date (MM/DD/YYYY)",
               "type": "date"
@@ -267,14 +339,14 @@
               "text": "Round Trip",
               "type": "choice",
               "required": true,
-              "answerValueSet": "<server-path>ValueSet/yes-no"
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
             },
             {
               "linkId": "NEATORD.4",
               "text": "Is transport from Home",
               "type": "choice",
               "required": true,
-              "answerValueSet": "<server-path>ValueSet/yes-no"
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
             },
             {
               "linkId": "NEATORD.5",
@@ -309,14 +381,14 @@
                 ]
               }
             }
-          ],  
+          ],
           "linkId": "4.2",
           "text": "NEAT Procedure Billing Code",
           "type": "group",
           "item": [
             {
               "linkId": "NEATPROC.1",
-              "text": "Procedure Code",              
+              "text": "Procedure Code",
               "type": "open-choice",
               "required": true,
               "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.108"
@@ -348,24 +420,51 @@
             ]
           }
         }
-      ],  
+      ],
       "linkId": "5",
       "text": "Requestor Contact Information",
       "type": "group",
       "item": [
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".ServiceStartDate"
+              }
+            }
+          ],
           "linkId": "NEATREQ.1",
           "text": "Telephone number",
           "type": "string",
           "required": true
         },
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
+              }
+            }
+          ],
           "linkId": "NEATREQ.2.1",
           "text": "Last Name",
           "type": "string",
           "required": true
         },
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              }
+            }
+          ],
           "linkId": "NEATREQ.2.2",
           "text": "First Name",
           "type": "string",
@@ -377,6 +476,15 @@
           "type": "string"
         },
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Email"
+              }
+            }
+          ],
           "linkId": "NEATREQ.4",
           "text": "Direct address",
           "type": "string"
@@ -387,7 +495,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".Today"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
               }
             }
           ],

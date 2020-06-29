@@ -36,3 +36,19 @@ define FullName:
 define NPI: (singleton from (
   "OrderingProvider".identifier identifier
     where identifier.system.value = 'http://hl7.org/fhir/sid/us-npi')).value.value
+
+define Address: singleton from (
+  ("OrderingProvider".address address where address.use.value = 'postal' or address.use.value = 'work')
+  union
+  "OrderingProvider".address)
+
+define Line: "Address".line.value
+define City: "Address".city.value
+define State: "Address".state.value
+define Zip: "Address".postalCode.value
+
+define Phone: (singleton from (
+  "OrderingProvider".telecom telecom where telecom.system.value = 'phone')).value.value
+
+define Email: (singleton from (
+  "OrderingProvider".telecom telecom where telecom.system.value = 'email')).value.value
