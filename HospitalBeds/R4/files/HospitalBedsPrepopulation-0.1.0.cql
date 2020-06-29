@@ -1,4 +1,4 @@
-library HospitalBedsPrepopulation  version '0.1.0'
+library HospitalBedsAndAccessoriesPrepopulation  version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
@@ -82,7 +82,7 @@ define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
     flatten(
       CondList C
         let DiagnosesCodings:
-          (C.code.coding) CODING where CODING.system.value in {
+          (ßC.code.coding) CODING where CODING.system.value in {
             'http://hl7.org/fhir/sid/icd-10',
             'http://hl7.org/fhir/sid/icd-10-cm',
             'http://snomed.info/sct'
