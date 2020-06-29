@@ -201,7 +201,7 @@
           "text": "Transplant met Medicare coverage criteria in effect at the time?",
           "type": "choice",
           "required": true,
-          "answerValueSet": "<server-path>ValueSet/yes-no-unknown",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -221,7 +221,7 @@
           "text": "If transplant is Pancreas (whole organ) alone, does patient meet the requirements defined in the guidance?",
           "type": "choice",
           "required": "true",
-          "answerValueSet": "<server-path>ValueSet/yes-no-unknown",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
