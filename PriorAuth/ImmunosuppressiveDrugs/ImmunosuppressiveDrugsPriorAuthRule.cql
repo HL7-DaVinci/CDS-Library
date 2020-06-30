@@ -1,4 +1,4 @@
-library HomeBloodGlucodeMonitorPriorAuthRule version '0.1.0'
+library ImmunosuppressiveDrugsPriorAuthRule version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
@@ -8,7 +8,7 @@ context Patient
 
 define PRIORAUTH_GRANTED:
   First([Claim] C
-  return C.status.value = 'draft')
+  return C.status.value = 'active')
 
 define PRIORAUTH_PENDED:
-  true
+  false
