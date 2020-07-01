@@ -81,7 +81,7 @@
         {
           "linkId": "4.1",
           "text": "Diabetes Mellitus",
-          "type": "open-choice",
+          "type": "choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35",
           "extension": [
             {
