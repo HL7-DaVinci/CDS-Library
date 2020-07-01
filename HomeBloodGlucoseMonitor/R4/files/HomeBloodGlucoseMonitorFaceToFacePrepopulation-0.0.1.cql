@@ -7,35 +7,10 @@ valueset "DiabetesMellitusValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.
 parameter device_request DeviceRequest
 
 context Patient
+ 
+define "OtherDiagnoses": GetConditionCodings([Condition] except "DiabetesMellitusValueSet")
+define "DMCodings": GetConditionCodings([Condition: "DiabetesMellitusValueSet"])
 
-define "OtherDiagnoses":
-  distinct(flatten(
-    [Condition] C
-      let ICD10Codings:
-        ((C.code.coding) CODING where CODING.system.value in {
-          'http://hl7.org/fhir/sid/icd-10',
-          'http://hl7.org/fhir/sid/icd-10-cm'
-        }
-        return CODING.code.value + ' - ' + CODING.display.value)
-      where C.clinicalStatus.coding.code = 'active' and exists(ICD10Codings) and ((C.code.coding[0].code in "DiabetesMellitusValueSet") = false)
-      return ICD10Codings
-  ))
-
-define "DiabetesMellitusDiagnoses":
-  distinct(flatten(
-    [Condition] C
-      let ICD10Codings:
-        ((C.code.coding) CODING where CODING.system.value in {
-          'http://hl7.org/fhir/sid/icd-10',
-          'http://hl7.org/fhir/sid/icd-10-cm'
-        }
-        return CODING.code.value + ' - ' + CODING.display.value)
-      where C.clinicalStatus.coding.code = 'active' and exists(ICD10Codings) and (C.code.coding[0].code in "DiabetesMellitusValueSet") = true
-      return ICD10Codings
-  ))
-
-define "DMConditions": [Condition: "DiabetesMellitusValueSet"]  
-define "DMCodings": GetConditionCodings("DMConditions")
 define function GetConditionCodings(ConditionList List<FHIR.Condition>):
   distinct(
     flatten(
@@ -43,6 +18,7 @@ define function GetConditionCodings(ConditionList List<FHIR.Condition>):
         let ConditionCodings:
           (C.code.coding) CODING 
           return FHIRHelpers.ToCode(CODING)
+        where C.clinicalStatus.coding.code = 'active' and exists(ICD10Codings)  
         return ConditionCodings
     )
   )
