@@ -83,11 +83,7 @@ define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
         MedStatementList MedStatement
           let MedicationList:
             (MedStatement.medication.coding) CODING
-            return Tuple {
-              code: CODING.code.value,
-              system: CODING.system.value,
-              display: CODING.display.value
-            }
+            return FHIRHelpers.ToCode(CODING)
           return MedicationList  
       )
     )
