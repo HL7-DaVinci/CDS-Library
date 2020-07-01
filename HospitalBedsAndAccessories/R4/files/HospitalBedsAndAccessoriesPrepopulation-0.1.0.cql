@@ -82,7 +82,7 @@ define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
     flatten(
       CondList C
         let DiagnosesCodings:
-          (ßC.code.coding) CODING where CODING.system.value in {
+          (C.code.coding) CODING where CODING.system.value in {
             'http://hl7.org/fhir/sid/icd-10',
             'http://hl7.org/fhir/sid/icd-10-cm',
             'http://snomed.info/sct'
