@@ -41,11 +41,7 @@ define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
             'http://hl7.org/fhir/sid/icd-10-cm',
             'http://snomed.info/sct'
           }
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
+          return FHIRHelpers.ToCode(CODING)
         where C.verificationStatus.coding.code = 'confirmed'
           and C.clinicalStatus.coding.code in {'active', 'relapse'}
           and exists(DiagnosesCodings)
@@ -59,11 +55,7 @@ define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
       ProcedureList P
         let ProcedureCodings:
           (P.code.coding) CODING 
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
+          return FHIRHelpers.ToCode(CODING)
         return ProcedureCodings
     )
   )
@@ -77,11 +69,7 @@ define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
         MedStatementList MedStatement
           let MedicationList:
             (MedStatement.medication.coding) CODING
-            return Tuple {
-              code: CODING.code.value,
-              system: CODING.system.value,
-              display: CODING.display.value
-            }
+            return FHIRHelpers.ToCode(CODING)
           return MedicationList  
       )
     )
