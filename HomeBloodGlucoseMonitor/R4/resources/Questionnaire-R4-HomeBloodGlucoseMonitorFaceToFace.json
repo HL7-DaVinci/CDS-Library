@@ -104,7 +104,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnoses"
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
               }
             }
           ],
@@ -116,7 +116,56 @@
     {
       "linkId": "5",
       "text": "Laboratory validation",
-      "type": "display"
+      "type": "group",
+      "item": [
+        {
+          "linkId": "5.1",
+          "type": "boolean",
+          "text": "Confirming diagnosis of Diabetes Mellitus",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".ConfirmingDiabetesCondition"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.2",
+          "type": "display",
+          "text": "Check separate lab form",
+          "enableWhen": [
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "type": "date",
+          "text": "Diagnosis confirmed at",
+          "enableWhen": [
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerBoolean": false
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".DMConfirmedDate"
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "linkId": "6",
@@ -126,7 +175,18 @@
     {
       "linkId": "7",
       "text": "Related past medical/surgical history",
-      "type": "text"
+      "type": "open-choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"BasicClinicalInfoPrepopulation\".AllProcedures"
+          }
+        }
+      ],
+      "repeats": "true",
+      "answerOption": []
     },
     {
       "linkId": "8",
@@ -237,7 +297,16 @@
         {
           "linkId": "14.1",
           "text": "Non-CGM",
-          "type": "boolean"
+          "type": "boolean",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".IsNonContinuousBloodGlucoseMonitorOrdered"
+              }
+            }
+          ]
         },
         {
           "linkId": "14.2",
@@ -247,7 +316,16 @@
             {
               "linkId": "14.1.1",
               "text": "Non-Insulin treated times daily",
-              "type": "integer"
+              "type": "integer",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorFrequency"
+                  }
+                }
+              ]
             },
             {
               "linkId": "14.1.2",
@@ -282,7 +360,21 @@
               "linkId": "14.1.5",
               "text": "Time of testing",
               "type": "choice",
-              "answerOption": []
+              "answerValueSet": "http://hl7.org/fhir/ValueSet/event-timing",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "14.1.6",
+              "text": "Other",
+              "type": "text"
             }
           ],
           "enableWhen": [
@@ -296,8 +388,19 @@
         {
           "linkId": "14.3",
           "text": "Continuous Glucose Monitoring Qualifications",
-          "type": "choice",
-          "answerOption": [],
+          "type": "group",
+          "item": [
+            {
+              "linkId": "14.3.1",
+              "type": "boolean",
+              "text": "The patient has been performing frequent testing (> 4 times daily with a basic glucose monitor and the patient is insulin-treated with multiple daily injections of insulin (> 3 times daily)"
+            },
+            {
+              "linkId": "14.3.2",
+              "type": "boolean",
+              "text": "The patient Uses a Medicare covered continuous subcutaneous infusion (CSII) pump; and, the patient’s insulin treatment regimen requires frequent adjustment by the patient on the basis of the BGM or CGM testing results"
+            }
+          ],
           "enableWhen": [
             {
               "question": "14.1",
@@ -310,6 +413,38 @@
     },
     {
       "linkId": "15",
+      "text": "Orders",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "15.1",
+          "text": "Medications",
+          "type": "text"
+        },
+        {
+          "linkId": "15.2",
+          "text": "Supplies",
+          "type": "text"
+        },
+        {
+          "linkId": "15.3",
+          "text": "Investigations (Diagnostic testing)",
+          "type": "text"
+        },
+        {
+          "linkId": "15.4",
+          "text": " Consults",
+          "type": "text"
+        },
+        {
+          "linkId": "15.5",
+          "text": "Other",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "16",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",

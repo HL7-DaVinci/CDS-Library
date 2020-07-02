@@ -65,11 +65,7 @@ define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
       ProcedureList P
         let ProcedureCodings:
           (P.code.coding) CODING 
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
+          return FHIRHelpers.ToCode(CODING)
         return ProcedureCodings
     )
   )
