@@ -5,6 +5,7 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 
 valueset "DiabetesMellitusValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35'
+valueset "InsulinMedicationValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.85'
 
 //Continuous blood glucose monitor
 code "S1031": 'S1031' from "HCPCS"
@@ -28,8 +29,10 @@ define "DeviceRequestHcpcsCoding": singleton from (
 define "IsNonContinuousBloodGlucoseMonitorOrdered": "DeviceRequestHcpcsCoding" !~ "S1031"
 
 define "MonitorTiming": device_request.occurrence
-define "MonitorFrequency": "MonitorTiming".repeat.period.value
+define "MonitorFrequency": "MonitorTiming".repeat.frequency.value
 define "MonitorEvent": FHIRHelpers.ToCode("MonitorTiming".code.coding)
+
+define "InsulinTreated": exists([MedicationStatement: "InsulinMedicationValueSet"])
 
 define function GetConditionCodings(ConditionList List<FHIR.Condition>):
   distinct(

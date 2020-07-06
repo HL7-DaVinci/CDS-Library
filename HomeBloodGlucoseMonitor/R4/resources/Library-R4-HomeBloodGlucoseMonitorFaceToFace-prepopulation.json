@@ -32,7 +32,7 @@
       ]
     }, 
     {
-      "type": "Condition",
+      "type": "Medication",
       "codeFilter": [
         {
           "path": "code",

@@ -315,6 +315,20 @@
           "item": [
             {
               "linkId": "14.1.1",
+              "type": "boolean",
+              "text": "Is patient insulin treated?",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".InsulinTreated"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "14.1.2",
               "text": "Non-Insulin treated times daily",
               "type": "integer",
               "extension": [
@@ -325,39 +339,74 @@
                     "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorFrequency"
                   }
                 }
-              ]
-            },
-            {
-              "linkId": "14.1.2",
-              "text": "Indication",
-              "type": "text",
+              ],
               "enableWhen": [
                 {
                   "question": "14.1.1",
-                  "operator": ">",
-                  "answerInteger": 1
+                  "operator": "=",
+                  "answerBoolean": false
                 }
               ]
             },
             {
               "linkId": "14.1.3",
-              "text": "Insulin treated times daily",
-              "type": "integer"
-            },
-            {
-              "linkId": "14.1.4",
               "text": "Indication",
               "type": "text",
               "enableWhen": [
                 {
-                  "question": "14.1.3",
+                  "question": "14.1.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                },
+                {
+                  "question": "14.1.2",
                   "operator": ">",
-                  "answerInteger": 3
+                  "answerInteger": 1
+                }
+              ],
+              "enableBehavior": "all"
+            },
+            {
+              "linkId": "14.1.4",
+              "text": "Insulin treated times daily",
+              "type": "integer",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorFrequency"
+                  }
+                }
+              ],
+              "enableWhen": [
+                {
+                  "question": "14.1.1",
+                  "operator": "=",
+                  "answerBoolean": true
                 }
               ]
             },
             {
               "linkId": "14.1.5",
+              "text": "Indication",
+              "type": "text",
+              "enableWhen": [
+                {
+                  "question": "14.1.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                },
+                {
+                  "question": "14.1.4",
+                  "operator": ">",
+                  "answerInteger": 3
+                }
+              ],
+              "enableBehavior": "all"
+            },
+            {
+              "linkId": "14.1.6",
               "text": "Time of testing",
               "type": "choice",
               "answerValueSet": "http://hl7.org/fhir/ValueSet/event-timing",
@@ -372,7 +421,7 @@
               ]
             },
             {
-              "linkId": "14.1.6",
+              "linkId": "14.1.7",
               "text": "Other",
               "type": "text"
             }
