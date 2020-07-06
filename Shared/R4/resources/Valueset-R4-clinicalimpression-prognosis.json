@@ -1,0 +1,138 @@
+{
+    "resourceType" : "ValueSet",
+    "id" : "clinicalimpression-prognosis",
+    "meta" : {
+      "versionId" : "1",
+      "lastUpdated" : "2018-12-14T02:04:57.504Z",
+      "profile" : [
+        "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+      ]
+    },
+    "text" : {
+      "status" : "generated",
+      "div" : "<div><table class=\"grid\"><tr><td>http://snomed.info/sct</td><td>365858006</td><td>Prognosis/outlook finding</td></tr><tr><td>http://snomed.info/sct</td><td>60484009</td><td>Conditional prognosis</td></tr><tr><td>http://snomed.info/sct</td><td>65872000</td><td>Fair prognosis</td></tr><tr><td>http://snomed.info/sct</td><td>67334001</td><td>Guarded prognosis</td></tr><tr><td>http://snomed.info/sct</td><td>170968001</td><td>Prognosis good</td></tr><tr><td>http://snomed.info/sct</td><td>170969009</td><td>Prognosis bad</td></tr><tr><td>http://snomed.info/sct</td><td>170970005</td><td>Prognosis uncertain</td></tr></table><p style=\"color: Navy\">Because of the way that this value set is defined, not all the possible codes can be listed in advance</p></div>"
+    },
+    "extension" : [
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+        "valueCode" : "pc"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+        "valueCode" : "draft"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+        "valueInteger" : 1
+      }
+    ],
+    "url" : "http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis",
+    "identifier" : [
+      {
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:oid:2.16.840.1.113883.4.642.3.160"
+      }
+    ],
+    "version" : "4.0.0",
+    "name" : "ClinicalImpressionPrognosis",
+    "title" : "Clinical Impression Prognosis",
+    "status" : "draft",
+    "experimental" : false,
+    "date" : "2018-12-14T01:14:32+00:00",
+    "publisher" : "FHIR Project team",
+    "contact" : [
+      {
+        "telecom" : [
+          {
+            "system" : "url",
+            "value" : "http://hl7.org/fhir"
+          }
+        ]
+      }
+    ],
+    "description" : "Example value set for clinical impression prognosis.",
+    "copyright" : "This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org",
+    "compose" : {
+      "include" : [
+        {
+          "system" : "http://snomed.info/sct",
+          "filter" : [
+            {
+              "property" : "concept",
+              "op" : "is-a",
+              "value" : "365858006"
+            }
+          ]
+        }
+      ]
+    },
+    "expansion" : {
+      "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
+          "valueBoolean" : true
+        }
+      ],
+      "identifier" : "urn:uuid:e885369c-88e5-4175-97f7-c725a51cebe0",
+      "timestamp" : "2020-06-12T16:06:10.849Z",
+      "parameter" : [
+        {
+          "name" : "expansion-source",
+          "valueString" : "ValueSet/clinicalimpression-prognosis"
+        },
+        {
+          "name" : "limitedExpansion",
+          "valueBoolean" : true
+        },
+        {
+          "name" : "displayLanguage",
+          "valueString" : "en-US,en;q=0.9"
+        },
+        {
+          "name" : "includeDefinition",
+          "valueBoolean" : true
+        },
+        {
+          "name" : "version",
+          "valueString" : "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20200309"
+        }
+      ],
+      "contains" : [
+        {
+          "system" : "http://snomed.info/sct",
+          "code" : "365858006",
+          "display" : "Prognosis/outlook finding"
+        },
+        {
+          "system" : "http://snomed.info/sct",
+          "code" : "60484009",
+          "display" : "Conditional prognosis"
+        },
+        {
+          "system" : "http://snomed.info/sct",
+          "code" : "65872000",
+          "display" : "Fair prognosis"
+        },
+        {
+          "system" : "http://snomed.info/sct",
+          "code" : "67334001",
+          "display" : "Guarded prognosis"
+        },
+        {
+          "system" : "http://snomed.info/sct",
+          "code" : "170968001",
+          "display" : "Prognosis good"
+        },
+        {
+          "system" : "http://snomed.info/sct",
+          "code" : "170969009",
+          "display" : "Prognosis bad"
+        },
+        {
+          "system" : "http://snomed.info/sct",
+          "code" : "170970005",
+          "display" : "Prognosis uncertain"
+        }
+      ]
+    }
+  }

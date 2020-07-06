@@ -1,0 +1,11 @@
+{
+  "topic": "HomeHealthServices",
+  "payers": ["cms"],
+  "mappings": [
+    {
+      "codeSystem": "hcpcs",
+      "codes": ["G0179", "G0180"]
+    }
+  ],
+  "fhirVersions": ["R4"]
+}
