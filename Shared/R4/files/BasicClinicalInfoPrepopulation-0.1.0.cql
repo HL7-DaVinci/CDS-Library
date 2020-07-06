@@ -47,11 +47,7 @@ define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
             'http://hl7.org/fhir/sid/icd-10-cm',
             'http://snomed.info/sct'
           }
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
+          return FHIRHelpers.ToCode(CODING)
         where C.verificationStatus.coding.code = 'confirmed'
           and C.clinicalStatus.coding.code in {'active', 'relapse'}
           and exists(DiagnosesCodings)

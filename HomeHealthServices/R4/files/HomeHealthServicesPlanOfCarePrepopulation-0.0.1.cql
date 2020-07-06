@@ -2,10 +2,6 @@ library HomeHealthServicesPlanOfCarePrepopulation version '0.0.1'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
-codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
-codesystem "LOINC": 'http://loinc.org'
-codesystem "SNOMED-CT": 'http://snomed.info/sct'
-
 parameter service_request ServiceRequest
 
 context Patient
@@ -46,12 +42,7 @@ define function ConvertConditionDetails(CondList List<Condition>):
       CondList C
         let ConditionCodings:
           (C.code.coding) CODING
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
-        
+          return FHIRHelpers.ToCode(CODING)     
         return ConditionCodings
     )
   )
@@ -69,11 +60,7 @@ define "CarePlanActivityForDeviceRequestsCodings":
       "CarePlanActivityList" activity
         let activityCodings:
           (activity.detail.code.coding) CODING
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
+          return FHIRHelpers.ToCode(CODING)
         where activity.detail.kind = 'DeviceRequest'  
         return activityCodings
         )
@@ -99,11 +86,7 @@ define "CarePlanActivityForNutritionOrderCodings":
       "CarePlanActivityList" activity
         let activityCodings:
           (activity.detail.code.coding) CODING
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
+          return FHIRHelpers.ToCode(CODING)
         where activity.detail.kind = 'NutritionOrder'  
         return activityCodings
     )
