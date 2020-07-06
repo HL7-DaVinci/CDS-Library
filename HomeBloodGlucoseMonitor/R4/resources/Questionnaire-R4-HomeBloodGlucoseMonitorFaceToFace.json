@@ -135,7 +135,7 @@
         {
           "linkId": "5.2",
           "type": "display",
-          "text": "Check separate lab form",
+          "text": "Check Home Blood Glucose Lab form",
           "enableWhen": [
             {
               "question": "5.1",
