@@ -91,7 +91,7 @@
           "text": "Is this an evaluation of the patient’s need for urological supplies?",
           "required": true,
           "type": "choice",
-          "answerValueSet": "<server-path>ValueSet/yes-no",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
           "item": [
             {
               "linkId": "3.2.1",

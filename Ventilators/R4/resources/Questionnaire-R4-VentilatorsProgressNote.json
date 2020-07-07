@@ -92,7 +92,7 @@
           "text": "Is this an evaluation of the patient’s need for a ventilator?",
           "required": true,
           "type": "choice",
-          "answerValueSet": "<server-path>ValueSet/yes-no",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
           "item": [
             {
               "linkId": "3.2a",
@@ -161,7 +161,7 @@
                     }
                   ],
                   "type": "choice",
-                  "answerValueSet": "<server-path>ValueSet/yes-no",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
                   "item": [
                     {
                       "linkId": "3.3a",
@@ -254,7 +254,7 @@
           ],
           "text": "Demonstrated benefit from continued use?",
           "type": "choice",
-          "answerValueSet": "<server-path>ValueSet/yes-no"
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
         },
         {
           "linkId": "5.2",
