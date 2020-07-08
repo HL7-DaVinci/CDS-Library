@@ -109,45 +109,13 @@
           "linkId": "5.1",
           "text": "Device:",
           "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "revision",
-                "display": "Revision or change in equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "replacement",
-                "display": "Replacement"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
           "linkId": "5.2",
           "text": "Supplies:",
           "type": "open-choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "reorder",
-                "display": "Reorder"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         }
       ]
     },
@@ -218,7 +186,8 @@
         {
           "linkId": "7.1.2",
           "text": "Frequency",
-          "type": "string"
+          "type": "open-choice",
+          "answerValueSet":"http://hl7.org/fhir/ValueSet/timing-abbreviation"
         },
         {
           "linkId": "7.1.3",
