@@ -3,7 +3,7 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBeds-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBedsAndAccessories-prepopulation"
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
@@ -14,8 +14,8 @@
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
     }
   ],
-  "id": "HospitalBedsFaceToFace",
-  "name": "HospitalBedsFaceToFace",
+  "id": "HospitalBedsAndAccessoriesFaceToFace",
+  "name": "HospitalBedsAndAccessoriesFaceToFace",
   "title": "Hospital Bed Face to Face Questionnaire",
   "status": "draft",
   "date": "2020-04-29",
@@ -218,7 +218,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HospitalBedsPrepopulation\".True"
+                "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".True"
               }
             }
           ]
@@ -247,7 +247,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
           "valueExpression": {
             "language": "text/cql",
-            "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
+            "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".CurrentDiagnoses"
           }
         }
       ],
@@ -361,7 +361,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
           "valueExpression": {
             "language": "text/cql",
-            "expression": "\"HospitalBedsPrepopulation\".AllDrugAllergyWithCode"
+            "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".AllDrugAllergyWithCode"
           }
         }
       ],
@@ -1285,7 +1285,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBedsPrepopulation\".FixedHeightBedsOrdered"
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".FixedHeightBedsOrdered"
                   }
                 }
               ]
@@ -1345,7 +1345,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBedsPrepopulation\".VariableHeightBedsOrdered"
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".VariableHeightBedsOrdered"
                   }
                 }
               ]
@@ -1390,7 +1390,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBedsPrepopulation\".SemiElectricBedsOrdered"
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".SemiElectricBedsOrdered"
                   }
                 }
               ]
@@ -1435,7 +1435,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBedsPrepopulation\".TrapezeOrdered"
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".TrapezeOrdered"
                   }
                 }
               ]
@@ -1480,7 +1480,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBedsPrepopulation\".BedcradleOrdered"
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".BedcradleOrdered"
                   }
                 }
               ]
@@ -1525,7 +1525,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBedsPrepopulation\".SafetyrailOrdered"
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".SafetyrailOrdered"
                   }
                 }
               ]
