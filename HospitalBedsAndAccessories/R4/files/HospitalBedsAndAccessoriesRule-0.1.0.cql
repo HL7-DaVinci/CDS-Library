@@ -27,7 +27,7 @@ define RESULT_QuestionnaireOrderUri:
     'Questionnaire/HospitalBedsAndAccessories'
 
 define RESULT_QuestionnaireFaceToFaceUri:
-    'Questionnaire/HospitalBedsAndAccessories'
+    'Questionnaire/HospitalBedsAndAccessoriesFaceToFace'
 
 define RESULT_requestId:
   device_request
