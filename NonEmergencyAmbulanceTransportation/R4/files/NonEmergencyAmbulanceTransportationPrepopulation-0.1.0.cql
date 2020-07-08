@@ -2,6 +2,8 @@ library NonEmergencyAmbulanceTransportationPrepopulation  version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
+valueset "Ambulance Transport Procedure": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.108'
+
 parameter service_request ServiceRequest
 
 context Patient
@@ -11,7 +13,9 @@ define "ServiceRequestHcpcsCoding": singleton from (
     where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
     return FHIRHelpers.ToCode(coding))
 
-define NeatServiceRequested: "ServiceRequestHcpcsCoding"
+define NeatServiceRequested: 
+  if "ServiceRequestHcpcsCoding" in "Ambulance Transport Procedure" then "ServiceRequestHcpcsCoding".code
+  else null
 
 define "ServiceRequestReason": service_request.reasonCode[0].text.value
 
