@@ -1,0 +1,140 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "request-intent",
+  "meta" : {
+    "versionId" : "1",
+    "lastUpdated" : "2018-12-14T02:05:13.441Z",
+    "profile" : [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "url" : "http://hl7.org/fhir/ValueSet/request-intent",
+  "identifier" : [
+    {
+      "system" : "urn:ietf:rfc:3986",
+      "value" : "urn:oid:2.16.840.1.113883.4.642.3.113"
+    }
+  ],
+  "version" : "4.0.0",
+  "name" : "RequestIntent",
+  "title" : "RequestIntent",
+  "status" : "draft",
+  "experimental" : false,
+  "date" : "2018-12-14T01:14:32+00:00",
+  "immutable" : true,
+  "expansion" : {
+    "identifier" : "urn:uuid:000b1435-9799-4605-92aa-6f673e0af404",
+    "timestamp" : "2020-07-08T16:47:43.763Z",
+    "parameter" : [
+      {
+        "name" : "expansion-source",
+        "valueString" : "ValueSet/request-intent"
+      },
+      {
+        "name" : "version",
+        "valueString" : "http://hl7.org/fhir/request-intent|4.0.0"
+      }
+    ],
+    "contains" : [
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The request is a suggestion made by someone/something that does not have an intention to ensure it occurs and without providing an authorization to act."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "proposal",
+        "display" : "Proposal"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The request represents an intention to ensure something occurs without providing an authorization for others to act."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "plan",
+        "display" : "Plan"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The request represents a legally binding instruction authored by a Patient or RelatedPerson."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "directive",
+        "display" : "Directive"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The request represents a request/demand and authorization for action by a Practitioner."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "order",
+        "display" : "Order"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The request represents an original authorization for action."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "original-order",
+        "display" : "Original Order"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The request represents an automatically generated supplemental authorization for action based on a parent authorization together with initial results of the action taken against that parent authorization."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "reflex-order",
+        "display" : "Reflex Order"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The request represents the view of an authorization instantiated by a fulfilling system representing the details of the fulfiller's intention to act upon a submitted order."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "filler-order",
+        "display" : "Filler Order"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "An order created in fulfillment of a broader order that represents the authorization for a single activity occurrence.  E.g. The administration of a single dose of a drug."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "instance-order",
+        "display" : "Instance Order"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The request represents a component or option for a RequestGroup that establishes timing, conditionality and/or other constraints among a set of requests.  Refer to [[[RequestGroup]]] for additional information on how this status is used."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/request-intent",
+        "code" : "option",
+        "display" : "Option"
+      }
+    ]
+  }
+}
