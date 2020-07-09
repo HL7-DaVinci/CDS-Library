@@ -1,0 +1,161 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "RespiratoryAssistDevicesLab",
+  "name": "RespiratoryAssistDevicesLab",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "title": "Respiratory Assist Device Laboratory Test Results",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2020-07-08",
+  "publisher": "Da Vinci DTR",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/RespiratoryAssistDevices-prepopulation"
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
+    },
+    {
+      "linkId": "3",
+      "text": "Encounter",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "3.1",
+          "text": "Date of F2F encounter",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".EncounterDate"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Person or entity performing testing",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "type": "text",
+          "text": "Laboratory"
+        },
+        {
+          "linkId": "4.2",
+          "text": "NPI",
+          "type": "string"
+        },
+        {
+          "linkId": "4.3",
+          "text": "Name of Tester",
+          "type": "text"
+        },
+        {
+          "linkId": "4.4",
+          "text": "Tester Credentials",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "Test condition",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "5.1",
+          "text": "Was the patient receiving oxygen while the test was being performed?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "5.2",
+          "type": "text",
+          "text": "Flow rate",
+          "enableWhen": [
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerBoolean": "true"
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "type": "choice",
+          "text": "Means of oxygen delivery",
+          "answerOption": []
+        },
+        {
+          "linkId": "5.4",
+          "text": "Test results",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "5.4.1",
+              "text": "Arterial Blood Gas (at rest)",
+              "type": "group",
+              "item": []
+            },
+            {
+              "linkId": "5.4.2",
+              "text": "Arterial Blood Gas (during sleep or immediately upon awakening)",
+              "type": "group",
+              "item": []
+            },
+            {
+              "linkId": "5.4.3",
+              "text": "Overnight oximetry results (while asleep and on room air)",
+              "type": "group",
+              "item": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}

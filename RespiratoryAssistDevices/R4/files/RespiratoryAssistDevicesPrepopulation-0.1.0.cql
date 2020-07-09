@@ -101,7 +101,8 @@ code "G12.9": 'G12.9' from "ICD-10-CM"
 //  using this as placeholder for value set
 code "5262007": '5262007' from "SNOMED-CT"
 
-
+// code for Oxygen saturation in Arterial blood by Pulse oximetry --during treatment
+code "59409-3": '59409-3' from "LOINC"
 
 parameter device_request DeviceRequest
 
@@ -144,6 +145,11 @@ define RadDeviceRequested:
   if "DeviceRequestHcpcsCoding".code.value = 'E0470' then 'E0470'
   else if  "DeviceRequestHcpcsCoding".code.value = 'E0471' then 'E0471'
   else 'null'
+
+define "RequestEncounter": singleton from (
+  [Encounter] encounter
+    where ('Encounter/' + encounter.id) = device_request.encounter.reference.value)
+define "EncounterDate": "RequestEncounter".period.start.value
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
