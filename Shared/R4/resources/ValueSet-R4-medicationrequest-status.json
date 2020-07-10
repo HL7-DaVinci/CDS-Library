@@ -1,0 +1,129 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "medicationrequest-status",
+  "meta" : {
+    "versionId" : "1",
+    "lastUpdated" : "2018-12-14T02:05:08.441Z",
+    "profile" : [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "url" : "http://hl7.org/fhir/ValueSet/medicationrequest-status",
+  "identifier" : [
+    {
+      "system" : "urn:ietf:rfc:3986",
+      "value" : "urn:oid:2.16.840.1.113883.4.642.3.1320"
+    }
+  ],
+  "version" : "4.0.0",
+  "name" : "medicationrequest Status",
+  "title" : "Medicationrequest  status",
+  "status" : "draft",
+  "experimental" : false,
+  "date" : "2018-12-14T01:14:32+00:00",
+  "immutable" : true,
+  "expansion" : {
+    "identifier" : "urn:uuid:0c02c1ed-3b53-47f0-9ec6-606d80b544db",
+    "timestamp" : "2020-07-10T15:03:57.730Z",
+    "parameter" : [
+      {
+        "name" : "expansion-source",
+        "valueString" : "ValueSet/medicationrequest-status"
+      },
+      {
+        "name" : "version",
+        "valueString" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status|4.0.0"
+      }
+    ],
+    "contains" : [
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The prescription is 'actionable', but not all actions that are implied by it have occurred yet."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+        "code" : "active",
+        "display" : "Active"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "Actions implied by the prescription are to be temporarily halted, but are expected to continue later.  May also be called 'suspended'."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+        "code" : "on-hold",
+        "display" : "On Hold"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The prescription has been withdrawn before any administrations have occurred"
+          }
+        ],
+        "system" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+        "code" : "cancelled",
+        "display" : "Cancelled"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "All actions that are implied by the prescription have occurred."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+        "code" : "completed",
+        "display" : "Completed"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "Some of the actions that are implied by the medication request may have occurred.  For example, the medication may have been dispensed and the patient may have taken some of the medication.  Clinical decision support systems should take this status into account"
+          }
+        ],
+        "system" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+        "code" : "entered-in-error",
+        "display" : "Entered in Error"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "Actions implied by the prescription are to be permanently halted, before all of the administrations occurred. This should not be used if the original order was entered in error"
+          }
+        ],
+        "system" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+        "code" : "stopped",
+        "display" : "Stopped"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The prescription is not yet 'actionable', e.g. it is a work in progress, requires sign-off, verification or needs to be run through decision support process."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+        "code" : "draft",
+        "display" : "Draft"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/valueset-definition",
+            "valueString" : "The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for 'other' - one of the listed statuses is presumed to apply, but the authoring/source system does not know which."
+          }
+        ],
+        "system" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+        "code" : "unknown",
+        "display" : "Unknown"
+      }
+    ]
+  }
+}

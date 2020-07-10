@@ -79,28 +79,7 @@
               "linkId": "MED.1.6",
               "text": "Status",
               "type": "choice",
-              "answerOption": [
-                {
-                  "valueCoding": {
-                    "display": "New"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Current"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Modified"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Discountinued"
-                  }
-                }
-              ]
+              "answerValueset": "http://hl7.org/fhir/ValueSet/medicationrequest-status"
             }
           ]
         },
