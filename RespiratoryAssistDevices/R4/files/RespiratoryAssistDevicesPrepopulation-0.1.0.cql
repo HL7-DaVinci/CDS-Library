@@ -13,7 +13,9 @@ codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
 // Value sets
 valueset "COPD": 'copd'
-
+valueset "RADLaboratoryTestValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.106'
+valueset "BreathingTestProcedureDuringSleepValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.107'
+ 
 // value set placeholder for RADORD5a
 // reference:  https://www.cms.gov/Research-Statistics-Data-and-Systems/Computer-Data-and-Systems/Electronic-Clinical-Templates/Downloads/Respiratory-Assist-Device-Appendices-A-and-B-Draft-20180412-R10b.pdf, Appendix B
 // Notes in worksheet to make this into a multi open choice, but awaiting value set
@@ -37,7 +39,6 @@ valueset "COPD": 'copd'
 // A7046 Water Chamber for Humidifier, Used With Positive Airway Pressure Device, Replacement, Each
 // E0561 Humidifier, Non - heated, Used With Positive Airway Pressure Device
 // E0562 Humidifier, Heated, Used With Positive Airway Pressure Device
-
 
 
 //Hypoventilation ICD-10-CM Codes
@@ -104,11 +105,27 @@ code "5262007": '5262007' from "SNOMED-CT"
 // code for Oxygen saturation in Arterial blood by Pulse oximetry --during treatment
 code "59409-3": '59409-3' from "LOINC"
 
+// code for Carbon dioxide [Partial pressure] in Arterial blood
+code "2019-8": '2019-8' from "LOINC"
+
+// code for ph in arterial blood
+code "2744-1": '2744-1' from "LOINC"
+
+// code for SaO2 Resting % BldA PulseOx
+code "59417-6": '59417-6' from "LOINC"
+
+// code for HCO3
+code "1960-4": '1960-4' from "LOINC"
+
+// code for Hematocrit
+code "32354-3": '32354-3' from "LOINC"
+
+// code for PaO2
+code "2703-7": '2703-7' from "LOINC"
+
 parameter device_request DeviceRequest
 
-
 define "OSA_Codes": { "G47.33" }
-
 
 context Patient
 
@@ -150,6 +167,64 @@ define "RequestEncounter": singleton from (
   [Encounter] encounter
     where ('Encounter/' + encounter.id) = device_request.encounter.reference.value)
 define "EncounterDate": "RequestEncounter".period.start.value
+
+// Tester and Lab information
+define "RADTestList": [Observation: "RADLaboratoryTestValueSet"]
+define "RADTestListFromF2FEncounter": 
+  "RADTestList" R
+  where EndsWith(R.encounter.reference.value, "RequestEncounter".id)
+define "TestPerformers":   
+  if exists("RADTestListFromF2FEncounter") then "RADTestListFromF2FEncounter"[0].performer
+  else null
+define "Tester":
+  if exists("TestPerformers") then 
+    "TestPerformers" P
+    where P.type = 'Practitioner'
+    return P.display.value
+  else
+    null  
+define "TestLaboratory":
+  if exists("TestPerformers") then 
+    "TestPerformers" P
+    where P.type = 'Organization'
+    return P.display.value
+  else
+    null  
+
+// O2 Saturation Test with treatment 
+define "ObservationO2SatTreatmentList": [Observation: "59409-3"]
+define "LowestO2SatTreatmentWithin3Months": LowestObservation(WithUnit(Verified(ObservationLookBack("ObservationO2SatTreatmentList", 3 months)),'%'))
+define "IsPatientReceivingOxygenDuringTest": exists("LowestO2SatTreatmentWithin3Months")
+
+// O2 Sat during sleep
+define "O2SatDuringSleepTestList": [Observation: "BreathingTestProcedureDuringSleepValueSet"]
+define "LowestO2SatTreatmentDuringSleep3Months": LowestObservation(WithUnit(Verified(ObservationLookBack("O2SatDuringSleepTestList", 3 months)),'%'))
+
+// ph in arterial blood
+define "ObservationPHList": [Observation: "2744-1"]
+define "LowestPHIn3Months": LowestObservation(WithUnit(Verified(ObservationLookBack("ObservationPHList", 3 months)), 'pH'))
+
+// PaCO2
+define "ObservationPaCO2List": [Observation: "2019-8"]
+define "PaCO2In3months": ObservationLookBack("ObservationPaCO2List", 3 months)
+define "PaCO2WithUnit": WithUnit(Verified(ObservationLookBack("ObservationPaCO2List", 3 months)), 'mm[Hg]')
+define "HighestPaCO2In3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationPaCO2List", 3 months)), 'mm[Hg]'))
+
+// O2Sat Resting
+define "ObservationO2SatRestingList": [Observation: "59417-6"]
+define "LowestO2SatRestingIn3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationO2SatRestingList", 3 months)), '%'))
+
+// HCO3
+define "ObservationHCO3List": [Observation: "1960-4"]
+define "HighestHCO3In3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationHCO3List", 3 months)), 'mmol/L'))
+
+// Hematocrit
+define "ObservationHematocritList": [Observation: "32354-3"]
+define "HighestHematocritIn3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationHematocritList", 3 months)), '%'))
+
+// PaO2
+define "ObservationPaO2List": [Observation: "2703-7"]
+define "LowestPaO2In3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationPaO2List", 3 months)), 'mm[Hg]'))
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
