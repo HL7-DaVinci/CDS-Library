@@ -17,11 +17,6 @@
   "status": "draft",
   "item": [
     {
-      "linkId": "ENC",      
-      "type": "group",
-      "text": "Encounter",
-      "item": [
-        {
           "linkId": "ENC.1",
           "extension": [
             {
@@ -80,6 +75,4 @@
           ]
         }
       ]
-    }
-  ]
 }

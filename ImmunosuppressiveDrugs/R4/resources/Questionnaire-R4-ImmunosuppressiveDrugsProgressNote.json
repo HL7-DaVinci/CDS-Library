@@ -22,7 +22,9 @@
   "status": "draft",
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
-  "subjectType": ["Patient"],
+  "subjectType": [
+    "Patient"
+  ],
   "item": [
     {
       "linkId": "1",
@@ -48,14 +50,21 @@
     },
     {
       "linkId": "3",
-      "extension": [
+      "text": "Encounter",
+      "type": "group",
+      "item": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/encounter-info"
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/encounter-info"
+            }
+          ],
+          "linkId": "3.1",
+          "type": "display",
+          "text": "This is a placeholder for Encounter"
         }
-      ],
-      "type": "display",
-      "text": "This is a placeholder for Encounter"
+      ]
     },
     {
       "linkId": "4",
