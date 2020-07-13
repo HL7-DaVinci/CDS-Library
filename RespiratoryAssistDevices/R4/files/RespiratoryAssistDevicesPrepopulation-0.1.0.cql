@@ -15,7 +15,7 @@ codesystem "SNOMED-CT": 'http://snomed.info/sct'
 valueset "COPD": 'copd'
 valueset "RADLaboratoryTestValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.106'
 valueset "BreathingTestProcedureDuringSleepValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.107'
- 
+
 // value set placeholder for RADORD5a
 // reference:  https://www.cms.gov/Research-Statistics-Data-and-Systems/Computer-Data-and-Systems/Electronic-Clinical-Templates/Downloads/Respiratory-Assist-Device-Appendices-A-and-B-Draft-20180412-R10b.pdf, Appendix B
 // Notes in worksheet to make this into a multi open choice, but awaiting value set
@@ -167,6 +167,7 @@ define "RequestEncounter": singleton from (
   [Encounter] encounter
     where ('Encounter/' + encounter.id) = device_request.encounter.reference.value)
 define "EncounterDate": "RequestEncounter".period.start.value
+define "EncounterParticipants": "RequestEncounter".participant
 
 // Tester and Lab information
 define "RADTestList": [Observation: "RADLaboratoryTestValueSet"]
@@ -193,39 +194,59 @@ define "TestLaboratory":
 
 // O2 Saturation Test with treatment 
 define "ObservationO2SatTreatmentList": [Observation: "59409-3"]
-define "LowestO2SatTreatmentWithin3Months": LowestObservation(WithUnit(Verified(ObservationLookBack("ObservationO2SatTreatmentList", 3 months)),'%'))
-define "IsPatientReceivingOxygenDuringTest": exists("LowestO2SatTreatmentWithin3Months")
+define "LatestO2SatTreatmentObservation": LastestObservation(WithUnit(Verified("ObservationO2SatTreatmentList"),'%'))
+define "LatestO2SatTreatmentResult": GetObservationValue("LatestO2SatTreatmentObservation")
+define "IsPatientReceivingOxygenDuringTest": exists("LatestO2SatTreatmentResult")
+define "LatestO2SatTreatmentTestDate": "LatestO2SatTreatmentObservation".issued.value
 
 // O2 Sat during sleep
 define "O2SatDuringSleepTestList": [Observation: "BreathingTestProcedureDuringSleepValueSet"]
-define "LowestO2SatTreatmentDuringSleep3Months": LowestObservation(WithUnit(Verified(ObservationLookBack("O2SatDuringSleepTestList", 3 months)),'%'))
+define "LatestO2SatDuringSleepObservation": LastestObservation(WithUnit(Verified("O2SatDuringSleepTestList"),'%'))
+define "LatestO2SatDuringSleepResult": GetObservationValue("LatestO2SatDuringSleepObservation")
+define "LatestO2SatDuringSleepTestDate": "LatestO2SatDuringSleepObservation".issued.value
 
 // ph in arterial blood
 define "ObservationPHList": [Observation: "2744-1"]
-define "LowestPHIn3Months": LowestObservation(WithUnit(Verified(ObservationLookBack("ObservationPHList", 3 months)), 'pH'))
+define "LatestPHObservation": LastestObservation(WithUnit(Verified("ObservationPHList"), 'pH'))
+define "LatestPHResult": GetObservationValue("LatestPHObservation")
+define "LatestPHTestDate": "LatestPHObservation".issued.value
 
 // PaCO2
 define "ObservationPaCO2List": [Observation: "2019-8"]
-define "PaCO2In3months": ObservationLookBack("ObservationPaCO2List", 3 months)
-define "PaCO2WithUnit": WithUnit(Verified(ObservationLookBack("ObservationPaCO2List", 3 months)), 'mm[Hg]')
-define "HighestPaCO2In3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationPaCO2List", 3 months)), 'mm[Hg]'))
+define "LatestPaCO2Observation": LastestObservation(WithUnit(Verified("ObservationPaCO2List"), 'mm[Hg]'))
+define "LatestPaCO2Result": GetObservationValue("LatestPaCO2Observation")
+define "LatestPaCO2TestDate": "LatestPaCO2Observation".issued.value
 
 // O2Sat Resting
 define "ObservationO2SatRestingList": [Observation: "59417-6"]
-define "LowestO2SatRestingIn3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationO2SatRestingList", 3 months)), '%'))
+define "LatestO2SatRestingObservation": LastestObservation(WithUnit(Verified("ObservationO2SatRestingList"), '%'))
+define "LatestO2SatRestingResult": GetObservationValue("LatestO2SatRestingObservation")
+define "LatestO2SatRestingTestDate": "LatestO2SatRestingObservation".issued.value
 
 // HCO3
 define "ObservationHCO3List": [Observation: "1960-4"]
-define "HighestHCO3In3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationHCO3List", 3 months)), 'mmol/L'))
+define "LatestHCO3Observation": LastestObservation(WithUnit(Verified("ObservationHCO3List"), 'mmol/L'))
+define "LatestHCO3Result": GetObservationValue("LatestHCO3Observation")
+define "LatestHCO3TestDate": "LatestHCO3Observation".issued.value
 
 // Hematocrit
 define "ObservationHematocritList": [Observation: "32354-3"]
-define "HighestHematocritIn3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationHematocritList", 3 months)), '%'))
+define "LatestHematocritObservation": LastestObservation(WithUnit(Verified("ObservationHematocritList"), '%'))
+define "LatestHematocritResult": GetObservationValue("LatestHematocritObservation")
+define "LatestHematocritTestDate": "LatestHematocritObservation".issued.value
 
 // PaO2
 define "ObservationPaO2List": [Observation: "2703-7"]
-define "LowestPaO2In3Months": HighestObservation(WithUnit(Verified(ObservationLookBack("ObservationPaO2List", 3 months)), 'mm[Hg]'))
+define "LatestPaO2Observation": LastestObservation(WithUnit(Verified("ObservationPaO2List"), 'mm[Hg]'))
+define "LatestPaO2Result": GetObservationValue("LatestPaO2Observation")
+define "LatestPaO2TestDate": "LatestPaO2Observation".issued.value
 
+define function LastestObservation(ObsList List<Observation>):
+  First(ObsList O sort by FHIRHelpers."ToDateTime"(issued) desc)
+
+define function GetObservationValue(Obs Observation): 
+  NullSafeToQuantity(cast Obs.value as Quantity)
+  
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}

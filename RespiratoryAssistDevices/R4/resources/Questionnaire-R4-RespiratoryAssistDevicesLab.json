@@ -19,6 +19,10 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/RespiratoryAssistDevices-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "item": [
@@ -34,14 +38,43 @@
     },
     {
       "linkId": "2",
+      "type": "group",
+      "text": "Provider (physician/NPP) who is performing the face-to-face evaluation:",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/practitioner-info"
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
         }
       ],
-      "type": "display",
-      "text": "This is a placeholder for Physician/NPP Demographics"
+      "item": [
+        {
+          "linkId": "2.1",
+          "text": "Last Name",
+          "type": "text"
+        },
+        {
+          "linkId": "2.2",
+          "text": "First Name",
+          "type": "text"
+        },
+        {
+          "linkId": "2.3",
+          "text": "MI",
+          "type": "text"
+        },
+        {
+          "linkId": "2.4",
+          "text": "NPI",
+          "type": "text"
+        }
+      ]
     },
     {
       "linkId": "3",
@@ -112,388 +145,549 @@
     },
     {
       "linkId": "5",
-      "text": "Test condition",
+      "text": "Test Results",
       "type": "group",
       "item": [
         {
           "linkId": "5.1",
-          "text": "Was the patient receiving oxygen while the test was being performed?",
-          "type": "boolean",
-          "extension": [
+          "text": "Test while the patient receiving oxygen",
+          "type": "group",
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesPrepopulation\".IsPatientReceivingOxygenDuringTest"
-              }
+              "linkId": "5.1.1",
+              "text": "Was the patient receiving oxygen while the test was being performed?",
+              "type": "boolean",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".IsPatientReceivingOxygenDuringTest"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "5.1.2",
+              "type": "group",
+              "text": "Details",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "enableWhen": [
+                {
+                  "question": "5.1.1",
+                  "operator": "=",
+                  "answerBoolean": "true"
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "5.1.2.1",
+                  "text": "Value",
+                  "type": "decimal",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatTreatmentResult"
+                      }
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "%"
+                      }
+                    }
+                  ],
+                  "code": [
+                    {
+                      "code": "59409-3",
+                      "system": "http://loinc.org",
+                      "display": "SaO2 during Tx % BldA PulseOx"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.1.2.2",
+                  "text": "Date",
+                  "type": "date",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatTreatmentTestDate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.1.2.3",
+                  "text": "Oxygen Flow Rate",
+                  "type": "decimal"
+                },
+                {
+                  "linkId": "5.1.2.4",
+                  "type": "choice",
+                  "text": "Means of oxygen delivery",
+                  "answerOption": [
+                    {
+                      "valueCoding": {
+                        "code": "Nasal cannula"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "Non-rebreather"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "Ventilator"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "Mask"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.1.2.5",
+                  "text": "Note",
+                  "type": "text"
+                }
+              ]
             }
           ]
         },
         {
           "linkId": "5.2",
-          "type": "text",
-          "text": "Flow rate",
-          "enableWhen": [
+          "text": "Arterial Blood Gas",
+          "type": "group",
+          "item": [
             {
-              "question": "5.1",
-              "operator": "=",
-              "answerBoolean": "true"
+              "linkId": "5.2.1",
+              "text": "PH",
+              "type": "group",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "5.2.1.1",
+                  "text": "Value",
+                  "type": "decimal",
+                  "code": [
+                    {
+                      "code": "2744-1",
+                      "system": "http://loinc.org",
+                      "display": "pH BldA"
+                    }
+                  ],
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPHResult"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.1.2",
+                  "text": "Date",
+                  "type": "date",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPHTestDate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.1.3",
+                  "text": "Note",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "linkId": "5.2.2",
+              "text": "PaCO2 [mmHg]",
+              "type": "group",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "mmHg"
+                      }
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPaCO2Result"
+                      }
+                    }
+                  ],
+                  "linkId": "5.2.2.1",
+                  "text": "Value",
+                  "type": "decimal",
+                  "code": [
+                    {
+                      "code": "2019-8",
+                      "system": "http://loinc.org",
+                      "display": "pCO2 BldA"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.2.2",
+                  "text": "Date",
+                  "type": "date",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPaCO2TestDate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.2.3",
+                  "text": "Note",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "linkId": "5.2.3",
+              "text": "SaO2 Resting",
+              "type": "group",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "%"
+                      }
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatRestingResult"
+                      }
+                    }
+                  ],
+                  "linkId": "5.2.3.1",
+                  "text": "Value",
+                  "type": "decimal",
+                  "code": [
+                    {
+                      "code": "59417-6",
+                      "system": "http://loinc.org",
+                      "display": "SaO2 Resting % BldA PulseOx"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.3.2",
+                  "text": "Date",
+                  "type": "date",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatRestingTestDate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.3.3",
+                  "text": "Note",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "linkId": "5.2.4",
+              "text": "HCO3 [mmol/L]",
+              "type": "group",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "mmol/L"
+                      }
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestHCO3Result"
+                      }
+                    }
+                  ],
+                  "linkId": "5.2.4.1",
+                  "text": "Value",
+                  "type": "decimal",
+                  "code": [
+                    {
+                      "code": "1960-4",
+                      "system": "http://loinc.org",
+                      "display": "HCO3 BldA-sCnc"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.4.2",
+                  "text": "Date",
+                  "type": "date",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestHCO3TestDate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.4.3",
+                  "text": "Note",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "linkId": "5.2.5",
+              "text": "Hematocrit [%]",
+              "type": "group",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "%"
+                      }
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestHematocritResult"
+                      }
+                    }
+                  ],
+                  "linkId": "5.2.5.1",
+                  "text": "Value",
+                  "type": "decimal",
+                  "code": [
+                    {
+                      "code": "32354-3",
+                      "system": "http://loinc.org",
+                      "display": "Hct VFr BldA"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.5.2",
+                  "text": "Date",
+                  "type": "date",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestHematocritTestDate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.5.3",
+                  "text": "Note",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "linkId": "5.2.6",
+              "text": "PaO2 [mmHg]",
+              "type": "group",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "gtable"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                      "valueCoding": {
+                        "display": "mmHg"
+                      }
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPaO2Result"
+                      }
+                    }
+                  ],
+                  "linkId": "5.2.6.1",
+                  "text": "Value",
+                  "type": "decimal",
+                  "code": [
+                    {
+                      "code": "2703-7",
+                      "system": "http://loinc.org",
+                      "display": "pO2 BldA"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.6.2",
+                  "text": "Date",
+                  "type": "date",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPaO2TestDate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "5.2.6.3",
+                  "text": "Note",
+                  "type": "text"
+                }
+              ]
             }
           ]
         },
         {
           "linkId": "5.3",
-          "type": "choice",
-          "text": "Means of oxygen delivery",
-          "enableWhen": [
-            {
-              "question": "5.1",
-              "operator": "=",
-              "answerBoolean": "true"
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Nasal cannula"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Non-rebreather"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Ventilator"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Mask"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "linkId": "6",
-      "text": "Test Results",
-      "type": "group",
-      "item": [
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
-              }
-            }
-          ],
-          "linkId": "6.1",
-          "text": "Arterial Blood Gas (at rest)",
-          "type": "group",
-          "item": [
-            {
-              "linkId": "6.1.1",
-              "text": "PH",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "2744-1",
-                  "system": "http://loinc.org",
-                  "display": "pH BldA"
-                }
-              ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".LowestPHIn3Months"
-                  }
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mmHg"
-                  }
-                },
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".HighestPaCO2In3Months"
-                  }
-                }
-              ],
-              "linkId": "6.1.2",
-              "text": "PaCO2 [mmHg]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "2019-8",
-                  "system": "http://loinc.org",
-                  "display": "pCO2 BldA"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "%"
-                  }
-                },
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".LowestO2SatRestingIn3Months"
-                  }
-                }
-              ],
-              "linkId": "6.1.3",
-              "text": "O2 Sat [%]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "59417-6",
-                  "system": "http://loinc.org",
-                  "display": "SaO2 Resting % BldA PulseOx"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mmol/L"
-                  }
-                },
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".HighestHCO3In3Months"
-                  }
-                }
-              ],
-              "linkId": "6.1.4",
-              "text": "HCO3 [mmol/L]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "1960-4",
-                  "system": "http://loinc.org",
-                  "display": "HCO3 BldA-sCnc"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "%"
-                  }
-                },
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".HighestHematocritIn3Months"
-                  }
-                }
-              ],
-              "linkId": "6.1.5",
-              "text": "Hematocrit [%]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "32354-3",
-                  "system": "http://loinc.org",
-                  "display": "Hct VFr BldA"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mmHg"
-                  }
-                },
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".LowestPaO2In3Months"
-                  }
-                }
-              ],
-              "linkId": "6.1.6",
-              "text": "PaO2 [mmHg]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "2703-7",
-                  "system": "http://loinc.org",
-                  "display": "pO2 BldA"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
-              }
-            }
-          ],
-          "linkId": "6.2",
-          "text": "Arterial Blood Gas (during sleep or immediately upon awakening)",
-          "type": "group",
-          "item": [
-            {
-              "linkId": "6.1.1",
-              "text": "PH",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "2744-1",
-                  "system": "http://loinc.org",
-                  "display": "pH BldA"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mmHg"
-                  }
-                }
-              ],
-              "linkId": "6.1.2",
-              "text": "PaCO2 [mmHg]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "2019-8",
-                  "system": "http://loinc.org",
-                  "display": "pCO2 BldA"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "%"
-                  }
-                }
-              ],
-              "linkId": "6.1.3",
-              "text": "O2 Sat [%]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "2708-6",
-                  "system": "http://loinc.org",
-                  "display": "SaO2 % BldA"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mmHg"
-                  }
-                }
-              ],
-              "linkId": "6.1.4",
-              "text": "HCO3 [mmHg]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "1960-4",
-                  "system": "http://loinc.org",
-                  "display": "HCO3 BldA-sCnc"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "%"
-                  }
-                }
-              ],
-              "linkId": "6.1.5",
-              "text": "Hematocrit [%]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "32354-3",
-                  "system": "http://loinc.org",
-                  "display": "Hct VFr BldA"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mmHg"
-                  }
-                }
-              ],
-              "linkId": "6.1.6",
-              "text": "PaO2 [mmHg]",
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "2703-7",
-                  "system": "http://loinc.org",
-                  "display": "pO2 BldA"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "6.3",
           "text": "Overnight oximetry results (while asleep and on room air)",
           "type": "group",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
           "item": [
             {
               "extension": [
@@ -507,11 +701,11 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".LowestO2SatTreatmentDuringSleep3Months"
+                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatDuringSleepResult"
                   }
                 }
               ],
-              "linkId": "6.3.1",
+              "linkId": "5.3.1",
               "text": "O2 Sat [%]",
               "type": "decimal",
               "code": [
@@ -523,7 +717,7 @@
               ]
             },
             {
-              "linkId": "6.3.2",
+              "linkId": "5.3.2",
               "text": "Location where the test was performed",
               "type": "choice",
               "answerOption": [
@@ -538,20 +732,65 @@
                   }
                 }
               ]
+            },
+            {
+              "linkId": "5.3.3",
+              "text": "Date",
+              "type": "date",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatDuringSleepTestDate"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "5.3.4",
+              "text": "Note",
+              "type": "text"
             }
           ]
         }
       ]
     },
     {
-      "linkId": "7",
-      "extension": [
+      "linkId": "6",
+      "text": "Signature",
+      "type": "group",
+      "item": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/provider-signature"
+          "linkId": "6.1",
+          "text": "Signature",
+          "type": "text"
+        },
+        {
+          "linkId": "6.2",
+          "text": "Name (Printed)",
+          "type": "text"
+        },
+        {
+          "linkId": "6.3",
+          "text": "Date",
+          "type": "date",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicClinicalInfoPrepopulation\".Today"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "6.4",
+          "text": "NPI",
+          "type": "text"
         }
-      ],
-      "type": "display"
+      ]
     }
   ]
 }
