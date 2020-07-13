@@ -73,16 +73,9 @@
           "linkId": "2.4",
           "text": "NPI",
           "type": "text"
-        }
-      ]
-    },
-    {
-      "linkId": "3",
-      "text": "Encounter",
-      "type": "group",
-      "item": [
+        },
         {
-          "linkId": "3.1",
+          "linkId": "2.5",
           "text": "Date of F2F encounter",
           "type": "date",
           "required": true,
@@ -99,12 +92,12 @@
       ]
     },
     {
-      "linkId": "4",
+      "linkId": "3",
       "text": "Person or entity performing testing",
       "type": "group",
       "item": [
         {
-          "linkId": "4.1",
+          "linkId": "3.1",
           "type": "text",
           "text": "Laboratory",
           "extension": [
@@ -118,12 +111,12 @@
           ]
         },
         {
-          "linkId": "4.2",
+          "linkId": "3.2",
           "text": "NPI",
           "type": "string"
         },
         {
-          "linkId": "4.3",
+          "linkId": "3.3",
           "text": "Name of Tester",
           "type": "text",
           "extension": [
@@ -137,14 +130,14 @@
           ]
         },
         {
-          "linkId": "4.4",
+          "linkId": "3.4",
           "text": "Tester Credentials",
           "type": "text"
         }
       ]
     },
     {
-      "linkId": "5",
+      "linkId": "4",
       "text": "Test Results",
       "type": "group",
       "item": [
@@ -275,12 +268,12 @@
           ]
         },
         {
-          "linkId": "5.2",
+          "linkId": "4.2",
           "text": "Arterial Blood Gas",
           "type": "group",
           "item": [
             {
-              "linkId": "5.2.1",
+              "linkId": "4.2.1",
               "text": "PH",
               "type": "group",
               "extension": [
@@ -298,7 +291,7 @@
               ],
               "item": [
                 {
-                  "linkId": "5.2.1.1",
+                  "linkId": "4.2.1.1",
                   "text": "Value",
                   "type": "decimal",
                   "code": [
@@ -319,7 +312,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.1.2",
+                  "linkId": "4.2.1.2",
                   "text": "Date",
                   "type": "date",
                   "extension": [
@@ -333,14 +326,14 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.1.3",
+                  "linkId": "4.2.1.3",
                   "text": "Note",
                   "type": "text"
                 }
               ]
             },
             {
-              "linkId": "5.2.2",
+              "linkId": "4.2.2",
               "text": "PaCO2 [mmHg]",
               "type": "group",
               "extension": [
@@ -373,7 +366,7 @@
                       }
                     }
                   ],
-                  "linkId": "5.2.2.1",
+                  "linkId": "4.2.2.1",
                   "text": "Value",
                   "type": "decimal",
                   "code": [
@@ -385,7 +378,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.2.2",
+                  "linkId": "4.2.2.2",
                   "text": "Date",
                   "type": "date",
                   "extension": [
@@ -399,14 +392,14 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.2.3",
+                  "linkId": "4.2.2.3",
                   "text": "Note",
                   "type": "text"
                 }
               ]
             },
             {
-              "linkId": "5.2.3",
+              "linkId": "4.2.3",
               "text": "SaO2 Resting",
               "type": "group",
               "extension": [
@@ -439,7 +432,7 @@
                       }
                     }
                   ],
-                  "linkId": "5.2.3.1",
+                  "linkId": "4.2.3.1",
                   "text": "Value",
                   "type": "decimal",
                   "code": [
@@ -451,7 +444,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.3.2",
+                  "linkId": "4.2.3.2",
                   "text": "Date",
                   "type": "date",
                   "extension": [
@@ -465,14 +458,14 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.3.3",
+                  "linkId": "4.2.3.3",
                   "text": "Note",
                   "type": "text"
                 }
               ]
             },
             {
-              "linkId": "5.2.4",
+              "linkId": "4.2.4",
               "text": "HCO3 [mmol/L]",
               "type": "group",
               "extension": [
@@ -505,7 +498,7 @@
                       }
                     }
                   ],
-                  "linkId": "5.2.4.1",
+                  "linkId": "4.2.4.1",
                   "text": "Value",
                   "type": "decimal",
                   "code": [
@@ -517,7 +510,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.4.2",
+                  "linkId": "4.2.4.2",
                   "text": "Date",
                   "type": "date",
                   "extension": [
@@ -531,14 +524,14 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.4.3",
+                  "linkId": "4.2.4.3",
                   "text": "Note",
                   "type": "text"
                 }
               ]
             },
             {
-              "linkId": "5.2.5",
+              "linkId": "4.2.5",
               "text": "Hematocrit [%]",
               "type": "group",
               "extension": [
@@ -571,7 +564,7 @@
                       }
                     }
                   ],
-                  "linkId": "5.2.5.1",
+                  "linkId": "4.2.5.1",
                   "text": "Value",
                   "type": "decimal",
                   "code": [
@@ -583,7 +576,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.5.2",
+                  "linkId": "4.2.5.2",
                   "text": "Date",
                   "type": "date",
                   "extension": [
@@ -597,14 +590,14 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.5.3",
+                  "linkId": "4.2.5.3",
                   "text": "Note",
                   "type": "text"
                 }
               ]
             },
             {
-              "linkId": "5.2.6",
+              "linkId": "4.2.6",
               "text": "PaO2 [mmHg]",
               "type": "group",
               "extension": [
@@ -637,7 +630,7 @@
                       }
                     }
                   ],
-                  "linkId": "5.2.6.1",
+                  "linkId": "4.2.6.1",
                   "text": "Value",
                   "type": "decimal",
                   "code": [
@@ -649,7 +642,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.6.2",
+                  "linkId": "4.2.6.2",
                   "text": "Date",
                   "type": "date",
                   "extension": [
@@ -663,7 +656,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.2.6.3",
+                  "linkId": "4.2.6.3",
                   "text": "Note",
                   "type": "text"
                 }
@@ -672,7 +665,7 @@
           ]
         },
         {
-          "linkId": "5.3",
+          "linkId": "4.3",
           "text": "Overnight oximetry results (while asleep and on room air)",
           "type": "group",
           "extension": [
@@ -705,7 +698,7 @@
                   }
                 }
               ],
-              "linkId": "5.3.1",
+              "linkId": "4.3.1",
               "text": "O2 Sat [%]",
               "type": "decimal",
               "code": [
@@ -717,7 +710,7 @@
               ]
             },
             {
-              "linkId": "5.3.2",
+              "linkId": "4.3.2",
               "text": "Location where the test was performed",
               "type": "choice",
               "answerOption": [
@@ -734,7 +727,7 @@
               ]
             },
             {
-              "linkId": "5.3.3",
+              "linkId": "4.3.3",
               "text": "Date",
               "type": "date",
               "extension": [
@@ -748,7 +741,7 @@
               ]
             },
             {
-              "linkId": "5.3.4",
+              "linkId": "4.3.4",
               "text": "Note",
               "type": "text"
             }
@@ -757,22 +750,22 @@
       ]
     },
     {
-      "linkId": "6",
+      "linkId": "5",
       "text": "Signature",
       "type": "group",
       "item": [
         {
-          "linkId": "6.1",
+          "linkId": "5.1",
           "text": "Signature",
           "type": "text"
         },
         {
-          "linkId": "6.2",
+          "linkId": "5.2",
           "text": "Name (Printed)",
           "type": "text"
         },
         {
-          "linkId": "6.3",
+          "linkId": "5.3",
           "text": "Date",
           "type": "date",
           "extension": [
@@ -786,7 +779,7 @@
           ]
         },
         {
-          "linkId": "6.4",
+          "linkId": "5.4",
           "text": "NPI",
           "type": "text"
         }
