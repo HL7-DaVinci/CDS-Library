@@ -10,7 +10,9 @@
   },
   "title": "Respiratory Assist Device Questionnaire",
   "status": "draft",
-  "subjectType": ["Patient"],
+  "subjectType": [
+    "Patient"
+  ],
   "date": "2020-04-02",
   "publisher": "Da Vinci DTR",
   "extension": [
@@ -416,73 +418,10 @@
         },
         {
           "linkId": "5.7",
-          "type": "group",
+          "type": "open-choice",
           "text": "Supply Order",
-          "item": [
-            {
-              "linkId": "5.7.1",
-              "text": "Note:  Items dispensed on a periodic basis — repeat multiple times",
-              "type": "display"
-            },
-            {
-              "linkId": "5.7.2",
-              "type": "group",
-              "text": "List",
-              "repeats": true,
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "system": "http://hl7.org/fhir/questionnaire-item-control",
-                        "code": "gtable"
-                      }
-                    ]
-                  }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "5.7.2.1",
-                  "text": "Item Description",
-                  "type": "string"
-                },
-                {
-                  "linkId": "5.7.2.2",
-                  "text": "Frequency",
-                  "type": "string"
-                },
-                {
-                  "linkId": "5.7.2.3",
-                  "text": "Duration",
-                  "type": "string"
-                },
-                {
-                  "linkId": "5.7.2.4",
-                  "text": "Quantity",
-                  "type": "string"
-                },
-                {
-                  "linkId": "5.7.2.5",
-                  "text": "Refills",
-                  "type": "string"
-                }
-              ]
-            },
-            {
-              "linkId": "5.7.3",
-              "text": "Other",
-              "type": "text"
-            },
-            {
-              "linkId": "5.7.4",
-              "text": "Supply",
-              "repeats": true,
-              "type": "open-choice",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.129"
-            }
-          ]
+          "repeats": true,
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.129"
         }
       ]
     },
