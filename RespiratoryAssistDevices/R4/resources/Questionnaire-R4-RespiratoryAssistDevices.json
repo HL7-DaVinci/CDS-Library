@@ -270,49 +270,14 @@
           "type": "open-choice",
           "text": "Patient diagnoses for order",
           "required": false,
+          "repeats": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
               "valueBoolean": true
             }
           ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Restrictive thoracic disorder"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Severe COPD"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Hypoventilation syndrome"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Central sleep apnea"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Complex sleep apnea"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Obstructive sleep apnea (OSA)"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Other"
-              }
-            }
-          ]
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.122"
         },
         {
           "linkId": "4.2",
@@ -365,46 +330,14 @@
           "type": "open-choice",
           "text": "Type of Device Order",
           "required": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Revision or Change in Equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Replacement"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
           "linkId": "5.3",
           "type": "open-choice",
           "text": "Type of Supply Order",
           "required": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Reorder"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Other"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
           "linkId": "5.4",
@@ -541,6 +474,13 @@
               "linkId": "5.7.3",
               "text": "Other",
               "type": "text"
+            },
+            {
+              "linkId": "5.7.4",
+              "text": "Supply",
+              "repeats": true,
+              "type": "open-choice",
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.129"
             }
           ]
         }
