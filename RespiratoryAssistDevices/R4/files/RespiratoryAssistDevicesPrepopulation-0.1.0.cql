@@ -9,12 +9,9 @@ codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 
 // Value sets
-valueset "COPD": 'copd'
 valueset "RADLaboratoryTestValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.106'
 valueset "BreathingTestProcedureDuringSleepValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.107'
 valueset "RADQualifyingDiagnosisValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.122'
-
-code "G47.33": 'G47.33' from "ICD-10-CM"
 
 // Lab Codes
 // code for Oxygen saturation in Arterial blood by Pulse oximetry --during treatment
