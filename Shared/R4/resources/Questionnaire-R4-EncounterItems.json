@@ -53,7 +53,7 @@
           }
         }
       ],
-      "text": "Is this an evaluation of the patient’s need for required device/service/medication?",
+      "text": "Is this an evaluation of the patient’s need for ordered device, service, or medication?",
       "required": true,
       "type": "choice",
       "answerValueSet": "<server-path>ValueSet/yes-no"
