@@ -27,5 +27,8 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
   'Questionnaire/NonEmergencyAmbulanceTransportation'
 
+  define RESULT_QuestionnairePARequestUri:
+    'Questionnaire/NonEmergencyAmbulanceTransportationPARequest'
+
 define RESULT_requestId:
   service_request

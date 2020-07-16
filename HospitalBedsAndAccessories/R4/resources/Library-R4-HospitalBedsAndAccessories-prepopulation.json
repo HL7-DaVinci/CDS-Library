@@ -1,8 +1,8 @@
 {
   "resourceType": "Library",
-  "id": "HospitalBeds-prepopulation",
-  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBeds-prepopulation",
-  "name": "HospitalBeds-prepopulation",
+  "id": "HospitalBedsAndAccessories-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBedsAndAccessories-prepopulation",
+  "name": "HospitalBedsAndAccessories-prepopulation",
   "version": "0.0.1",
   "title": "Hospital Bed Prepopulation",
   "status": "draft",
@@ -24,7 +24,7 @@
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "files/HospitalBeds/r4/HospitalBedsPrepopulation-0.1.0.cql"
+      "url": "files/HospitalBedsAndAccessories/r4/HospitalBedsAndAccessoriesPrepopulation-0.1.0.cql"
     }
   ],
   "dataRequirement": [
