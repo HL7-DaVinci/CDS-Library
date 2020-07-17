@@ -92,13 +92,20 @@
           "linkId": "4.2",
           "text": "Diabetes Treatment",
           "type": "choice",
-          "required": true,
           "enableWhen": [
             {
               "question": "4.1",
               "operator": "=",
               "answerCoding": {
                 "code": "Diabetes"
+              }
+            }
+          ],
+          "initial": [
+            {
+              "valueCoding": {
+                "code": "Non-insulin Treated",
+                "display": "Non-insulin Treated"
               }
             }
           ],
@@ -121,14 +128,12 @@
           "linkId": "4.3",
           "text": "Other Diagnosis Description",
           "type": "string",
-          "required": true,
           "enableWhen": [
             {
               "question": "4.1",
               "operator": "=",
               "answerCoding": {
-                "code": "Other",
-                "display": "Other"
+                "code": "Other"
               }
             }
           ]
@@ -142,10 +147,26 @@
       "text": "Device Order",
       "item": [
         {
-          "type": "string",
-          "required": false,
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": true,
           "linkId": "5.1",
-          "text": "Glucose Monitor Description"
+          "text": "Glucose Monitor Code",
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.84"
         },
         {
           "type": "choice",
@@ -183,10 +204,131 @@
           ]
         },
         {
-          "type": "boolean",
-          "required": true,
+          "type": "string",
           "linkId": "5.3",
-          "text": "Is patient or caregiver able to use the glucose monitor?"
+          "required": true,
+          "text": "Description (or brand name and model number) of Glucose Monitor"
+        },
+        {
+          "type": "choice",
+          "required": true,
+          "linkId": "5.4",
+          "text": "Is patient or caregiver able to use the glucose monitor?",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "linkId": "6",
+      "text": "Frequency of Use/Supplies",
+      "item": [
+        {
+          "type": "group",
+          "linkId": "6.1",
+          "text": "Non-insulin Treated Frequency",
+          "enableWhen": [
+            {
+              "question": "4.2",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Non-insulin Treated"
+              }
+            }
+          ],
+          "item": [
+            {
+              "type": "integer",
+              "linkId": "6.1.1",
+              "text": "Frequency (daily)"
+            },
+            {
+              "type": "string",
+              "linkId": "6.1.2",
+              "text": "If > 1x daily, indicate reason",
+              "enableWhen": [
+                {
+                  "question": "6.1.1",
+                  "operator": ">",
+                  "answerInteger": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "linkId": "6.2",
+          "text": "Insulin Treated Frequency",
+          "enableWhen": [
+            {
+              "question": "4.2",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Insulin Treated",
+                "display": "Insulin Treated"
+              }
+            }
+          ],
+          "item": [
+            {
+              "type": "integer",
+              "linkId": "6.2.1",
+              "text": "Frequency (daily)"
+            },
+            {
+              "type": "string",
+              "linkId": "6.2.2",
+              "text": "If > 3x daily, indicate reason",
+              "enableWhen": [
+                {
+                  "question": "6.2.1",
+                  "operator": ">",
+                  "answerInteger": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "open-choice",
+          "linkId": "6.3",
+          "text": "Time of testing",
+          "required": true,
+          "repeats": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Fasting"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Before a meal "
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Before bedtime"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Other"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "text": "Other timing description",
+          "linkId": "6.3.1"
+        },
+        {
+          "type": "choice",
+          "text": "Is continuous glucose monitoring required?",
+          "linkId": "6.4",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
         }
       ]
     }
