@@ -37,6 +37,7 @@ define function ConvertEncounterDetails(EncounterList List<Encounter>):
             system: CODING.system.value,
             display: CODING.display.value,
             periodStart: E.period.start.value,
+            encounterReason: E.reasonCode[0].coding.display.value,
             type: 'encounter'
           }
         
