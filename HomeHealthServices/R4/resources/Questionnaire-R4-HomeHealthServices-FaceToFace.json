@@ -1,0 +1,1843 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "HomeHealthServicesFaceToFace",
+    "name": "HomeHealthServicesFaceToFace",
+    "meta": {
+      "profile": [
+        "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+        "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+      ]
+    },
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServices-prepopulation"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+      }
+    ],
+    "title": "HomeHealthServices FaceToFace Questionnaire",
+    "status": "draft",
+    "date": "2020-07-01",
+    "publisher": "Da Vinci DTR",
+    "item": [    
+    {
+        "linkId": "1",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+            "valueCanonical": "questionnaire/patient-info"
+          }
+        ],
+        "type": "display"
+    },
+    {
+        "linkId": "2",
+        "type": "group",
+        "required": false,
+        "item": [
+          {
+            "type": "date",
+            "required": false,
+            "linkId": "2.1",
+            "text": "Date of F2F encounter (MM/DD/YYYY)"
+          },
+          {
+            "type": "boolean",
+            "required": false,
+            "linkId": "2.2",
+            "text": "F2F encounter for home health services?"
+          },
+          {
+            "type": "boolean",
+            "required": false,
+            "text": "If Yes, is HHA information incorporated in the patient's medical records?"
+          },
+          {
+            "type": "boolean",
+            "required": false,
+            "text": "If Yes, is the HHA information specifically identified as to source?"
+          },
+          {
+            "type": "boolean",
+            "required": false,
+            "text": "Has the responsible physician reviewed, signed and dated the HHA records?"
+          }
+        ]
+      },
+      {
+        "linkId": "3",
+        "text": "Diagnosis (status: acute, chronic, acute-chronic, resolvced, resolving, managed)",
+        "type": "group",
+        "item": [
+          {
+            "linkId": "3.1",
+            "text": "Related to the need for home health services",
+            "type": "open-choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "ICD-10-CM"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Description"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Start Date"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Status"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"HomeHealthServicesPrepopulation\".RelevantDiagnoses"
+                }
+              }
+            ]
+          },
+          {
+            "linkId": "3.2",
+            "text": "Other Pertinent Diagnosis",
+            "type": "open-choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "ICD-10-CM"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Description"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Start Date"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Status"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"HomeHealthServicesPrepopulation\".RelevantDiagnoses"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "linkId": "4",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+            "valueCanonical": "questionnaire/subjective"
+          }
+        ],
+        "type": "display"
+      },
+      {
+        "linkId": "5",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+            "valueCanonical": "questionnaire/review-of-system"
+          }
+        ],
+        "type": "display"
+      },
+      {
+        "type": "group",
+        "required": false,
+        "linkId": "6",
+        "text": "Pain Assessment",
+        "item": [
+          {
+            "type": "choice",
+            "code": [
+              {
+                "code": "39111-0",
+                "display": "Body site",
+                "system": "http://loinc.org"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "drop-down",
+                      "display": "Drop down"
+                    }
+                  ],
+                  "text": "Drop down"
+                }
+              }
+            ],
+            "required": false,
+            "linkId": "PA.1.1",
+            "text": "Body site",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "LA12706-0",
+                  "display": "Abdomen"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA29192-4",
+                  "display": "Upper Extremity-Left"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA29191-6",
+                  "display": "Upper Extremity-Right"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA24413-9",
+                  "display": "Lower Extremity-Left"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA24414-7",
+                  "display": "Lower Extremity-Right"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA18111-7",
+                  "display": "Chest"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA18116-6",
+                  "display": "Head"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA16744-7",
+                  "display": "Pelvis"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA4476-3",
+                  "display": "Stomach"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA18788-2",
+                  "display": "Eye-left"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA18789-0",
+                  "display": "Eye-right"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA4584-4",
+                  "display": "Liver"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA4654-5",
+                  "display": "Pancreas"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA4591-9",
+                  "display": "Kidney"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA4255-1",
+                  "display": "Breast"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA4340-1",
+                  "display": "Spine"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA4331-0",
+                  "display": "Skull"
+                }
+              }
+            ]
+          },
+          {
+            "type": "choice",
+            "code": [
+              {
+                "code": "32419-4",
+                "display": "Quality",
+                "system": "http://loinc.org"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "check-box",
+                      "display": "Check-box"
+                    }
+                  ],
+                  "text": "Check-box"
+                }
+              }
+            ],
+            "required": false,
+            "linkId": "PA.1.2",
+            "text": "Quality",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "LA27491-2",
+                  "display": "Ache"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA25279-3",
+                  "display": "Burning"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27492-0",
+                  "display": "Cramping"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27493-8",
+                  "display": "Crushing pain"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA12709-4",
+                  "display": "Dull"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA24760-3",
+                  "display": "Intermittent"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27496-1",
+                  "display": "Phantom limb"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27497-9",
+                  "display": "Piercing"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27498-7",
+                  "display": "Pressure"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27499-5",
+                  "display": "Pruritus"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA12708-6",
+                  "display": "Sharp"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27501-8",
+                  "display": "Shock-like electrical pain"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27502-6",
+                  "display": "Stabbing"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27503-4",
+                  "display": "Tearing pain"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA27505-9",
+                  "display": "Throbbing"
+                }
+              }
+            ]
+          },
+          {
+            "type": "open-choice",
+            "code": [
+              {
+                "code": "72514-3",
+                "display": "Severity",
+                "system": "http://loinc.org"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "radio-button",
+                      "display": "Radio Button"
+                    }
+                  ],
+                  "text": "Radio Button"
+                }
+              }
+            ],
+            "required": false,
+            "linkId": "PA.1.3",
+            "text": "Severity",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "6736007",
+                  "display": "Moderate"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "24484000",
+                  "display": "Severe",
+                  "system": "http://snomed.info/sct"
+                }
+              }
+            ]
+          },
+          {
+            "type": "quantity",
+            "code": [
+              {
+                "code": "38207-7",
+                "display": "Duration",
+                "system": "http://loinc.org"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                "valueCoding": {
+                  "display": "d"
+                }
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                "valueCoding": {
+                  "display": "h"
+                }
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                "valueCoding": {
+                  "display": "min"
+                }
+              }
+            ],
+            "required": false,
+            "linkId": "PA.1.4",
+            "text": "Duration"
+          },
+          {
+            "type": "open-choice",
+            "code": [
+              {
+                "code": "38206-9",
+                "display": "Temporal pattern",
+                "system": "http://loinc.org"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "check-box",
+                      "display": "Check-box"
+                    }
+                  ],
+                  "text": "Check-box"
+                }
+              }
+            ],
+            "required": false,
+            "linkId": "PA.1.5",
+            "text": "Temporal pattern",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "314642004",
+                  "display": "Intermittent",
+                  "system": "http://snomed.info/sct"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "426206001",
+                  "display": "Constant",
+                  "system": "http://snomed.info/sct"
+                }
+              }
+            ]
+          },
+          {
+            "type": "open-choice",
+            "code": [
+              {
+                "code": "38209-3",
+                "display": "Exacerbating factors",
+                "system": "http://loinc.org"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "check-box",
+                      "display": "Check-box"
+                    }
+                  ],
+                  "text": "Check-box"
+                }
+              }
+            ],
+            "required": false,
+            "linkId": "PA.1.6",
+            "text": "Exacerbating factors",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "309604004",
+                  "display": "During exercise",
+                  "system": "http://snomed.info/sct"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "255214003",
+                  "display": "After exercise",
+                  "system": "http://snomed.info/sct"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "263678003",
+                  "display": "Rest",
+                  "system": "http://snomed.info/sct"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "309610004",
+                  "display": "Sleep",
+                  "system": "http://snomed.info/sct"
+                }
+              }
+            ]
+          },
+          {
+            "type": "open-choice",
+            "code": [
+              {
+                "code": "38210-1",
+                "display": "Alleviating factors",
+                "system": "http://loinc.org/modified"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "check-box",
+                      "display": "Check-box"
+                    }
+                  ],
+                  "text": "Check-box"
+                }
+              }
+            ],
+            "required": false,
+            "linkId": "PA.1.7",
+            "text": "Alleviating factors",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "266694003",
+                  "display": "Heat",
+                  "system": "http://snomed.info/sct"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "229580007",
+                  "display": "Ice",
+                  "system": "http://snomed.info/sct"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "263678003",
+                  "display": "Rest",
+                  "system": "http://snomed.info/sct"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "226029000",
+                  "display": "Exercise",
+                  "system": "http://snomed.info/sct"
+                }
+              }
+            ]
+          },
+          {
+            "type": "choice",
+            "code": [
+              {
+                "code": "80317-1",
+                "display": "Assessment Interpretation",
+                "system": "http://loinc.org"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "radio-button",
+                      "display": "Radio Button"
+                    }
+                  ],
+                  "text": "Radio Button"
+                }
+              }
+            ],
+            "required": false,
+            "linkId": "PA.1.8",
+            "text": "Assessment Interpretation",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "LA25085-4",
+                  "display": "Within Defined Limits"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "LA46-8",
+                  "display": "Other"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "linkId": "7",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+            "valueCanonical": "questionnaire/physical-exam"
+          }
+        ],
+        "type": "display"
+      },
+      {
+        "linkId": "8",
+        "type": "group",
+        "required": false,
+        "text": "Confined to Home Assessment",
+        "item": [
+          {
+            "type": "group",
+            "code": [
+              {
+                "code": "8.1",
+                "display": "Does beneficiary, because of illness or injury, need: (check all that apply)",
+                "system": "linkId"
+              }
+            ],
+            "required": false,
+            "linkId": "8.1",
+            "text": "Does beneficiary, because of illness or injury, need: (check all that apply)",
+            "item": [
+              {
+                "type": "boolean",
+                "code": [
+                  {
+                    "code": "8.1.1",
+                    "display": "supportive devices",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.1.1",
+                "text": "supportive devices"
+              },
+              {
+                "type": "boolean",
+                "code": [
+                  {
+                    "code": "8.1.2",
+                    "display": "special transportation",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.1.2",
+                "text": "special transportation"
+              },
+              {
+                "type": "boolean",
+                "code": [
+                  {
+                    "code": "8.1.3",
+                    "display": "assistance to leave residence",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.1.3",
+                "text": "assistance to leave residence"
+              },
+              {
+                "type": "string",
+                "code": [
+                  {
+                    "code": "8.1.4",
+                    "display": "Describe",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.1.4",
+                "text": "Describe"
+              }
+            ]
+          },
+          {
+            "type": "choice",
+            "code": [
+              {
+                "code": "8.2",
+                "display": "Is there a medical contraindication to leaving home?",
+                "system": "linkId"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "drop-down",
+                      "display": "Drop down"
+                    }
+                  ],
+                  "text": "Drop down"
+                }
+              }
+            ],
+            "required": true,
+            "linkId": "8.2",
+            "text": "Is there a medical contraindication to leaving home?",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "Yes"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "No"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Describe"
+                }
+              }
+            ]
+          },
+          {
+            "type": "boolean",
+            "code": [
+              {
+                "code": "8.3",
+                "display": "Is there a normal inability to leave home?",
+                "system": "linkId"
+              }
+            ],
+            "required": true,
+            "linkId": "8.3",
+            "text": "Is there a normal inability to leave home?"
+          },
+          {
+            "type": "choice",
+            "code": [
+              {
+                "code": "8.4",
+                "display": "Does leaving home require a considerable and taxing effort?",
+                "system": "linkId"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "drop-down",
+                      "display": "Drop down"
+                    }
+                  ],
+                  "text": "Drop down"
+                }
+              }
+            ],
+            "required": true,
+            "linkId": "8.4",
+            "text": "Does leaving home require a considerable and taxing effort?",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "Yes"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "No"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Describe"
+                }
+              }
+            ]
+          },
+          {
+            "type": "group",
+            "code": [
+              {
+                "code": "8.5",
+                "display": "Related physical limitations that support homebound status – impairment (check all that apply)",
+                "system": "linkId"
+              }
+            ],
+            "required": false,
+            "linkId": "8.5",
+            "text": "Related physical limitations that support homebound status – impairment (check all that apply)",
+            "item": [
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.1",
+                    "display": "Nervous system/mental functions",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.1",
+                "text": "Nervous system/mental functions",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.1.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.1.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.1.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.1.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.2",
+                    "display": "sensory functions (eye, ear and related structures)",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.2",
+                "text": "sensory functions (eye, ear and related structures)",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.2.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.2.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.2.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.2.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.3",
+                    "display": "voice and speech",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.3",
+                "text": "voice and speech",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.3.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.3.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.3.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.3.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.4",
+                    "display": "cardiovascular system",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.4",
+                "text": "cardiovascular system",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.4.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.4.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.4.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.4.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.5",
+                    "display": "hematological and immunological system",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.5",
+                "text": "hematological and immunological system",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.5.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.5.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.5.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.5.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.6",
+                    "display": "respiratory system",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.6",
+                "text": "respiratory system",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.6.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.6.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.6.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.6.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.7",
+                    "display": "digestive system",
+                    "system": "linkid"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.7",
+                "text": "digestive system",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.7.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.7.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.7.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.7.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.8",
+                    "display": "metabolic and endocrine system",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.8",
+                "text": "metabolic and endocrine system",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.8.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.8.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.8.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.8.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.9",
+                    "display": "genitourinary system",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.9",
+                "text": "genitourinary system",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.9.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.9.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.9.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.9.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.10",
+                    "display": "skin and related structures",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.10",
+                "text": "skin and related structures",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.10.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.10.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.10.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.10.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.11",
+                    "display": "neuromusculoskeletal and movement-related structure",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.11",
+                "text": "neuromusculoskeletal and movement-related structure",
+                "item": [
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.11.1",
+                        "display": "Structural",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.11.1",
+                    "text": "Structural"
+                  },
+                  {
+                    "type": "boolean",
+                    "code": [
+                      {
+                        "code": "8.5.11.2",
+                        "display": "Functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.11.2",
+                    "text": "Functional"
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "code": [
+                  {
+                    "code": "8.5.12",
+                    "display": "other",
+                    "system": "linkId"
+                  }
+                ],
+                "required": false,
+                "linkId": "8.5.12",
+                "text": "other",
+                "item": [
+                  {
+                    "type": "string",
+                    "code": [
+                      {
+                        "code": "8.5.12.1",
+                        "display": "Describe this and state structural or functional",
+                        "system": "linkId"
+                      }
+                    ],
+                    "required": false,
+                    "linkId": "8.5.12.1",
+                    "text": "Describe this and state structural or functional"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "linkId": "9",
+        "type": "string",
+        "required": false,
+        "text": "Additional information necessary to describe why the above selected structural and functional and activity impairments/limitations support homebound status"
+      },
+      {
+        "linkId": "10",
+        "type": "string",
+        "required": false,
+        "text": "Treatment plan:( required if necessary to support patient need for home health services)"
+      },
+      {
+        "linkId": "11",
+        "text": "Orders for Discipline and Treatments (Specify Frequency/Duration)",
+        "type": "group",
+        "item": [
+          {
+            "linkId": "11.1",
+            "text": "Intermittent skilled nursing services (complete all that are required)",
+            "type": "open-choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "Administration of medications"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Tube feeding"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Wound care"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Catheters"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Ostomy care"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "NG and tracheostomy aspiration/care"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Psychiatric evaluation and therapy"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Teaching/training"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Observe/assess"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Complex care plan management"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Rehabilitation nursing"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"HomeHealthServicesPrepopulation\".RelevantDiagnoses"
+                }
+              }
+            ]
+          },
+          {
+            "linkId": "11.2",
+            "type": "string",
+            "required": false,
+            "text": "Justification and signature if the patient's sole skilled service need is for skilled oversight of unskilled services (management and evaluation of the care plan or complex care plan management)"
+          },
+          {
+            "linkId": "11.3",
+            "type": "string",
+            "required": false,
+            "text": "Signature"
+          }
+        ]
+      },
+      {
+        "linkId": "12",
+        "text": "Therapy Services (complete all that are required)",
+        "type": "group",
+        "item": [
+          {
+            "linkId": "12.1",
+            "text": "Therapy Services",
+            "type": "open-choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "Restore patient function"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Perform maintenance therapy"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Therapeutic exercises"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Gait and balance training"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "ADL training"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"HomeHealthServicesPrepopulation\".RelevantDiagnoses"
+                }
+              }
+            ]
+          }
+        ]
+      }, 
+      {
+        "linkId": "13",
+        "text": "Occupational Services (complete all that are required)",
+        "type": "group",
+        "item": [
+          {
+            "linkId": "13.1",
+            "text": "Occupational Services",
+            "type": "open-choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "Restore patient function"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Perform maintenance therapy"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Therapeutic exercises"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "ADL training"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"HomeHealthServicesPrepopulation\".RelevantDiagnoses"
+                }
+              }
+            ]
+          },
+          {
+            "linkId": "13.2",
+            "type": "boolean",
+            "required": false,
+            "text": "Are OT services above provided because physical therapy services ceased?"
+          }
+        ]
+      },
+      {
+        "linkId": "14",
+        "text": "Speech-language Pathology (complete all that are required)",
+        "type": "group",
+        "item": [
+          {
+            "linkId": "14.1",
+            "text": "Speech-language Pathology",
+            "type": "open-choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "Swallowing"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Restore language function"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Restore cognitive function"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Perform maintenance therapy"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"HomeHealthServicesPrepopulation\".RelevantDiagnoses"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "linkId": "15",
+        "text": "Other Services (complete all that are required)",
+        "type": "group",
+        "item": [
+          {
+            "linkId": "15.1",
+            "text": "Other Services",
+            "type": "open-choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "display": "Home Health aide services"
+                }
+              },
+              {
+                "valueCoding": {
+                  "display": "Medical social services"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"HomeHealthServicesPrepopulation\".RelevantDiagnoses"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "linkId": "16",
+        "type": "group",
+        "required": false,
+        "text": "Other orders",
+        "item": [
+          {
+            "linkId": "16.1",
+            "type": "string",
+            "required": false,
+            "text": "Medications (other drugs)"
+          },
+          {
+            "linkId": "16.2",
+            "type": "string",
+            "required": false,
+            "text": "Supplies"
+          },
+          {
+            "linkId": "16.3",
+            "type": "string",
+            "required": false,
+            "text": "Investigation/diagnostic testing"
+          },
+          {
+            "linkId": "16.4",
+            "type": "string",
+            "required": false,
+            "text": "Consults"
+          },
+          {
+            "linkId": "16.5",
+            "type": "string",
+            "required": false,
+            "text": "Other"
+          }
+        ]
+      },
+      {
+        "linkId": "17",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+            "valueCanonical": "questionnaire/practitioner-info"
+          }
+        ],
+        "type": "display"
+    },
+    {
+      "linkId": "18",
+      "text": "Signature, Name, Date, and NPI of NPP, if NPP completed the face-to-face evaluation",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "18.1",
+          "text": "Signature",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Signature"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "18.2",
+          "text": "Last Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "18.3",
+          "text": "First Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "18.4",
+          "text": "MI",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "18.5",
+          "text": "Date Of Birth (MM/DD/YYYY)",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "18.6",
+          "text": "NPI",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".NPI"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "18.7",
+          "text": "Telephone Number",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Phone"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@
   "mappings": [
     {
       "codeSystem": "hcpcs",
-      "codes": ["G0179", "G0180"]
+      "codes": ["G0179", "G0180", "G0155"]
     }
   ],
   "fhirVersions": ["R4"]
