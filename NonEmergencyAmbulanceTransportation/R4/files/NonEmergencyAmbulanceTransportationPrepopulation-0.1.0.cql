@@ -32,4 +32,35 @@ define "ServiceEndDate": FHIRHelpers.ToDateTime(
       (service_request.occurrence as FHIR.Period).end
     )
   )
+
+// TODO: Patient Conditions will need to be filtered by NEAT Condition Value once they have been created
+define RelevantDiagnoses: 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) 
+
+define OtherDiagnoses:
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
+
+// Helpers
+
+// TODO: Evaluation Date will need to be replaced with the Evaluation Date subquestionnaire once it has been merged into master
+define "Today": Today()
+
+define function CodesFromConditions(CondList List<Condition>):
+  distinct(flatten(
+    CondList C
+      let DiagnosesCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'http://hl7.org/fhir/sid/icd-10',
+            'http://hl7.org/fhir/sid/icd-10-cm',
+            'http://snomed.info/sct'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return DiagnosesCodings
+))
+
+define function Confirmed(CondList List<Condition>):
+  CondList C where C.verificationStatus.coding.code = 'confirmed'
+
+define function ActiveOrRecurring(CondList List<Condition>):
+  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
   

@@ -1,0 +1,551 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "NonEmergencyAmbulanceTransportationProgressNote",
+  "name": "NonEmergencyAmbulanceTransportationProgressNote",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/NonEmergencyAmbulanceTransportation-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+    }
+  ],
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "title": "Non Emergency Ambulance Transportation Progress Note",
+  "status": "draft",
+  "date": "2020-07-19",
+  "publisher": "Da Vinci DTR",
+  "subjectType": [
+    "Patient"
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
+    },
+    {
+      "linkId": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
+    },
+    {
+      "type": "group",
+      "code": [],
+      "required": false,
+      "linkId": "3",
+      "text": "Evaluation",
+      "item": [
+        {
+          "type": "date",
+          "code": [],
+          "required": true,
+          "linkId": "3.1",
+          "text": "Date of evaluation (MM/DD/YYYY):",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".Today"
+              }
+            }
+          ]
+        },
+        {
+          "type": "boolean",
+          "code": [],
+          "required": true,
+          "linkId": "3.2",
+          "text": "Is this an evaluation for Non-Emergency Ambulance Transportation and related services?",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
+        },
+        {
+          "type": "string",
+          "code": [],
+          "required": false,
+          "linkId": "3.3",
+          "text": "If No, purpose of the encounter:",
+          "enableWhen": [
+            {
+              "answerBoolean": false,
+              "question": "3.2",
+              "operator": "="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Diagnoses",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".RelevantDiagnoses"
+              }
+            }
+          ],
+          "text": "Patient Diagnoses related to need for a ventilator",
+          "type": "open-choice",
+          "required": true,
+          "repeats": true,
+          "answerOption": []
+        },
+        {
+          "linkId": "4.2",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".OtherDiagnoses"
+              }
+            }
+          ],          
+          "text": "Other Diagnoses",
+          "type": "open-choice",
+          "repeats": true,
+          "answerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/subjective"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Subjective"
+    },
+    {
+      "linkId": "6",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/review-of-system"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Review Of Systems"
+    },
+    {
+      "linkId": "7",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/physical-exam"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Physical Examination"
+    },
+    {
+      "type": "group",
+      "code": [],
+      "required": false,
+      "linkId": "8",
+      "text": "Reasons that non-emergency ambulance transport is required",
+      "item": [
+        {
+          "type": "group",
+          "code": [],
+          "required": false,
+          "linkId": "8.1",
+          "text": "Mobility",
+          "item": [
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.1.1",
+              "text": "Bed confined"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.1.2",
+              "text": "Unable to maintain erect sitting position in a chair for time needed to transport, due to moderate muscular weakness and de-conditioning"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.1.3",
+              "text": "Risk of falling off wheelchair or stretcher while in motion (not related to obesity)"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [],
+          "required": false,
+          "linkId": "8.2",
+          "text": "Musculoskeletal",
+          "item": [
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.2.1",
+              "text": "Non-healed fractures requiring ambulance"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.2.2",
+              "text": "Contractures that impair mobility and result in bed confinement"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.2.3",
+              "text": "Incapacitating Osteoarthritis"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.2.4",
+              "text": "Severe muscular weakness and de-conditioned state precludes any significant physical activity"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.2.5",
+              "text": "Orthopedic device required in transit"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.2.6",
+              "text": "Amputation(s)"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [],
+          "required": false,
+          "linkId": "8.3",
+          "text": "Cardiovascular",
+          "item": [
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.3.1",
+              "text": "CVA with sequelea (late effect of CVA) that impair mobility and result in bed confinement"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.3.2",
+              "text": "DVT requires elevation of lower extremity"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [],
+          "required": false,
+          "linkId": "8.4",
+          "text": "Neurological",
+          "item": [
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.4.1",
+              "text": "Spinal Cord Injury – Paralysis"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.4.2",
+              "text": "Progressive demyelinating disease"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.4.3",
+              "text": "Moderate to severe pain on movement"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [],
+          "required": false,
+          "linkId": "8.5",
+          "text": "Wound",
+          "item": [
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.5.1",
+              "text": "Unable to sit in chair or wheelchair due to Grade II or greater decubitus ulcers on buttocks"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.5.2",
+              "text": "Chronic wounds requiring immobilization"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [],
+          "required": false,
+          "linkId": "8.6",
+          "text": "Attendant required during transport",
+          "item": [
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.6.1",
+              "text": "Morbid obesity requires additional personnel/equipment to handle"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.6.2",
+              "text": "Third party attendant required to regulate or adjust oxygen en route"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.6.3",
+              "text": "Special handling en route – isolation"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.6.4",
+              "text": "IV medications/fluids required during transport"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.6.5",
+              "text": "Restraints (physical or chemical) anticipated or used during transport"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "code": [],
+          "required": false,
+          "linkId": "8.7",
+          "text": "Mental",
+          "item": [
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.7.1",
+              "text": "Danger to self or others"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.7.2",
+              "text": "Confused, combative, lethargic, comatose"
+            }
+          ]
+        },
+        {
+          "type": "boolean",
+          "code": [],
+          "required": false,
+          "linkId": "8.8",
+          "text": "Other"
+        },
+        {
+          "type": "text",
+          "code": [],
+          "required": false,
+          "linkId": "8.9",
+          "text": "Describe",
+          "enableWhen": [
+            {
+              "answerBoolean": true,
+              "question": "8.8",
+              "operator": "="
+            }
+          ]
+        },
+        {
+          "type": "boolean",
+          "code": [],
+          "required": false,
+          "linkId": "8.10",
+          "text": "Are there services that cannot be provided in the patient’s current setting?"
+        },
+        {
+          "type": "group",
+          "code": [],
+          "required": false,
+          "linkId": "8.11",
+          "text": "If Yes, specify by checking one or more of the following and adding a description:",
+          "enableWhen": [
+            {
+              "answerBoolean": true,
+              "question": "8.10",
+              "operator": "="
+            }
+          ],
+          "item": [
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.1",
+              "text": "Dialysis"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.2",
+              "text": "Wound care"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.3",
+              "text": "Radiation therapy"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.4",
+              "text": "Chemotherapy"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.5",
+              "text": "O&P services"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.6",
+              "text": "Imaging"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.7",
+              "text": "Outpatient therapy"
+            },
+            {
+              "type": "boolean",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.8",
+              "text": "Other"
+            },
+            {
+              "type": "string",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.9",
+              "enableWhen": [
+                {
+                  "answerBoolean": true,
+                  "question": "8.11.8",
+                  "operator": "="
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "code": [],
+              "required": false,
+              "linkId": "8.11.10",
+              "text": "Description"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "9",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/assessment-and-plan"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Assessment and Plan"
+    },
+    {
+      "linkId": "10",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Provider Signature"
+    }
+  ]
+}
