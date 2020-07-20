@@ -9,39 +9,35 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 // with guidance from https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/Home-Oxygen-Therapy-ICN908804.pdf
 
 
+// Code Systems
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 codesystem "FHIRRequestIntent": 'http://hl7.org/fhir/request-intent'
 
-//COPD_Codes
-valueset "COPD": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.6'
-
-//Bronchiectasis_Codes
-valueset "Bronchiectasis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.3'
-
-//Hypoxemia_Codes
-valueset "Hypoxemia Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.9'
-
-//Diffuse_interstitial_lung_disease_Codes
-valueset "Interstitial Lung Disease": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.12'
-
-//Cystic_fibrosis_Codes
-valueset "Cystic Fibrosis Lung Disease": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.15'
+// Qualifying Conditions
+valueset "Home Oxygen Therapy Qualifying Conditions": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.25'
 
 // Device Categories
 valueset "Stationary Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.80'
 valueset "Portable Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.79'
+// Device Types
 valueset "Liquid Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.77'
 valueset "Compressed Gas Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.74'
 valueset "Oxygen Concentrator Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.78'
 
-//Pulmonary_hypertension_Codes
-code "I27.0": 'I27.0' from "ICD-10-CM"
-code "I27.2": 'I27.2' from "ICD-10-CM"
+// Laboratory Test Codes
+valueset "Laboratory Test for Home Oxygen Therapy or Respiratory Assist Device Evaluation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.106'
+
+// Immobilization Codes
+valueset "Immobilization": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.17.4077.3.2006'
+
+// Oxygen Saturation Lab Test
+valueset "Oxygen Saturation Lab Test": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.132'
 
 //  Loinc codes for observations
+
 //Arterial_oxygen_saturation_Codes
 code "59408-5": '59408-5' from "LOINC"
 //Arterial_partial_pressure_of_oxygen_Codes
@@ -51,27 +47,7 @@ code "89276-0": '89276-0' from "LOINC"
 //Note: cant find loinc code for partial pressure during exercise
 
 //Hematocrit_lab_test_Codes
-code "20570-8": '20570-8' from "LOINC"
-code "31100-1": '31100-1' from "LOINC"
 code "32354-3": '32354-3' from "LOINC"
-code "41654-5": '41654-5' from "LOINC"
-code "41655-2": '41655-2' from "LOINC"
-code "4544-3": '4544-3' from "LOINC"
-code "4545-0": '4545-0' from "LOINC"
-code "71829-6": '71829-6' from "LOINC"
-code "71830-4": '71830-4' from "LOINC"
-code "71832-0": '71832-0' from "LOINC"
-code "71833-8": '71833-8' from "LOINC"
-
-
-
-//Immobilization_Codes
-code "102491009": '102491009' from "SNOMED-CT"
-code "129857008": '129857008' from "SNOMED-CT"
-code "129859006": '129859006' from "SNOMED-CT"
-code "160685001": '160685001' from "SNOMED-CT"
-code "371632003": '371632003' from "SNOMED-CT"
-code "8510008": '8510008' from "SNOMED-CT"
 
 //Pulmonary artery Mean blood pressure
 code "8414-5": '8414-5' from "LOINC"
@@ -82,37 +58,41 @@ concept "Intent Original Order": { "Intent Original Order code" } display 'Origi
 
 parameter device_request DeviceRequest
 
-// Relevant Diagnosis Code Lists
-define "Pulmonary_hypertension_Codes": { "I27.0", "I27.2" }
-
 // Observation code lists
+
+//Arterial Oxygen Codes
 define "Arterial_oxygen_saturation_Codes": { "59408-5" }
 define "Arterial_partial_pressure_of_oxygen_Codes": { "2703-7" }
 define "Arterial_oxygen_saturation_during_exercise_Codes": { "89276-0" }
 
-define "Hematocrit_lab_test_Codes": { "20570-8", "31100-1", "32354-3", "41654-5", "41655-2", "4544-3", "4545-0", "71829-6", "71830-4", "71832-0", "71833-8" }
-define "Hematocrit_Codes": {"31100-1"}
-// Other codes
-define "Immobilization_Codes": { "102491009", "129857008", "129859006", "160685001", "371632003", "8510008" }
+//Hematocrit Code
+define "Hematocrit_lab_test_Codes": {"32354-3"}
 
+// Other codes
+define "Immobilization_Codes": { "Immobilization" }
+
+// Pulmonary artery mean blood pressure code
 define "Pulmonary_artery_pressure_Codes": {"8414-5"}
 
 context Patient
 
 define Today: Today()
 
-define "AllCOPD":
-  Confirmed(ActiveOrRecurring([Condition: "COPD"]))
+define RelevantDiagnoses: 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Home Oxygen Therapy Qualifying Conditions"])))
 
-// coverage requirement info
-define RelevantDiagnoses: {
-  if exists(Confirmed(ActiveOrRecurring([Condition: "COPD"]))) then 'COPD' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Bronchiectasis"]))) then 'Bronchiectasis' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Interstitial Lung Disease"]))) then 'Interstitial Lung Disease' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Cystic Fibrosis Lung Disease"]))) then 'Cystic Fibrosis' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Pulmonary_hypertension_Codes"]))) then 'Pulmonary Hypertension' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Hypoxemia Disorder"]))) then 'Hypoxemia' else 'null'
-} except { 'null' } // except 'null' is a workaround since I don't see how to remove actual nulls
+define function CodesFromConditions(CondList List<Condition>):
+  distinct(flatten(
+    CondList C
+      let DiagnosesCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'http://hl7.org/fhir/sid/icd-10',
+            'http://hl7.org/fhir/sid/icd-10-cm',
+            'http://snomed.info/sct'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return DiagnosesCodings
+  ))
 
 define "VerifiedArterialOxygenSatuation": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months))
 define ArterialOxygenSaturation: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months)), '%'))
