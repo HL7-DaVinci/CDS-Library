@@ -203,4 +203,3 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
 
 define function LowestObservation(ObsList List<Observation>):
   Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-
