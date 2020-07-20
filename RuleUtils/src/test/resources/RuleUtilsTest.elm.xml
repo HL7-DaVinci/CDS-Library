@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="RuleUtilsTest" version="0.1.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.0"/>
+   </usings>
+   <includes>
+      <def localIdentifier="FHIRHelpers" path="FHIRHelpers" version="4.0.0"/>
+   </includes>
+   <codeSystems>
+      <def name="LOINC" id="http://loinc.org" accessLevel="Public"/>
+   </codeSystems>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="TEST" context="Patient" accessLevel="Public">
+         <expression valueType="t:Boolean" value="true" xsi:type="Literal"/>
+      </def>
+      <def name="BUNDLE_TEST" context="Patient" accessLevel="Public">
+         <expression xsi:type="First">
+            <source xsi:type="Query">
+               <source alias="P">
+                  <expression dataType="fhir:Patient" xsi:type="Retrieve"/>
+               </source>
+               <return>
+                  <expression xsi:type="Equal">
+                     <operand path="value" xsi:type="Property">
+                        <source path="id" scope="P" xsi:type="Property"/>
+                     </operand>
+                     <operand valueType="t:String" value="pat001" xsi:type="Literal"/>
+                  </expression>
+               </return>
+            </source>
+         </expression>
+      </def>
+   </statements>
+</library>
