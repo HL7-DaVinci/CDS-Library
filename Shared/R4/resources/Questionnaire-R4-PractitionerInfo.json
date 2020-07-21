@@ -17,6 +17,19 @@
   "status": "draft",
   "item": [
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "PND",
       "text": "Provider who perfromed the in-person evaluation",
       "type": "group",
