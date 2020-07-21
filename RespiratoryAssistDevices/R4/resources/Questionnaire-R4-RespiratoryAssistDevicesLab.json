@@ -142,12 +142,12 @@
       "type": "group",
       "item": [
         {
-          "linkId": "5.1",
-          "text": "Test while the patient receiving oxygen",
+          "linkId": "4.1",
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry --during treatment",
           "type": "group",
           "item": [
             {
-              "linkId": "5.1.1",
+              "linkId": "4.1.1",
               "text": "Was the patient receiving oxygen while the test was being performed?",
               "type": "boolean",
               "extension": [
@@ -161,7 +161,7 @@
               ]
             },
             {
-              "linkId": "5.1.2",
+              "linkId": "4.1.2",
               "type": "group",
               "text": "Details",
               "extension": [
@@ -179,15 +179,15 @@
               ],
               "enableWhen": [
                 {
-                  "question": "5.1.1",
+                  "question": "4.1.1",
                   "operator": "=",
                   "answerBoolean": "true"
                 }
               ],
               "item": [
                 {
-                  "linkId": "5.1.2.1",
-                  "text": "Value",
+                  "linkId": "4.1.2.1",
+                  "text": "Result (%)",
                   "type": "decimal",
                   "extension": [
                     {
@@ -213,7 +213,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.1.2.2",
+                  "linkId": "4.1.2.2",
                   "text": "Date",
                   "type": "date",
                   "extension": [
@@ -227,12 +227,12 @@
                   ]
                 },
                 {
-                  "linkId": "5.1.2.3",
+                  "linkId": "4.1.2.3",
                   "text": "Oxygen Flow Rate",
                   "type": "decimal"
                 },
                 {
-                  "linkId": "5.1.2.4",
+                  "linkId": "4.1.2.4",
                   "type": "choice",
                   "text": "Means of oxygen delivery",
                   "answerOption": [
@@ -259,7 +259,7 @@
                   ]
                 },
                 {
-                  "linkId": "5.1.2.5",
+                  "linkId": "4.1.2.5",
                   "text": "Note",
                   "type": "text"
                 }
@@ -292,7 +292,7 @@
               "item": [
                 {
                   "linkId": "4.2.1.1",
-                  "text": "Value",
+                  "text": "Result (pH)",
                   "type": "decimal",
                   "code": [
                     {
@@ -334,7 +334,7 @@
             },
             {
               "linkId": "4.2.2",
-              "text": "PaCO2 [mmHg]",
+              "text": "PaCO2",
               "type": "group",
               "extension": [
                 {
@@ -367,7 +367,7 @@
                     }
                   ],
                   "linkId": "4.2.2.1",
-                  "text": "Value",
+                  "text": "Result (mm[Hg])",
                   "type": "decimal",
                   "code": [
                     {
@@ -433,7 +433,7 @@
                     }
                   ],
                   "linkId": "4.2.3.1",
-                  "text": "Value",
+                  "text": "Result (%)",
                   "type": "decimal",
                   "code": [
                     {
@@ -466,7 +466,7 @@
             },
             {
               "linkId": "4.2.4",
-              "text": "HCO3 [mmol/L]",
+              "text": "HCO3",
               "type": "group",
               "extension": [
                 {
@@ -499,7 +499,7 @@
                     }
                   ],
                   "linkId": "4.2.4.1",
-                  "text": "Value",
+                  "text": "Result (mmol/L)",
                   "type": "decimal",
                   "code": [
                     {
@@ -532,7 +532,7 @@
             },
             {
               "linkId": "4.2.5",
-              "text": "Hematocrit [%]",
+              "text": "Hematocrit",
               "type": "group",
               "extension": [
                 {
@@ -565,7 +565,7 @@
                     }
                   ],
                   "linkId": "4.2.5.1",
-                  "text": "Value",
+                  "text": "Result (%)",
                   "type": "decimal",
                   "code": [
                     {
@@ -598,7 +598,7 @@
             },
             {
               "linkId": "4.2.6",
-              "text": "PaO2 [mmHg]",
+              "text": "PaO2",
               "type": "group",
               "extension": [
                 {
@@ -631,7 +631,7 @@
                     }
                   ],
                   "linkId": "4.2.6.1",
-                  "text": "Value",
+                  "text": "Result (mm[Hg])",
                   "type": "decimal",
                   "code": [
                     {
@@ -699,7 +699,7 @@
                 }
               ],
               "linkId": "4.3.1",
-              "text": "O2 Sat [%]",
+              "text": "Result (%)",
               "type": "decimal",
               "code": [
                 {

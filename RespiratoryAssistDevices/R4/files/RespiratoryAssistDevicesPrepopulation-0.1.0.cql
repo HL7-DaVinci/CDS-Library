@@ -176,8 +176,5 @@ define function Confirmed(CondList List<Condition>):
 
 define function NullSafeToQuantity(Qty FHIR.Quantity):
   if Qty is not null then
-    System.Quantity {
-      value: Qty.value.value,
-      unit: Coalesce(Qty.unit.value, Qty.code.value)
-    }
+    Qty.value.value  
   else null
