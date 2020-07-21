@@ -221,7 +221,7 @@
     {
       "type": "group",
       "linkId": "6",
-      "text": "Frequency of Use/Supplies",
+      "text": "Frequency of Use",
       "item": [
         {
           "type": "group",
@@ -230,9 +230,9 @@
           "enableWhen": [
             {
               "question": "4.2",
-              "operator": "=",
+              "operator": "!=",
               "answerCoding": {
-                "code": "Non-insulin Treated"
+                "code": "Insulin Treated"
               }
             }
           ],
@@ -329,6 +329,150 @@
           "text": "Is continuous glucose monitoring required?",
           "linkId": "6.4",
           "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "text": "Supplies, Diabetic Test Strips (DTS)/Lancets",
+      "linkId": "7",
+      "item": [
+        {
+          "type": "group",
+          "linkId": "7.1",
+          "text": "Non-Insulin Treated Supplies",
+          "enableWhen": [
+            {
+              "question": "4.2",
+              "operator": "!=",
+              "answerCoding": {
+                "code": "Insulin Treated",
+                "display": "Insulin Treated"
+              }
+            }
+          ],
+          "item": [
+            {
+              "type": "choice",
+              "linkId": "7.1.1",
+              "text": "Supply",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "30-day Supply (30)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "90-day Supply (100)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "integer",
+              "linkId": "7.1.2",
+              "text": "Additional Supplies (in multiples of 30 or 100, must be justified above with excess frequency)",
+              "enableWhen": [
+                {
+                  "question": "6.1.1",
+                  "operator": ">",
+                  "answerInteger": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "linkId": "7.2",
+          "text": "Insulin Treated Supplies",
+          "enableWhen": [
+            {
+              "question": "4.2",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Insulin Treated",
+                "display": "Insulin Treated"
+              }
+            }
+          ],
+          "item": [
+            {
+              "type": "choice",
+              "linkId": "7.2.1",
+              "text": "Supply",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "30-day Supply (100)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "90-day Supply (300)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "integer",
+              "linkId": "7.2.2",
+              "text": "Additional Supplies (in multiples of 30 or 100, must be justified above with excess frequency)",
+              "enableWhen": [
+                {
+                  "question": "6.2.1",
+                  "operator": ">",
+                  "answerInteger": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "integer",
+          "linkId": "7.3",
+          "text": "Number of Refills"
+        },
+        {
+          "type": "group",
+          "linkId": "7.4",
+          "text": "Continuous glucose monitoring annual supplies",
+          "enableWhen": [
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
+                "version": "2020",
+                "code": "K0554",
+                "display": "Receiver (monitor), dedicated, for use with therapeutic glucose continuous monitor system"
+              }
+            },
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
+                "version": "2020",
+                "code": "S1031",
+                "display": "Continuous noninvasive glucose monitoring device, rental, including sensor, sensor replacement, and download to monitor (for physician interpretation of data, use cpt code)"
+              }
+            }
+          ],
+          "enableBehavior": "any",
+          "item": [
+            {
+              "type": "integer",
+              "linkId": "7.4.1",
+              "text": "Sensors (up to 60)"
+            },
+            {
+              "type": "integer",
+              "linkId": "7.4.2",
+              "text": "Transmitters (up to 3)"
+            }
+          ]
         }
       ]
     }
