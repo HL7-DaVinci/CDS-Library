@@ -71,7 +71,15 @@ public class CqlUtilsTest {
 
     @Test
     public void executeTest() {
-        Context context = CqlUtils.createBundleContext(cql, bundle, fhirContext, modelResolver);
+        Context context = CqlUtils.createBundleContextFromCql(cql, bundle, fhirContext, modelResolver);
+        Object value = CqlUtils.executeExpression(context, "BUNDLE_TEST");
+        Assert.assertNotNull(value);
+        Assert.assertTrue((boolean) value);
+    }
+
+    @Test
+    public void executeTestPreconverted() {
+        Context context = CqlUtils.createBundleContextFromElm(elm, bundle, fhirContext, modelResolver);
         Object value = CqlUtils.executeExpression(context, "BUNDLE_TEST");
         Assert.assertNotNull(value);
         Assert.assertTrue((boolean) value);

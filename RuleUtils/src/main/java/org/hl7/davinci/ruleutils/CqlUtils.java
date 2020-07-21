@@ -33,6 +33,25 @@ public class CqlUtils {
     }
 
     /**
+     * Create the CQL Context for a given elm file and a Bundle
+     * 
+     * @param elm           - the contents of the elm
+     * @param bundle        - the resources to add to the context
+     * @param fhirContext   - fhir context
+     * @param modelResolver - model resolver
+     * @return CQL context for the library and bundle
+     */
+    public static Context createBundleContextFromElm(String elm, Bundle bundle, FhirContext fhirContext,
+            ModelResolver modelResolver) {
+        Library library = createLibrary(elm);
+        Context context = new Context(library);
+        context.registerDataProvider("http://hl7.org/fhir",
+                CqlUtils.createDataProvider(bundle, fhirContext, modelResolver));
+
+        return context;
+    }
+
+    /**
      * Create the CQL Context for a given cql file and a Bundle
      * 
      * @param cql           - the contents of the cql
@@ -41,7 +60,7 @@ public class CqlUtils {
      * @param modelResolver - model resolver
      * @return CQL context for the library and bundle
      */
-    public static Context createBundleContext(String cql, Bundle bundle, FhirContext fhirContext,
+    public static Context createBundleContextFromCql(String cql, Bundle bundle, FhirContext fhirContext,
             ModelResolver modelResolver) {
         String elm = cqlToElm(cql, RequestType.XML);
         Library library = createLibrary(elm);
