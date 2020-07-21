@@ -51,7 +51,7 @@ public class CqlUtilsTest {
 
     @Test
     public void readFileTest() {
-        String fileName = "HospitalBeds/R4/files/HospitalBedsRule-0.1.0.cql";
+        String fileName = "../HospitalBeds/R4/files/HospitalBedsRule-0.1.0.cql";
         String content = CqlUtils.readFile(fileName);
         Assert.assertNotNull(content);
     }

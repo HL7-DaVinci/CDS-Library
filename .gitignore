@@ -17,6 +17,7 @@ build
 .settings/
 .vscode/
 bin
+RuleUtils/bin
 
 # Ignore Mac OS X
 **/.DS_Store

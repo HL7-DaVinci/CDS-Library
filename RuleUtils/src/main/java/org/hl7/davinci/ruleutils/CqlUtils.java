@@ -120,12 +120,11 @@ public class CqlUtils {
     /**
      * Read in the contents of a file from the CDS Library and return the contents
      * 
-     * @param fileName - the name of the file
+     * @param path - the name of the file
      * @return string contents of the file or null if the file does not exist
      */
-    public static String readFile(String fileName) {
+    public static String readFile(String path) {
         String content = null;
-        String path = "../" + fileName;
         try {
             content = new String(Files.readAllBytes(Paths.get(path)));
         } catch (Exception e) {
