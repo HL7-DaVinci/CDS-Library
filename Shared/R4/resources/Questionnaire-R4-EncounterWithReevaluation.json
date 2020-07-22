@@ -1,0 +1,163 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "encounter-with-reevaluation",
+    "name": "Encounter With Reevaluation Module",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+            "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+            "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+        }
+    ],
+    "status": "draft",
+    "item": [
+        {
+            "linkId": "ENC",
+            "type": "group",
+            "text": "Encounter",
+            "item": [
+                {
+                    "linkId": "ENC.1",
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicClinicalInfoPrepopulation\".Today"
+                            }
+                        }
+                    ],
+                    "text": "Date of encounter (MM/DD/YYYY)",
+                    "type": "date",
+                    "required": true
+                },
+                {
+                    "linkId": "ENC.2",
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"
+                            }
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                            "valueCodeableConcept": {
+                                "coding": [
+                                    {
+                                        "code": "radio-button",
+                                        "system": "http://hl7.org/fhir/questionnaire-item-control"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "text": "Is this encounter for the evaluation of the patient’s need for ordered device, service, or medication?",
+                    "required": true,
+                    "type": "choice",
+                    "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
+                },
+                {
+                    "linkId": "ENC.3",
+                    "text": "Evaluation details",
+                    "type": "group",
+                    "enableWhen": [
+                        {
+                            "question": "ENC.2",
+                            "operator": "=",
+                            "answerCoding": {
+                                "code": "Y",
+                                "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
+                            }
+                        }
+                    ],
+                    "item": [
+                        {
+                            "linkId": "ENC.3.1",
+                            "text": "Type",
+                            "type": "choice",
+                            "required": true,
+                            "enableWhen": [
+                                {
+                                    "question": "ENC.2",
+                                    "operator": "=",
+                                    "answerCoding": {
+                                        "code": "Y",
+                                        "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
+                                    }
+                                }
+                            ],
+                            "answerOption": [
+                                {
+                                    "valueCoding": {
+                                        "code": "Initial Evaluation"
+                                    }
+                                },
+                                {
+                                    "valueCoding": {
+                                        "code": "Re-evaluation"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "linkId": "ENC.3.2",
+                            "text": "Is there evidence of continued use of the PAP/CPAP device and supplies?",
+                            "type": "choice",
+                            "extension": [
+                                {
+                                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                                    "valueCodeableConcept": {
+                                        "coding": [
+                                            {
+                                                "code": "radio-button",
+                                                "system": "http://hl7.org/fhir/questionnaire-item-control"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "enableWhen": [
+                                {
+                                    "question": "ENC.3.1",
+                                    "operator": "=",
+                                    "answerCoding": {
+                                        "code": "Re-evaluation"
+                                    }
+                                }
+                            ],
+                            "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
+                        },
+                        {
+                            "linkId": "ENC.3.3",
+                            "text": "Describe",
+                            "type": "text"
+                        }
+                    ]
+                },
+                {
+                    "linkId": "ENC.4",
+                    "text": "If No, purpose of the encounter",
+                    "type": "text",
+                    "required": true,
+                    "enableWhen": [
+                        {
+                            "question": "ENC.2",
+                            "operator": "=",
+                            "answerCoding": {
+                                "code": "N",
+                                "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

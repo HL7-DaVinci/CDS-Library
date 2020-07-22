@@ -23,6 +23,7 @@ context Patient
 
 // coverage requirement info
 define "RelevantDiagnoses": CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Sleep Apnea or Breathing Related Sleep Disorder"])))
+define "OSADiagnosed": exists("RelevantDiagnoses")
 
 define OtherDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except "RelevantDiagnoses"
