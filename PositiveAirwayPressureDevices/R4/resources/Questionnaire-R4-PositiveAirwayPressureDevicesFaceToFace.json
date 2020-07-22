@@ -75,13 +75,15 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".RelevantDiagnosisExists"
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".RelevantDiagnoses"
               }
             }
           ],
           "linkId": "4.1",
-          "type": "boolean",
-          "text": "Obstructive Sleep Apnea (G47.33)"
+          "type": "open-choice",
+          "text": "Relevant Diagnoses",
+          "answerOption": [],
+          "repeats": "true"
         },
         {
           "extension": [

@@ -77,7 +77,7 @@
             }
           ],
           "linkId": "4.1",
-          "text": "OSA Diagnoses",
+          "text": "Relevant Diagnoses",
           "type": "open-choice",
           "answerOption": [],
           "repeats": "true"
