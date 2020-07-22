@@ -12,7 +12,9 @@
   "status": "draft",
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
-  "subjectType": ["Patient"],
+  "subjectType": [
+    "Patient"
+  ],
   "item": [
     {
       "linkId": "1",
@@ -37,22 +39,15 @@
       "text": "This is a placeholder for Physician/NPP Demographics"
     },
     {
-      "linkId": "3",
-      "text": "Encounter",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/encounter-items"
-            }
-          ],
-          "linkId": "3.1",
-          "type": "display",
-          "text": "This is a placeholder for Encounter Items"
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/encounter"
         }
-      ]
+      ],
+      "linkId": "3.1",
+      "type": "display",
+      "text": "This is a placeholder for Encounter"
     },
     {
       "linkId": "4",

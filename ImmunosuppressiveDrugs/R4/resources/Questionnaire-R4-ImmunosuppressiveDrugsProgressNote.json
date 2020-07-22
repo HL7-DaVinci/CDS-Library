@@ -57,7 +57,11 @@
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/encounter-items"
+              "valueCanonical": "questionnaire/encounter"
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
+              "valueBoolean": true
             }
           ],
           "linkId": "3.1",
