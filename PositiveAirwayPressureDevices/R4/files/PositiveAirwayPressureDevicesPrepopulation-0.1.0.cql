@@ -6,8 +6,7 @@ codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
-//Obstructive Sleep Apnea
-code "G47.33": 'G47.33' from "ICD-10-CM"
+valueset "Sleep Apnea or Breathing Related Sleep Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.31'
 
 // AHI codes
 code "LP145624-5" :'LP145624-5' from "LOINC"
@@ -17,33 +16,29 @@ code "90566-1": '90566-1' from "LOINC"
 parameter device_request DeviceRequest
 
 
-define "OSA_Codes": { "G47.33" }
-
 define "AHI_Codes": { "LP145624-5" }
 define "RDI_Codes": { "90566-1" }
 
 context Patient
 
 // coverage requirement info
-define OsaDiagnosis:
-  if exists(Confirmed(ActiveOrRecurring([Condition: "OSA_Codes"]))) then 'OSA' else 'null'
-
-define OsaDiagnosisExists: exists(Confirmed(ActiveOrRecurring([Condition: "OSA_Codes"])))
+define "RelevantDiagnoses": CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Sleep Apnea or Breathing Related Sleep Disorder"])))
 
 define OtherDiagnoses:
-  distinct(flatten(
-    [Condition] C
-      let ICD10Codings:
-        ((C.code.coding) CODING where CODING.system.value in {
-          'http://hl7.org/fhir/sid/icd-10',
-          'http://hl7.org/fhir/sid/icd-10-cm'
-        }
-        return CODING.code.value + ' - ' + CODING.display.value)
-      where C.clinicalStatus.coding.code = 'active'
-      and exists(ICD10Codings)
-      return ICD10Codings
-  ))
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except "RelevantDiagnoses"
 
+define function CodesFromConditions(CondList List<Condition>):
+  distinct(flatten(
+    CondList C
+      let DiagnosesCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'http://hl7.org/fhir/sid/icd-10',
+            'http://hl7.org/fhir/sid/icd-10-cm',
+            'http://snomed.info/sct'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return DiagnosesCodings
+  ))
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -54,12 +49,6 @@ define PapDeviceRequested:
   if "DeviceRequestHcpcsCoding".code.value = 'E0470' then 'E0470'
   else if  "DeviceRequestHcpcsCoding".code.value = 'E0601' then 'E0601'
   else 'null'
-
-define "Today": Today()
-
-define "True": true
-
-define "False": false
 
 define "AHI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "AHI_Codes"], 3 months)), '/h'))
 define "RDI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "RDI_Codes"], 3 months)), '/h'))
