@@ -12,9 +12,7 @@
   "status": "draft",
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
-  "subjectType": [
-    "Patient"
-  ],
+  "subjectType": ["Patient"],
   "item": [
     {
       "linkId": "1",
@@ -45,7 +43,7 @@
           "valueCanonical": "questionnaire/encounter"
         }
       ],
-      "linkId": "3.1",
+      "linkId": "3",
       "type": "display",
       "text": "This is a placeholder for Encounter"
     },
