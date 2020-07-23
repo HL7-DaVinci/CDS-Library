@@ -10,15 +10,17 @@
   },
   "title": "Home Health Services",
   "status": "draft",
-  "subjectType": [
-    "Patient"
-  ],
-  "date": "2019-11-14",
+  "date": "2020-07-21",
   "publisher": "Da Vinci DTR",
+  "subjectType": ["Patient"],
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServices-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
@@ -56,96 +58,90 @@
   "item": [
     {
       "linkId": "1",
-      "text": "Patient Information",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "text": "Additional Patient Information",
       "type": "group",
       "item": [
         {
-          "linkId": "1.1",
-          "text": "Last Name",
+          "linkId": "2.1",
+          "text": "Address",
           "type": "string",
-          "required": true,
+          "required": false,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+                "expression": "\"BasicPatientInfoPrepopulation\".Line"
               }
             }
           ]
         },
         {
-          "linkId": "1.2",
-          "text": "First Name",
+          "linkId": "2.2",
+          "text": "City",
           "type": "string",
-          "required": true,
+          "required": false,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+                "expression": "\"BasicPatientInfoPrepopulation\".City"
               }
             }
           ]
         },
         {
-          "linkId": "1.3",
-          "text": "Middle Initial",
+          "linkId": "2.3",
+          "text": "State",
           "type": "string",
-          "required": true,
+          "required": false,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+                "expression": "\"BasicPatientInfoPrepopulation\".State"
               }
             }
           ]
         },
         {
-          "linkId": "1.4",
-          "text": "Date Of Birth",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.5",
-          "text": "Gender",
-          "type": "choice",
-          "required": true,
-          "answerValueSet": "#gender",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.6",
-          "text": "Medicare ID",
+          "linkId": "2.4",
+          "text": "Zip",
           "type": "string",
-          "required": true,
+          "required": false,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+                "expression": "\"BasicPatientInfoPrepopulation\".Zip"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.5",
+          "text": "Telephone",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Telephone"
               }
             }
           ]
@@ -153,15 +149,30 @@
       ]
     },
     {
-      "linkId": "2",
-      "text": "Provider who is performing face-to-face evaluation",
+      "linkId": "3",
+      "text": "Provider (physician/allowed NPP) who performed the face-to-face examination (see guidance)",
       "type": "group",
       "item": [
         {
-          "linkId": "2.1",
+          "linkId": "3.1",
+          "text": "Check here if same as ordering provider",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".True"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "3.2",
           "text": "Last Name",
           "type": "string",
-          "required": true,
+          "required": false,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -173,10 +184,10 @@
           ]
         },
         {
-          "linkId": "2.2",
+          "linkId": "3.3",
           "text": "First Name",
           "type": "string",
-          "required": true,
+          "required": false,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -188,10 +199,10 @@
           ]
         },
         {
-          "linkId": "2.3",
+          "linkId": "3.4",
           "text": "Middle Initial",
           "type": "string",
-          "required": true,
+          "required": false,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -203,8 +214,2093 @@
           ]
         },
         {
-          "linkId": "2.4",
+          "linkId": "3.5",
+          "text": "Suffix",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Suffix"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "3.6",
           "text": "NPI",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "3.7",
+          "text": "Date of face-to-face encounter if completed",
+          "type": "date",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".DateF2F"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Diagnoses",
+      "type": "group",
+      "repeats": true,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "item": [
+        {
+          "linkId": "4.1",
+          "text": "ICD-10 Code",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".DiagnosesCode"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "4.2",
+          "text": "Description",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".DiagnosesDescription"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "4.3",
+          "text": "Start Date",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".DiagnosesStartDate"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "4.4",
+          "text": "Status",
+          "type": "choice",
+          "required": true,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/condition-clinical",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".DiagnosesStatus"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "Other pertinent diagnoses",
+      "type": "group",
+      "repeats": true,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "item": [
+        {
+          "linkId": "5.1",
+          "text": "Code",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".OtherPertimentDiagnosesCode"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.2",
+          "text": "Description",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".OtherPertimentDiagnosesDescription"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "text": "Start Date",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".OtherPertimentDiagnosesStartDate"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.4",
+          "text": "Status",
+          "type": "choice",
+          "required": true,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/condition-clinical",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".OtherPertimentDiagnosesStatus"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "text": "Orders for Discipline and Treatments",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "6.1",
+          "text": "Intermittent skilled nursing services (complete all that are required)",
+          "type": "display",
+          "required": false
+        },
+        {
+          "linkId": "7.1",
+          "text": "Administration of medications",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Administrationofmedications_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "7.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "7.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Administrationofmedications_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "7.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "7.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Administrationofmedications_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "8.1",
+          "text": "Tube feeding",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Tubefeeding_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "8.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "8.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Tubefeeding_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "8.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "8.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Tubefeeding_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.1",
+          "text": "Wound care",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".OrdersWoundCare"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "9.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Woundcare_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "9.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "9.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Woundcare_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "10.1",
+          "text": "Catheters",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Catheters_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "10.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "10.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Catheters_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "10.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "10.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Catheters_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "11.1",
+          "text": "Ostomy care",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Ostomycare_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "11.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "11.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Ostomycare_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "11.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "11.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Ostomycare_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "12.1",
+          "text": "NG and tracheostomy aspiration/care",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".NGandtracheostomyaspiration/care_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "12.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "12.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".NGandtracheostomyaspiration/care_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "12.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "12.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".NGandtracheostomyaspiration/care_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "13.1",
+          "text": "Psychiatric evaluation and therapy",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Psychiatricevaluationandtherapy_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "13.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "13.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Psychiatricevaluationandtherapy_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "13.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "13.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Psychiatricevaluationandtherapy_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "14.1",
+          "text": "Teaching/training",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Teaching/training_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "14.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "14.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Teaching/training_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "14.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "14.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Teaching/training_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "15.1",
+          "text": "Observe/assess",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Observe/assess_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "15.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "15.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Observe/assess_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "15.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "15.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Observe/assess_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "16.1",
+          "text": "Complex care plan management",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Complexcareplanmanagement_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "16.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "16.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Complexcareplanmanagement_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "16.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "16.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Complexcareplanmanagement_2_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "17.1",
+          "text": "Rehabilitation nursing",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Rehabilitationnursing_2"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "17.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "17.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Rehabilitationnursing_2_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "17.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "17.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Rehabilitationnursing_2_duration"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "18",
+      "text": "Other Orders for Discipline and Treatments",
+      "type": "group",
+      "repeats": true,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "item": [
+        {
+          "linkId": "18.1",
+          "text": "Service",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "18.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "extension": [
+            {}
+          ]
+        },
+        {
+          "linkId": "18.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "linkId": "19",
+      "text": "Justification and signature if the patient’s sole skilled service need is for skilled oversight of unskilled services (management and evaluation of the care plan or complex care plan management):",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "19.1",
+          "text": "Justification",
+          "type": "text",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".OrdersJustification"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "19.2",
+          "text": "Signature",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".OrdersJustificationSignature"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "20",
+      "text": "Physical Therapy services (complete all that are required)",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "21.1",
+          "text": "Restore patient function",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorepatientfunction_3"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "21.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "21.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorepatientfunction_3_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "21.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "21.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorepatientfunction_3_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "22.1",
+          "text": "Perform maintenance therapy",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_3"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "22.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "22.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_3_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "22.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "22.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_3_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "23.1",
+          "text": "Therapeutic exercises",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Therapeuticexercises_3"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "23.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "23.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Therapeuticexercises_3_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "23.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "23.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Therapeuticexercises_3_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "24.1",
+          "text": "Gait and balance training",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Gaitandbalancetraining_3"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "24.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "24.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Gaitandbalancetraining_3_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "24.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "24.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Gaitandbalancetraining_3_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "25.1",
+          "text": "ADL training",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".ADLtraining_3"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "25.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "25.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".ADLtraining_3_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "25.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "25.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".ADLtraining_3_duration"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "26",
+      "text": "Other Physical Therapy services",
+      "type": "group",
+      "repeats": true,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "item": [
+        {
+          "linkId": "26.1",
+          "text": "Service",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "26.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "extension": [
+            {}
+          ]
+        },
+        {
+          "linkId": "26.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "linkId": "27",
+      "text": "Occupational Therapy services (complete all that are required)",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "28.1",
+          "text": "Restore patient function",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorepatientfunction_4"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "28.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "28.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorepatientfunction_4_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "28.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "28.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorepatientfunction_4_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "29.1",
+          "text": "Perform maintenance therapy",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_4"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "29.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "29.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_4_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "29.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "29.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_4_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30.1",
+          "text": "Therapeutic exercises",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Therapeuticexercises_4"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "30.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Therapeuticexercises_4_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "30.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Therapeuticexercises_4_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "31.1",
+          "text": "ADL training",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".ADLtraining_4"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "31.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "31.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".ADLtraining_4_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "31.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "31.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".ADLtraining_4_duration"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "32",
+      "text": "Other Physical Therapy services",
+      "type": "group",
+      "repeats": true,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "item": [
+        {
+          "linkId": "32.1",
+          "text": "Service",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "32.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "extension": [
+            {}
+          ]
+        },
+        {
+          "linkId": "32.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "linkId": "33",
+      "text": "Additional Physical Therapy services Questions",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "33.1",
+          "text": "Are OT services above provided because physical therapy services ceased?",
+          "type": "choice",
+          "required": true,
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".OTBecausePTCeased"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "34",
+      "text": "Speech-language Pathology services (complete all that are required)",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "35.1",
+          "text": "Swallowing",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Swallowing_5"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "35.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "35.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Swallowing_5_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "35.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "35.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Swallowing_5_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "36.1",
+          "text": "Restore language function",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorelanguagefunction_5"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "36.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "36.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorelanguagefunction_5_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "36.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "36.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorelanguagefunction_5_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "37.1",
+          "text": "Restore cognitive function",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorecognitivefunction_5"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "37.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "37.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorecognitivefunction_5_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "37.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "37.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Restorecognitivefunction_5_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "38.1",
+          "text": "Perform maintenance therapy",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_5"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "38.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "38.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_5_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "38.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "38.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Performmaintenancetherapy_5_duration"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "39",
+      "text": "Other Speech-language Pathology services",
+      "type": "group",
+      "repeats": true,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "item": [
+        {
+          "linkId": "39.1",
+          "text": "Service",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "39.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "extension": [
+            {}
+          ]
+        },
+        {
+          "linkId": "39.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "linkId": "40",
+      "text": "Other Services",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "41.1",
+          "text": "Home health aide services",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Homehealthaideservices_7"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "41.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "41.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Homehealthaideservices_7_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "41.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "41.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Homehealthaideservices_7_duration"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "42.1",
+          "text": "Medical social services",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Medicalsocialservices_7"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "42.2",
+          "text": "Frequency",
+          "type": "choice",
+          "required": false,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "enableWhen": [
+            {
+              "question": "42.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Medicalsocialservices_7_freq"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "42.3",
+          "text": "Duration",
+          "type": "string",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "42.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Medicalsocialservices_7_duration"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "43",
+      "text": "Signature, name, signature date, NPI, address, and telephone number of ordering physician",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "43.1",
+          "text": "Signature",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "43.2",
+          "text": "Name",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "43.3",
+          "text": "Date",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPrepopulation\".Today"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "43.4",
+          "text": "Physician/NPP NPI (Note: Required if WOPD)",
           "type": "string",
           "required": true,
           "extension": [
@@ -218,16 +2314,31 @@
           ]
         },
         {
-          "linkId": "2.5",
-          "text": "Date of Face-To-Face Evaluation",
-          "type": "date",
+          "linkId": "43.5",
+          "text": "Telephone",
+          "type": "string",
           "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HomeHealthServicesPrepopulation\".Today"
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Telephone"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "43.6",
+          "text": "Extension",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Extension"
               }
             }
           ]
