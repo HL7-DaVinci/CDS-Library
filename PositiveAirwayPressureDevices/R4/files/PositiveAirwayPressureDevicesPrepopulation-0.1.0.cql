@@ -7,17 +7,10 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
 valueset "Sleep Apnea or Breathing Related Sleep Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.31'
-
-// AHI codes
-code "LP145624-5" :'LP145624-5' from "LOINC"
-//RDI codes
-code "90566-1": '90566-1' from "LOINC"
+valueset "Apnea Hypopnea Index Rate Measurement": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.123'
+valueset "Respiratory Disturbance Index": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.133'
 
 parameter device_request DeviceRequest
-
-
-define "AHI_Codes": { "LP145624-5" }
-define "RDI_Codes": { "90566-1" }
 
 context Patient
 
@@ -50,23 +43,18 @@ define PapDeviceRequested:
   else if  "DeviceRequestHcpcsCoding".code.value = 'E0601' then 'E0601'
   else 'null'
 
-define "AHI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "AHI_Codes"], 3 months)), '/h'))
-define "RDI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "RDI_Codes"], 3 months)), '/h'))
+define "AHI": GetObservationValue(LastestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Apnea Hypopnea Index Rate Measurement"], 3 months)), '/h')))
+define "RDI": GetObservationValue(LastestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Respiratory Disturbance Index"], 3 months)), '/h')))
 
-define "AllAlergy": ConfirmedAllergy([AllergyIntolerance])
+define function LastestObservation(ObsList List<Observation>):
+  First(ObsList O sort by FHIRHelpers."ToDateTime"(issued) desc)
 
-define "AllDrugAllergyWithCode": 
-  distinct(flatten(
-    [AllergyIntolerance] A
-      let Codings: 
-        (A.code.coding) CODING where CODING.system.value in {
-          'http://www.nlm.nih.gov/research/umls/rxnorm'
-        }
-        return CODING.display.value + '-' + CODING.code.value
-      where exists(Codings)
-      return Codings 
-  ))
+define function GetObservationValue(Obs Observation): 
+  NullSafeToQuantityWithoutUnit(cast Obs.value as Quantity)
 
+define function NullSafeToQuantityWithoutUnit(Qty FHIR.Quantity):
+  if Qty is not null then Qty.value.value 
+  else null
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
@@ -87,22 +75,9 @@ define function Verified(ObsList List<Observation>):
 define function WithUnit(ObsList List<Observation>, Unit String):
   ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
 
-define function HighestObservation(ObsList List<Observation>):
-  Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-
 define function Confirmed(CondList List<Condition>):
   CondList C where C.verificationStatus.coding.code = 'confirmed'
 
-define function NullSafeToQuantity(Qty FHIR.Quantity):
-  if Qty is not null then
-    System.Quantity {
-      value: Qty.value.value,
-      unit: Coalesce(Qty.unit.value, Qty.code.value)
-    }
-  else null
 
-define function LowestObservation(ObsList List<Observation>):
-  Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
 
-define function ConfirmedAllergy(AllergyList List<AllergyIntolerance>):
-  AllergyList A where A.verificationStatus.coding.code in {'confirmed'}
+

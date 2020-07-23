@@ -108,7 +108,7 @@
                         },
                         {
                             "linkId": "ENC.3.2",
-                            "text": "Is there evidence of continued use of the PAP/CPAP device and supplies?",
+                            "text": "Is there evidence of continued use of the ordered devices, supplies and services?",
                             "type": "choice",
                             "extension": [
                                 {
