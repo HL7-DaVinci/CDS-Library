@@ -1,14 +1,14 @@
 {
   "resourceType": "Questionnaire",
-  "id": "HomeBloodGlucoseMonitor",
-  "name": "HomeBloodGlucoseMonitor",
+  "id": "HomeBloodGlucoseMonitorOrder",
+  "name": "HomeBloodGlucoseMonitorOrder",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
   },
-  "title": "Home Blood Glucose Monitor",
+  "title": "Home Blood Glucose Monitor Order",
   "status": "draft",
   "subjectType": [
     "Patient"
@@ -18,7 +18,7 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitor-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorOrder-prepopulation"
     }
   ],
   "item": [
@@ -86,6 +86,15 @@
                 "display": "Other"
               }
             }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".Diagnosis"
+              }
+            }
           ]
         },
         {
@@ -120,6 +129,15 @@
               "valueCoding": {
                 "code": "Non-insulin Treated",
                 "display": "Non-insulin Treated"
+              }
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".InsulinTreated"
               }
             }
           ]
@@ -161,6 +179,13 @@
                 ],
                 "text": "Drop down"
               }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".DeviceRequestHcpcsCoding"
+              }
             }
           ],
           "required": true,
@@ -182,6 +207,13 @@
                   }
                 ],
                 "text": "Drop down"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".MonitorType"
               }
             }
           ],

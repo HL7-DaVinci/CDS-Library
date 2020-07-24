@@ -27,7 +27,7 @@ define RESULT_InfoLink:
   'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/ProviderComplianceTipsforGlucoseMonitors-ICN909465.pdf'
 
 define RESULT_QuestionnaireOrderUri:
-  'Questionnaire/HomeBloodGlucoseMonitor'
+  'Questionnaire/HomeBloodGlucoseMonitorOrder'
 
 define RESULT_QuestionnaireFaceToFaceUri:
   'Questionnaire/HomeBloodGlucoseMonitorFaceToFace'  
