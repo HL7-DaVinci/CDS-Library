@@ -68,9 +68,6 @@ define "Arterial_oxygen_saturation_during_exercise_Codes": { "89276-0" }
 //Hematocrit Code
 define "Hematocrit_lab_test_Codes": {"32354-3"}
 
-// Other codes
-define "Immobilization_Codes": { "Immobilization" }
-
 // Pulmonary artery mean blood pressure code
 define "Pulmonary_artery_pressure_Codes": {"8414-5"}
 
@@ -101,7 +98,7 @@ define ArterialPartialPressureOfOxygen: LowestObservation(WithUnit(Verified(Obse
 define "VerifiedArterialOxygenSaturationExercise": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months))
 define ArterialOxygenSaturationExercise: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)), '%'))
 
-define PatientMobile: not exists(Confirmed(ActiveOrRecurring([Condition: "Immobilization_Codes"])))
+define PatientMobile: not exists(Confirmed(ActiveOrRecurring([Condition: "Immobilization"])))
 
 define HematocritThatIsGreaterThanThreshold: HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Hematocrit_lab_test_Codes"], 3 months)), '%'))
 define PatientHasHematocritThatIsGreaterThanThreshold: exists("HematocritThatIsGreaterThanThreshold")
