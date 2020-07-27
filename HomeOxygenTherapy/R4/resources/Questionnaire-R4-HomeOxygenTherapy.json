@@ -621,28 +621,7 @@
           "text": "Type of order",
           "type": "choice",
           "required": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Initial or original order for certification"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Change in status"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Revision or change in equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Replacement"
-              }
-            }
-          ],
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
