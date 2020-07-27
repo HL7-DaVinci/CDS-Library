@@ -137,7 +137,16 @@
                         {
                             "linkId": "ENC.3.3",
                             "text": "Describe",
-                            "type": "text"
+                            "type": "text",
+                            "enableWhen": [
+                                {
+                                    "question": "ENC.3.1",
+                                    "operator": "=",
+                                    "answerCoding": {
+                                        "code": "Re-evaluation"
+                                    }
+                                }
+                            ]
                         }
                     ]
                 },
