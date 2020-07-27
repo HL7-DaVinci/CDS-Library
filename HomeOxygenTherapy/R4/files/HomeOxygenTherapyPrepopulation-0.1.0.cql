@@ -35,6 +35,9 @@ valueset "Immobilization": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.1138
 // Oxygen Saturation Lab Test
 valueset "Oxygen Saturation Lab Test": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.132'
 
+// Type of Device Order Valueset
+valueset "RequestIntent": 'https://www.hl7.org/fhir/valueset-request-intent.html'
+
 //  Loinc codes for observations
 
 //Arterial_oxygen_saturation_Codes
