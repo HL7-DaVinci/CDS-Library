@@ -80,9 +80,8 @@
       "item": [
         {
           "linkId": "4.1",
-          "text": "Diabetes Mellitus",
+          "text": "Diabetes Mellitus Diagnoses",
           "type": "open-choice",
-          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -98,18 +97,30 @@
         {
           "linkId": "4.2",
           "text": "Other diagnoses",
-          "type": "open-choice",
-          "extension": [
+          "type": "group",
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
-              }
+              "linkId": "4.2.1",
+              "type": "open-choice",
+              "text": "Other",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
+                  }
+                }
+              ],
+              "repeats": "true",
+              "answerOption": []
+            },
+            {
+              "linkId": "4.2.2",
+              "type": "text",
+              "text": "Describe"
             }
-          ],
-          "repeats": "true",
-          "answerOption": []
+          ]
         }
       ]
     },

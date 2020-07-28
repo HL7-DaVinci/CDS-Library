@@ -31,6 +31,8 @@ define "Diagnosis":
     then Code { code: 'Diabetes', display: 'Diabetes' }
     else Code { code: 'Other', display: 'Other' }
 
+define "DiabetesDiagnosed": exists( [Condition: "Diabetes Mellitus"] )     
+
 define "InsulinTreated":
   if exists([MedicationStatement: "Insulin Medication"])
     then Code { code: 'Insulin Treated', display: 'Insulin Treated' }

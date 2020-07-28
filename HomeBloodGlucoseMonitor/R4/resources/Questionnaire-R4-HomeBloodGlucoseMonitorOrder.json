@@ -19,6 +19,10 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorOrder-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorFaceToFace-prepopulation"
     }
   ],
   "item": [
@@ -70,89 +74,109 @@
       "item": [
         {
           "linkId": "4.1",
-          "text": "Diagnosis",
-          "type": "choice",
-          "required": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Diabetes",
-                "display": "Diabetes"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Other",
-                "display": "Other"
-              }
-            }
-          ],
+          "text": "Diabetes Mellitus Diagnoses",
+          "type": "open-choice",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".Diagnosis"
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".DMCodings"
               }
             }
-          ]
+          ],
+          "repeats": "true",
+          "answerOption": []
         },
         {
           "linkId": "4.2",
-          "text": "Diabetes Treatment",
-          "type": "choice",
-          "enableWhen": [
+          "text": "Other diagnoses",
+          "type": "group",
+          "item": [
             {
-              "question": "4.1",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Diabetes"
-              }
-            }
-          ],
-          "initial": [
-            {
-              "valueCoding": {
-                "code": "Non-insulin Treated",
-                "display": "Non-insulin Treated"
-              }
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Insulin Treated",
-                "display": "Insulin Treated"
-              }
+              "linkId": "4.2.1",
+              "type": "open-choice",
+              "text": "Other",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
+                  }
+                }
+              ],
+              "repeats": "true",
+              "answerOption": []
             },
             {
-              "valueCoding": {
-                "code": "Non-insulin Treated",
-                "display": "Non-insulin Treated"
-              }
-            }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".InsulinTreated"
-              }
+              "linkId": "4.2.2",
+              "type": "text",
+              "text": "Describe"
             }
           ]
         },
         {
           "linkId": "4.3",
-          "text": "Other Diagnosis Description",
-          "type": "string",
-          "enableWhen": [
+          "text": "Diabetes Treatment",
+          "type": "group",
+          "item": [
             {
-              "question": "4.1",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Other"
-              }
+              "linkId": "4.3.1",
+              "type": "boolean",
+              "text": "Diagnosis confirmed",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".DiabetesDiagnosed"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "4.3.2",
+              "type": "choice",
+              "text": "Treatment",
+              "enableWhen": [
+                {
+                  "question": "4.3.1",
+                  "operator": "=",
+                  "answerBoolean": "true"
+                }
+              ],
+              "initial": [
+                {
+                  "valueCoding": {
+                    "code": "Non-insulin Treated",
+                    "display": "Non-insulin Treated"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "Insulin Treated",
+                    "display": "Insulin Treated"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Non-insulin Treated",
+                    "display": "Non-insulin Treated"
+                  }
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".InsulinTreated"
+                  }
+                }
+              ]
             }
           ]
         }
