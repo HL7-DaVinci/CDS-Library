@@ -14,8 +14,6 @@ parameter device_request DeviceRequest
 
 context Patient
 
-define Today: Today()
-
 define "DeviceRequestHcpcsCoding": singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
     where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
@@ -25,11 +23,6 @@ define "MonitorType":
   if "DeviceRequestHcpcsCoding" ~ "Standard Monitor"
     then Code { code: 'Standard Monitor', display: 'Standard Monitor' }
     else Code { code: 'Monitor With Special Features', display: 'Monitor With Special Features' }
-
-define "Diagnosis": 
-  if exists( [Condition: "Diabetes Mellitus"] )
-    then Code { code: 'Diabetes', display: 'Diabetes' }
-    else Code { code: 'Other', display: 'Other' }
 
 define "DiabetesDiagnosed": exists( [Condition: "Diabetes Mellitus"] )     
 
