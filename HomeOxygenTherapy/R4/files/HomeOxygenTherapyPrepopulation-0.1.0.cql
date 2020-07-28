@@ -9,12 +9,14 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 // with guidance from https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/Home-Oxygen-Therapy-ICN908804.pdf
 
 
-// Code Systems
+// CODE SYSTEMS
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 codesystem "FHIRRequestIntent": 'http://hl7.org/fhir/request-intent'
+
+// VALUE SETS
 
 // Qualifying Conditions
 valueset "Home Oxygen Therapy Qualifying Conditions": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.25'
@@ -27,17 +29,11 @@ valueset "Liquid Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2
 valueset "Compressed Gas Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.74'
 valueset "Oxygen Concentrator Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.78'
 
-// Laboratory Test Codes
-valueset "Laboratory Test for Home Oxygen Therapy or Respiratory Assist Device Evaluation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.106'
-
 // Immobilization Codes
 valueset "Immobilization": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.17.4077.3.2006'
 
 // Oxygen Saturation Lab Test
 valueset "Oxygen Saturation Lab Test": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.132'
-
-// Type of Device Order Valueset
-valueset "RequestIntent": 'https://www.hl7.org/fhir/valueset-request-intent.html'
 
 //  Loinc codes for observations
 
