@@ -92,7 +92,7 @@
           "text": "Is this an evaluation of the patient’s need for a ventilator?",
           "required": true,
           "type": "choice",
-          "answerValueSet": "<server-path>ValueSet/yes-no",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
           "item": [
             {
               "linkId": "3.2a",
@@ -161,7 +161,7 @@
                     }
                   ],
                   "type": "choice",
-                  "answerValueSet": "<server-path>ValueSet/yes-no",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
                   "item": [
                     {
                       "linkId": "3.3a",
@@ -254,7 +254,7 @@
           ],
           "text": "Demonstrated benefit from continued use?",
           "type": "choice",
-          "answerValueSet": "<server-path>ValueSet/yes-no"
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
         },
         {
           "linkId": "5.2",
@@ -287,22 +287,21 @@
     },
     {
       "linkId": "8",
-      "text": "Physical examination",
       "type": "group",
+      "text": "Physical Examination With Vital Signs",
       "item": [
         {
-          "linkId": "8.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/physical-exam"
+              "valueCanonical": "questionnaire/vital-signs"
             }
           ],
+          "linkId": "8.1",
           "type": "display",
-          "text": "This is a placeholder for Physical Examination"
+          "text": "This is a placeholder for Vital Signs"
         },
         {
-          "linkId": "8.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -316,25 +315,12 @@
               }
             }
           ],
+          "linkId": "8.2",
           "text": "O2 Related Measurements",
           "type": "group",
           "item": [
             {
-              "linkId": "10.2.1",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "code": "%",
-                    "system": "http://unitsofmeasure.org"
-                  }
-                }
-              ],
-              "text": "O2 Sat RA at Rest (%)",
-              "type": "decimal"
-            },
-            {
-              "linkId": "10.2.2",
+              "linkId": "8.2.1",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -348,7 +334,7 @@
               "type": "decimal"
             },
             {
-              "linkId": "10.2.3",
+              "linkId": "8.2.2",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -362,7 +348,7 @@
               "type": "decimal"
             },
             {
-              "linkId": "10.2.4",
+              "linkId": "8.2.3",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -374,23 +360,24 @@
               ],
               "text": "Neck circumference (cm)",
               "type": "decimal"
-            },
-            {
-              "linkId": "10.2.5",
-              "text": "Body mass index BMI",
-              "type": "decimal"
             }
           ]
         },
         {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/physical-exam"
+            }
+          ],
           "linkId": "8.3",
-          "text": "Test Results (e.g. pulmonary function, pulse oximetry)",
-          "type": "text"
+          "type": "display",
+          "text": "This is a placeholder for Physican Examination"
         }
       ]
     },
     {
-      "linkId": "11",
+      "linkId": "9",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -401,7 +388,7 @@
       "text": "This is a placeholder for Assessment and Plan"
     },
     {
-      "linkId": "12",
+      "linkId": "10",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",

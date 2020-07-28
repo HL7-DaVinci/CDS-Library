@@ -18,7 +18,7 @@
   "item":[
     {
       "linkId": "SUB",
-      "text": "Sujective",
+      "text": "Subjective",
       "type": "group",
       "item": [
         {
@@ -68,7 +68,8 @@
             {
               "linkId": "MED.1.4",
               "text": "Frequency",
-              "type": "string"
+              "type": "open-choice",
+              "answerValueSet":"http://hl7.org/fhir/ValueSet/timing-abbreviation"
             },
             {
               "linkId": "MED.1.5",
@@ -79,28 +80,7 @@
               "linkId": "MED.1.6",
               "text": "Status",
               "type": "choice",
-              "answerOption": [
-                {
-                  "valueCoding": {
-                    "display": "New"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Current"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Modified"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Discountinued"
-                  }
-                }
-              ]
+              "answerValueset": "http://hl7.org/fhir/ValueSet/medicationrequest-status"
             }
           ]
         },

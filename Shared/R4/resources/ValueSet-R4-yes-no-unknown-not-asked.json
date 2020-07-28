@@ -1,0 +1,33 @@
+{
+  "resourceType": "ValueSet",
+  "id": "yes-no-unknown-not-asked",
+  "url": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked",
+  "name": "YesNoUnknownNotAsked",
+  "title": "Yes No Unknown NotAsked",
+  "status": "active",
+  "expansion": {
+    "timestamp": "2020-06-24",
+    "contains": [
+      {
+        "code": "Y",
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0532",
+        "display": "Yes"
+      },
+      {
+        "code": "N",
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0532",
+        "display": "No"
+      },
+      {
+        "code": "ASKU",
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0532",
+        "display": "Unknown"
+      },
+      {
+        "code": "NASK",
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0532",
+        "display": "Not Asked"
+      }
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-    "topic": "NonEmergencyAmbulanceTransportation",
+    "topic": "HospitalBedsAndAccessories",
     "payers": [
         "cms"
     ],
@@ -7,7 +7,7 @@
         {
             "codeSystem": "hcpcs",
             "codes": [
-                "A04265", "A0426", "A0428", "S9960", "S9961", "T2007"
+                "E0250", "E0251"
             ]
         }
     ],

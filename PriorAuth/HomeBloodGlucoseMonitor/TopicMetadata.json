@@ -1,13 +1,13 @@
 {
-    "topic": "NonEmergencyAmbulanceTransportation",
+    "topic": "HomeBloodGlucoseMonitor",
     "payers": [
         "cms"
     ],
     "mappings": [
         {
-            "codeSystem": "hcpcs",
+            "codeSystem": "cpt",
             "codes": [
-                "A04265", "A0426", "A0428", "S9960", "S9961", "T2007"
+                "82947", "95259"
             ]
         }
     ],
