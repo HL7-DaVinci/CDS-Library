@@ -618,20 +618,57 @@
         },
         {
           "linkId": "5.4",
-          "text": "Type of order",
+          "text": "Order Intent",
           "type": "choice",
           "required": true,
           "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
           "linkId": "5.5",
+          "text": "Order Reason",
+          "type": "choice",
+          "required": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Initial or original order for certification"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Change in status"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Revision or change in equipment"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Replacement"
+              }
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.6",
           "text": "Reason for Change in Status",
           "type": "open-choice",
           "required": true,
           "repeats": true,
           "enableWhen": [
             {
-              "question": "5.4",
+              "question": "5.5",
               "operator": "=",
               "answerCoding": {
                 "code": "Change in status"
@@ -652,14 +689,14 @@
           ]
         },
         {
-          "linkId": "5.6",
+          "linkId": "5.7",
           "text": "Reason for Revision or change in equipment",
           "type": "open-choice",
           "required": true,
           "repeats": true,
           "enableWhen": [
             {
-              "question": "5.4",
+              "question": "5.5",
               "operator": "=",
               "answerCoding": {
                 "code": "Revision or change in equipment"
@@ -680,14 +717,14 @@
           ]
         },
         {
-          "linkId": "5.7",
+          "linkId": "5.8",
           "text": "Reason for Replacement",
-          "type": "open-choice",
+          "type": "choice",
           "required": true,
           "repeats": true,
           "enableWhen": [
             {
-              "question": "5.4",
+              "question": "5.5",
               "operator": "=",
               "answerCoding": {
                 "code": "Replacement"
