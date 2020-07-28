@@ -621,16 +621,7 @@
           "text": "Type of order",
           "type": "choice",
           "required": true,
-          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
           "linkId": "5.5",
