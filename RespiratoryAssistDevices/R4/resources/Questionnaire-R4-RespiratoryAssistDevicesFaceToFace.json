@@ -476,7 +476,7 @@
               "linkId": "6.4.2",
               "text": "FEV1 (% predicted):",
               "required": true,
-              "type": "decimal",
+              "type": "quantity",
               "code": [
                 {
                   "code": "20152-5",
@@ -857,7 +857,7 @@
                   }
                 }
               ],
-              "type": "string"
+              "type": "quantity"
             }
           ]
         },
