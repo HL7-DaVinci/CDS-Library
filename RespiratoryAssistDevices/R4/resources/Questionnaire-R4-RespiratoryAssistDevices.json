@@ -81,18 +81,13 @@
           "repeats": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            },
-            {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesPrepopulation\".OsaDiagnoses"
               }
             }
-          ],
-          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.122"
+          ]
         },
         {
           "linkId": "4.2",
