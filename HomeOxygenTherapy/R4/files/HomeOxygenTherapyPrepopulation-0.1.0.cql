@@ -128,10 +128,7 @@ define "DeviceType":
   else
     null
 
-define "DeviceOrderType":
-  if device_request.intent.value = 'original-order'
-    then 'Initial or original order for certification'
-    else null
+define "DeviceOrderType": device_request.intent.value 
 
 // prescribed use
 define "OccurrenceTimingDuration": (device_request.occurrence as FHIR.Timing).repeat.bounds as FHIR.Duration
