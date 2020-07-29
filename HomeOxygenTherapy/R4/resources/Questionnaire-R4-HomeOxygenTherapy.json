@@ -621,7 +621,16 @@
           "text": "Order Intent",
           "type": "choice",
           "required": true,
-          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
+              }
+            }
+          ]
         },
         {
           "linkId": "5.5",
@@ -650,102 +659,95 @@
               }
             }
           ],
-          "extension": [
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.6",
-          "text": "Reason for Change in Status",
-          "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "enableWhen": [
-            {
-              "question": "5.5",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Change in status"
-              }
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Patient relocated"
-              }
+              "linkId": "5.5.1",
+              "text": "Reason for Change in Status",
+              "type": "open-choice",
+              "required": true,
+              "repeats": true,
+              "enableWhen": [
+                {
+                  "question": "5.5",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "Change in status"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "Patient relocated"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Different supplier"
+                  }
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "code": "Different supplier"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.7",
-          "text": "Reason for Revision or change in equipment",
-          "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "enableWhen": [
-            {
-              "question": "5.5",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Revision or change in equipment"
-              }
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "New Physician order"
-              }
+              "linkId": "5.5.2",
+              "text": "Reason for Revision or change in equipment",
+              "type": "open-choice",
+              "required": true,
+              "repeats": true,
+              "enableWhen": [
+                {
+                  "question": "5.5",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "Revision or change in equipment"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "New Physician order"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Beneficiary requested upgrade with signed ABN"
+                  }
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "code": "Beneficiary requested upgrade with signed ABN"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.8",
-          "text": "Reason for Replacement",
-          "type": "choice",
-          "required": true,
-          "repeats": true,
-          "enableWhen": [
-            {
-              "question": "5.5",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Replacement"
-              }
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Lost or stolen"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "End of lifetime"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Repair exceeds 60% of cost"
-              }
+              "linkId": "5.5.3",
+              "text": "Reason for Replacement",
+              "type": "choice",
+              "required": true,
+              "repeats": true,
+              "enableWhen": [
+                {
+                  "question": "5.5",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "Replacement"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "Lost or stolen"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "End of lifetime"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Repair exceeds 60% of cost"
+                  }
+                }
+              ]
             }
           ]
         }
