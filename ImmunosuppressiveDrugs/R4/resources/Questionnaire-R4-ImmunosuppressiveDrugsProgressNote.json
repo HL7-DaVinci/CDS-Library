@@ -50,21 +50,14 @@
     },
     {
       "linkId": "3",
-      "text": "Encounter",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/encounter-items"
-            }
-          ],
-          "linkId": "3.1",
-          "type": "display",
-          "text": "This is a placeholder for Encounter"
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/encounter"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Encounter"
     },
     {
       "linkId": "4",
