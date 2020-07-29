@@ -96,17 +96,29 @@
         },
         {
           "linkId": "4.2",
-          "text": "Other diagnoses",
-          "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "extension": [
+          "text": "Other Diagnoses:",
+          "type": "group",
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnoses"
-              }
+              "linkId": "4.2.1",
+              "text": "Other",
+              "type": "open-choice",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnoses"
+                  }
+                }
+              ],
+              "repeats": true,
+              "answerOption": []
+            },
+            {
+              "linkId": "4.2.2",
+              "text": "Describe",
+              "type": "text"
             }
           ]
         }

@@ -41,9 +41,9 @@ context Patient
 
 // coverage requirement info
 define "OsaConditions":[Condition: "RADQualifyingDiagnosisValueSet"]
-define "OsaDiagnoses": GetConditionCodings(Confirmed(ActiveOrRecurring("OsaConditions")))
+define "OsaDiagnoses": GetConditionCodings(ConfirmedActiveOrRecurring("OsaConditions"))
 define "OtherConditions": [Condition] except "OsaConditions"
-define "OtherDiagnoses": GetConditionCodings(Confirmed(ActiveOrRecurring("OtherConditions")))
+define "OtherDiagnoses": GetConditionCodings(ConfirmedActiveOrRecurring("OtherConditions"))
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -151,6 +151,10 @@ define function GetConditionCodings(ConditionList List<FHIR.Condition>):
     )
   )
   
+define function ConfirmedActiveOrRecurring(CondList List<Condition>):
+  CondList C 
+  where C.clinicalStatus.coding.code in {'active', 'relapse'} and C.verificationStatus.coding.code = 'confirmed'
+
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
