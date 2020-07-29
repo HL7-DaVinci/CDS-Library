@@ -15,14 +15,16 @@
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "title": "Ventilator Questionnaire",
   "status": "draft",
   "date": "2020-02-04",
   "publisher": "Da Vinci DTR",
-  "subjectType": ["Patient"],
+  "subjectType": [
+    "Patient"
+  ],
   "item": [
     {
       "linkId": "1",
@@ -62,10 +64,10 @@
     },
     {
       "linkId": "4",
-      "text": "Ventilator Diagnoses",
+      "text": "Diagnoses",
       "type": "group",
       "required": true,
-      "item":[
+      "item": [
         {
           "linkId": "4.1",
           "extension": [
@@ -77,26 +79,38 @@
               }
             }
           ],
-          "text": "Diagnoses for order",
+          "text": "Relevant Diagnoses",
           "type": "open-choice",
           "repeats": true,
           "answerOption": []
         },
         {
           "linkId": "4.2",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
-              }
-            }
-          ],
           "text": "Other Diagnoses",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": []
+          "type": "group",
+          "item": [
+            {
+              "linkId": "4.2.1",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
+                  }
+                }
+              ],
+              "text": "Other",
+              "type": "open-choice",
+              "repeats": true,
+              "answerOption": []
+            },
+            {
+              "linkId": "4.2.2",
+              "text": "Describe",
+              "type": "text"
+            }
+          ]
         }
       ]
     },
@@ -187,7 +201,7 @@
           "linkId": "7.1.2",
           "text": "Frequency",
           "type": "open-choice",
-          "answerValueSet":"http://hl7.org/fhir/ValueSet/timing-abbreviation"
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation"
         },
         {
           "linkId": "7.1.3",
