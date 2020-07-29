@@ -6,9 +6,22 @@ codesystem "HL7-V2-0136": 'http://terminology.hl7.org/CodeSystem/v2-0136'
 
 code "Yes": 'Y' from "HL7-V2-0136" display 'Yes'
 
+parameter device_request DeviceRequest
+parameter service_request ServiceRequest
+parameter medication_request MedicationRequest
+
 context Patient
 
-define Today: Today()
+define "Today": Today()
+
+define "RequestEncounterReference": Coalesce(device_request.encounter.reference.value, service_request.encounter.reference.value, medication_request.encounter.reference.value)
+define "RequestEncounter": 
+  [Encounter] E
+  where 'Encounter/'+ E.id = "RequestEncounterReference"
+
+define "RequestEncounterDate":
+  if exists("RequestEncounter") then "RequestEncounter".period.start.value
+  else "Today"
 
 /* This is a work around to prepopulate with Yes answer for Yes/No question.
    The blocking issue is that when LHC form control merge Questionnaire (the compiled static form)
