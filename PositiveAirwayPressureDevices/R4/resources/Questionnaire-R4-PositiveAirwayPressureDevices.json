@@ -83,21 +83,33 @@
           "repeats": "true"
         },
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
-              }
-            }
-          ],
           "linkId": "4.2",
-          "text": "Other diagnoses:",
-          "type": "open-choice",
-          "answerOption": [],
-          "repeats": "true"
-        }
+          "text": "Other diagnoses",
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
+                  }
+                }
+              ],
+              "linkId": "4.2.1",
+              "text": "Other",
+              "type": "open-choice",
+              "answerOption": [],
+              "repeats": "true"
+            },
+            {
+              "linkId": "4.2.2",
+              "text": "Describe",
+              "type": "text"
+            }
+          ]
+        }   
       ]
     },
     {
