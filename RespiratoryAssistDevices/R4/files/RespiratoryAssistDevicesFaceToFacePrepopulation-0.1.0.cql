@@ -31,25 +31,17 @@ valueset "FEV1_FVC_Ratio_Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.
 // LOINC codes for observations
 // Circumference Neck
 code "56074-8": '56074-8' from "LOINC"
-// Body mass index (BMI) [Ratio]
-code "39156-5": '39156-5' from "LOINC"
 
 parameter device_request DeviceRequest
 
 
 context Patient
 
-define Today: Today()
-
-
-define "EncounterDate":
-  if exists([Encounter]) then First([Encounter]).period.start.value
-  else "Today"
 
 define "RADDiagnoses":  [Condition: "RAD Qualifying Condition"]
 define "OtherDiagnoses": [Condition] except "RADDiagnoses"
-define "RADCodings": GetConditionCodings(ActiveOrOccurringCondition("RADDiagnoses"))
-define "OtherDiagnosesCodings": GetConditionCodings(ActiveOrOccurringCondition("OtherDiagnoses"))
+define "RADCodings": GetConditionCodings(ConfirmedActiveOrOccurringCondition("RADDiagnoses"))
+define "OtherDiagnosesCodings": GetConditionCodings(ConfirmedActiveOrOccurringCondition("OtherDiagnoses"))
 
 define function GetConditionCodings(ConditionList List<FHIR.Condition>):
   distinct(
@@ -63,9 +55,9 @@ define function GetConditionCodings(ConditionList List<FHIR.Condition>):
     )
   )
 
-define function ActiveOrOccurringCondition(ConditionList List<FHIR.Condition>):
+define function ConfirmedActiveOrOccurringCondition(ConditionList List<FHIR.Condition>):
   ConditionList C
-  where C.clinicalStatus.coding.code in {'active', 'relapse'}
+  where C.clinicalStatus.coding.code in {'active', 'relapse'} and C.verificationStatus.coding.code = 'confirmed'
 
 define "HasNeuromuscularDisease": exists([Condition: "Neuromuscular Disease"])
 define "HasCOPD": exists([Condition: "COPD"])
@@ -80,10 +72,8 @@ define "FVC": LatestObservation(WithUnit(Verified(ObservationLookBack([Observati
 
 // Observation code lists
 define "Circumference Neck": { "56074-8" }
-define "BMI Ratio": { "39156-5" }
 
 define "NeckCircumf": LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Circumference Neck"], 9 months)), 'cm'))
-define "BMI": LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "BMI Ratio"], 9 months)), 'kg/m2'))
 
 define function LatestObservation(ObsList List<Observation>):
   First(ObsList O return NullSafeToQuantity(cast O.value as Quantity))

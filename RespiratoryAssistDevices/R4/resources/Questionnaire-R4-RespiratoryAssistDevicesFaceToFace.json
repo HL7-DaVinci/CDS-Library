@@ -54,174 +54,14 @@
     },
     {
       "linkId": "3",
-      "text": "Encounter",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "3.1",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".EncounterDate"
-              }
-            }
-          ],
-          "text": "Date of encounter:",
-          "type": "date",
-          "required": true
-        },
-        {
-          "linkId": "3.2",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"
-              }
-            },
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "code": "radio-button",
-                    "system": "http://hl7.org/fhir/questionnaire-item-control"
-                  }
-                ]
-              }
-            }
-          ],
-          "text": "Is this a F2F evaluation of the patient’s need for RAD therapy?",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Y",
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
-                "display": "Yes"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "N",
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
-                "display": "No"
-              }
-            }
-          ],
-          "required": true,
-          "item": [
-            {
-              "linkId": "3.2.1",
-              "text": "If Yes, is this an initial evaluation or a re-evaluation?",
-              "type": "open-choice",
-              "required": true,
-              "answerOption": [
-                {
-                  "valueCoding": {
-                    "code": "initial-evaluation",
-                    "display": "Initial Evaluation"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "re-evaluation",
-                    "display": "Re-evaluation"
-                  }
-                }
-              ],
-              "enableWhen": [
-                {
-                  "question": "3.2",
-                  "operator": "=",
-                  "answerCoding": {
-                    "code": "Y",
-                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
-                  }
-                }
-              ],
-              "item":[
-                {
-                  "linkId": "3.2.1.1",
-                  "text": "Is there evidence of continued use of the RAD and accessories?",
-                  "type": "choice",
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "code": "radio-button",
-                            "system": "http://hl7.org/fhir/questionnaire-item-control"
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "answerOption": [
-                    {
-                      "valueCoding": {
-                        "code": "Y",
-                        "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
-                        "display": "Yes"
-                      }
-                    },
-                    {
-                      "valueCoding": {
-                        "code": "N",
-                        "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
-                        "display": "No"
-                      }
-                    }
-                  ],
-                  "enableWhen": [
-                    {
-                      "question": "3.2.1",
-                      "operator": "=",
-                      "answerCoding": {
-                        "code": "re-evaluation"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "linkId": "3.2.1.2",
-                  "text": "Describe:",
-                  "type": "string",
-                  "enableWhen": [
-                    {
-                      "question": "3.2.1",
-                      "operator": "=",
-                      "answerCoding": {
-                        "code": "re-evaluation"
-                      }
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "linkId": "3.2.2",
-              "text": "If No, purpose of the encounter",
-              "type": "text",
-              "require": true,
-              "enableWhen": [
-                {
-                  "question": "3.2",
-                  "operator": "=",
-                  "answerCoding": {
-                    "code": "N",
-                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
-                  }
-                }
-              ]
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/encounter-with-reevaluation"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Encounter with reevaluation"
     },
     {
       "linkId": "4",
@@ -233,7 +73,6 @@
           "linkId": "4.1",
           "text": "Patient Diagnoses related to need for RAD Therapy:",
           "type": "open-choice",
-          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.122",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -343,7 +182,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".EncounterDate"
+                "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
               }
             }
           ],
@@ -960,133 +799,17 @@
     },
     {
       "linkId": "9",
-      "text": "Medical history:",
-      "type": "group",
-      "required": false,
-      "item": [
+      "extension": [
         {
-          "type": "text",
-          "required": false,
-          "linkId": "9.1",
-          "text": "Chief complaint / history of present illness and associated signs / symptoms:"
-        },
-        {
-          "type": "text",
-          "required": false,
-          "linkId": "9.2",
-          "text": "Related past medical / surgical history:"
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/subjective"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Subjective"
     },
     {
       "linkId": "10",
-      "text": "Medication",
-      "type": "group",
-      "required": false,
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/questionnaire-item-control",
-                "code": "gtable"
-              }
-            ]
-          }
-        }
-      ],
-      "repeats": true,
-      "item": [
-        {
-          "linkId": "10.1",
-          "text": "RxNorm",
-          "type": "string"
-        },
-        {
-          "linkId": "10.2",
-          "text": "Description",
-          "type": "string"
-        },
-        {
-          "linkId": "10.3",
-          "text": "Dose",
-          "type": "string"
-        },
-        {
-          "linkId": "10.4",
-          "text": "Frequency",
-          "type": "string"
-        },
-        {
-          "linkId": "10.5",
-          "text": "Route",
-          "type": "string"
-        },
-        {
-          "linkId": "10.6",
-          "text": "Status",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "New"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Current"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Modified"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Discontinued"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "linkId": "11",
-      "text": "Allergy",
-      "type": "group",
-      "required": false,
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/questionnaire-item-control",
-                "code": "gtable"
-              }
-            ]
-          }
-        }
-      ],
-      "repeats": true,
-      "item": [
-        {
-          "linkId": "11.1",
-          "text": "RxNorm",
-          "type": "string"
-        },
-        {
-          "linkId": "11.2",
-          "text": "Description",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "linkId": "12",
-      "text": "Review of systems (Significant as per history of present problem and need for a RAD Therapy):",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -1094,189 +817,36 @@
         }
       ],
       "type": "display",
-      "required": false
+      "text": "This is a placeholder for Review Of System"
     },
     {
-      "linkId": "13",
+      "linkId": "11",
       "type": "group",
-      "text": "Physical examination",
+      "text": "Physical Examination With Vital Signs",
       "item": [
         {
-          "linkId": "13.1",
+          "linkId": "11.1",
           "type": "group",
-          "text": "Vital Sign",
-          "item": [
+          "text": "Vital Signs",
+          "item":[
             {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "8310-5",
-                  "display": "Body temperature",
-                  "system": "http://loinc.org"
-                }
-              ],
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "Cel"
-                  }
-                }
-              ],
-              "required": false,
-              "linkId": "13.1.1",
-              "text": "Body temperature"
-            },
-            {
-              "type": "decimal",
-              "code": [
+                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+                  "valueCanonical": "questionnaire/vital-signs"
+                },
                 {
-                  "code": "9279-1",
-                  "display": "Resp rate",
-                  "system": "http://loinc.org"
+                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
+                  "valueBoolean": true
                 }
               ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "{breaths}/min"
-                  }
-                }
-              ],
-              "required": false,
-              "linkId": "13.1.2",
-              "text": "Resp rate"
-            },
-            {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "8867-4",
-                  "display": "Heart rate",
-                  "system": "http://loinc.org"
-                }
-              ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "{beats}/min"
-                  }
-                }
-              ],
-              "required": false,
-              "linkId": "13.1.3",
-              "text": "Heart rate"
-            },
-            {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "8480-6",
-                  "display": "BP sys",
-                  "system": "http://loinc.org"
-                }
-              ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mm[Hg]"
-                  }
-                }
-              ],
-              "required": false,
-              "linkId": "13.1.4",
-              "text": "BP sys"
-            },
-            {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "8462-4",
-                  "display": "BP dias",
-                  "system": "http://loinc.org"
-                }
-              ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "mm[Hg]"
-                  }
-                }
-              ],
-              "required": false,
-              "linkId": "13.1.5",
-              "text": "BP dias"
-            },
-            {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "8302-2",
-                  "display": "Body height",
-                  "system": "http://loinc.org"
-                }
-              ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "[in_i]"
-                  }
-                }
-              ],
-              "required": false,
-              "linkId": "13.1.6",
-              "text": "Body height"
-            },
-            {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "29463-7",
-                  "display": "Weight",
-                  "system": "http://loinc.org"
-                }
-              ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "kg"
-                  }
-                }
-              ],
-              "required": false,
-              "linkId": "13.1.7",
-              "text": "Weight"
-            },
-            {
-              "type": "decimal",
-              "code": [
-                {
-                  "code": "59417-6",
-                  "display": "SaO2 Resting % BldA PulseOx",
-                  "system": "http://loinc.org"
-                }
-              ],
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
-                  "valueCoding": {
-                    "display": "%"
-                  }
-                }
-              ],
-              "required": false,
-              "linkId": "13.1.8",
-              "text": "SaO2 Resting % BldA PulseOx"
+              "linkId": "11.1.1",
+              "type": "display",
+              "text": "This is a placeholder for Vital Signs"
             },
             {
               "required": true,
-              "linkId": "13.1.9",
+              "linkId": "11.1.2",
               "text": "Neck circumference (cm)",
               "extension": [
                 {
@@ -1288,178 +858,35 @@
                 }
               ],
               "type": "string"
-            },
-            {
-              "required": true,
-              "linkId": "13.1.10",
-              "text": "Body mass index (kg/m2)",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".BMI"
-                  }
-                }
-              ],
-              "type": "string"
             }
           ]
         },
         {
-          "linkId": "13.2",
-          "type": "string",
-          "text": "General appearance"
-        },
-        {
-          "linkId": "13.3",
-          "type": "string",
-          "text": "Head and neck",
-          "required": true,
-          "code": [
+          "extension": [
             {
-              "code": "71390-9",
-              "display": "CMS - head and face exam panel",
-              "system": "http://loinc.org"
-            },
-            {
-              "code": "71393-3",
-              "display": "CMS - neck exam panel",
-              "system": "http://loinc.org"
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/physical-exam"
             }
-          ]
-        },
-        {
-          "linkId": "13.4",
-          "type": "string",
-          "text": "Chest / lungs",
-          "required": true,
-          "code": [
-            {
-              "code": "71394-1",
-              "display": "CMS - respiratory exam panel",
-              "system": "http://loinc.org"
-            }
-          ]
-        },
-        {
-          "linkId": "13.5",
-          "type": "string",
-          "text": "Cardiovascular",
-          "required": true,
-          "code": [
-            {
-              "code": "71395-8",
-              "display": "CMS - cardiovascular exam panel",
-              "system": "http://loinc.org"
-            }
-          ]
-        },
-        {
-          "linkId": "13.6",
-          "type": "string",
-          "text": "Abdominal",
-          "code": [
-            {
-              "code": "71397-4",
-              "display": "CMS - gastrointestinal - abdomen - exam panel",
-              "system": "http://loinc.org"
-            }
-          ]
-        },
-        {
-          "linkId": "13.7",
-          "type": "string",
-          "text": "Musculoskeletal / extremities",
-          "code": [
-            {
-              "code": "71402-2",
-              "display": "CMS - musculoskeletal exam panel",
-              "system": "http://loinc.org"
-            }
-          ]
-        },
-        {
-          "linkId": "13.8",
-          "type": "string",
-          "text": "Neurological",
-          "code": [
-            {
-              "code": "71404-8",
-              "display": "CMS - neurologic exam panel",
-              "system": "http://loinc.org"
-            }
-          ]
-        },
-        {
-          "linkId": "13.9",
-          "type": "string",
-          "text": "Psychiatric",
-          "code": [
-            {
-              "code": "71405-5",
-              "display": "CMS - psychiatric exam panel",
-              "system": "http://loinc.org"
-            }
-          ]
+          ],
+          "linkId": "11.2",
+          "type": "display",
+          "text": "This is a placeholder for Physical Examination"
         }
       ]
     },
     {
-      "linkId": "14",
-      "type": "string",
-      "text": "Physician/NPP assessment / summary:",
-      "required": false
-    },
-    {
-      "linkId": "15",
-      "text": "Treatment plan:",
-      "type": "group",
-      "required": true,
-      "item": [
+      "linkId": "12",
+      "extension": [
         {
-          "linkId": "15.1",
-          "text": "Plan",
-          "type": "text",
-          "required": true
-        },
-        {
-          "linkId": "15.2",
-          "text": "Orders:",
-          "type": "group",
-          "required": false,
-          "item": [
-            {
-              "linkId": "15.2.1",
-              "text": "Medications:",
-              "type": "text"
-            },
-            {
-              "linkId": "15.2.2",
-              "text": "Supplies:",
-              "type": "text"
-            },
-            {
-              "linkId": "15.2.3",
-              "text": " Investigations / diagnostic testing:",
-              "type": "text"
-            },
-            {
-              "linkId": "15.2.4",
-              "text": "Consults:",
-              "type": "text"
-            },
-            {
-              "linkId": "15.2.5",
-              "text": "Other:",
-              "type": "text"
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/assessment-and-plan"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Assessment and Plan"
     },
     {
-      "linkId": "16",
+      "linkId": "13",
       "text": "Signature, Name, Date and NPI of physician or allowed NPP:",
       "extension": [
         {
@@ -1470,6 +897,5 @@
       "required": true,
       "type": "display"
     }
-
   ]
 }
