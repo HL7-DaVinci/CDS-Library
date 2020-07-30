@@ -19,218 +19,43 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServices-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
-    }
-  ],
-  "contained": [
-    {
-      "resourceType": "ValueSet",
-      "id": "gender",
-      "url": "#gender",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "male",
-            "display": "Male"
-          },
-          {
-            "code": "female",
-            "display": "Female"
-          },
-          {
-            "code": "other",
-            "display": "Other"
-          }
-        ]
-      }
     }
   ],
   "item": [
     {
       "linkId": "1",
-      "text": "Patient Information",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "1.1",
-          "text": "Last Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.2",
-          "text": "First Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.4",
-          "text": "Date Of Birth",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.5",
-          "text": "Gender",
-          "type": "choice",
-          "required": true,
-          "answerValueSet": "#gender",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.6",
-          "text": "Medicare ID",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
-              }
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
     },
     {
       "linkId": "2",
-      "text": "Provider who is performing face-to-face evaluation",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "2.1",
-          "text": "Last Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
-              }
-            }
-          ]
-        },
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
+    },
+    {
+      "linkId": "2.5",
+      "text": "Date of Face-To-Face Evaluation",
+      "type": "date",
+      "required": true,
+      "extension": [
         {
-          "linkId": "2.2",
-          "text": "First Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.4",
-          "text": "NPI",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.5",
-          "text": "Date of Face-To-Face Evaluation",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeHealthServicesPrepopulation\".Today"
-              }
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"HomeHealthServicesPrepopulation\".Today"
+          }
         }
       ]
     }
