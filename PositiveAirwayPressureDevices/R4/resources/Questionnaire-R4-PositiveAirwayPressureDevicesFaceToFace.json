@@ -334,6 +334,12 @@
               "text": "Neck circumference (cm)",
               "extension": [
                 {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "cm"
+                  }
+                },
+                {
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
@@ -341,7 +347,7 @@
                   }
                 }
               ],
-              "type": "quantity"
+              "type": "decimal"
             }
           ]
         },
