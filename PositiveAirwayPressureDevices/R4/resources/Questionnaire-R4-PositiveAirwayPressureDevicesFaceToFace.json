@@ -4,14 +4,6 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/PositiveAirwayPressureDevices-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
     }
   ],
   "id": "PositiveAirwayPressureDevicesFaceToFace",
@@ -256,12 +248,12 @@
       ]
     },
     {
-      "linkId": "8",
+      "linkId": "7",
       "type": "group",
       "text": "Ability of being trained",
       "item": [
         {
-          "linkId": "8.1",
+          "linkId": "7.1",
           "text": "Is the patient capable of being trained to use the device in an appropriate manner?",
           "type": "boolean",
           "required": true,
@@ -276,12 +268,12 @@
           ]
         },
         {
-          "linkId": "8.2",
+          "linkId": "7.2",
           "text": "Is there a responsible care giver?",
           "type": "boolean",
           "enableWhen": [
             {
-              "question": "8.1",
+              "question": "7.1",
               "operator": "=",
               "answerBoolean": false
             }
@@ -290,7 +282,7 @@
       ]
     },
     {
-      "linkId": "9",
+      "linkId": "8",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -301,7 +293,7 @@
       "text": "This is a placeholder for Subjective"
     },
     {
-      "linkId": "10",
+      "linkId": "9",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -312,12 +304,12 @@
       "text": "This is a placeholder for Review Of System"
     },
     {
-      "linkId": "11",
+      "linkId": "10",
       "type": "group",
       "text": "Physical Examination With Vital Signs",
       "item": [
         {
-          "linkId": "11.1",
+          "linkId": "10.1",
           "type": "group",
           "text": "Vital Sign",
           "item": [
@@ -332,13 +324,13 @@
                   "valueBoolean": true
                 }
               ],
-              "linkId": "11.1.1",
+              "linkId": "10.1.1",
               "type": "display",
               "text": "This is a placeholder for Vital Signs"
             },
             {
               "required": true,
-              "linkId": "11.1.2",
+              "linkId": "10.1.2",
               "text": "Neck circumference (cm)",
               "extension": [
                 {
@@ -360,172 +352,25 @@
               "valueCanonical": "questionnaire/physical-exam"
             }
           ],
-          "linkId": "11.2",
+          "linkId": "10.2",
           "type": "display",
           "text": "This is a placeholder for Physical Examination"
         }
       ]
     },
     {
-      "linkId": "12",
-      "type": "text",
-      "text": "Physician/NPP assessment / summary"
-    },
-    {
-      "linkId": "13",
-      "type": "group",
-      "text": "Treatment Plan",
-      "item": [
+      "linkId": "11",
+      "extension": [
         {
-          "linkId": "13.1",
-          "type": "text",
-          "text": "Description"
-        },
-        {
-          "linkId": "13.2",
-          "type": "text",
-          "text": "Orders",
-          "item": [
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "system": "http://hl7.org/fhir/questionnaire-item-control",
-                        "code": "gtable"
-                      }
-                    ]
-                  }
-                }
-              ],
-              "linkId": "13.2.1",
-              "type": "group",
-              "text": "Medication",
-              "repeats": true,
-              "item": [
-                {
-                  "linkId": "13.2.1.1",
-                  "text": "RxNorm",
-                  "type": "string"
-                },
-                {
-                  "linkId": "13.2.1.2",
-                  "text": "Dose",
-                  "type": "string"
-                },
-                {
-                  "linkId": "13.2.1.3",
-                  "text": "Description",
-                  "type": "string"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "system": "http://hl7.org/fhir/questionnaire-item-control",
-                        "code": "gtable"
-                      }
-                    ]
-                  }
-                }
-              ],
-              "linkId": "13.2.2",
-              "type": "group",
-              "text": "Supplies",
-              "repeats": true,
-              "item": [
-                {
-                  "linkId": "13.2.2.1",
-                  "text": "Name",
-                  "type": "string"
-                },
-                {
-                  "linkId": "15.2.2.2",
-                  "text": "Description",
-                  "type": "string"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "system": "http://hl7.org/fhir/questionnaire-item-control",
-                        "code": "gtable"
-                      }
-                    ]
-                  }
-                }
-              ],
-              "linkId": "13.2.3",
-              "type": "group",
-              "text": "Investigations (Diagnostic Testing)",
-              "repeats": true,
-              "item": [
-                {
-                  "linkId": "13.2.3.1",
-                  "text": "Name",
-                  "type": "string"
-                },
-                {
-                  "linkId": "13.2.3.2",
-                  "text": "Description",
-                  "type": "string"
-                }
-              ]
-            },
-            {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "system": "http://hl7.org/fhir/questionnaire-item-control",
-                        "code": "gtable"
-                      }
-                    ]
-                  }
-                }
-              ],
-              "linkId": "13.2.4",
-              "type": "group",
-              "text": "Consult",
-              "repeats": true,
-              "item": [
-                {
-                  "linkId": "13.2.4.1",
-                  "text": "Name",
-                  "type": "string"
-                },
-                {
-                  "linkId": "13.2.4.2",
-                  "text": "Description",
-                  "type": "string"
-                }
-              ]
-            },
-            {
-              "linkId": "13.2.4",
-              "text": "Other",
-              "type": "text"
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/assessment-and-plan"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Assessment and Plan"
     },
     {
-      "linkId": "14",
+      "linkId": "12",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
