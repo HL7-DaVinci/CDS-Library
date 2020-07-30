@@ -219,38 +219,7 @@
           "linkId": "4.1",
           "text": "End Stage / Severe Lung Disease",
           "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "COPD"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Diffuse interstitial lung disease"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Cystic fibrosis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Bronchiectasis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Widespread pulmonary neoplasm"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Other pulmonary/lung diseases"
-              }
-            }
-          ]
+          "answerOption": []
         },
         {
           "type": "group",
