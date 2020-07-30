@@ -326,6 +326,7 @@
         {
           "linkId": "11.1",
           "type": "group",
+          "text": "Vital Sign",
           "item": [
             {
               "extension": [
