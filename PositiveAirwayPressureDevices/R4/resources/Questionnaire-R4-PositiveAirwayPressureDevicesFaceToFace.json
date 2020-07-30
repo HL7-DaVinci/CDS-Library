@@ -86,22 +86,33 @@
           "repeats": "true"
         },
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
-              }
-            }
-          ],
           "linkId": "4.2",
-          "text": "Other diagnoses:",
-          "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "answerOption": []
-        }
+          "text": "Other diagnoses",
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
+                  }
+                }
+              ],
+              "linkId": "4.2.1",
+              "text": "Other",
+              "type": "open-choice",
+              "answerOption": [],
+              "repeats": "true"
+            },
+            {
+              "linkId": "4.2.2",
+              "text": "Describe",
+              "type": "text"
+            }
+          ]
+        }  
       ]
     },
     {
@@ -313,16 +324,42 @@
       "text": "Physical Examination With Vital Signs",
       "item": [
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/vital-signs"
-            }
-          ],
           "linkId": "11.1",
-          "type": "display",
-          "text": "This is a placeholder for Vital Signs"
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+                  "valueCanonical": "questionnaire/vital-signs"
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
+                  "valueBoolean": true
+                }
+              ],
+              "linkId": "11.1.1",
+              "type": "display",
+              "text": "This is a placeholder for Vital Signs"
+            },
+            {
+              "required": true,
+              "linkId": "11.1.2",
+              "text": "Neck circumference (cm)",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".NeckCircumf"
+                  }
+                }
+              ],
+              "type": "quantity"
+            }
+          ]
         },
+        
         {
           "extension": [
             {
