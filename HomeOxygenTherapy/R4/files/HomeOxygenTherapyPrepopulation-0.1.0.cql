@@ -74,9 +74,11 @@ define Today: Today()
 // COVERAGE REQUIREMENTS
 
 // Relevant Diagnoses Definition
+define "RelevantConditions": [Condition: "Home Oxygen Therapy Qualifying Conditions"]
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Home Oxygen Therapy Qualifying Conditions"])))
+  CodesFromConditions(Confirmed(ActiveOrRecurring("RelevantConditions")))
 
+define OtherDiagnoses: CodesFromConditions(Confirmed(ActiveOrRecurring([Condition] except "RelevantConditions")))
 // Codes From Condition Helper Function - Used to display relevant diagnoses
 define function CodesFromConditions(CondList List<Condition>):
   distinct(flatten(

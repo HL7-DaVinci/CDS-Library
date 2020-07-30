@@ -376,21 +376,57 @@
       "text": "Primary diagnosis (to support need for home oxygen):",
       "item": [
         {
-          "type": "open-choice",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
-              }
-            }
-          ],
-          "required": false,
           "linkId": "4.1",
-          "text": "End Stage / Severe Lung Disease",
-          "repeats": true,
-          "answerOption": []
+          "text": "Diagnoses",
+          "type": "group",
+          "item": [
+            {
+              "type": "open-choice",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
+                  }
+                }
+              ],
+              "required": false,
+              "linkId": "4.1.1",
+              "text": "End Stage / Severe Lung Disease",
+              "repeats": true,
+              "answerOption": []
+            },
+            {
+              "linkId": "4.1.2",
+              "type": "group",
+              "text": "Other Diagnoses",
+              "item": [
+                {
+                  "linkId": "4.1.2.1",
+                  "text": "Other",
+                  "type": "open-choice",
+                  "required": true,
+                  "repeats": true,
+                  "answerOption": [],
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "valueExpression": {
+                        "language": "text/cql",
+                        "expression": "\"HomeOxygenTherapyPrepopulation\".OtherDiagnoses"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "linkId": "4.1.2.2",
+                  "text": "Describe",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "group",
