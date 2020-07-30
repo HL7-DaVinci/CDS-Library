@@ -19,10 +19,6 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/RespiratoryAssistDevices-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "item": [
@@ -34,7 +30,8 @@
           "valueCanonical": "questionnaire/patient-info"
         }
       ],
-      "type": "display"
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
     },
     {
       "linkId": "2",
@@ -44,7 +41,8 @@
           "valueCanonical": "questionnaire/practitioner-info"
         }
       ],
-      "type": "display"
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
     },
     {
       "linkId": "3",
@@ -128,16 +126,7 @@
           "linkId": "5.1",
           "text": "Start date if different from order date",
           "type": "date",
-          "required": false,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".Tody"
-              }
-            }
-          ]
+          "required": false
         },
         {
           "linkId": "5.2",
@@ -245,7 +234,8 @@
           "valueCanonical": "questionnaire/provider-signature"
         }
       ],
-      "type": "display"
+      "type": "display",
+      "text": "This is a placeholder for Provider Signature"
     }
   ]
 }
