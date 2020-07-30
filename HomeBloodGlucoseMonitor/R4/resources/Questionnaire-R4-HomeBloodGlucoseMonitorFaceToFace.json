@@ -76,7 +76,7 @@
     {
       "linkId": "4",
       "type": "group",
-      "text": "Patient diagnosis",
+      "text": "Patient diagnoses",
       "item": [
         {
           "linkId": "4.1",
@@ -97,30 +97,23 @@
         {
           "linkId": "4.2",
           "text": "Other diagnoses",
-          "type": "group",
-          "item": [
+          "type": "open-choice",
+          "extension": [
             {
-              "linkId": "4.2.1",
-              "type": "open-choice",
-              "text": "Other",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
-                  }
-                }
-              ],
-              "repeats": "true",
-              "answerOption": []
-            },
-            {
-              "linkId": "4.2.2",
-              "type": "text",
-              "text": "Describe"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
+              }
             }
-          ]
+          ],
+          "repeats": "true",
+          "answerOption": []
+        },
+        {
+          "linkId": "4.3",
+          "type": "text",
+          "text": "Describe"
         }
       ]
     },
