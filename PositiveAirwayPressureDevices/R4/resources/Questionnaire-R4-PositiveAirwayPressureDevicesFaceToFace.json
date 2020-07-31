@@ -338,13 +338,6 @@
                   "valueCoding": {
                     "display": "cm"
                   }
-                },
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".NeckCircumf"
-                  }
                 }
               ],
               "type": "decimal"
