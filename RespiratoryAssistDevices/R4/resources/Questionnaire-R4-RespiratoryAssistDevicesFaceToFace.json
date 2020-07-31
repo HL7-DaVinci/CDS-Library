@@ -109,8 +109,14 @@
           "linkId": "5.1",
           "text": "Apnea-Hypopnea Index (AHI) units of events per hour",
           "required": true,
-          "type": "quantity",
+          "type": "integer",
           "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "display": "/h"
+              }
+            },
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
@@ -229,9 +235,15 @@
             {
               "linkId": "6.1.1",
               "text": "Maximal inspiratory pressure in units of cm H20:",
-              "type": "quantity",
+              "type": "decimal",
               "required": true,
               "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "cm[H20]"
+                  }
+                },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
@@ -251,9 +263,15 @@
             {
               "linkId": "6.1.2",
               "text": "Forced vital capacity in % predicted:",
-              "type": "quantity",
+              "type": "decimal",
               "required": true,
               "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "%"
+                  }
+                },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
@@ -400,9 +418,15 @@
             {
               "linkId": "6.4.1",
               "text": "FEV1/FVC (%):",
-              "type": "quantity",
+              "type": "decimal",
               "required": true,
               "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "%"
+                  }
+                },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
@@ -423,7 +447,22 @@
               "linkId": "6.4.2",
               "text": "FEV1 (% predicted):",
               "required": true,
-              "type": "quantity",
+              "type": "decimal",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "%"
+                  }
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".FEV1"
+                  }
+                }
+              ],
               "code": [
                 {
                   "code": "20152-5",
@@ -722,14 +761,13 @@
               "text": "Neck circumference (cm)",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".NeckCircumf"
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "cm"
                   }
                 }
               ],
-              "type": "quantity"
+              "type": "decimal"
             }
           ]
         },

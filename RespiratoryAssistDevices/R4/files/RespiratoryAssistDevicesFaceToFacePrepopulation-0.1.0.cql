@@ -28,9 +28,8 @@ valueset "FVC_Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.
 valueset "FEV1_FVC_Ratio_Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.124'
 
 
-// LOINC codes for observations
-// Circumference Neck
-code "56074-8": '56074-8' from "LOINC"
+// LOINC code 'FEV1 measured/predicted' observation
+code "20152-5": '20152-5' from "LOINC"
 
 parameter device_request DeviceRequest
 
@@ -65,19 +64,20 @@ define "HasCSAorCompSA": exists([Condition: "Apnea Sleep Disorder"])
 define "HasHypoventilationDisorder": exists([Condition: "Hypoventilation Disorder"])
 define "HasOSA": exists([Condition: "Apnea Sleep Disorder"])
 
-define "AHI": LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "AHI_Codes"], 9 months)), '/h'))
-define "MIP": LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "MIP_Codes"], 9 months)), 'cm[H2O]'))
-define "FEV1_FVC_Ratio": LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "FEV1_FVC_Ratio_Codes"], 9 months)), '%'))
-define "FVC": LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "FVC_Codes"], 9 months)), '%'))
+define "AHI": GetObservationValue(LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "AHI_Codes"], 9 months)), '/h')))
+define "MIP": GetObservationValue(LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "MIP_Codes"], 9 months)), 'cm[H2O]')))
+define "FEV1_FVC_Ratio": GetObservationValue(LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "FEV1_FVC_Ratio_Codes"], 9 months)), '%')))
+define "FVC": GetObservationValue(LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "FVC_Codes"], 9 months)), '%')))
 
 // Observation code lists
-define "Circumference Neck": { "56074-8" }
-
-define "NeckCircumf": LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Circumference Neck"], 9 months)), 'cm'))
+define "FEV1_predicted": { "20152-5" }
+define "FEV1": GetObservationValue(LatestObservation(WithUnit(Verified(ObservationLookBack([Observation: "FEV1_predicted"], 9 months)), '%')))
 
 define function LatestObservation(ObsList List<Observation>):
-  First(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
+  First(ObsList O sort by FHIRHelpers."ToDateTime"(issued) desc)
 
+define function GetObservationValue(Obs Observation):
+  NullSafeToQuantityValue(cast Obs.value as Quantity)
 
 
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
@@ -98,10 +98,7 @@ define function Verified(ObsList List<Observation>):
 define function WithUnit(ObsList List<Observation>, Unit String):
   ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
 
-define function NullSafeToQuantity(Qty FHIR.Quantity):
+define function NullSafeToQuantityValue(Qty FHIR.Quantity):
   if Qty is not null then
-    System.Quantity {
-      value: Qty.value.value,
-      unit: Coalesce(Qty.unit.value, Qty.code.value)
-    }
+    Qty.value.value
   else null
