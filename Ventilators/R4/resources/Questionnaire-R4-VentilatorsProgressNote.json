@@ -7,23 +7,24 @@
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
-  },  
+  },
   "extension": [
     {
-
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/Ventilators-prepopulation"
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "title": "Ventilator Progress Note Questionnaire",
   "status": "draft",
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
-  "subjectType": ["Patient"],
+  "subjectType": [
+    "Patient"
+  ],
   "item": [
     {
       "linkId": "1",
@@ -82,30 +83,18 @@
         {
           "linkId": "4.2",
           "text": "Other Diagnoses",
-          "type": "group",
-          "item": [
+          "extension": [
             {
-              "linkId": "4.2.1",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
-                  }
-                }
-              ],
-              "text": "Other",
-              "type": "open-choice",
-              "repeats": true,
-              "answerOption": []
-            },
-            {
-              "linkId": "4.2.2",
-              "text": "Describe",
-              "type": "text"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
+              }
             }
-          ]
+          ],
+          "type": "open-choice",
+          "repeats": true,
+          "answerOption": []
         }
       ]
     },

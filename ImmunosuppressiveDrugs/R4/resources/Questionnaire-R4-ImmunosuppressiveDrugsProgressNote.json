@@ -83,32 +83,20 @@
         },
         {
           "linkId": "4.2",
-          "type": "group",
           "text": "Other Diagnoses",
-          "item": [
+          "extension": [
             {
-              "linkId": "4.2.1",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"ImmunosuppressiveDrugsPrepopulation\".CurrentDiagnoses"
-                  }
-                }
-              ],
-              "text": "Other",
-              "type": "open-choice",
-              "required": true,
-              "repeats": true,
-              "answerOption": []
-            },
-            {
-              "linkId": "4.2.2",
-              "type": "text",
-              "text": "Describe"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".CurrentDiagnoses"
+              }
             }
-          ]
+          ],
+          "type": "open-choice",
+          "required": true,
+          "repeats": true,
+          "answerOption": []
         }
       ]
     },

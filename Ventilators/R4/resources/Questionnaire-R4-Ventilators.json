@@ -87,30 +87,18 @@
         {
           "linkId": "4.2",
           "text": "Other Diagnoses",
-          "type": "group",
-          "item": [
+          "extension": [
             {
-              "linkId": "4.2.1",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
-                  }
-                }
-              ],
-              "text": "Other",
-              "type": "open-choice",
-              "repeats": true,
-              "answerOption": []
-            },
-            {
-              "linkId": "4.2.2",
-              "text": "Describe",
-              "type": "text"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"VentilatorsPrepopulation\".OtherDiagnoses"
+              }
             }
-          ]
+          ],
+          "type": "open-choice",
+          "repeats": true,
+          "answerOption": []
         }
       ]
     },

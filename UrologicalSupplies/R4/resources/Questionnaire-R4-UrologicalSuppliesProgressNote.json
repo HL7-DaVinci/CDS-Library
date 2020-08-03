@@ -12,7 +12,9 @@
   "status": "draft",
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
-  "subjectType": ["Patient"],
+  "subjectType": [
+    "Patient"
+  ],
   "item": [
     {
       "linkId": "1",
@@ -71,35 +73,21 @@
         },
         {
           "linkId": "4.2",
-          "type": "group",
           "text": "Other Diagnoses",
-          "item": [
+          "extension": [
             {
-              "linkId": "4.2.1",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"UrologicalSuppliesPrepopulation\".CurrentDiagnoses"
-                  }
-                }
-              ],
-              "text": "Other",
-              "type": "open-choice",
-              "require": true,
-              "repeats": true,
-              "answerOption": []
-            },
-            {
-              "linkId": "4.2.2",
-              "type": "text",
-              "text": "Describe"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".CurrentDiagnoses"
+              }
             }
-          ]
+          ],
+          "type": "open-choice",
+          "require": true,
+          "repeats": true,
+          "answerOption": []
         }
-        
-        
       ]
     },
     {

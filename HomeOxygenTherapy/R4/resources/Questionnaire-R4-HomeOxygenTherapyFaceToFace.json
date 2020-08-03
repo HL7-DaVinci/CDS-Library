@@ -399,30 +399,18 @@
             },
             {
               "linkId": "4.1.2",
-              "type": "group",
               "text": "Other Diagnoses",
-              "item": [
+              "type": "open-choice",
+              "required": true,
+              "repeats": true,
+              "answerOption": [],
+              "extension": [
                 {
-                  "linkId": "4.1.2.1",
-                  "text": "Other",
-                  "type": "open-choice",
-                  "required": true,
-                  "repeats": true,
-                  "answerOption": [],
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                      "valueExpression": {
-                        "language": "text/cql",
-                        "expression": "\"HomeOxygenTherapyPrepopulation\".OtherDiagnoses"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "linkId": "4.1.2.2",
-                  "text": "Describe",
-                  "type": "text"
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeOxygenTherapyPrepopulation\".OtherDiagnoses"
+                  }
                 }
               ]
             }
