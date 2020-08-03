@@ -1,0 +1,153 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "ImmunosuppressiveDrugs",
+  "name": "ImmunosuppressiveDrugs",
+  "title": "Immunosuppressive Drugs",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2020-05-20",
+  "publisher": "Da Vinci DTR",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/ImmunosuppressiveDrugs-prepopulation"
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "text": "Qualifying Transplants",
+      "type": "open-choice",
+      "repeats": true,
+      "answerOption": [],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"ImmunosuppressiveDrugsPrepopulation\".QualifyingTransplantCodings"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "text": "Date of transplant",
+      "type": "date",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"ImmunosuppressiveDrugsPrepopulation\".TransplantDate"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Type of order",
+      "type": "choice",
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/medicationrequest-intent"
+    },
+    {
+      "linkId": "5",
+      "text": "Order",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "5.1",
+          "type": "text",
+          "text": "HCPCS Code",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationHCPCS"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.2",
+          "type": "text",
+          "text": "Drug",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationName"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "type": "text",
+          "text": "Route",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationRoute"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.4",
+          "type": "text",
+          "text": "Dose",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationDoseWithUnit"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.5",
+          "type": "text",
+          "text": "Frequency",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationFrequency"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}

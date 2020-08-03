@@ -2,18 +2,21 @@
   "resourceType": "Questionnaire",
   "id": "patient-info",
   "name": "Patient Module",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicPatientInfo-prepopulation"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
     }
   ],
   "status": "draft",
   "item": [
     {
-      "linkId": "PBD",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -27,6 +30,7 @@
           }
         }
       ],
+      "linkId": "PBD",      
       "type": "group",
       "text": "Patient Information",
       "item": [

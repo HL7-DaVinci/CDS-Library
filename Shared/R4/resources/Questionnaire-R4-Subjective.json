@@ -1,0 +1,106 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "subjective",
+  "name": "Subjective Module",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },  
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+    }
+  ],  
+  "status": "draft",
+  "item":[
+    {
+      "linkId": "SUB",
+      "text": "Subjective",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "SUB.1",
+          "text": "Chief complaint / history of present illness and associated signs / symptoms",
+          "type": "text"
+        },
+        {
+          "linkId": "SUB.2",
+          "text": "Related past medical / surgical history",
+          "type": "text"
+        },
+        {
+          "linkId": "MED.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
+          "text": "Medication",
+          "type": "group",
+          "repeats": true,
+          "item": [
+            {
+              "linkId": "MED.1.1",
+              "text": "RxNorm",
+              "type": "string"
+            },
+            {
+              "linkId": "MED.1.2",
+              "text": "Description",
+              "type": "string"
+            },
+            {
+              "linkId": "MED.1.3",
+              "text": "Dose",
+              "type": "string"
+            },
+            {
+              "linkId": "MED.1.4",
+              "text": "Frequency",
+              "type": "open-choice",
+              "answerValueSet":"http://hl7.org/fhir/ValueSet/timing-abbreviation"
+            },
+            {
+              "linkId": "MED.1.5",
+              "text": "Route",
+              "type": "string"
+            },
+            {
+              "linkId": "MED.1.6",
+              "text": "Status",
+              "type": "choice",
+              "answerValueset": "http://hl7.org/fhir/ValueSet/medicationrequest-status"
+            }
+          ]
+        },
+        {
+          "linkId": "ALL.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicClinicalInfoPrepopulation\".Allergies"
+              }
+            }
+          ],
+          "text": "Allergy",
+          "type": "open-choice",
+          "repeats": true,
+          "anwerOption": []
+        }
+      ]
+    }
+  ]
+}

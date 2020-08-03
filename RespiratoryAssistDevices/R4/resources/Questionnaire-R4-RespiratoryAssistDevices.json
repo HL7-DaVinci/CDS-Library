@@ -4,7 +4,7 @@
   "name": "RespiratoryAssistDevices",
   "meta": {
     "profile": [
-      "http://hl7.org/fhir/StructureDefinition/cqif-questionnaire",
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
   },
@@ -15,234 +15,32 @@
   "publisher": "Da Vinci DTR",
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/RespiratoryAssistDevices-prepopulation"
-      }
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicPatientInfo-prepopulation"
-      }
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicPractitionerInfo-prepopulation"
-      }
-    }
-  ],
-  "contained": [
-    {
-      "resourceType": "ValueSet",
-      "id": "gender",
-      "url": "#gender",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "male",
-            "display": "Male"
-          },
-          {
-            "code": "female",
-            "display": "Female"
-          },
-          {
-            "code": "other",
-            "display": "Other"
-          }
-        ]
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/RespiratoryAssistDevices-prepopulation"
     }
   ],
   "item": [
     {
       "linkId": "1",
-      "text": "Patient/Beneficiary Demographics",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "1.1",
-          "text": "Last Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.2",
-          "text": "First Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": false,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.4",
-          "text": "Date of Birth",
-          "type": "date",
-          "required": false,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.5",
-          "text": "Gender",
-          "type": "choice",
-          "required": false,
-          "answerValueSet": "#gender",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.6",
-          "text": "Medicare ID",
-          "type": "string",
-          "required": false,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
-              }
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
     },
     {
       "linkId": "2",
-      "text": "Provider/NPP Demographics",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "2.1",
-          "text": "Did the same provider perform the F2F and Order?",
-          "type": "boolean",
-          "required": false
-        },
-        {
-          "linkId": "2.2",
-          "text": "Last Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.3",
-          "text": "First Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.4",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": false,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.5",
-          "text": "Suffix",
-          "type": "string",
-          "required": false,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".Suffix"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.6",
-          "text": "Certifying Provider NPI",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
     },
     {
       "linkId": "3",
@@ -501,7 +299,7 @@
               "linkId": "5.7.2",
               "type": "group",
               "text": "List",
-              "repeats": "true",
+              "repeats": true,
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -554,60 +352,14 @@
     },
     {
       "linkId": "6",
-      "text": "Physician/NPP Signature Elements",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "6.1",
-          "text": "Physician/NPP Signature",
-          "type": "string"
-        },
-        {
-          "linkId": "6.2",
-          "text": "Physician/NPP Printed Name (Note:  Required if DWO)",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "6.3",
-          "text": "Date of Order",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "6.4",
-          "text": "Physician/NPP NPI (Note: Required if WOPD)",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Provider Signature"
     }
   ]
 }

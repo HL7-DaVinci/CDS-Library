@@ -1,0 +1,63 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "HomeHealthServices",
+  "name": "HomeHealthServices",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "title": "Home Health Services",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2019-11-14",
+  "publisher": "Da Vinci DTR",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServices-prepopulation"
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
+    },
+    {
+      "linkId": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
+    },
+    {
+      "linkId": "2.5",
+      "text": "Date of Face-To-Face Evaluation",
+      "type": "date",
+      "required": true,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"HomeHealthServicesPrepopulation\".Today"
+          }
+        }
+      ]
+    }
+  ]
+}

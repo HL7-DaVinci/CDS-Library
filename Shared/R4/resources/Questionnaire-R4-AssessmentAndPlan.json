@@ -1,0 +1,63 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "assessment-and-plan",
+  "name": "Assessment and Plan Module",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },  
+  "status": "draft",
+  "item":[
+    {
+      "linkId": "AAP",
+      "text": "Assessment and Plan",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "ASM.1",
+          "text": "Assessment/Status",
+          "type": "text"
+        },
+        {
+          "linkId": "PLAN.1",
+          "text": "Treatment Plan",
+          "type": "text"
+        },
+        {
+          "linkId": "ORD.1",
+          "text": "Orders",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "ORD.1.1",
+              "text": "Medications",
+              "type": "text"
+            },
+            {
+              "linkId": "ORD.1.2",
+              "text": "Supplies",
+              "type": "text"
+            },
+            {
+              "linkId": "ORD.1.3",
+              "text": " Investigations / diagnostic testing",
+              "type": "text"
+            },
+            {
+              "linkId": "ORD.1.4",
+              "text": "Consults",
+              "type": "text"
+            },
+            {
+              "linkId": "ORD.1.5",
+              "text": "Other",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

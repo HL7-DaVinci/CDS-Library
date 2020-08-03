@@ -1,0 +1,597 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "HomeHealthServicesPlanOfCare",
+  "name": "HomeHealthServicesPlanOfCare",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeHealthServicesPlanOfCare-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+    }
+  ],
+  "title": "Home Health Plan of Care / Certification",
+  "status": "draft",
+  "date": "2020-06-04",
+  "publisher": "Da Vinci DTR",
+  "subjectType": [
+    "Patient"
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "type": "group",
+      "text": "F2F evaluation information",
+      "item": [
+        {
+          "linkId": "2.1",
+          "text": "Date of F2F visit",
+          "type": "date",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FDate"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "text": "Other relevant information",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "3.1",
+          "text": "Patient HI Claim No",
+          "type": "text",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".PatientMedicalRecordNumber"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "3.2",
+          "text": "Medical Record Number",
+          "type": "text",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".PatientMedicalRecordNumber"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "3.3",
+          "text": "Initial start of care date",
+          "type": "date",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FStartDate"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "3.4",
+          "text": "For recertification: start/end of this episode of care",
+          "type": "date",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FEndDate"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Advanced Directives",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "text": "Has advanced directives",
+          "type": "boolean",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ACDSigned"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "4.2",
+          "text": "Description",
+          "type": "text",
+          "enableWhen": [
+            {
+              "question": "4.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ACDDetails"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "Pertinent diagnoses",
+      "type": "open-choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".RelavantDiagnosisCoding"
+          }
+        }
+      ],
+      "repeats": "true",
+      "answerOption": []
+    },
+    {
+      "linkId": "6",
+      "text": "Relevant procedures",
+      "type": "open-choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"BasicClinicalInfoPrepopulation\".AllProcedures"
+          }
+        }
+      ],
+      "repeats": "true",
+      "answerOption": []
+    },
+    {
+      "linkId": "7",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/subjective"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Subjective"
+    },
+    {
+      "linkId": "9",
+      "text": "Functional assessment",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "9.1",
+          "text": "Functional limitations",
+          "type": "text"
+        },
+        {
+          "linkId": "9.2",
+          "text": "Activities permitted",
+          "type": "text"
+        },
+        {
+          "linkId": "9.3",
+          "text": "Mental status",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "10",
+      "text": "Care plan activities",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "10.1",
+          "text": "DME and supplies",
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForDeviceRequestsCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
+        },
+        {
+          "linkId": "10.2",
+          "text": "Safety measures",
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForSafetyCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
+        },
+        {
+          "linkId": "10.3",
+          "text": "Nutritional requirements",
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForNutritionOrderCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "11",
+      "text": "Prognosis",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "11.1",
+          "text": "Prognosis",
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ClinicalImpression"
+              }
+            }
+          ],
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis"
+        },
+        {
+          "linkId": "11.2",
+          "text": "Additional clarification",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "12",
+      "text": "Description of risk for emergency department visits and hospital readmission and all necessary interventions to address risk",
+      "type": "text"
+    },
+    {
+      "linkId": "13",
+      "text": "Patient and caregiver education and training to facilitate timely discharge",
+      "type": "text"
+    },
+    {
+      "linkId": "14",
+      "text": "Patient-specific interventions and education",
+      "type": "text"
+    },
+    {
+      "linkId": "18",
+      "text": "Frequency, Duration and Purpose of Visits",
+      "type": "text"
+    },
+    {
+      "linkId": "19",
+      "text": "Additional Items from the HHA and/or physician",
+      "type": "text"
+    },
+    {
+      "linkId": "20",
+      "text": "Rehabilitation potential",
+      "type": "text"
+    },
+    {
+      "linkId": "21",
+      "text": "Discharge plans",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "21.1",
+          "text": "Plan",
+          "type": "text"
+        },
+        {
+          "linkId": "21.2",
+          "text": "Communicated to primary care physician",
+          "type": "boolean",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicClinicalInfoPrepopulation\".True"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "21.3",
+          "text": "Provider name",
+          "type": "text"
+        },
+        {
+          "linkId": "21.4",
+          "text": "Date",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "linkId": "22",
+      "text": "Preparer signature",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "22.1",
+          "text": "Name",
+          "type": "text"
+        },
+        {
+          "linkId": "22.2",
+          "text": "Date",
+          "type": "date",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".RequestAuthoredOnDate"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "22.3",
+          "text": "Signature",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "23",
+      "text": "Signature, Name, Date and NPI of physician signing the POC/Certification",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "23.1",
+          "type": "text",
+          "text": "How much longer will skilled services be needed?"
+        },
+        {
+          "linkId": "23.2",
+          "type": "display",
+          "text": "I certify that this patient is confined to his/her home (as outlined in section 30.1.1 in Chapter 7 of the Medicare Benefit Policy Manual (Pub. 100-02)) and needs intermittent skilled nursing care, physical therapy and/or speech therapy or continues to need occupational therapy. The patient is under my care, and I have authorized services on this plan of care and will periodically review the plan. The patient had a face-to-face encounter with an allowed provider type and the encounter was related to the primary reason for home health care."
+        },
+        {
+          "linkId": "23.3",
+          "type": "boolean",
+          "text": "I authenticate that the verbal orders recorded above are accurate.",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicClinicalInfoPrepopulation\".True"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "23.4",
+          "type": "group",
+          "text": "Certifying provider information",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/practitioner-info"
+            }
+          ]
+        },
+        {
+          "linkId": "23.5",
+          "text": "Signature",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "24",
+      "type": "date",
+      "text": "Date physician signed POC was received by the HHA"
+    },
+    {
+      "linkId": "25",
+      "text": "Revisions of the POC communicated to",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "25.1",
+          "text": "Patient/Caregiver",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "25.1.1",
+              "text": "Name",
+              "type": "text",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPatientInfoPrepopulation\".FullName"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "25.1.2",
+              "text": "Date",
+              "type": "date",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicClinicalInfoPrepopulation\".Today"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "25.1.3",
+              "text": "Signature",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "linkId": "25.2",
+          "text": "Certifying Provider",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "25.2.1",
+              "text": "Name",
+              "type": "text",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "25.2.2",
+              "text": "Date",
+              "type": "date",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicClinicalInfoPrepopulation\".Today"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "25.2.3",
+              "text": "Signature",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "linkId": "25.3",
+          "text": "Ordering Provider",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "25.3.1",
+              "text": "Name",
+              "type": "text",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "25.3.2",
+              "text": "Date",
+              "type": "date",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicClinicalInfoPrepopulation\".Today"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "25.3.3",
+              "text": "Signature",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

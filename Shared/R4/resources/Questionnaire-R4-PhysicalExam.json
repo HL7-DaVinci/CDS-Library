@@ -1,0 +1,252 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "physical-exam",
+  "name": "Physican Exam Module",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },  
+  "status": "draft",
+  "item":[
+    {
+      "linkId": "OBJ.PE",
+      "code": [
+        {
+          "code": "71388-3",
+          "display": "Physical Exam",
+          "system": "http://loinc.org/modified"
+        }
+      ],
+      "type": "group",
+      "text": "Physical Exam",
+      "item": [
+        {
+          "linkId": "PE.1",
+          "code": [
+            {
+              "code": "71389-1",
+              "display": "General Appearance",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",              
+          "text": "General Appearance"
+        },
+        {
+          "linkId": "PE.2",
+          "code": [
+            {
+              "code": "71390-9",
+              "display": "Head and Face",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",              
+          "text": "Head and Face"
+        },
+        {
+          "linkId": "PE.3",
+          "code": [
+            {
+              "code": "71391-7",
+              "display": "Eyes",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Eyes"
+        },
+        {
+          "linkId": "PE.4",
+          "code": [
+            {
+              "code": "71392-5",
+              "display": "Ears, nose, mouth and throat",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Ears, nose, mouth and throat"
+        },
+        {
+          "linkId": "PE.5",
+          "code": [
+            {
+              "code": "71393-3",
+              "display": "Neck",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Neck"
+        },
+        {
+          "linkId": "PE.6",
+          "code": [
+            {
+              "code": "71394-1",
+              "display": "Respiratory System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Respiratory System"
+        },
+        {
+          "linkId": "PE.7",
+          "code": [
+            {
+              "code": "71395-8",
+              "display": "Cardiovascular System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",              
+          "text": "Cardiovascular System"
+        },
+        {
+          "linkId": "PE.8",
+          "code": [
+            {
+              "code": "71396-6",
+              "display": "Breast",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Breast"
+        },
+        {
+          "linkId": "PE.9",
+          "code": [
+            {
+              "code": "71397-4",
+              "display": "Gastrointestinal System/Abdomen",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Gastrointestinal System/Abdomen"
+        },
+        {
+          "linkId": "PE.10",
+          "code": [
+            {
+              "code": "71398-2",
+              "display": "Genitourinary System - male",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Genitourinary System - male"
+        },
+        {
+          "linkId": "PE.11",
+          "code": [
+            {
+              "code": "71399-0",
+              "display": "Genitourinary System - female",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Genitourinary System - female"
+        },
+        {
+          "linkId": "PE.12",
+          "code": [
+            {
+              "code": "71400-6",
+              "display": "Lymphatic System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Lymphatic System"
+        },
+        {
+          "linkId": "PE.13",
+          "code": [
+            {
+              "code": "71401-4",
+              "display": "Extremeties",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Extremeties"
+        },
+        {
+          "linkId": "PE.14",
+          "code": [
+            {
+              "code": "71402-2",
+              "display": "Musculoskeletal System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Musculoskeletal System"
+        },
+        {
+          "linkId": "PE.15",
+          "code": [
+            {
+              "code": "71403-0",
+              "display": "Skin",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Skin"
+        },
+        {
+          "linkId": "PE.16",
+          "code": [
+            {
+              "code": "71404-8",
+              "display": "Neurologic System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Neurologic System"
+        },
+        {
+          "linkId": "PE.17",
+          "code": [
+            {
+              "code": "71405-5",
+              "display": "Psychiatric System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "string",
+          "text": "Psychiatric System"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "PE.18",
+          "type": "display",
+          "text": "Levels of E/M services are based on four types of examination: Problem Focused - a limited examination of the affected body area or organ system. Expanded Problem Focused - a limited examination of the affected body area or organ system and any other symptomatic or related body area(s) or organ system(s). Detailed -  An extended examination of the affected body area or organ system and any other symptomatic or related body area(s) or organ system(s). Comprehensive - general multi-system examination, or complete examination of a single organ system and other symptomatic or related body area(s) or organ system(s).General multi-system or single organ examination may be performed by any physician regardless of specialty. The type and content of the examination are selected by the physician and based on clinical judgment, the patient's history and the nature of the presenting problem."
+        }
+      ]
+    }
+ ]
+}

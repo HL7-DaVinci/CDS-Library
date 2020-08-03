@@ -2,17 +2,34 @@
   "resourceType": "Questionnaire",
   "id": "practitioner-info",
   "name": "Practitioner Module",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },  
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
-      "valueReference": {
-        "reference": "Library/BasicPractitionerInfo-prepopulation"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
     }
   ],
   "status": "draft",
   "item": [
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "PND",
       "text": "Provider who perfromed the in-person evaluation",
       "type": "group",

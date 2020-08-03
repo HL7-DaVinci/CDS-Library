@@ -1,0 +1,429 @@
+{
+  "resourceType": "Questionnaire",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBedsAndAccessories-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+    }
+  ],
+  "id": "HospitalBedsAndAccessoriesFaceToFace",
+  "name": "HospitalBedsAndAccessoriesFaceToFace",
+  "title": "Hospital Bed Face to Face Questionnaire",
+  "status": "draft",
+  "date": "2020-04-29",
+  "publisher": "Da Vinci DTR",
+  "subjectType": [
+    "Patient"
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "3",
+      "text": "Encounter",
+      "type": "group",
+      "item": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/encounter-items"
+            }
+          ],
+          "linkId": "3.1",
+          "type": "display",
+          "text": "This is a placeholder for Encounter"
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Patient Diagnosis:",
+      "type": "open-choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"BasicClinicalInfoPrepopulation\".AllDiagnoese"
+          }
+        }
+      ],
+      "repeats": true,
+      "answerOption": []
+    },
+    {
+      "linkId": "6",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/subjective"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "7",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/review-of-system"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Review Of System"
+    },
+    {
+      "linkId": "8",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/physical-exam"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for physical exam"
+    },
+    {
+      "linkId": "9",
+      "type": "text",
+      "text": "Physician/NPP assessment / summary"
+    },
+    {
+      "linkId": "10",
+      "type": "group",
+      "text": "Qualifying Criteria for Hospital Beds",
+      "item": [
+        {
+          "linkId": "10.1",
+          "type": "group",
+          "text": "Fixed Height Hospital Beds",
+          "item": [
+            {
+              "linkId": "10.1.1",
+              "type": "boolean",
+              "text": "Ordered",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".FixedHeightBedsOrdered"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "10.1.2",
+              "type": "group",
+              "text": "Qualification",
+              "item": [
+                {
+                  "text": "Patient has a medical condition which requires positioning of the body in ways not feasible with an ordinary bed. (Elevation of the head/upper body less than 30 degrees does not usually require the use of hospital bed)",
+                  "type": "boolean",
+                  "linkId": "10.1.2.1"
+                },
+                {
+                  "text": "The patient requires positioning of the body in ways not feasible with an ordinary bed to alleviate pain;",
+                  "type": "boolean",
+                  "linkId": "10.1.2.2"
+                },
+                {
+                  "text": "Patient requires the head of the bed to be elevated more than 30 degrees most of the time due to congestive heart failure, chronic pulmonary disease, or problems with aspiration",
+                  "type": "boolean",
+                  "linkId": "10.1.2.3"
+                },
+                {
+                  "text": "Patient requires traction equipment, which can only be attached to a hospital bed.",
+                  "type": "boolean",
+                  "linkId": "10.1.2.4"
+                },
+                {
+                  "text": "Describe",
+                  "type": "string",
+                  "linkId": "11.1.2.5"
+                }
+              ],
+              "enableWhen": [
+                {
+                  "question": "10.1.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "10.2",
+          "type": "group",
+          "text": "Variable Height Hospital Beds",
+          "item": [
+            {
+              "linkId": "10.2.1",
+              "type": "boolean",
+              "text": "Ordered",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".VariableHeightBedsOrdered"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "10.2.2",
+              "type": "group",
+              "text": "Qualification",
+              "enableWhen": [
+                {
+                  "question": "10.2.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "10.2.2.1",
+                  "text": "Patient requires a bed height different than a fixed height hospital bed to permit transfers to chair, wheelchair, or standing position",
+                  "type": "boolean"
+                },
+                {
+                  "linkId": "10.2.2.2",
+                  "text": "Describe",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "10.3",
+          "type": "group",
+          "text": "Semi-electric Hospital Beds",
+          "item": [
+            {
+              "linkId": "10.3.1",
+              "type": "boolean",
+              "text": "Ordered",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".SemiElectricBedsOrdered"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "10.3.2",
+              "type": "group",
+              "text": "Qualification",
+              "enableWhen": [
+                {
+                  "question": "10.3.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "11.0.2.1",
+                  "text": "Patient requires frequent changes in body position and/or has an immediate need for a change in position. ",
+                  "type": "boolean"
+                },
+                {
+                  "linkId": "11.0.2.2",
+                  "text": "Describe",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "10.4",
+          "type": "group",
+          "text": "Trapeze Equipment",
+          "item": [
+            {
+              "linkId": "10.4.1",
+              "type": "boolean",
+              "text": "Ordered",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".TrapezeOrdered"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "10.4.2",
+              "type": "group",
+              "text": "Qualification",
+              "enableWhen": [
+                {
+                  "question": "10.4.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "10.4.2.1",
+                  "text": "Patient needs trapeze equipment to sit up because of a respiratory condition, to change body position for other medical reasons, or to get in or out of bed.",
+                  "type": "boolean"
+                },
+                {
+                  "linkId": "10.4.2.2",
+                  "text": "Describe",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "10.5",
+          "type": "group",
+          "text": "Bed Cradle",
+          "item": [
+            {
+              "linkId": "10.5.1",
+              "type": "boolean",
+              "text": "Ordered",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".BedcradleOrdered"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "10.5.2",
+              "type": "group",
+              "text": "Qualification",
+              "enableWhen": [
+                {
+                  "question": "10.5.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "10.5.2.1",
+                  "text": "Patient needs a bed cradle to prevent contact with the bed coverings",
+                  "type": "boolean"
+                },
+                {
+                  "linkId": "10.5.2.2",
+                  "text": "Describe",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "10.6",
+          "type": "group",
+          "text": "Side Rails or Safety Enclosures",
+          "item": [
+            {
+              "linkId": "10.6.1",
+              "type": "boolean",
+              "text": "Ordered",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".SafetyrailOrdered"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "10.6.2",
+              "type": "group",
+              "text": "Qualification",
+              "enableWhen": [
+                {
+                  "question": "10.6.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "10.6.2.1",
+                  "text": "Patient needs side rails on the hospital bed",
+                  "type": "boolean"
+                },
+                {
+                  "linkId": "10.6.2.2",
+                  "text": "Describe",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "11",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/assessment-and-plan"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Assessment and Plan"
+    },
+    {
+      "linkId": "12",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Provider Signature"
+    }
+  ]
+}

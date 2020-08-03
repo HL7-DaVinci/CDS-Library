@@ -1,0 +1,183 @@
+{
+  "resourceType": "Questionnaire",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBedsAndAccessories-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+    }
+  ],
+  "id": "HospitalBedsAndAccessories",
+  "name": "HospitalBedsAndAccessories",
+  "title": "Hospital Bed Questionnaire",
+  "status": "draft",
+  "date": "2019-12-18",
+  "publisher": "Da Vinci DTR",
+  "subjectType": [
+    "Patient"
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "type": "group",
+      "text": "Additional Patient Information:",
+      "item": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".BodyWeight"
+              }
+            }
+          ],
+          "linkId": "2.1",
+          "text": "Patient Weight",
+          "type": "string",
+          "required": false
+        },
+        {
+          "linkId": "2.2",
+          "text": "Relevant Diagnosis:",
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicClinicalInfoPrepopulation\".AllDiagnoese"
+                  }
+                }
+              ],
+              "linkId": "2.2.1",
+              "text": "Diagnosis:",
+              "type": "open-choice",
+              "repeats": true,
+              "answerOption": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "text": "Face-to-face Evaluation",
+      "type": "group",
+      "item": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+              "valueString": "\"HospitalBedsAndAccessoriesPrepopulation\".EncounterList"
+            }
+          ],
+          "linkId": "3.1",
+          "text": "Face-to-face Evaluation within 6 months",
+          "type": "open-choice",
+          "required": false,
+          "repeats": true,
+          "answerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Order Date",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "text": "Order start date, if different from date of order",
+          "type": "date",
+          "required": false
+        },
+        {
+          "linkId": "4.2",
+          "text": "Order date, if different from date of signature",
+          "type": "date",
+          "required": false
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "Type of order:",
+      "type": "choice",
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
+    },
+    {
+      "linkId": "6",
+      "type": "text",
+      "text": "Order Description"
+    },
+    {
+      "linkId": "7",
+      "text": "Order",
+      "type": "group",
+      "item": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+              "valueString": "\"HospitalBedsAndAccessoriesPrepopulation\".DeviceRequested"
+            }
+          ],
+          "linkId": "7.1",
+          "text": "Equipment",
+          "type": "choice",
+          "required": false,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "E0250",
+                "display": "E0250 Hospital bed, fixed height, with any type side rails, with mattress"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "E0251",
+                "display": "E0251 Hospital bed, fixed height, with any type side rails, without mattress"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "7.2",
+          "text": "Other equipment, accessories, or supplies:",
+          "type": "string"
+        },
+        {
+          "linkId": "7.3",
+          "text": "Additional description:",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "linkId": "8",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}

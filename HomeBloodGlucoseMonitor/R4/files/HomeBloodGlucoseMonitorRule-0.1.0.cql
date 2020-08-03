@@ -9,7 +9,7 @@ define "Age":
   AgeInYears()
 
 define RULE_APPLIES:
-  "Age" >= 10 and "Age" <= 55
+  true
 
 define PRIORAUTH_REQUIRED:
   false 
@@ -31,6 +31,9 @@ define RESULT_QuestionnaireOrderUri:
 
 define RESULT_QuestionnaireLabUri:
   'Questionnaire/HomeBloodGlucoseMonitorLab'
+
+define RESULT_QuestionnaireFaceToFaceUri:
+  'Questionnaire/HomeBloodGlucoseMonitorFaceToFace'  
 
 define RESULT_requestId:
   device_request

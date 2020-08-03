@@ -9,8 +9,6 @@ parameter device_request DeviceRequest
 
 context Patient
 
-define Today: Today()
-
 // coverage requirement info
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Ventilator Therapy Qualifying Condition"]))) 
@@ -18,11 +16,8 @@ define RelevantDiagnoses:
 define OtherDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
 
-define Allergies:
-  CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))
-
 define DeviceRequestHcpcsCoding: singleton from (
-  (DeviceRequest.code.coding) CODING
+  (device_request.code.coding) CODING
     where CODING.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
 define DeviceRequested:
@@ -42,22 +37,6 @@ define function CodesFromConditions(CondList List<Condition>):
       return DiagnosesCodings
   ))
 
-define function CodesFromAllergies(AllergyList List<AllergyIntolerance>):
-  distinct(flatten(
-    AllergyList C
-      let AllergyCodings:
-          (C.code.coding) CODING where CODING.system.value in {
-            'http://www.nlm.nih.gov/research/umls/rxnorm'
-          }
-          return FHIRHelpers.ToCode(CODING)
-      return AllergyCodings
-  ))
-
-define AnswerYes:
-  System.Code {
-    code: 'Y',
-    display: 'Yes'
-  }
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
@@ -83,9 +62,6 @@ define function HighestObservation(ObsList List<Observation>):
 
 define function Confirmed(CondList List<Condition>):
   CondList C where C.verificationStatus.coding.code = 'confirmed'
-
-define function ConfirmedAllergies(AllergyList List<AllergyIntolerance>):
-  AllergyList C where C.verificationStatus.coding.code = 'confirmed'
 
 define function NullSafeToQuantity(Qty FHIR.Quantity):
   if Qty is not null then

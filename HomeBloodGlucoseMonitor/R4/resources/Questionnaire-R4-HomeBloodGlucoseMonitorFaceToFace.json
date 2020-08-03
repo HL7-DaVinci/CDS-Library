@@ -1,0 +1,442 @@
+{
+  "resourceType": "Questionnaire",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorFaceToFace-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+    }
+  ],
+  "id": "HomeBloodGlucoseMonitorFaceToFace",
+  "name": "HomeBloodGlucoseMonitorFaceToFace",
+  "title": "Home Blood Glucose Face to Face Questionnaire",
+  "status": "draft",
+  "date": "2020-06-23",
+  "publisher": "Da Vinci DTR",
+  "subjectType": [
+    "Patient"
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "3",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/encounter"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Encounter"
+    },
+    {
+      "linkId": "4",
+      "type": "group",
+      "text": "Patient diagnosis",
+      "item": [
+        {
+          "linkId": "4.1",
+          "text": "Diabetes Mellitus",
+          "type": "open-choice",
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".DMCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
+        },
+        {
+          "linkId": "4.2",
+          "text": "Other diagnoses",
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "5",
+      "text": "Laboratory validation",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "5.1",
+          "type": "boolean",
+          "text": "Confirming diagnosis of Diabetes Mellitus",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".ConfirmingDiabetesCondition"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.2",
+          "type": "display",
+          "text": "Check Home Blood Glucose Lab form",
+          "enableWhen": [
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "5.3",
+          "type": "date",
+          "text": "Diagnosis confirmed at",
+          "enableWhen": [
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerBoolean": false
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".DMConfirmedDate"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/subjective"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Subjective"
+    },
+    {
+      "linkId": "10",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/review-of-system"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "11",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/physical-exam"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "12",
+      "type": "text",
+      "text": "Physician or allowed NPP assessment / summary"
+    },
+    {
+      "linkId": "13",
+      "type": "group",
+      "text": "Patient monitoring questions",
+      "item": [
+        {
+          "linkId": "13.1",
+          "text": "Is the patient capable of being trained to use the glucose monitoring device prescribed in an appropriate manner?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "13.2",
+          "text": "Is there a responsible care giver?",
+          "type": "boolean",
+          "enableWhen": [
+            {
+              "question": "13.1",
+              "operator": "=",
+              "answerBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "13.3",
+          "text": "Is the patient (or responsible caregiver) visually impaired severely enough to require a special monitoring system (voice, timer, special design) as documented in physical exam?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "13.4",
+          "text": "Does the patient (or responsible caregiver) have impairment of manual dexterity severe enough to require a special monitoring system (voice, timer, special design) as documented in physical exam?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "13.5",
+          "text": "Provider is certifying that a specialized glucose monitoring device is required to address the physical limitations of the patient or caregiver",
+          "type": "boolean"
+        },
+        {
+          "linkId": "13.6",
+          "text": "Is patient willing to perform blood glucose monitoring?",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "linkId": "14",
+      "text": "Treatment plan",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "14.1",
+          "text": "Non-CGM",
+          "type": "boolean",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".IsNonContinuousBloodGlucoseMonitorOrdered"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "14.2",
+          "text": "Monitoring schedule (If the patient and/or caregiver is willing to perform the glucose monitoring)",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "14.1.1",
+              "type": "boolean",
+              "text": "Is patient insulin treated?",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".InsulinTreated"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "14.1.2",
+              "text": "Non-Insulin treated times daily",
+              "type": "integer",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorFrequency"
+                  }
+                }
+              ],
+              "enableWhen": [
+                {
+                  "question": "14.1.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                }
+              ]
+            },
+            {
+              "linkId": "14.1.3",
+              "text": "Indication",
+              "type": "text",
+              "enableWhen": [
+                {
+                  "question": "14.1.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                },
+                {
+                  "question": "14.1.2",
+                  "operator": ">",
+                  "answerInteger": 1
+                }
+              ],
+              "enableBehavior": "all"
+            },
+            {
+              "linkId": "14.1.4",
+              "text": "Insulin treated times daily",
+              "type": "integer",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorFrequency"
+                  }
+                }
+              ],
+              "enableWhen": [
+                {
+                  "question": "14.1.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ]
+            },
+            {
+              "linkId": "14.1.5",
+              "text": "Indication",
+              "type": "text",
+              "enableWhen": [
+                {
+                  "question": "14.1.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                },
+                {
+                  "question": "14.1.4",
+                  "operator": ">",
+                  "answerInteger": 3
+                }
+              ],
+              "enableBehavior": "all"
+            },
+            {
+              "linkId": "14.1.6",
+              "text": "Time of testing",
+              "type": "choice",
+              "answerValueSet": "http://hl7.org/fhir/ValueSet/event-timing",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "14.1.7",
+              "text": "Other",
+              "type": "text"
+            }
+          ],
+          "enableWhen": [
+            {
+              "question": "14.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "14.3",
+          "text": "Continuous Glucose Monitoring Qualifications",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "14.3.1",
+              "type": "boolean",
+              "text": "The patient has been performing frequent testing (> 4 times daily with a basic glucose monitor and the patient is insulin-treated with multiple daily injections of insulin (> 3 times daily)"
+            },
+            {
+              "linkId": "14.3.2",
+              "type": "boolean",
+              "text": "The patient Uses a Medicare covered continuous subcutaneous infusion (CSII) pump; and, the patient’s insulin treatment regimen requires frequent adjustment by the patient on the basis of the BGM or CGM testing results"
+            }
+          ],
+          "enableWhen": [
+            {
+              "question": "14.1",
+              "operator": "=",
+              "answerBoolean": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "15",
+      "text": "Orders",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "15.1",
+          "text": "Medications",
+          "type": "text"
+        },
+        {
+          "linkId": "15.2",
+          "text": "Supplies",
+          "type": "text"
+        },
+        {
+          "linkId": "15.3",
+          "text": "Investigations (Diagnostic testing)",
+          "type": "text"
+        },
+        {
+          "linkId": "15.4",
+          "text": " Consults",
+          "type": "text"
+        },
+        {
+          "linkId": "15.5",
+          "text": "Other",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "16",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}
