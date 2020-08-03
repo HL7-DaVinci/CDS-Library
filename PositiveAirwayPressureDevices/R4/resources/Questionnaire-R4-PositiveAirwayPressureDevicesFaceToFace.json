@@ -111,6 +111,12 @@
           "type": "integer",
           "extension": [
             {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "display": "per hour"
+              }
+            },
+            {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
@@ -124,6 +130,12 @@
           "text": "Respiratory Disturbance index (RDI) units of events per hour",
           "type": "integer",
           "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "display": "per hour"
+              }
+            },
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
