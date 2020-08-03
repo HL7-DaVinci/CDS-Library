@@ -120,15 +120,6 @@
           "text": "Order: Indwelling catheters",
           "type": "open-choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.60",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"UrologicalSuppliesPrepopulation\".ServiceRequested"
-              }
-            }
-          ],
           "answerOption": []
         },
         {
@@ -137,15 +128,6 @@
           "text": "Order: Intermittent catheterization",
           "type": "open-choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.59",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"UrologicalSuppliesPrepopulation\".ServiceRequested"
-              }
-            }
-          ],
           "answerOption": []
         },
         {
@@ -154,15 +136,6 @@
           "text": "Order: External catheters/urinary collection devices",
           "type": "open-choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.62",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"UrologicalSuppliesPrepopulation\".ServiceRequested"
-              }
-            }
-          ],
           "answerOption": []
         },
         {
@@ -171,15 +144,6 @@
           "text": "Order: Miscellaneous urological supplies",
           "type": "open-choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.63",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"UrologicalSuppliesPrepopulation\".ServiceRequested"
-              }
-            }
-          ],
           "answerOption": []
         },
         {
