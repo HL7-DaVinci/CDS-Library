@@ -120,6 +120,7 @@
           "text": "Order: Indwelling catheters",
           "type": "open-choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.60",
+          "repeats": "true",
           "answerOption": []
         },
         {
@@ -128,6 +129,7 @@
           "text": "Order: Intermittent catheterization",
           "type": "open-choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.59",
+          "repeats": "true",
           "answerOption": []
         },
         {
@@ -136,6 +138,7 @@
           "text": "Order: External catheters/urinary collection devices",
           "type": "open-choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.62",
+          "repeats": "true",
           "answerOption": []
         },
         {
@@ -144,6 +147,7 @@
           "text": "Order: Miscellaneous urological supplies",
           "type": "open-choice",
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.63",
+          "repeats": "true",
           "answerOption": []
         },
         {
