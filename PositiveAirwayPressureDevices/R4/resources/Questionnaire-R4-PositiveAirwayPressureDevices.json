@@ -93,11 +93,6 @@
           "type": "open-choice",
           "answerOption": [],
           "repeats": "true"
-        },
-        {
-          "linkId": "4.3",
-          "text": "Describe",
-          "type": "text"
         }
       ]
     },
