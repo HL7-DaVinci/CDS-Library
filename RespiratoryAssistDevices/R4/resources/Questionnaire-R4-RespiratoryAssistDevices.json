@@ -219,11 +219,57 @@
         },
         {
           "linkId": "5.7",
-          "type": "open-choice",
-          "text": "Supply Order",
+          "text": "Supply",
+          "type": "group",
           "repeats": true,
-          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.129"
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
+          "item": [
+            {
+              "linkId": "5.7.1",
+              "type": "choice",
+              "text": "Order",
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.129"
+            },
+            {
+              "linkId": "5.7.2",
+              "text": "Item Description",
+              "type": "string"
+            },
+            {
+              "linkId": "5.7.3",
+              "text": "Frequency",
+              "type": "string"
+            },
+            {
+              "linkId": "5.7.4",
+              "text": "Duration",
+              "type": "string"
+            },
+            {
+              "linkId": "5.7.5",
+              "text": "Quantity",
+              "type": "string"
+            },
+            {
+              "linkId": "5.7.6",
+              "text": "Refills",
+              "type": "string"
+            }
+          ]
         }
+        
       ]
     },
     {
