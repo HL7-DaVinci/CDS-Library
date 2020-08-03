@@ -13,26 +13,6 @@
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
   "subjectType": ["Patient"],
-  "contained": [    
-    {
-      "resourceType": "ValueSet",
-      "id": "yesno",
-      "url": "#yesno",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "Y",
-            "display": "Yes"
-          },
-          {
-            "code": "N",
-            "display": "No"
-          }
-        ]
-      }
-    }
-  ],
   "item": [
     {
       "linkId": "1",
@@ -101,7 +81,7 @@
           "text": "Is this an evaluation of the patient’s need for urological supplies?",
           "required": true,
           "type": "choice",
-          "answerValueSet": "#yesno",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
           "item": [
             {
               "linkId": "3.2.1",
@@ -113,7 +93,8 @@
                   "question": "3.2",
                   "operator": "=",
                   "answerCoding": {
-                    "code": "N"
+                    "code": "N",
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
                   }
                 }
               ]

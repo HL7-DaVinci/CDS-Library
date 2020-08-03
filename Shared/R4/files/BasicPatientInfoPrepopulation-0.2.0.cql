@@ -21,6 +21,9 @@ define LastName: "Name".family.value
 define MiddleInitial: GetMiddleInitials("Name")
 define FirstName: "Name".given[0].value
 
+define FullName:
+  Coalesce("FirstName" + ' ' + "MiddleInitial" + ' ' + "LastName", "FirstName" + ' ' + "LastName")
+
 define Gender: Patient.gender.value
 define DateOfBirth: Patient.birthDate.value
 

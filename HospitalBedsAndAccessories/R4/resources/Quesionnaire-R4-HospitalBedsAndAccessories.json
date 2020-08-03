@@ -3,7 +3,7 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBeds-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HospitalBedsAndAccessories-prepopulation"
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
@@ -14,8 +14,8 @@
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
     }
   ],
-  "id": "HospitalBeds",
-  "name": "HospitalBeds",
+  "id": "HospitalBedsAndAccessories",
+  "name": "HospitalBedsAndAccessories",
   "title": "Hospital Bed Questionnaire",
   "status": "draft",
   "date": "2019-12-18",
@@ -144,7 +144,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HospitalBedsPrepopulation\".BodyWeight"
+                "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".BodyWeight"
               }
             }
           ],
@@ -164,7 +164,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBedsPrepopulation\".CurrentDiagnoses"
+                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".CurrentDiagnoses"
                   }
                 }
               ],
@@ -187,7 +187,7 @@
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBedsPrepopulation\".EncounterList"
+              "valueString": "\"HospitalBedsAndAccessoriesPrepopulation\".EncounterList"
             }
           ],
           "linkId": "3.1",
@@ -280,7 +280,7 @@
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBedsPrepopulation\".DeviceRequested"
+              "valueString": "\"HospitalBedsAndAccessoriesPrepopulation\".DeviceRequested"
             }
           ],
           "linkId": "7.1",

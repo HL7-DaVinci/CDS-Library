@@ -19,7 +19,7 @@
           "linkId": "ROS.1",
           "text": "General",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -62,7 +62,7 @@
           "linkId": "ROS.2",
           "text": "Skin",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -129,7 +129,7 @@
           "linkId": "ROS.4",
           "text": "Head",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -152,7 +152,7 @@
           "linkId": "ROS.5",
           "text": "Eyes",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -180,7 +180,7 @@
           "linkId": "ROS.6",
           "text": "Ears",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -203,7 +203,7 @@
           "linkId": "ROS.7",
           "text": "Nose",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -231,7 +231,7 @@
           "linkId": "ROS.8",
           "text": "Oral",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -254,7 +254,7 @@
           "linkId": "ROS.9",
           "text": "Neck",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -272,7 +272,7 @@
           "linkId": "ROS.10",
           "text": "Breast",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -300,7 +300,7 @@
           "linkId": "ROS.11",
           "text": "Pulmonary",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -343,7 +343,7 @@
           "linkId": "ROS.12",
           "text": "Cardiac",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -376,7 +376,7 @@
           "linkId": "ROS.13",
           "text": "Vascular",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -409,7 +409,7 @@
           "linkId": "ROS.14",
           "text": "Gastrointestinal",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -482,7 +482,7 @@
           "linkId": "ROS.15",
           "text": "Renal",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -535,7 +535,7 @@
           "linkId": "ROS.16",
           "text": "Musculoskeletal",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -608,7 +608,7 @@
           "linkId": "ROS.17",
           "text": "Neurologic",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -701,7 +701,7 @@
           "linkId": "ROS.18",
           "text": "Psychiatric",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -734,7 +734,7 @@
           "linkId": "ROS.19",
           "text": "Hematology",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -757,7 +757,7 @@
           "linkId": "ROS.20",
           "text": "Endocrine",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {

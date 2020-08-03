@@ -24,26 +24,6 @@
   "date": "2020-04-09",
   "publisher": "Da Vinci DTR",
   "subjectType": ["Patient"],
-  "contained": [
-    {
-      "resourceType": "ValueSet",
-      "id": "yesno",
-      "url": "#yesno",
-      "status": "draft",
-      "expansion": {
-        "contains": [
-          {
-            "code": "Y",
-            "display": "Yes"
-          },
-          {
-            "code": "N",
-            "display": "No"
-          }
-        ]
-      }
-    }
-  ],
   "item": [
     {
       "linkId": "1",
@@ -85,7 +65,7 @@
           ],
           "text": "Date of encounter (MM/DD/YYYY):",
           "type": "date",
-          "required": "true"
+          "required": true
         },
         {
           "linkId": "3.2",
@@ -110,9 +90,9 @@
             }
           ],
           "text": "Is this an evaluation of the patient’s need for a ventilator?",
-          "required": "true",
+          "required": true,
           "type": "choice",
-          "answerValueSet": "#yesno",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
           "item": [
             {
               "linkId": "3.2a",
@@ -135,12 +115,13 @@
                   "question": "3.2",
                   "operator": "=",
                   "answerCoding": {
-                    "code": "Y"
+                    "code": "Y",
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
                   }
                 }
               ],
               "type": "choice",
-              "required": "true",
+              "required": true,
               "answerOption": [
                 {
                   "valueCoding": {
@@ -180,7 +161,7 @@
                     }
                   ],
                   "type": "choice",
-                  "answerValueSet": "#yesno",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
                   "item": [
                     {
                       "linkId": "3.3a",
@@ -195,13 +176,14 @@
               "linkId": "3.2b",
               "text": "If No, purpose of the encounter",
               "type": "text",
-              "require": "true",
+              "required": true,
               "enableWhen": [
                 {
                   "question": "3.2",
                   "operator": "=",
                   "answerCoding": {
-                    "code": "N"
+                    "code": "N",
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
                   }
                 }
               ]
@@ -228,8 +210,8 @@
           ],
           "text": "Patient Diagnoses related to need for a ventilator",
           "type": "open-choice",
-          "require": "true",
-          "repeats": "true",
+          "required": true,
+          "repeats": true,
           "answerOption": []
         },
         {
@@ -245,7 +227,7 @@
           ],          
           "text": "Other Diagnoses",
           "type": "open-choice",
-          "repeats": "true",
+          "repeats": true,
           "answerOption": []
         }
       ]
@@ -272,7 +254,7 @@
           ],
           "text": "Demonstrated benefit from continued use?",
           "type": "choice",
-          "answerValueSet": "#yesno"
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
         },
         {
           "linkId": "5.2",
