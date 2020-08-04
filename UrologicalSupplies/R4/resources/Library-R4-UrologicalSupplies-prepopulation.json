@@ -41,7 +41,7 @@
       ]
     },
     {
-      "type": "ServiceRequest",
+      "type": "DeviceRequest",
       "codeFilter": [
         {
           "path": "code",
