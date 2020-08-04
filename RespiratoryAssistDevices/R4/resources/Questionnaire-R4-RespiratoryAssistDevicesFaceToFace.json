@@ -92,11 +92,6 @@
           ],
           "repeats": true,
           "answerOption": []
-        },
-        {
-          "linkId": "4.3",
-          "text": "Describe:",
-          "type": "text"
         }
       ]
     },
