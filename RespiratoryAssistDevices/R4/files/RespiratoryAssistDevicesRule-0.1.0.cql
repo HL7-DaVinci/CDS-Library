@@ -26,8 +26,13 @@ define RESULT_InfoLink:
 define RESULT_QuestionnaireOrderUri:
     'Questionnaire/RespiratoryAssistDevices'
 
+<<<<<<< HEAD
 define RESULT_QuestionnaireFaceToFaceUri:
   'Questionnaire/RespiratoryAssistDevicesFaceToFace'
+=======
+define RESULT_QuestionnaireLabUri:
+    'Questionnaire/RespiratoryAssistDevicesLab'
+>>>>>>> master
 
 define RESULT_requestId:
   device_request
