@@ -14,6 +14,7 @@ parameter device_request DeviceRequest
 
 context Patient
 
+define "False": false
 // coverage requirement info
 define "RelevantDiagnoses": CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Sleep Apnea or Breathing Related Sleep Disorder"])))
 

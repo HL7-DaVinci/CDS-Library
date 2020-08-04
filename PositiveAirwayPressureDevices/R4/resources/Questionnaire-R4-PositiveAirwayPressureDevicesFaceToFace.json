@@ -57,7 +57,7 @@
     },
     {
       "linkId": "4",
-      "text": "Patient diagnosis:",
+      "text": "Patient diagnoses:",
       "type": "group",
       "required": true,
       "item": [
@@ -78,6 +78,8 @@
           "repeats": "true"
         },
         {
+          "linkId": "4.2",
+          "text": "Other diagnoses",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -87,12 +89,9 @@
               }
             }
           ],
-          "linkId": "4.2",
-          "text": "Other diagnoses:",
           "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "answerOption": []
+          "answerOption": [],
+          "repeats": "true"
         }
       ]
     },
@@ -107,6 +106,12 @@
           "type": "integer",
           "extension": [
             {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "display": "per hour"
+              }
+            },
+            {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
@@ -120,6 +125,12 @@
           "text": "Respiratory Disturbance index (RDI) units of events per hour",
           "type": "integer",
           "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "display": "per hour"
+              }
+            },
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
@@ -244,12 +255,12 @@
       ]
     },
     {
-      "linkId": "8",
+      "linkId": "7",
       "type": "group",
       "text": "Ability of being trained",
       "item": [
         {
-          "linkId": "8.1",
+          "linkId": "7.1",
           "text": "Is the patient capable of being trained to use the device in an appropriate manner?",
           "type": "boolean",
           "required": true,
@@ -264,12 +275,12 @@
           ]
         },
         {
-          "linkId": "8.2",
+          "linkId": "7.2",
           "text": "Is there a responsible care giver?",
           "type": "boolean",
           "enableWhen": [
             {
-              "question": "8.1",
+              "question": "7.1",
               "operator": "=",
               "answerBoolean": false
             }
@@ -278,7 +289,7 @@
       ]
     },
     {
-      "linkId": "9",
+      "linkId": "8",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -289,7 +300,7 @@
       "text": "This is a placeholder for Subjective"
     },
     {
-      "linkId": "10",
+      "linkId": "9",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -300,20 +311,45 @@
       "text": "This is a placeholder for Review Of System"
     },
     {
-      "linkId": "11",
+      "linkId": "10",
       "type": "group",
       "text": "Physical Examination With Vital Signs",
       "item": [
         {
-          "extension": [
+          "linkId": "10.1",
+          "type": "group",
+          "text": "Vital Sign",
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/vital-signs"
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+                  "valueCanonical": "questionnaire/vital-signs"
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
+                  "valueBoolean": true
+                }
+              ],
+              "linkId": "10.1.1",
+              "type": "display",
+              "text": "This is a placeholder for Vital Signs"
+            },
+            {
+              "required": true,
+              "linkId": "10.1.2",
+              "text": "Neck circumference (cm)",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "cm"
+                  }
+                }
+              ],
+              "type": "decimal"
             }
-          ],
-          "linkId": "11.1",
-          "type": "display",
-          "text": "This is a placeholder for Vital Signs"
+          ]
         },
         {
           "extension": [
@@ -322,14 +358,14 @@
               "valueCanonical": "questionnaire/physical-exam"
             }
           ],
-          "linkId": "11.2",
+          "linkId": "10.2",
           "type": "display",
           "text": "This is a placeholder for Physical Examination"
         }
       ]
     },
     {
-      "linkId": "12",
+      "linkId": "11",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -340,7 +376,7 @@
       "text": "This is a placeholder for Assessment and Plan"
     },
     {
-      "linkId": "13",
+      "linkId": "12",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
