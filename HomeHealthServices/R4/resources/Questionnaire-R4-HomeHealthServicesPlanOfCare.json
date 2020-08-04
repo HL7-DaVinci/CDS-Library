@@ -204,35 +204,14 @@
     },
     {
       "linkId": "7",
-      "text": "Pertinent medications",
-      "type": "open-choice",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-          "valueExpression": {
-            "language": "text/cql",
-            "expression": "\"BasicClinicalInfoPrepopulation\".MedicationList"
-          }
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/subjective"
         }
       ],
-      "repeats": "true",
-      "answerOption": []
-    },
-    {
-      "linkId": "8",
-      "text": "Allergies",
-      "type": "open-choice",
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-          "valueExpression": {
-            "language": "text/cql",
-            "expression": "\"BasicClinicalInfoPrepopulation\".Allergies"
-          }
-        }
-      ],
-      "repeats": "true",
-      "answerOption": []
+      "type": "display",
+      "text": "This is a placeholder for Subjective"
     },
     {
       "linkId": "9",
