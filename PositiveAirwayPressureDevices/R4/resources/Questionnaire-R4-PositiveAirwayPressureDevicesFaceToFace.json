@@ -46,123 +46,18 @@
     },
     {
       "linkId": "3",
-      "type": "group",
-      "text": "General questions",
-      "item": [
+      "extension": [
         {
-          "linkId": "3.1",
-          "text": "Date of encounter",
-          "type": "date",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".Today"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "3.2",
-          "text": "Is this a F2F evaluation of the patient’s need for a PAP device for OSA? ",
-          "type": "boolean",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".True"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "3.3",
-          "text": "Order purpose: ",
-          "type": "group",
-          "enableWhen": [
-            {
-              "question": "3.2",
-              "operator": "=",
-              "answerBoolean": true
-            }
-          ],
-          "item": [
-            {
-              "linkId": "3.3.1",
-              "type": "choice",
-              "required": false,
-              "answerOption": [
-                {
-                  "valueCoding": {
-                    "code": "Initial Evaluation"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "Re-evaluation"
-                  }
-                }
-              ]
-            },
-            {
-              "linkId": "3.3.2",
-              "text": "Is there evidence of continued use of the PAP/CPAP device and supplies?",
-              "type": "boolean",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"PositiveAirwayPressureDevicePrepopulation\".True"
-                  }
-                }
-              ],
-              "enableWhen": [
-                {
-                  "question": "3.3.1",
-                  "operator": "=",
-                  "answerCoding": {
-                    "code": "Re-evaluation"
-                  }
-                }
-              ]
-            },
-            {
-              "linkId": "3.3.3",
-              "text": "Describe",
-              "type": "string",
-              "enableWhen": [
-                {
-                  "question": "3.3.1",
-                  "operator": "=",
-                  "answerCoding": {
-                    "code": "Re-evaluation"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "3.4",
-          "text": "If No, purpose of the encounter: ",
-          "type": "text",
-          "required": false,
-          "enableWhen": [
-            {
-              "question": "3.2",
-              "operator": "=",
-              "answerBoolean": false
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/encounter-with-reevaluation"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Encounter with reevaluation"
     },
     {
       "linkId": "4",
-      "text": "Patient diagnosis:",
+      "text": "Patient diagnoses:",
       "type": "group",
       "required": true,
       "item": [
@@ -172,15 +67,19 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OsaDiagnosisExists"
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".RelevantDiagnoses"
               }
             }
           ],
           "linkId": "4.1",
-          "type": "boolean",
-          "text": "Obstructive Sleep Apnea (G47.33)"
+          "type": "open-choice",
+          "text": "Relevant Diagnoses",
+          "answerOption": [],
+          "repeats": "true"
         },
         {
+          "linkId": "4.2",
+          "text": "Other diagnoses",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -190,12 +89,9 @@
               }
             }
           ],
-          "linkId": "4.2",
-          "text": "Other diagnoses:",
           "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "answerOption": []
+          "answerOption": [],
+          "repeats": "true"
         }
       ]
     },
@@ -210,6 +106,12 @@
           "type": "integer",
           "extension": [
             {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "display": "per hour"
+              }
+            },
+            {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
@@ -223,6 +125,12 @@
           "text": "Respiratory Disturbance index (RDI) units of events per hour",
           "type": "integer",
           "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "display": "per hour"
+              }
+            },
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
@@ -347,12 +255,12 @@
       ]
     },
     {
-      "linkId": "8",
+      "linkId": "7",
       "type": "group",
       "text": "Ability of being trained",
       "item": [
         {
-          "linkId": "8.1",
+          "linkId": "7.1",
           "text": "Is the patient capable of being trained to use the device in an appropriate manner?",
           "type": "boolean",
           "required": true,
@@ -367,12 +275,12 @@
           ]
         },
         {
-          "linkId": "8.2",
+          "linkId": "7.2",
           "text": "Is there a responsible care giver?",
           "type": "boolean",
           "enableWhen": [
             {
-              "question": "8.1",
+              "question": "7.1",
               "operator": "=",
               "answerBoolean": false
             }
@@ -381,7 +289,7 @@
       ]
     },
     {
-      "linkId": "9",
+      "linkId": "8",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -392,7 +300,7 @@
       "text": "This is a placeholder for Subjective"
     },
     {
-      "linkId": "12",
+      "linkId": "9",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -403,36 +311,61 @@
       "text": "This is a placeholder for Review Of System"
     },
     {
-      "linkId": "13",
+      "linkId": "10",
       "type": "group",
       "text": "Physical Examination With Vital Signs",
       "item": [
         {
-          "linkId": "13.1",
-          "extension": [
+          "linkId": "10.1",
+          "type": "group",
+          "text": "Vital Sign",
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/vital-signs"
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+                  "valueCanonical": "questionnaire/vital-signs"
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
+                  "valueBoolean": true
+                }
+              ],
+              "linkId": "10.1.1",
+              "type": "display",
+              "text": "This is a placeholder for Vital Signs"
+            },
+            {
+              "required": true,
+              "linkId": "10.1.2",
+              "text": "Neck circumference (cm)",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "display": "cm"
+                  }
+                }
+              ],
+              "type": "decimal"
             }
-          ],
-          "type": "display",
-          "text": "This is a placeholder for Vital Signs"
+          ]
         },
         {
-          "linkId": "13.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
               "valueCanonical": "questionnaire/physical-exam"
             }
           ],
+          "linkId": "10.2",
           "type": "display",
-          "text": "This is a placeholder for Physican Examination"
+          "text": "This is a placeholder for Physical Examination"
         }
       ]
     },
     {
-      "linkId": "14",
+      "linkId": "11",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
@@ -443,7 +376,7 @@
       "text": "This is a placeholder for Assessment and Plan"
     },
     {
-      "linkId": "16",
+      "linkId": "12",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
