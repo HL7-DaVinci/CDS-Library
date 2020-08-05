@@ -38,58 +38,14 @@
     },
     {
       "linkId": "2",
-      "type": "group",
-      "text": "Provider (physician/NPP) who is performing the face-to-face evaluation:",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/questionnaire-item-control",
-                "code": "gtable"
-              }
-            ]
-          }
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
         }
       ],
-      "item": [
-        {
-          "linkId": "2.1",
-          "text": "Last Name",
-          "type": "text"
-        },
-        {
-          "linkId": "2.2",
-          "text": "First Name",
-          "type": "text"
-        },
-        {
-          "linkId": "2.3",
-          "text": "MI",
-          "type": "text"
-        },
-        {
-          "linkId": "2.4",
-          "text": "NPI",
-          "type": "text"
-        },
-        {
-          "linkId": "2.5",
-          "text": "Date of F2F encounter",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesPrepopulation\".EncounterDate"
-              }
-            }
-          ]
-        }
-      ]
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
     },
     {
       "linkId": "3",
@@ -751,39 +707,14 @@
     },
     {
       "linkId": "5",
-      "text": "Signature",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "5.1",
-          "text": "Signature",
-          "type": "text"
-        },
-        {
-          "linkId": "5.2",
-          "text": "Name (Printed)",
-          "type": "text"
-        },
-        {
-          "linkId": "5.3",
-          "text": "Date",
-          "type": "date",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".Today"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.4",
-          "text": "NPI",
-          "type": "text"
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Provider Signature"
     }
   ]
 }

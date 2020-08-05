@@ -108,7 +108,7 @@
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
               "valueCoding": {
-                "display": "per hour"
+                "display": "/h"
               }
             },
             {
@@ -128,7 +128,7 @@
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
               "valueCoding": {
-                "display": "per hour"
+                "display": "/h"
               }
             },
             {
