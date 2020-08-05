@@ -82,7 +82,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesPrepopulation\".OsaDiagnoses"
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".RADCodings"
               }
             }
           ]
@@ -96,7 +96,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnoses"
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnosesCodings"
               }
             }
           ],
