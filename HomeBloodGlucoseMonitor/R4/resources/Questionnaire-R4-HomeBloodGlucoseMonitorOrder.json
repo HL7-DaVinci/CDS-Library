@@ -273,7 +273,7 @@
           "text": "Non-insulin Treated Frequency",
           "enableWhen": [
             {
-              "question": "4.2",
+              "question": "4.3.2",
               "operator": "!=",
               "answerCoding": {
                 "code": "Insulin Treated"
@@ -306,7 +306,7 @@
           "text": "Insulin Treated Frequency",
           "enableWhen": [
             {
-              "question": "4.2",
+              "question": "4.3.2",
               "operator": "=",
               "answerCoding": {
                 "code": "Insulin Treated",
@@ -387,7 +387,7 @@
           "text": "Non-Insulin Treated Supplies",
           "enableWhen": [
             {
-              "question": "4.2",
+              "question": "4.3.2",
               "operator": "!=",
               "answerCoding": {
                 "code": "Insulin Treated",
@@ -433,7 +433,7 @@
           "text": "Insulin Treated Supplies",
           "enableWhen": [
             {
-              "question": "4.2",
+              "question": "4.3.2",
               "operator": "=",
               "answerCoding": {
                 "code": "Insulin Treated",
