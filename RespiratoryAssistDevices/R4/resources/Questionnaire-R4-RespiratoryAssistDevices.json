@@ -10,7 +10,9 @@
   },
   "title": "Respiratory Assist Device Questionnaire",
   "status": "draft",
-  "subjectType": ["Patient"],
+  "subjectType": [
+    "Patient"
+  ],
   "date": "2020-04-02",
   "publisher": "Da Vinci DTR",
   "extension": [
@@ -57,7 +59,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesPrepopulation\".Today"
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".EncounterDate"
               }
             }
           ]
@@ -74,64 +76,21 @@
           "type": "open-choice",
           "text": "Patient diagnoses for order",
           "required": false,
+          "repeats": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
-              "valueBoolean": true
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Restrictive thoracic disorder"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Severe COPD"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Hypoventilation syndrome"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Central sleep apnea"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Complex sleep apnea"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Obstructive sleep apnea (OSA)"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Other"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".OsaDiagnoses"
               }
             }
           ]
         },
         {
           "linkId": "4.2",
-          "text": "If Other, describe",
-          "type": "string",
-          "required": true,
-          "enableWhen": [
-            {
-              "question": "4.1",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Other"
-              }
-            }
-          ],
+          "text": "Other Diagnoses:",
+          "type": "open-choice",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -140,7 +99,9 @@
                 "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnoses"
               }
             }
-          ]
+          ],
+          "repeats": true,
+          "answerOption": []
         }
       ]
     },
@@ -153,62 +114,21 @@
           "linkId": "5.1",
           "text": "Start date if different from order date",
           "type": "date",
-          "required": false,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "Today"
-              }
-            }
-          ]
+          "required": false
         },
         {
           "linkId": "5.2",
           "type": "open-choice",
           "text": "Type of Device Order",
           "required": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Revision or Change in Equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Replacement"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
           "linkId": "5.3",
           "type": "open-choice",
           "text": "Type of Supply Order",
           "required": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Reorder"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Other"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
           "linkId": "5.4",
@@ -287,64 +207,53 @@
         },
         {
           "linkId": "5.7",
+          "text": "Supply",
           "type": "group",
-          "text": "Supply Order",
+          "repeats": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
           "item": [
             {
               "linkId": "5.7.1",
-              "text": "Note:  Items dispensed on a periodic basis — repeat multiple times",
-              "type": "display"
+              "type": "choice",
+              "text": "Order",
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.129"
             },
             {
               "linkId": "5.7.2",
-              "type": "group",
-              "text": "List",
-              "repeats": true,
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "system": "http://hl7.org/fhir/questionnaire-item-control",
-                        "code": "gtable"
-                      }
-                    ]
-                  }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "5.7.2.1",
-                  "text": "Item Description",
-                  "type": "string"
-                },
-                {
-                  "linkId": "5.7.2.2",
-                  "text": "Frequency",
-                  "type": "string"
-                },
-                {
-                  "linkId": "5.7.2.3",
-                  "text": "Duration",
-                  "type": "string"
-                },
-                {
-                  "linkId": "5.7.2.4",
-                  "text": "Quantity",
-                  "type": "string"
-                },
-                {
-                  "linkId": "5.7.2.5",
-                  "text": "Refills",
-                  "type": "string"
-                }
-              ]
+              "text": "Item Description",
+              "type": "string"
             },
             {
               "linkId": "5.7.3",
-              "text": "Other",
-              "type": "text"
+              "text": "Frequency",
+              "type": "string"
+            },
+            {
+              "linkId": "5.7.4",
+              "text": "Duration",
+              "type": "string"
+            },
+            {
+              "linkId": "5.7.5",
+              "text": "Quantity",
+              "type": "string"
+            },
+            {
+              "linkId": "5.7.6",
+              "text": "Refills",
+              "type": "string"
             }
           ]
         }

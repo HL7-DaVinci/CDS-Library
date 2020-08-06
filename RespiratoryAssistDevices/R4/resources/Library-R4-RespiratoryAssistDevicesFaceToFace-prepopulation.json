@@ -1,0 +1,199 @@
+{
+  "resourceType": "Library",
+  "id": "RespiratoryAssistDevicesFaceToFace-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/RespiratoryAssistDevicesFaceToFace-prepopulation",
+  "name": "RespiratoryAssistDevicesFaceToFace-prepopulation",
+  "version": "0.1.0",
+  "title": "RAD Face To Face Prepopulation",
+  "status": "draft",
+  "identifier": [
+    {
+      "id": "urn:hl7:davinci:crd:library-respiratory-assist-devices-f2f-prepopulation-r4"
+    }
+  ],
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.122"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.36"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.37"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.5"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.4"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.119"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.120"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.29"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.30"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.123"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.125"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.124"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.131"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.127"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.44"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.6"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.121"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.31"
+        }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/RespiratoryAssistDevices/r4/RespiratoryAssistDevicesFaceToFacePrepopulation-0.1.0.cql"
+    }
+  ]
+}

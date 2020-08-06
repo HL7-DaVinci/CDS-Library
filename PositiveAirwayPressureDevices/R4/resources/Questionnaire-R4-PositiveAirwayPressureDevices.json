@@ -45,18 +45,21 @@
     },
     {
       "linkId": "3",
-      "text": "Date of F2F evaluation (MM/DD/YYYY):",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "3.1",
-          "type": "date"
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
+          }
         }
-      ]
+      ],
+      "text": "Date of in-person evaluation (MM/DD/YYYY):",
+      "type": "date"
     },
     {
       "linkId": "4",
-      "text": "Patient diagnosis:",
+      "text": "Patient diagnoses:",
       "type": "group",
       "item": [
         {
@@ -65,35 +68,19 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OsaDiagnosis"
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".RelevantDiagnoses"
               }
             }
           ],
           "linkId": "4.1",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "OSA",
-                "display": "Obstructive Sleep Apnea"
-              }
-            }
-          ]
+          "text": "Relevant Diagnoses",
+          "type": "open-choice",
+          "answerOption": [],
+          "repeats": "true"
         },
         {
           "linkId": "4.2",
-          "text": "Other:",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Other",
-                "display": "Yes"
-              }
-            }
-          ]
-        },
-        {
+          "text": "Other diagnoses",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -103,22 +90,16 @@
               }
             }
           ],
-          "linkId": "4.3",
-          "text": "Other (describe):",
-          "type": "text"
+          "type": "open-choice",
+          "answerOption": [],
+          "repeats": "true"
         }
       ]
     },
     {
       "linkId": "5",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "5.1",
-          "text": "Order start date, if different from date of order (MM/DD/YYYY):",
-          "type": "date"
-        }
-      ]
+      "text": "Order start date, if different from date of order (MM/DD/YYYY):",
+      "type": "date"
     },
     {
       "linkId": "6",
@@ -129,62 +110,20 @@
           "linkId": "6.1",
           "text": "Device:",
           "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "revision",
-                "display": "Revision or change in equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "replacement",
-                "display": "Replacement"
-              }
-            }
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
           "linkId": "6.2",
           "text": "Supplies:",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "reorder",
-                "display": "Reorder"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "other",
-                "display": "Other"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "6.3",
-          "text": "Other (description):",
-          "type": "text"
+          "type": "open-choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         }
       ]
     },
     {
       "linkId": "7",
       "type": "group",
+      "text": "Order",
       "item": [
         {
           "linkId": "7.1",
@@ -203,6 +142,7 @@
           ],
           "linkId": "7.2",
           "type": "choice",
+          "text": "Device ordered",
           "answerOption": [
             {
               "valueCoding": {
@@ -221,7 +161,7 @@
       ]
     },
     {
-      "linkId": "9",
+      "linkId": "8",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
