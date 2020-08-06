@@ -106,16 +106,11 @@
         },
         {
           "linkId": "4.3",
-          "type": "text",
-          "text": "Describe"
-        },
-        {
-          "linkId": "4.4",
           "text": "Diabetes Treatment",
           "type": "group",
           "item": [
             {
-              "linkId": "4.4.1",
+              "linkId": "4.3.1",
               "type": "boolean",
               "text": "Diagnosis confirmed",
               "extension": [
@@ -129,12 +124,12 @@
               ]
             },
             {
-              "linkId": "4.4.2",
+              "linkId": "4.3.2",
               "type": "choice",
               "text": "Treatment",
               "enableWhen": [
                 {
-                  "question": "4.4.1",
+                  "question": "4.3.1",
                   "operator": "=",
                   "answerBoolean": "true"
                 }
@@ -278,7 +273,7 @@
           "text": "Non-insulin Treated Frequency",
           "enableWhen": [
             {
-              "question": "4.2",
+              "question": "4.3.2",
               "operator": "!=",
               "answerCoding": {
                 "code": "Insulin Treated"
@@ -311,7 +306,7 @@
           "text": "Insulin Treated Frequency",
           "enableWhen": [
             {
-              "question": "4.2",
+              "question": "4.3.2",
               "operator": "=",
               "answerCoding": {
                 "code": "Insulin Treated",
@@ -392,7 +387,7 @@
           "text": "Non-Insulin Treated Supplies",
           "enableWhen": [
             {
-              "question": "4.2",
+              "question": "4.3.2",
               "operator": "!=",
               "answerCoding": {
                 "code": "Insulin Treated",
@@ -438,7 +433,7 @@
           "text": "Insulin Treated Supplies",
           "enableWhen": [
             {
-              "question": "4.2",
+              "question": "4.3.2",
               "operator": "=",
               "answerCoding": {
                 "code": "Insulin Treated",

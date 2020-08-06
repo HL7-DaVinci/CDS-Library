@@ -87,11 +87,6 @@
           ],
           "repeats": "true",
           "answerOption": []
-        },
-        {
-          "linkId": "4.3",
-          "type": "text",
-          "text": "Describe"
         }
       ]
     },
