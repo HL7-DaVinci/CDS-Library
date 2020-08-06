@@ -1,0 +1,30 @@
+{
+    "resourceType": "Library",
+    "id": "CDSConnectCommons-prepopulation",
+    "url": "http://hl7.org/fhir/us/davinci-dtr/Library/CDSConnectCommons-prepopulation",
+    "name": "CDSConnectCommons-prepopulation",
+    "version": "0.1.0",
+    "title": "CDS Connect Commons",
+    "status": "draft",
+    "type": {
+      "coding": [
+        {
+          "code": "logic-library"
+        }
+      ]
+    },
+    "relatedArtifact": [
+      {
+        "type": "depends-on",
+        "resource": {
+          "reference": "Library/FHIRHelpers-4.0.0"
+        }
+      }
+    ],
+    "content": [
+      {
+        "contentType": "application/elm+json",
+        "url": "files/Shared/r4/CDSConnectCommonsPrepopulation-4.0.0.cql"
+      }
+    ]
+  }
