@@ -172,7 +172,7 @@
     },
     {
       "linkId": "5",
-      "text": "Pertinent diagnoses",
+      "text": "Relevant diagnoses",
       "type": "open-choice",
       "extension": [
         {
