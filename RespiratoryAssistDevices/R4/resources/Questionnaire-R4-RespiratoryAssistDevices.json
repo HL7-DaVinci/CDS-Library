@@ -46,33 +46,11 @@
     },
     {
       "linkId": "3",
-      "text": "Encounter",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "3.1",
-          "text": "Date of F2F encounter",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesPrepopulation\".EncounterDate"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "linkId": "4",
       "text": "Respiratory Assist Device Diagnoses",
       "type": "group",
       "item": [
         {
-          "linkId": "4.1",
+          "linkId": "3.1",
           "type": "open-choice",
           "text": "Patient diagnoses for order",
           "required": false,
@@ -88,7 +66,7 @@
           ]
         },
         {
-          "linkId": "4.2",
+          "linkId": "3.2",
           "text": "Other Diagnoses:",
           "type": "open-choice",
           "extension": [
@@ -106,38 +84,38 @@
       ]
     },
     {
-      "linkId": "5",
+      "linkId": "4",
       "text": "RAD for OSA Order Information",
       "type": "group",
       "item": [
         {
-          "linkId": "5.1",
+          "linkId": "4.1",
           "text": "Start date if different from order date",
           "type": "date",
           "required": false
         },
         {
-          "linkId": "5.2",
+          "linkId": "4.2",
           "type": "open-choice",
           "text": "Type of Device Order",
           "required": true,
           "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
-          "linkId": "5.3",
+          "linkId": "4.3",
           "type": "open-choice",
           "text": "Type of Supply Order",
           "required": true,
           "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
         },
         {
-          "linkId": "5.4",
+          "linkId": "4.4",
           "text": "If Other, describe",
           "type": "string",
           "required": true,
           "enableWhen": [
             {
-              "question": "5.3",
+              "question": "4.3",
               "operator": "=",
               "answerCoding": {
                 "code": "Other"
@@ -146,18 +124,18 @@
           ]
         },
         {
-          "linkId": "5.5",
+          "linkId": "4.5",
           "text": "Device Order (description of device)",
           "type": "string",
           "required": true
         },
         {
-          "linkId": "5.6",
+          "linkId": "4.6",
           "text": "Specific Device",
           "type": "group",
           "item": [
             {
-              "linkId": "5.6.1",
+              "linkId": "4.6.1",
               "text": "Specify",
               "type": "choice",
               "extension": [
@@ -185,17 +163,17 @@
               ]
             },
             {
-              "linkId": "5.6.2",
+              "linkId": "4.6.2",
               "text": "Note:  RAD (E0470 and E0471) require Written Order Prior to Delivery and F2F Evaluation",
               "type": "display"
             },
             {
-              "linkId": "5.6.3",
+              "linkId": "4.6.3",
               "text": "Note:  E0471 is not covered for OSA",
               "type": "display",
               "enableWhen": [
                 {
-                  "question": "5.6.1",
+                  "question": "4.6.1",
                   "operator": "=",
                   "answerCoding": {
                     "code": "E0471"
@@ -206,7 +184,7 @@
           ]
         },
         {
-          "linkId": "5.7",
+          "linkId": "4.7",
           "text": "Supply",
           "type": "group",
           "repeats": true,
@@ -225,33 +203,33 @@
           ],
           "item": [
             {
-              "linkId": "5.7.1",
+              "linkId": "4.7.1",
               "type": "choice",
               "text": "Order",
               "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.129"
             },
             {
-              "linkId": "5.7.2",
+              "linkId": "4.7.2",
               "text": "Item Description",
               "type": "string"
             },
             {
-              "linkId": "5.7.3",
+              "linkId": "4.7.3",
               "text": "Frequency",
               "type": "string"
             },
             {
-              "linkId": "5.7.4",
+              "linkId": "4.7.4",
               "text": "Duration",
               "type": "string"
             },
             {
-              "linkId": "5.7.5",
+              "linkId": "4.7.5",
               "text": "Quantity",
               "type": "string"
             },
             {
-              "linkId": "5.7.6",
+              "linkId": "4.7.6",
               "text": "Refills",
               "type": "string"
             }
@@ -260,7 +238,7 @@
       ]
     },
     {
-      "linkId": "6",
+      "linkId": "5",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
