@@ -258,7 +258,9 @@
             }
           ]
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
     },
     {
       "linkId": "4",
@@ -1128,9 +1130,7 @@
           "type": "choice",
           "required": false,
           "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
-          "extension": [
-            {}
-          ]
+          "extension": [{}]
         },
         {
           "linkId": "18.3",
@@ -1515,9 +1515,7 @@
           "type": "choice",
           "required": false,
           "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
-          "extension": [
-            {}
-          ]
+          "extension": [{}]
         },
         {
           "linkId": "26.3",
@@ -1805,9 +1803,7 @@
           "type": "choice",
           "required": false,
           "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
-          "extension": [
-            {}
-          ]
+          "extension": [{}]
         },
         {
           "linkId": "32.3",
@@ -2118,9 +2114,7 @@
           "type": "choice",
           "required": false,
           "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
-          "extension": [
-            {}
-          ]
+          "extension": [{}]
         },
         {
           "linkId": "39.3",

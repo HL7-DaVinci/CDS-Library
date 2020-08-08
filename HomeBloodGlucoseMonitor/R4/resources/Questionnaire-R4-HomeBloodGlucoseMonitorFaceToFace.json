@@ -42,36 +42,14 @@
     },
     {
       "linkId": "3",
-      "type": "group",
-      "text": "Purpose of this encounter",
-      "item": [
+      "extension": [
         {
-          "linkId": "3.1",
-          "text": "Is this a F2F encounter or in person visit for diabetes diagnosis / management?",
-          "type": "boolean",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".True"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "3.2",
-          "text": "Describe the encounter purpose",
-          "type": "text",
-          "enableWhen": [
-            {
-              "question": "3.1",
-              "operator": "=",
-              "answerBoolean": false
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/encounter"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Encounter"
     },
     {
       "linkId": "4",
@@ -169,56 +147,14 @@
     },
     {
       "linkId": "6",
-      "text": "Chief complaint/history of present illness and associated signs/symptoms ",
-      "type": "text"
-    },
-    {
-      "linkId": "7",
-      "text": "Related past medical/surgical history",
-      "type": "open-choice",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-          "valueExpression": {
-            "language": "text/cql",
-            "expression": "\"BasicClinicalInfoPrepopulation\".AllProcedures"
-          }
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/subjective"
         }
       ],
-      "repeats": "true",
-      "answerOption": []
-    },
-    {
-      "linkId": "8",
-      "text": "Medications",
-      "type": "open-choice",
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-          "valueExpression": {
-            "language": "text/cql",
-            "expression": "\"BasicClinicalInfoPrepopulation\".MedicationList"
-          }
-        }
-      ],
-      "repeats": "true",
-      "answerOption": []
-    },
-    {
-      "linkId": "9",
-      "text": "Allergies",
-      "type": "open-choice",
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-          "valueExpression": {
-            "language": "text/cql",
-            "expression": "\"BasicClinicalInfoPrepopulation\".Allergies"
-          }
-        }
-      ],
-      "repeats": "true",
-      "answerOption": []
+      "type": "display",
+      "text": "This is a placeholder for Subjective"
     },
     {
       "linkId": "10",

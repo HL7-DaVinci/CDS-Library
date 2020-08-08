@@ -1,0 +1,176 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "encounter-with-reevaluation",
+    "name": "Encounter With Reevaluation Module",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+            "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+            "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+        }
+    ],
+    "status": "draft",
+    "item": [
+        {
+            "linkId": "ENC",
+            "type": "group",
+            "text": "Encounter",
+            "item": [
+                {
+                    "linkId": "ENC.1",
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
+                            }
+                        }
+                    ],
+                    "text": "Date of encounter:",
+                    "type": "date",
+                    "required": true
+                },
+                {
+                    "linkId": "ENC.2",
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "valueExpression": {
+                            "language": "text/cql",
+                            "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"
+                            }
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                            "valueCodeableConcept": {
+                                "coding": [
+                                    {
+                                    "code": "radio-button",
+                                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "text": "Is this encounter for the evaluation of the patient’s need for the ordered device, service, or medication?",
+                    "type": "choice",
+                    "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
+                    "required": true,
+                    "item": [
+                        {
+                            "linkId": "ENC.2.1",
+                            "text": "If Yes, is this an initial evaluation or a re-evaluation?",
+                            "type": "open-choice",
+                            "required": true,
+                            "answerOption": [
+                            {
+                                "valueCoding": {
+                                "code": "initial-evaluation",
+                                "display": "Initial Evaluation"
+                                }
+                            },
+                            {
+                                "valueCoding": {
+                                "code": "re-evaluation",
+                                "display": "Re-evaluation"
+                                }
+                            }
+                            ],
+                            "enableWhen": [
+                            {
+                                "question": "ENC.2",
+                                "operator": "=",
+                                "answerCoding": {
+                                "code": "Y",
+                                "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
+                                }
+                            }
+                            ],
+                            "item":[
+                                {
+                                    "linkId": "ENC.2.1.1",
+                                    "text": "Is there evidence of continued use of the ordered device & supplies, service, or medication?",
+                                    "type": "choice",
+                                    "extension": [
+                                    {
+                                        "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                                        "valueCodeableConcept": {
+                                            "coding": [
+                                                {
+                                                "code": "radio-button",
+                                                "system": "http://hl7.org/fhir/questionnaire-item-control"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                    ],
+                                    "answerOption": [
+                                    {
+                                        "valueCoding": {
+                                        "code": "Y",
+                                        "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
+                                        "display": "Yes"
+                                        }
+                                    },
+                                    {
+                                        "valueCoding": {
+                                        "code": "N",
+                                        "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
+                                        "display": "No"
+                                        }
+                                    }
+                                    ],
+                                    "enableWhen": [
+                                        {
+                                            "question": "ENC.2.1",
+                                            "operator": "=",
+                                            "answerCoding": {
+                                            "code": "re-evaluation"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "linkId": "ENC.2.1.2",
+                                    "text": "Describe:",
+                                    "type": "string",
+                                    "enableWhen": [
+                                        {
+                                            "question": "ENC.2.1",
+                                            "operator": "=",
+                                            "answerCoding": {
+                                            "code": "re-evaluation"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "linkId": "ENC.2.2",
+                            "text": "If No, purpose of the encounter",
+                            "type": "text",
+                            "require": true,
+                            "enableWhen": [
+                                {
+                                    "question": "ENC.2",
+                                    "operator": "=",
+                                    "answerCoding": {
+                                    "code": "N",
+                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
