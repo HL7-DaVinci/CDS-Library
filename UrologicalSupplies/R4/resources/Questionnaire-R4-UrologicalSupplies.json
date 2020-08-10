@@ -38,45 +38,21 @@
       "text": "Diagnosis",
       "item": [
         {
-          "type": "open-choice",
+          "linkId": "2.1",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "drop-down",
-                    "display": "Drop down"
-                  }
-                ],
-                "text": "Drop down"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".RelatedDiagnoese"
               }
             }
           ],
-          "required": false,
-          "linkId": "2.1",
-          "text": "Patient Diagnosis",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Y",
-                "display": "Permanent urinary incontinence, not expected to be medically or surgically corrected within 3 mo."
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Yes",
-                "display": "Permanent urinary retention, not expected to be medically or surgically corrected within 3 months"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "other",
-                "display": "Other"
-              }
-            }
-          ]
+          "text": "Patient Qualifying Diagnoses",
+          "type": "open-choice",
+          "repeats": true,
+          "required": true,
+          "answerOption": []
         }
       ]
     },
