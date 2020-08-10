@@ -18,7 +18,7 @@ The structure of your CQL prepopulation file will generally follow the format be
 
 ### A) Header
 Name library, define FHIR version, and include any helper libraries.
-```
+```sql
 library HomeOxygenTherapyPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
@@ -27,7 +27,7 @@ Note: Library name should match CQL filename (without the version number).
 
 ### B) Codesystems
 Define the codesystems that will be used within the patient's FHIR resources.
-```
+```sql
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
@@ -38,7 +38,7 @@ Note: Above are frequently used codesystems for Conditions, Observations, and Pr
 
 ### C) Valuesets
 Define coding valuesets that can be called upon later in the library.
-```
+```sql
 valueset "Home Oxygen Therapy Qualifying Conditions": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.25'
 valueset "Stationary Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.80'
 ```
@@ -46,28 +46,27 @@ Note: Value Set Object Identifier Codes (OIDs) can be found through the [Value S
 
 ### D) Codes
 Define codes from codesystems (defined above) that can be called upon later in the library.
-```
+```sql
 code "Hematocrit [Volume Fraction] of Arterial blood": '32354-3' from "LOINC"
 ```
 
 ### E) Request Parameter
 Define a paramter which can be referenced anywhere in the CQL Libray.
-```
+```sql
 parameter device_request DeviceRequest
 ```
 Note: DRLS typically uses DeviceRequest and ServiceRequest as common parameters.
 
 ### F) Patient Context
 Specify that the statements below this should be interpreted with reference to a single patient.
-```
-// PATIENT //
+```sql
 context Patient
 ```
 
 ### G) Define Statement
 The basic unit of logic within a library, a define statement introduces a named expression that can be referenced within tbe library, or by other libraries.
 This can operate like a variable of like a function
-```
+```sql
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Home Oxygen Therapy Qualifying Conditions"])))
   
@@ -89,7 +88,7 @@ The functions below are all used in many currently existing DRLS propopulation f
 
 ## 3) Example Prepopulation.cql file
 Below is a full example of a ruleset prepopulation file. This file prepopulates the questionnaire for the Non Emergency Ambulance Transportation ruleset, and is stored in [CDS-Library/NonEmergencyAmbulanceTransportation/R4/files/NonEmergencyAmbulanceTransportationPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/Shared_CQL_Library/NonEmergencyAmbulanceTransportation/R4/files/NonEmergencyAmbulanceTransportationPrepopulation-0.1.0.cql).
-```
+```sql
 library NonEmergencyAmbulanceTransportationPrepopulation  version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
