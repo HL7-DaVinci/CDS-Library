@@ -53,6 +53,23 @@
           "repeats": true,
           "required": true,
           "answerOption": []
+        },
+        {
+          "linkId": "2.2",
+          "text": "Other Diagnoses",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".CurrentDiagnoses"
+              }
+            }
+          ],
+          "type": "open-choice",
+          "require": true,
+          "repeats": true,
+          "answerOption": []
         }
       ]
     },
