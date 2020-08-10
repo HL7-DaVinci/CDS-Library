@@ -90,16 +90,9 @@
     {
       "linkId": "4",
       "required": false,
-      "text": "Order Type",
+      "text": "Type of Order",
       "type": "open-choice",
-      "item": [
-        {
-          "linkId": "4.1",
-          "text": "Type of Order",
-          "type": "open-choice",
-          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
-        }
-      ]
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
     },
     {
       "linkId": "5",
@@ -325,21 +318,26 @@
           "item": [
             {
               "linkId": "5.5.1",
+              "type": "string",
+              "text": "Order"
+            },
+            {
+              "linkId": "5.5.2",
               "text": "Item Description",
               "type": "string"
             },
             {
-              "linkId": "5.5.2",
+              "linkId": "5.5.3",
               "text": "Usual Max/Mo.",
               "type": "string"
             },
             {
-              "linkId": "5.5.3",
+              "linkId": "5.5.4",
               "text": "Quantity",
               "type": "string"
             },
             {
-              "linkId": "5.5.4",
+              "linkId": "5.5.5",
               "text": "Refills",
               "type": "string"
             }
