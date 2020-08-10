@@ -20,6 +20,10 @@
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/RespiratoryAssistDevices-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
@@ -70,7 +74,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".RADCodings"
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".RADCodings"
               }
             }
           ],
@@ -86,7 +90,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".OtherDiagnosesCodings"
+                "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnosesCodings"
               }
             }
           ],

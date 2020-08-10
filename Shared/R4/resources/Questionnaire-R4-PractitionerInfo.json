@@ -11,7 +11,7 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "status": "draft",
@@ -41,7 +41,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
+                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderLastName"
               }
             }
           ],
@@ -55,7 +55,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderFirstName"
               }
             }
           ],
@@ -69,7 +69,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderMiddleInitial"
               }
             }
           ],
@@ -83,12 +83,27 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderNPI"
               }
             }
           ],
           "text": "NPI",
           "type": "string"
+        },
+        {
+          "linkId": "PND.5",
+          "text": "Date of F2F encounter",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
+              }
+            }
+          ]
         }
       ]
     }

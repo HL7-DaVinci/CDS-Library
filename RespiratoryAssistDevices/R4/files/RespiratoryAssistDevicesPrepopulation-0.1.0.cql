@@ -40,10 +40,10 @@ parameter device_request DeviceRequest
 context Patient
 
 // coverage requirement info
-define "OsaConditions":[Condition: "RADQualifyingDiagnosisValueSet"]
-define "OsaDiagnoses": GetConditionCodings(ConfirmedActiveOrRecurring("OsaConditions"))
-define "OtherConditions": [Condition] except "OsaConditions"
-define "OtherDiagnoses": GetConditionCodings(ConfirmedActiveOrRecurring("OtherConditions"))
+define "RADDiagnoses":[Condition: "RADQualifyingDiagnosisValueSet"]
+define "RADCodings": GetConditionCodings(ConfirmedActiveOrRecurring("RADDiagnoses"))
+define "OtherDiagnoses": [Condition] except "RADDiagnoses"
+define "OtherDiagnosesCodings": GetConditionCodings(ConfirmedActiveOrRecurring("OtherDiagnoses"))
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
