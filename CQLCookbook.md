@@ -1,4 +1,6 @@
 # CQL Cookbook
+Reference for creating a CQL prepopulation file for a DRLS Ruleset.
+
 ## Overview
 As described in [Ruleset Development 101](https://confluence.mitre.org/pages/editpage.action?pageId=200598742) *(this will eventually have to have a different public link)*, DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fethches FHIR resources form the EHR.
 
@@ -51,7 +53,7 @@ code "Hematocrit [Volume Fraction] of Arterial blood": '32354-3' from "LOINC"
 ```
 
 ### E) Request Parameter
-Define a paramter which can be referenced anywhere in the CQL Libray.
+Define a parameter which can be referenced anywhere in the CQL Libray.
 ```sql
 parameter device_request DeviceRequest
 ```
@@ -125,3 +127,12 @@ define "ServiceEndDate": FHIRHelpers.ToDateTime(
   )
 ```
 
+## Links and Other Resources
+
+[CQL Spec](https://cql.hl7.org/)
+: This is the most up-to-date Clinical Quality Language Specification, describing the semantics of CQL. Much of the [CQL Template](##1-cql-template) information is derived from this CQL Spec
+
+
+## Template
+Hello
+Redirect to [the template](#template)
