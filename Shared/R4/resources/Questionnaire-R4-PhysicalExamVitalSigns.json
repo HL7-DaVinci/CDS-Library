@@ -1,0 +1,43 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "physical-exam-vital-signs",
+  "name": "Physican Exam Module",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },  
+  "status": "draft",
+  "item":[
+    {
+      "linkId": "PEVS",
+      "type": "group",
+      "text": "Physical Examination With Vital Signs",
+      "item": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/vital-signs"
+            }
+          ],
+          "linkId": "VS",
+          "type": "display",
+          "text": "This is a placeholder for Vital Signs"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/physical-exam"
+            }
+          ],
+          "linkId": "PE",
+          "type": "display",
+          "text": "This is a placeholder for Physican Examination"
+        }
+      ]
+    },
+  ]
+}

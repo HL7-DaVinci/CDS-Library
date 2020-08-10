@@ -16,8 +16,8 @@ context Patient
 
 define "DMDiagnoses":  [Condition: "DiabetesMellitusValueSet"]
 define "OtherDiagnoses": [Condition] except "DMDiagnoses"
-define "DMCodings": GetConditionCodings(ActiveOrOccurringCondition("DMDiagnoses"))
-define "OtherDiagnosesCodings": GetConditionCodings(ActiveOrOccurringCondition("OtherDiagnoses"))
+define "DMCodings": GetConditionCodings(ConfirmedActiveOrOccurringCondition("DMDiagnoses"))
+define "OtherDiagnosesCodings": GetConditionCodings(ConfirmedActiveOrOccurringCondition("OtherDiagnoses"))
 
 define "ConfirmingDiabetesCondition": not exists("DMDiagnoses") 
 define "DMConfirmedDate": FHIRHelpers."ToDateTime"(FirstDateConditionRecorded("DMDiagnoses").recordedDate)
@@ -46,9 +46,9 @@ define function GetConditionCodings(ConditionList List<FHIR.Condition>):
     )
   )
 
-define function ActiveOrOccurringCondition(ConditionList List<FHIR.Condition>):
+define function ConfirmedActiveOrOccurringCondition(ConditionList List<FHIR.Condition>):
   ConditionList C
-  where C.clinicalStatus.coding.code in {'active', 'relapse'}
+  where C.clinicalStatus.coding.code in {'active', 'relapse'} and C.verificationStatus.coding.code = 'confirmed'
 
 define function FirstDateConditionRecorded(ConditionList List<FHIR.Condition>):
   First(ConditionList C sort by FHIRHelpers."ToDateTime"(recordedDate))  

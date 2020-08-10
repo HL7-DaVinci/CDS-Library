@@ -1,790 +1,3525 @@
 {
   "resourceType": "Questionnaire",
   "id": "review-of-system",
-  "name": "Review Of System Module",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
   },
+  "name": "Review Of System Module",
   "status": "draft",
   "item": [
     {
       "linkId": "ROS",
-      "text": "Review of Systems",
+      "code": [
+        {
+          "code": "71406-3",
+          "display": "Review of Systems",
+          "system": "http://loinc.org"
+        }
+      ],
       "type": "group",
+      "text": "Review of Systems",
       "item": [
         {
           "linkId": "ROS.1",
-          "text": "General",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "weight gain"
-              }
+              "code": "71407-1",
+              "display": "Constitutional / General",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Constitutional / General",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.1.1",
+              "code": [
+                {
+                  "code": "8943002",
+                  "display": "Weight gain",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Weight gain",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "weight loss"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.1.2",
+              "code": [
+                {
+                  "code": "89362005",
+                  "display": "Weight loss",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Weight loss",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "sleeping problems"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.1.3",
+              "code": [
+                {
+                  "code": "44186003",
+                  "display": "Sleeping problems",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Sleeping problems",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "fatigue"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.1.4",
+              "code": [
+                {
+                  "code": "84229001",
+                  "display": "Fatigue",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Fatigue",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "fever"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.1.5",
+              "code": [
+                {
+                  "code": "386725007",
+                  "display": "Fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Fever",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "chills"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.1.6",
+              "code": [
+                {
+                  "code": "43724002",
+                  "display": "Chills",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Chills",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "night sweats / disphoresis"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.1.7",
+              "code": [
+                {
+                  "code": "42984000",
+                  "display": "Night sweats",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Night sweats",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.1.8",
+              "code": [
+                {
+                  "code": "52613005",
+                  "display": "Excessive sweating",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Excessive sweating",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "linkId": "ROS.1.9",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.2",
-          "text": "Skin",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "pressure ulcers"
-              }
+              "code": "71408-9",
+              "display": "Eye",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Eye",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.2.1",
+              "code": [
+                {
+                  "code": "24982008",
+                  "display": "Diplopia",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Diplopia",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "rashes"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.2.2",
+              "code": [
+                {
+                  "code": "225582009",
+                  "display": "Glasses",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Glasses",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "changes in nails/hair"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.2.3",
+              "code": [
+                {
+                  "code": "285049007",
+                  "display": "Contact lenses",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Contact lenses",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "eczema"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "code": [
+                {
+                  "code": "75705005",
+                  "display": "Redness",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "linkId": "ROS.2.4",
+              "type": "choice",
+              "text": "Redness",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "pruritus"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.2.5",
+              "code": [
+                {
+                  "code": "18628002",
+                  "display": "Discharge",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Discharge",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.2.6",
+              "code": [
+                {
+                  "code": "111516008",
+                  "display": "Blurred vision",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Blurred vision",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.2.7",
+              "code": [
+                {
+                  "code": "23986001",
+                  "display": "Glaucoma",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Glaucoma",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.2.8",
+              "code": [
+                {
+                  "code": "193570009",
+                  "display": "Cataracts",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Cataracts",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "linkId": "ROS.2.9",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.3",
-          "text": "Lymphatic",
+          "code": [
+            {
+              "code": "71409-7",
+              "display": "Ear-nose-mouth-throat",
+              "system": "http://loinc.org"
+            }
+          ],
           "type": "group",
+          "text": "Ear-nose-mouth-throat",
           "item": [
             {
               "linkId": "ROS.3.1",
-              "text": "swollen glands/masses",
-              "type": "choice",
-              "answerOption": [
+              "type": "group",
+              "text": "Nose",
+              "item": [
                 {
-                  "valueCoding": {
-                    "display": "in the neck"
-                  }
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.1.1",
+                  "code": [
+                    {
+                      "code": "249366005",
+                      "display": "Epistaxis",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Epistaxis",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
                 },
                 {
-                  "valueCoding": {
-                    "display": "axilla"
-                  }
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.1.2",
+                  "code": [
+                    {
+                      "code": "36971009",
+                      "display": "Frequent sinus infections",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Frequent sinus infections",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
                 },
                 {
-                  "valueCoding": {
-                    "display": "groin"
-                  }
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.1.3",
+                  "code": [
+                    {
+                      "code": "64531003",
+                      "display": "Discharge",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Discharge",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.1.4",
+                  "code": [
+                    {
+                      "code": "736499003",
+                      "display": "Polyps",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Polyps",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "type": "string",
+                  "linkId": "ROS.3.1.5",
+                  "text": "Other"
                 }
               ]
             },
             {
               "linkId": "ROS.3.2",
-              "text": "other",
-              "type": "text"
+              "type": "group",
+              "text": "Ear",
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.2.1",
+                  "code": [
+                    {
+                      "code": "60862001",
+                      "display": "Tinnitus",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Tinnitus",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "type": "choice",
+                  "code": [
+                    {
+                      "code": "300132001",
+                      "display": "Discharge",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.2.2",
+                  "text": "Discharge",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "type": "choice",
+                  "code": [
+                    {
+                      "code": "15188001",
+                      "display": "Hearing loss",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.2.3",
+                  "text": "Hearing loss",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "type": "string",
+                  "code": [],
+                  "linkId": "ROS.3.2.4",
+                  "text": "Other"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "code": [],
+              "linkId": "ROS.3.3",
+              "text": "Mouth",
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.3.1",
+                  "code": [
+                    {
+                      "code": "288939007",
+                      "display": "Odynaphagia",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Odynaphagia",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.3.2",
+                  "code": [
+                    {
+                      "code": "46557008",
+                      "display": "Tooth disorder",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Tooth disorder",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.3.3",
+                  "code": [
+                    {
+                      "code": "278615005",
+                      "display": "Uses dentures",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Uses dentures",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "linkId": "ROS.3.3.4",
+                  "type": "string",
+                  "text": "Other"
+                }
+              ]
+            },
+            {
+              "linkId": "ROS.3.4",
+              "type": "group",
+              "text": "Throat",
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.3.4.1",
+                  "code": [
+                    {
+                      "code": "50219008",
+                      "display": "Hoarseness",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Hoarseness",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "linkId": "ROS.3.4.2",
+                  "type": "string",
+                  "text": "Other"
+                }
+              ]
             }
           ]
         },
         {
           "linkId": "ROS.4",
-          "text": "Head",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "fainting"
-              }
+              "code": "71410-5",
+              "display": "Cardiovascular",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Cardiovascular System",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.4.1",
+              "code": [
+                {
+                  "code": "29857009",
+                  "display": "Chest pain",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Chest pain",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "dizziness"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.4.2",
+              "code": [
+                {
+                  "code": "80313002",
+                  "display": "Palpitations",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Palpitations",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "headaches"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.4.3",
+              "code": [
+                {
+                  "code": "62744007",
+                  "display": "Orthopnea",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Orthopnea",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.4.4",
+              "code": [
+                {
+                  "code": "88610006",
+                  "display": "Murmur",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Murmur",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "linkId": "ROS.4.5",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.5",
-          "text": "Eyes",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "diplopia"
-              }
+              "code": "71411-3",
+              "display": "Respiratory",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Respiratory System",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.5.1",
+              "code": [
+                {
+                  "code": "49727002",
+                  "display": "Cough",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Cough",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "glasses/contact lenses"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.5.2",
+              "code": [
+                {
+                  "code": "66857006",
+                  "display": "Hemoptysis",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Hemoptysis",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "redness/discharge"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.5.3",
+              "code": [
+                {
+                  "code": "267036007",
+                  "display": "Shortness of breath",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Shortness of breath",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "blurred vision"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.5.4",
+              "code": [
+                {
+                  "code": "248599002",
+                  "display": "Excess sputum production",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Excess sputum production",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.5.5",
+              "code": [
+                {
+                  "code": "56018004",
+                  "display": "Wheezing",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Wheezing",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "linkId": "ROS.5.6",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.6",
-          "text": "Ears",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "tinnitus"
-              }
+              "code": "71412-1",
+              "display": "Gastrointestinal System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Gastrointestinal",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.1",
+              "code": [
+                {
+                  "code": "399122003",
+                  "display": "Swallowing problem",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Swallowing problem",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "discharge"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.2",
+              "code": [
+                {
+                  "code": "21522001",
+                  "display": "Abdominal pain",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Abdominal pain",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "hearing loss"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.3",
+              "code": [
+                {
+                  "code": "16331000",
+                  "display": "Heartburn",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Heartburn",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.4",
+              "code": [
+                {
+                  "code": "422587007",
+                  "display": "Nausea",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Nausea",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.5",
+              "code": [
+                {
+                  "code": "422400008",
+                  "display": "Vomiting",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Vomiting",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.6",
+              "code": [
+                {
+                  "code": "8765009",
+                  "display": "Hematemesis",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Hematemesis",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.7",
+              "code": [
+                {
+                  "code": "14760008",
+                  "display": "Constipation",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Constipation",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.8",
+              "code": [
+                {
+                  "code": "62315008",
+                  "display": "Diarrhea",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Diarrhea",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.9",
+              "code": [
+                {
+                  "code": "2901004",
+                  "display": "Melena",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Melena",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.10",
+              "code": [
+                {
+                  "code": "405729008",
+                  "display": "Blood in stool",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Blood in stool",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.11",
+              "code": [
+                {
+                  "code": "40845000",
+                  "display": "Ulcer",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Ulcer",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.6.12",
+              "code": [
+                {
+                  "code": "18165001",
+                  "display": "Jaundice",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Jaundice",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "linkId": "ROS.6.13",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.7",
-          "text": "Nose",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "epistaxis"
-              }
+              "code": "71413-9",
+              "display": "Genitourinary",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Genitourinary System",
+          "item": [
+            {
+              "linkId": "ROS.7.1",
+              "type": "group",
+              "text": "Urination",
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.7.1.1",
+                  "code": [
+                    {
+                      "code": "162116003",
+                      "display": "Increased frequency",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Increased frequency",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.7.1.2",
+                  "code": [
+                    {
+                      "code": "75088002",
+                      "display": "Urgency",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Urgency",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.7.1.3",
+                  "code": [
+                    {
+                      "code": "5972002",
+                      "display": "Hesitancy",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Hesitancy",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.7.1.4",
+                  "code": [
+                    {
+                      "code": "48340000",
+                      "display": "Incontinence",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Incontinence",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.7.1.5",
+                  "code": [
+                    {
+                      "code": "49650001",
+                      "display": "Dysuria",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Dysuria",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.7.1.6",
+                  "code": [
+                    {
+                      "code": "28442001",
+                      "display": "Polyuria",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Polyuria",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.7.1.7",
+                  "code": [
+                    {
+                      "code": "139394000",
+                      "display": "Nocturia",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Nocturia",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.7.1.8",
+                  "code": [
+                    {
+                      "code": "34436003",
+                      "display": "Hematuria",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Hematuria",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "display": "sinus infections"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.7.2",
+              "code": [
+                {
+                  "code": "247355005",
+                  "display": "Flank pain",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Flank pain",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "discharge"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "polyps"
-              }
+              "linkId": "ROS.7.3",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.8",
-          "text": "Oral",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "dysphagia"
-              }
+              "code": "71414-7",
+              "display": "Musculoskeletal",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Musculoskeletal System",
+          "item": [
+            {
+              "linkId": "ROS.8.1",
+              "type": "group",
+              "text": "Joint",
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.1.1",
+                  "code": [
+                    {
+                      "code": "279069000",
+                      "display": "Pain",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Pain",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.1.2",
+                  "code": [
+                    {
+                      "code": "300887003",
+                      "display": "Swelling",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Swelling",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.1.3",
+                  "code": [
+                    {
+                      "code": "84445001",
+                      "display": "Stiffness",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Stiffness",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.1.4",
+                  "code": [
+                    {
+                      "code": "72704001",
+                      "display": "Fracture",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Fracture",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.1.5",
+                  "code": [
+                    {
+                      "code": "70733008",
+                      "display": "Range of motion limitation",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Range of motion limitation",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.1.6",
+                  "code": [
+                    {
+                      "code": "417893002",
+                      "display": "Deformity",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Deformity",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "display": "hoarseness"
-              }
+              "linkId": "ROS.8.2",
+              "type": "group",
+              "text": "Muscle",
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.2.1",
+                  "code": [
+                    {
+                      "code": "68962001",
+                      "display": "Pain",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Pain",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.2.2",
+                  "code": [
+                    {
+                      "code": "82470000",
+                      "display": "Fasciculation",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Fasciculation",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.2.3",
+                  "code": [
+                    {
+                      "code": "88092000",
+                      "display": "Atrophy",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Atrophy",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.2.4",
+                  "code": [
+                    {
+                      "code": "26544005",
+                      "display": "Weakness",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Weakness",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.8.2.5",
+                  "code": [
+                    {
+                      "code": "55300003",
+                      "display": "Cramps",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Cramps",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "display": "teeth/dentures"
-              }
+              "linkId": "ROS.8.3",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.9",
-          "text": "Neck",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "lumps"
-              }
+              "code": "71415-4",
+              "display": "Skin",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Skin",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.9.1",
+              "code": [
+                {
+                  "code": "399912005",
+                  "display": "Pressure ulcer",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Pressure ulcer",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "pain on movement"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.9.2",
+              "code": [
+                {
+                  "code": "271807003",
+                  "display": "Rash",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Rash",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.9.7",
+              "code": [
+                {
+                  "code": "43116000",
+                  "display": "Eczema",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Eczema",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.9.8",
+              "code": [
+                {
+                  "code": "418363000",
+                  "display": "Pruritus",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Pruritus",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.9.3",
+              "code": [
+                {
+                  "code": "247493001",
+                  "display": "Splitting nail",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Splitting nail",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.9.4",
+              "code": [
+                {
+                  "code": "89704006",
+                  "display": "Pitting nail",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Pitting nail",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.9.5",
+              "code": [
+                {
+                  "code": "278040002",
+                  "display": "Hair loss",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Hair loss",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.9.6",
+              "code": [
+                {
+                  "code": "271607001",
+                  "display": "Excessive hair growth",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Excessive hair growth",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "linkId": "ROS.9.9",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.10",
-          "text": "Breast",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "masses/tumors"
-              }
+              "code": "71416-2",
+              "display": "Neurologic System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Neurological",
+          "item": [
+            {
+              "type": "choice",
+              "code": [
+                {
+                  "code": "91175000",
+                  "display": "Seizure",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.1",
+              "text": "Seizure",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "tenderness"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.2",
+              "code": [
+                {
+                  "code": "44077006",
+                  "display": "Numbness",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Numbness",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "discharge"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.3",
+              "code": [
+                {
+                  "code": "62507009",
+                  "display": "Tingling",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Tingling",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "gynecomastia"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.4",
+              "code": [
+                {
+                  "code": "55406008",
+                  "display": "Increased pain to touch",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Increased pain to touch",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.5",
+              "code": [
+                {
+                  "code": "279079003",
+                  "display": "Dysesthesia",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Dysesthesia",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.6",
+              "code": [
+                {
+                  "code": "25064002",
+                  "display": "Headache",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Headache",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.7",
+              "code": [
+                {
+                  "code": "41786007",
+                  "display": "Weakness",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Weakness",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.8",
+              "code": [
+                {
+                  "code": "404640003",
+                  "display": "Dizziness",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Dizziness",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.9",
+              "code": [
+                {
+                  "code": "271594007",
+                  "display": "Fainting",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Fainting",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.10",
+              "code": [
+                {
+                  "code": "44695005",
+                  "display": "Paralysis",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Paralysis",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.11",
+              "code": [
+                {
+                  "code": "26079004",
+                  "display": "Tremors",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Tremors",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.12",
+              "code": [
+                {
+                  "code": "267078001",
+                  "display": "Involuntary movements",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Involuntary movements",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.13",
+              "code": [
+                {
+                  "code": "22631008",
+                  "display": "Unstable gait",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Unstable gait",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.14",
+              "code": [
+                {
+                  "code": "161898004",
+                  "display": "Fall",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Fall",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.15",
+              "code": [
+                {
+                  "code": "386807006",
+                  "display": "Impaired memory",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Impaired memory",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "drop-down",
+                        "display": "Drop down"
+                      }
+                    ],
+                    "text": "Drop down"
+                  }
+                }
+              ],
+              "linkId": "ROS.10.17",
+              "code": [
+                {
+                  "code": "26329005",
+                  "display": "Poor concentration",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Poor concentration",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.10.16",
+              "code": [
+                {
+                  "code": "229683000",
+                  "display": "Speech disorders",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Speech disorders",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "linkId": "ROS.10.18",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.11",
-          "text": "Pulmonary",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "cough"
-              }
+              "code": "71417-0",
+              "display": "Psychiatric System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Psychiatric",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.11.1",
+              "code": [
+                {
+                  "code": "7011001",
+                  "display": "Hallucinations",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Hallucinations",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "shortness of breath"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.11.2",
+              "code": [
+                {
+                  "code": "2073000",
+                  "display": "Delusions",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Delusions",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "pain"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.11.3",
+              "code": [
+                {
+                  "code": "366979004",
+                  "display": "Depressed mood",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Depressed mood",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "wheezing"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.11.4",
+              "code": [
+                {
+                  "code": "48694002",
+                  "display": "Anxiety",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Anxiety",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "hemoptysis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "sputum production"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "history of obstructive sleep apnea"
-              }
+              "linkId": "ROS.11.5",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.12",
-          "text": "Cardiac",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "chest pain"
-              }
+              "code": "71418-8",
+              "display": "Endocrine",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Endocrine",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.12.1",
+              "code": [
+                {
+                  "code": "69215007",
+                  "display": "Heat intolerance",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Heat intolerance",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "palpitations"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.12.2",
+              "code": [
+                {
+                  "code": "80585000",
+                  "display": "Cold intolerance",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Cold intolerance",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "orthopnea"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.12.3",
+              "code": [
+                {
+                  "code": "3716002",
+                  "display": "Goiter",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Goiter",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "murmur"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.12.4",
+              "code": [
+                {
+                  "code": "80182007",
+                  "display": "Menstrual irregularity",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Menstrual irregularity",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "syncope"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.12.5",
+              "code": [
+                {
+                  "code": "170951000",
+                  "display": "Menopausal symptoms",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Menopausal symptoms",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "type": "group",
+              "code": [],
+              "linkId": "ROS.12.6",
+              "text": "Breast",
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.12.6.1",
+                  "code": [
+                    {
+                      "code": "89164003",
+                      "display": "Mass/tumor",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Mass/tumor",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.12.6.2",
+                  "code": [
+                    {
+                      "code": "55222007",
+                      "display": "Tenderness",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Tenderness",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.12.6.3",
+                  "code": [
+                    {
+                      "code": "54302000",
+                      "display": "Nipple discharge",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Nipple discharge",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.12.6.4",
+                  "code": [
+                    {
+                      "code": "4754008",
+                      "display": "Gynecomastia",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Gynecomastia",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                }
+              ]
+            },
+            {
+              "linkId": "ROS.12.7",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.13",
-          "text": "Vascular",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "edema"
-              }
+              "code": "71419-6",
+              "display": "Hematologic - Lymphatic System",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Hematologic - lymphatic",
+          "item": [
+            {
+              "linkId": "ROS.13.1",
+              "type": "group",
+              "text": "Swollen glands",
+              "item": [
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.13.1.1",
+                  "code": [
+                    {
+                      "code": "425061006",
+                      "display": "Neck",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Neck",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.13.1.2",
+                  "code": [
+                    {
+                      "code": "127189005",
+                      "display": "Axilla",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Axilla",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "Radio Button"
+                      }
+                    }
+                  ],
+                  "linkId": "ROS.13.1.3",
+                  "code": [
+                    {
+                      "code": "127199000",
+                      "display": "Groin",
+                      "system": "http://snomed.info/sct"
+                    }
+                  ],
+                  "type": "choice",
+                  "text": "Groin",
+                  "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "display": "claudication"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.13.2",
+              "code": [
+                {
+                  "code": "79654002",
+                  "display": "Edema",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Edema",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "varicose veins"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.13.3",
+              "code": [
+                {
+                  "code": "63491006",
+                  "display": "Claudication",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Claudication",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "thrombophlebitis"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.13.4",
+              "code": [
+                {
+                  "code": "128060009",
+                  "display": "Varicose veins",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Varicose veins",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "ulcers"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.13.5",
+              "code": [
+                {
+                  "code": "64156001",
+                  "display": "Thrombophlebitis",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Thrombophlebitis",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.13.6",
+              "code": [
+                {
+                  "code": "271737000",
+                  "display": "Anemia",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Anemia",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.13.7",
+              "code": [
+                {
+                  "code": "125667009",
+                  "display": "Bruising",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Bruising",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.13.8",
+              "code": [
+                {
+                  "code": "64779008",
+                  "display": "Bleeding disorder",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Bleeding disorder",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.13.9",
+              "code": [
+                {
+                  "code": "95344007",
+                  "display": "Lower extremity ulcer",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Lower extremity ulcer",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
+            },
+            {
+              "linkId": "ROS.13.10",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.14",
-          "text": "Gastrointestinal",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "code": [
             {
-              "valueCoding": {
-                "display": "swallowing problems"
-              }
+              "code": "71420-4",
+              "display": "Allergic/immunologic",
+              "system": "http://loinc.org"
+            }
+          ],
+          "type": "group",
+          "text": "Allergic/immunologic",
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.14.1",
+              "code": [
+                {
+                  "code": "247472004",
+                  "display": "Hives",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Hives",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "abdominal pain"
-              }
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "radio-button"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "linkId": "ROS.14.2",
+              "code": [
+                {
+                  "code": "39579001",
+                  "display": "Anaphylaxis",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "type": "choice",
+              "text": "Anaphylaxis",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-asked"
             },
             {
-              "valueCoding": {
-                "display": "constipation"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "diarrhea"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "incontinence"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "nausea"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "vomiting"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "ulcers"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "melena"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "rectal bleeding"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "jaundice"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "heartburn"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hematemesis"
-              }
+              "linkId": "ROS.14.3",
+              "type": "string",
+              "text": "Other"
             }
           ]
         },
         {
           "linkId": "ROS.15",
-          "text": "Renal",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
+          "type": "display",
+          "text": "A review of systems is an inventory of body systems obtained through a series of questions seeking to identify signs and/or symptoms which the patient may be experiencing or has experienced",
+          "extension": [
             {
-              "valueCoding": {
-                "display": "dysuria"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "frequency"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "urgency"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hesitation"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "flank pain"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hematuria"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "incontinence"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "nocturia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "polyuria"
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
               }
             }
           ]
-        },
-        {
-          "linkId": "ROS.16",
-          "text": "Musculoskeletal",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "pain"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "swelling"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "stiffness"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "limitation of range of motion"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "arthritis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "gout"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "cramps"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "myalgia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "fasciculation"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "strophy"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "fracture"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "deformity"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "weakness"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.17",
-          "text": "Neurologic",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "seizures"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "poor memory"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "poor concentration"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "numbness / tingling"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "pins and needles sensation"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "hyperpathia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "dysesthesia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "weakness"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "paralysis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "tremors"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "involuntary movements"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "unstable gait"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "fall"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "vertigo"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "headache"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "stroke"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "speech disorders"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.18",
-          "text": "Psychiatric",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "hallucinations"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "delusions"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "anxiety"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "nervous breakdown"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "mood changes"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.19",
-          "text": "Hematology",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "anemia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "bruising"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "bleeding disorders (conditional)"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.20",
-          "text": "Endocrine",
-          "type": "open-choice",
-          "repeats": true,
-          "answerOption": [
-            {
-              "valueCoding": {
-                "display": "heat or cold intolerance"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "diabetes"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "lipid disorders"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "goiter"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "ROS.21",
-          "text": "Other",
-          "type": "text"
         }
       ]
     }

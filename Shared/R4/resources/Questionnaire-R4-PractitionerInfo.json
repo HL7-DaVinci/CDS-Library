@@ -11,14 +11,27 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "status": "draft",
   "item": [
     {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "PND",
-      "text": "Provider who perfromed the in-person evaluation",
+      "text": "Provider who performed the in-person evaluation",
       "type": "group",
       "item": [
         {
@@ -28,7 +41,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
+                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderLastName"
               }
             }
           ],
@@ -42,7 +55,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderFirstName"
               }
             }
           ],
@@ -56,7 +69,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderMiddleInitial"
               }
             }
           ],
@@ -70,12 +83,27 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderNPI"
               }
             }
           ],
           "text": "NPI",
           "type": "string"
+        },
+        {
+          "linkId": "PND.5",
+          "text": "Date of F2F encounter",
+          "type": "date",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
+              }
+            }
+          ]
         }
       ]
     }
