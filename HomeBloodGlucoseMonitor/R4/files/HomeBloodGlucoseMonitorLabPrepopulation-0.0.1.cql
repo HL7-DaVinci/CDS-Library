@@ -29,9 +29,14 @@ define RelevantDiagnoses: {
  * Lab information *************************************************************
  * *****************************************************************************
  */
-define "Laboratory": 'Quest Diagnostics'
+// define "Laboratory": 'Quest Diagnostics'
 define "Lab_Tech_NPI": '7852907749'
 define "Lab_Tech_Name": 'John S Doe'
+
+define "Laboratory": 
+  First([Observation: "Fasting Plasma Glucose Lab"]).performer Performer
+  where StartsWith(Performer.reference.value, 'Practitioner')
+  return Performer.display.value
 
 /*
  * *****************************************************************************
@@ -43,6 +48,7 @@ define "Lab_Tech_Name": 'John S Doe'
 define "Fasting_Plasma_Glucose_Date": {
   if exists("RelevantDiagnoses") then null else FHIRHelpers."ToDateTime"((First([Observation: "Fasting Plasma Glucose Lab"]).issued))
 } except { null }
+
 
 // Get initial fasting plasma glucose level
 define "Fasting_Plasma_Glucose_Level": {
