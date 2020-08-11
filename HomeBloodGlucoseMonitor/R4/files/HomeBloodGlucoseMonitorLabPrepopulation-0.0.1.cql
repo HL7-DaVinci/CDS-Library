@@ -33,10 +33,13 @@ define RelevantDiagnoses: {
 define "Lab_Tech_NPI": '7852907749'
 define "Lab_Tech_Name": 'John S Doe'
 
-define "Laboratory": 
-  First([Observation: "Fasting Plasma Glucose Lab"]).performer Performer
-  where StartsWith(Performer.reference.value, 'Practitioner')
-  return Performer.display.value
+define "Plasma Lab":
+  First([Observation: "Fasting Plasma Glucose Lab"])
+  
+define "Laboratory":
+  singleton from ("Plasma Lab".performer P
+    where StartsWith(FHIRHelpers.ToString(P.reference), 'Practitioner')
+    return FHIRHelpers.ToString(P.display))
 
 /*
  * *****************************************************************************

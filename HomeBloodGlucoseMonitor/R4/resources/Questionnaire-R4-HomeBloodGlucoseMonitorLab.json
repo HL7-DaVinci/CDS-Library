@@ -283,16 +283,19 @@
           "text": "NPI"
         },
         {
-          "type": "string",
-          "code": [
-            {
-              "code": "3.3",
-              "display": "Name of tester"
-            }
-          ],
-          "required": false,
           "linkId": "3.3",
-          "text": "Name of tester"
+          "text": "Name of tester",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Laboratory_Performer"
+              }
+            }
+          ]
         },
         {
           "type": "string",
