@@ -35,11 +35,16 @@ define "Lab_Tech_Name": 'John S Doe'
 
 define "Plasma Lab":
   First([Observation: "Fasting Plasma Glucose Lab"])
-  
-define "Laboratory":
+
+define "Laboratory_Performer":
   singleton from ("Plasma Lab".performer P
     where StartsWith(FHIRHelpers.ToString(P.reference), 'Practitioner')
     return FHIRHelpers.ToString(P.display))
+
+define "Laboratory_Org":
+  Last("Plasma Lab".organization O
+    where StartsWith(FHIRHelpers.ToString(O.reference), 'Organization')
+    return FHIRHelpers.ToString(O.display))
 
 /*
  * *****************************************************************************

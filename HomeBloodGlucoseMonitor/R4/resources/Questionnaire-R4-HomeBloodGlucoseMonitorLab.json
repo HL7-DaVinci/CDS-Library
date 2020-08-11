@@ -259,16 +259,19 @@
       "text": "Person or entity performing testing",
       "item": [
         {
-          "type": "string",
-          "code": [
-            {
-              "code": "3.1",
-              "display": "Laboratory"
-            }
-          ],
-          "required": false,
           "linkId": "3.1",
-          "text": "Laboratory"
+          "text": "Name of Laboratory",
+          "type": "string",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Laboratory_Organization"
+              }
+            }
+          ]
         },
         {
           "type": "string",
