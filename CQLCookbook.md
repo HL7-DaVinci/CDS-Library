@@ -4,11 +4,19 @@ Reference for creating a CQL prepopulation file for a DRLS Ruleset.
 ## Overview
 As described in [Ruleset Development 101](https://confluence.mitre.org/pages/editpage.action?pageId=200598742) *(this will eventually have to have a different public link)*, DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fethches FHIR resources form the EHR.
 
-### Contents
+## Contents
 Every ruleset within the CDS-Library repo will contain at least one CQL prepopulation file. These CQL files tend to follow the same generic format. The instructions below will provide:
-1. A generic template to set up your DRLS prepopulation file.
-2. A list of frequently used functions that can be copied and used within your respective prepopulation file. 
-3. An example of a prepopulation DRLS file.
+1. [CQL Template](#1-cql-template): A generic template to set up your DRLS prepopulation file.
+   - A) Header
+   - B) Codesystems
+   - C) Valusets
+   - D) Codes
+   - E) Request Parameter
+   - F) Patient Context
+   - G) Define Statement
+2. [DRLS-Specific Statements](#2-drls-specific-statements): A list of frequently used functions that can be copied and used within your respective prepopulation file. 
+3. [Example Prepopulation.cql file](#3-example-prepopulationcql-file) An example of a prepopulation DRLS file.
+4. [Links and Other Resources](#4-links-and-other-resources)
 
 
 ## 1) CQL Template
@@ -78,14 +86,40 @@ define function HighestObservation(ObsList List<Observation>):
 Note: See Part 2 below for a list CQL define statements that are commonly used within DRLS.
 
 
-## 2) DRLS-Specific Functions
-The functions below are all used in many currently existing DRLS propopulation files. Feel free to copy them and make small adjustments so that they may match the needs of any given ruleset
+## 2) DRLS-Specific Statements
 
-- 
-- 
-- 
-- 
-- 
+[Define statements](#g-define-statement) in CQL can be used to query specific information. Since most statements in DRLS prepopulation files come under the the `context Patient` declaration, these statements are typically used to pull specific information from a patient's electronic health record (EHR). Declaration statements
+
+### Headers
+#### 'Variable' Statements
+Define statements in CQL begin with the header:
+```sql
+define myStatement:
+//  Describe logic here
+```
+The header is succeeded by a flow of logical arguments that describe which specific information to pull from the patient's EHR. These type of statements can be called upon by other statemetents in the library, in order to filter out more specific patient information.
+
+#### 'Function' Statements
+Sometimes the logic defined in a CQL statement can either:
+1) Be quite complex
+2) Need to be reused in multiple 'define' statements throughout the CQL library
+In this case, it is typically advantageous to define a CQL function statement. Formatted very similarly to normal 'Define' statements, function statements have the following header:
+```sql
+define function myFunction(parameter1 parameter1_type, parameter2 parameter2_type, ...)
+//  Describe logic here
+```
+*Note: function headers do not necesarily need to contain parameters.*
+
+The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library.
+
+### DRLS Statement Templates
+The statements below are all used in many currently existing DRLS propopulation files. Feel free to copy them and make small adjustments so that they may match the needs of any given ruleset
+
+#### Basic Queries
+- Extract a List of All of a Patient's Conditions
+- Extract a Numeric Value of an Observation
+
+#### Advanced Queries
 
 
 ## 3) Example Prepopulation.cql file
@@ -127,12 +161,10 @@ define "ServiceEndDate": FHIRHelpers.ToDateTime(
   )
 ```
 
-## Links and Other Resources
+## 4) Links and Other Resources
 
 [CQL Spec](https://cql.hl7.org/)
-: This is the most up-to-date Clinical Quality Language Specification, describing the semantics of CQL. Much of the [CQL Template](##1-cql-template) information is derived from this CQL Spec
+: This is the most up-to-date Clinical Quality Language Specification, describing the semantics of CQL. Much of the [CQL Template](#1-cql-template) information is derived from this CQL Spec.
 
-
-## Template
-Hello
-Redirect to [the template](#template)
+[CDS Library](https://github.com/HL7-DaVinci/CDS-Library/)
+: The GitGub repository containing the existing DRLS rulesets
