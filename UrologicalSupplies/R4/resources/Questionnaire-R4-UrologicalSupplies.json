@@ -123,7 +123,6 @@
               "linkId": "5.1.1",
               "type": "string",
               "text": "Order",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.60",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -161,180 +160,6 @@
         {
           "required": false,
           "linkId": "5.2",
-          "text": "Order: Intermittent catheterization",
-          "type": "group",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
-              }
-            }
-          ],
-          "item": [
-            {
-              "linkId": "5.2.1",
-              "type": "string",
-              "text": "Order",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.59",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"
-                  }
-                }
-              ]
-            },
-            {
-              "linkId": "5.2.2",
-              "text": "Item Description",
-              "type": "string"
-            },
-            {
-              "linkId": "5.2.3",
-              "text": "Usual Max/Mo.",
-              "type": "string"
-            },
-            {
-              "linkId": "5.2.4",
-              "text": "Quantity",
-              "type": "string"
-            },
-            {
-              "linkId": "5.2.5",
-              "text": "Refills",
-              "type": "string"
-            }
-          ],
-          "repeats": true,
-          "answerOption": []
-        },
-        {
-          "required": false,
-          "linkId": "5.3",
-          "text": "Order: External catheters/urinary collection devices",
-          "type": "group",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
-              }
-            }
-          ],
-          "item": [
-            {
-              "linkId": "5.3.1",
-              "type": "string",
-              "text": "Order",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.62",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"
-                  }
-                }
-              ]
-            },
-            {
-              "linkId": "5.3.2",
-              "text": "Item Description",
-              "type": "string"
-            },
-            {
-              "linkId": "5.3.3",
-              "text": "Usual Max/Mo.",
-              "type": "string"
-            },
-            {
-              "linkId": "5.3.4",
-              "text": "Quantity",
-              "type": "string"
-            },
-            {
-              "linkId": "5.3.5",
-              "text": "Refills",
-              "type": "string"
-            }
-          ],
-          "repeats": "true",
-          "answerOption": []
-        },
-        {
-          "required": false,
-          "linkId": "5.4",
-          "text": "Order: Miscellaneous urological supplies",
-          "type": "group",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/questionnaire-item-control",
-                    "code": "gtable"
-                  }
-                ]
-              }
-            }
-          ],
-          "item": [
-            {
-              "linkId": "5.4.1",
-              "type": "string",
-              "text": "Order",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.63",
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-                  "valueExpression": {
-                    "language": "text/cql",
-                    "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"
-                  }
-                }
-              ]
-            },
-            {
-              "linkId": "5.4.2",
-              "text": "Item Description",
-              "type": "string"
-            },
-            {
-              "linkId": "5.4.3",
-              "text": "Usual Max/Mo.",
-              "type": "string"
-            },
-            {
-              "linkId": "5.4.4",
-              "text": "Quantity",
-              "type": "string"
-            },
-            {
-              "linkId": "5.4.5",
-              "text": "Refills",
-              "type": "string"
-            }
-          ],
-          "repeats": true,
-          "answerOption": []
-        },
-        {
-          "required": false,
-          "linkId": "5.5",
           "text": "Other Order",
           "type": "group",
           "repeats": true,
@@ -353,27 +178,27 @@
           ],
           "item": [
             {
-              "linkId": "5.5.1",
+              "linkId": "5.2.1",
               "type": "string",
               "text": "Order"
             },
             {
-              "linkId": "5.5.2",
+              "linkId": "5.2.2",
               "text": "Item Description",
               "type": "string"
             },
             {
-              "linkId": "5.5.3",
+              "linkId": "5.2.3",
               "text": "Usual Max/Mo.",
               "type": "string"
             },
             {
-              "linkId": "5.5.4",
+              "linkId": "5.2.4",
               "text": "Quantity",
               "type": "string"
             },
             {
-              "linkId": "5.5.5",
+              "linkId": "5.2.5",
               "text": "Refills",
               "type": "string"
             }
