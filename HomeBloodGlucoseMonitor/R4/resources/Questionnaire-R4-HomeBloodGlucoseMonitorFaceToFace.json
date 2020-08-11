@@ -12,7 +12,7 @@
   ],
   "id": "HomeBloodGlucoseMonitorFaceToFace",
   "name": "HomeBloodGlucoseMonitorFaceToFace",
-  "title": "Home Blood Glucose Face to Face Questionnaire",
+  "title": "Home Blood Glucose Face to Face Encounter Questionnaire",
   "status": "draft",
   "date": "2020-06-23",
   "publisher": "Da Vinci DTR",
@@ -54,13 +54,12 @@
     {
       "linkId": "4",
       "type": "group",
-      "text": "Patient diagnosis",
+      "text": "Patient diagnoses",
       "item": [
         {
           "linkId": "4.1",
-          "text": "Diabetes Mellitus",
+          "text": "Diabetes Mellitus Diagnoses",
           "type": "open-choice",
-          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",

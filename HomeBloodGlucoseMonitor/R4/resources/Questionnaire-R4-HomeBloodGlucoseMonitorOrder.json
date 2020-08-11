@@ -1,0 +1,524 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "HomeBloodGlucoseMonitorOrder",
+  "name": "HomeBloodGlucoseMonitorOrder",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "title": "Home Blood Glucose Monitor Order",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2019-11-14",
+  "publisher": "Da Vinci DTR",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorOrder-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorFaceToFace-prepopulation"
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
+    },
+    {
+      "linkId": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
+    },
+    {
+      "linkId": "3",
+      "text": "Prescribed Use",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "3.1",
+          "text": "Start date of order",
+          "type": "date",
+          "required": true
+        },
+        {
+          "linkId": "3.2",
+          "text": "Start date",
+          "type": "date",
+          "required": true
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Coverage Requirements",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "text": "Diabetes Mellitus Diagnoses",
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".DMCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
+        },
+        {
+          "linkId": "4.2",
+          "text": "Other diagnoses",
+          "type": "open-choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
+              }
+            }
+          ],
+          "repeats": "true",
+          "answerOption": []
+        },
+        {
+          "linkId": "4.3",
+          "text": "Diabetes Treatment",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "4.3.1",
+              "type": "boolean",
+              "text": "Diagnosis confirmed",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".DiabetesDiagnosed"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "4.3.2",
+              "type": "choice",
+              "text": "Treatment",
+              "enableWhen": [
+                {
+                  "question": "4.3.1",
+                  "operator": "=",
+                  "answerBoolean": "true"
+                }
+              ],
+              "initial": [
+                {
+                  "valueCoding": {
+                    "code": "Non-insulin Treated",
+                    "display": "Non-insulin Treated"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "Insulin Treated",
+                    "display": "Insulin Treated"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Non-insulin Treated",
+                    "display": "Non-insulin Treated"
+                  }
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".InsulinTreated"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "required": true,
+      "linkId": "5",
+      "text": "Device Order",
+      "item": [
+        {
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".DeviceRequestHcpcsCoding"
+              }
+            }
+          ],
+          "required": true,
+          "linkId": "5.1",
+          "text": "Glucose Monitor Code",
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.84"
+        },
+        {
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeBloodGlucoseMonitorOrderPrepopulation\".MonitorType"
+              }
+            }
+          ],
+          "required": true,
+          "linkId": "5.2",
+          "text": "Glucose Monitor Type",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Standard Monitor",
+                "display": "Standard Monitor"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Monitor With Special Features",
+                "display": "Monitor With Special Features"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "5.3",
+          "required": true,
+          "text": "Description (or brand name and model number) of Glucose Monitor"
+        },
+        {
+          "type": "choice",
+          "required": true,
+          "linkId": "5.4",
+          "text": "Is patient or caregiver able to use the glucose monitor?",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "linkId": "6",
+      "text": "Frequency of Use",
+      "item": [
+        {
+          "type": "group",
+          "linkId": "6.1",
+          "text": "Non-insulin Treated Frequency",
+          "enableWhen": [
+            {
+              "question": "4.3.2",
+              "operator": "!=",
+              "answerCoding": {
+                "code": "Insulin Treated"
+              }
+            }
+          ],
+          "item": [
+            {
+              "type": "integer",
+              "linkId": "6.1.1",
+              "text": "Frequency (daily)"
+            },
+            {
+              "type": "string",
+              "linkId": "6.1.2",
+              "text": "If > 1x daily, indicate reason",
+              "enableWhen": [
+                {
+                  "question": "6.1.1",
+                  "operator": ">",
+                  "answerInteger": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "linkId": "6.2",
+          "text": "Insulin Treated Frequency",
+          "enableWhen": [
+            {
+              "question": "4.3.2",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Insulin Treated",
+                "display": "Insulin Treated"
+              }
+            }
+          ],
+          "item": [
+            {
+              "type": "integer",
+              "linkId": "6.2.1",
+              "text": "Frequency (daily)"
+            },
+            {
+              "type": "string",
+              "linkId": "6.2.2",
+              "text": "If > 3x daily, indicate reason",
+              "enableWhen": [
+                {
+                  "question": "6.2.1",
+                  "operator": ">",
+                  "answerInteger": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "open-choice",
+          "linkId": "6.3",
+          "text": "Time of testing",
+          "required": true,
+          "repeats": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Fasting"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Before a meal "
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Before bedtime"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "Other"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "text": "Other timing description",
+          "linkId": "6.3.1"
+        },
+        {
+          "type": "choice",
+          "text": "Is continuous glucose monitoring required?",
+          "linkId": "6.4",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "text": "Supplies, Diabetic Test Strips (DTS)/Lancets",
+      "linkId": "7",
+      "item": [
+        {
+          "type": "group",
+          "linkId": "7.1",
+          "text": "Non-Insulin Treated Supplies",
+          "enableWhen": [
+            {
+              "question": "4.3.2",
+              "operator": "!=",
+              "answerCoding": {
+                "code": "Insulin Treated",
+                "display": "Insulin Treated"
+              }
+            }
+          ],
+          "item": [
+            {
+              "type": "choice",
+              "linkId": "7.1.1",
+              "text": "Supply",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "30-day Supply (30)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "90-day Supply (100)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "integer",
+              "linkId": "7.1.2",
+              "text": "Additional Supplies (in multiples of 30 or 100, must be justified above with excess frequency)",
+              "enableWhen": [
+                {
+                  "question": "6.1.1",
+                  "operator": ">",
+                  "answerInteger": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "linkId": "7.2",
+          "text": "Insulin Treated Supplies",
+          "enableWhen": [
+            {
+              "question": "4.3.2",
+              "operator": "=",
+              "answerCoding": {
+                "code": "Insulin Treated",
+                "display": "Insulin Treated"
+              }
+            }
+          ],
+          "item": [
+            {
+              "type": "choice",
+              "linkId": "7.2.1",
+              "text": "Supply",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "30-day Supply (100)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "90-day Supply (300)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "integer",
+              "linkId": "7.2.2",
+              "text": "Additional Supplies (in multiples of 30 or 100, must be justified above with excess frequency)",
+              "enableWhen": [
+                {
+                  "question": "6.2.1",
+                  "operator": ">",
+                  "answerInteger": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "integer",
+          "linkId": "7.3",
+          "text": "Number of Refills"
+        },
+        {
+          "type": "group",
+          "linkId": "7.4",
+          "text": "Continuous glucose monitoring annual supplies",
+          "enableWhen": [
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
+                "version": "2020",
+                "code": "K0554",
+                "display": "Receiver (monitor), dedicated, for use with therapeutic glucose continuous monitor system"
+              }
+            },
+            {
+              "question": "5.1",
+              "operator": "=",
+              "answerCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
+                "version": "2020",
+                "code": "S1031",
+                "display": "Continuous noninvasive glucose monitoring device, rental, including sensor, sensor replacement, and download to monitor (for physician interpretation of data, use cpt code)"
+              }
+            }
+          ],
+          "enableBehavior": "any",
+          "item": [
+            {
+              "type": "integer",
+              "linkId": "7.4.1",
+              "text": "Sensors (up to 60)"
+            },
+            {
+              "type": "integer",
+              "linkId": "7.4.2",
+              "text": "Transmitters (up to 3)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
