@@ -113,13 +113,22 @@ define function myFunction(parameter1 parameter1_type, parameter2 parameter2_typ
 The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library.
 
 ### DRLS Statement Templates
-The statements below are all used in many currently existing DRLS propopulation files. Feel free to copy them and make small adjustments so that they may match the needs of any given ruleset
+The statements below are all used in many currently existing DRLS propopulation files. They are generic templates instructing how to extract elements from a patient's EHR so that they can be used to prepopulate a FHIR questionnaire. Feel free to copy them and make small adjustments so that they may match the needs of any given ruleset. 
+
+#### Casting
+- Extract a CodeableConcept as a Code
+- Convert a FHIR Resource Timestamp into a FHIR Date Type
 
 #### Basic Queries
-- Extract a List of All of a Patient's Conditions
+- List of All of a Patient's Conditions
 - Extract a Numeric Value of an Observation
 
 #### Advanced Queries
+- List of All Active Conditions
+- List of All Relevant Conditions (as specified by a partiular value set)
+- Highest Numerical Lab Result
+- Extract a reference from a FHIR Resource
+- Display Name of a Reference
 
 
 ## 3) Example Prepopulation.cql file
