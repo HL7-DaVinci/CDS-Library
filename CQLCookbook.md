@@ -124,8 +124,31 @@ The statements below are all used in many currently existing DRLS propopulation 
 - Extract a Numeric Value of an Observation
 
 #### Advanced Queries
-- List of All Active Conditions
-- List of All Relevant Conditions (as specified by a partiular value set)
+- **List of All Active Conditions**
+- **List of All Relevant Conditions (as specified by a partiular value set)**
+Use
+:Return a list of all active patient conditions that are relevant to a specific device or service request (the specific list of conditions is defined by the value set)
+```sql
+define RelevantDiagnoses: 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "My Condition Valueset"]))) 
+
+define function CodesFromConditions(CondList List<Condition>):
+  distinct(flatten(
+    CondList C
+      let DiagnosesCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'http://hl7.org/fhir/sid/icd-10',
+            'http://hl7.org/fhir/sid/icd-10-cm',
+            'http://snomed.info/sct'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return DiagnosesCodings
+  ))
+
+```
+Required Changes
+:Relace "My Condition Valueset with a condition valueset previously defined in the library
+
 - Highest Numerical Lab Result
 - Extract a reference from a FHIR Resource
 - Display Name of a Reference
