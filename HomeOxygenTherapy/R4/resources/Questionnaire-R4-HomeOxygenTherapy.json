@@ -10,204 +10,40 @@
   },
   "title": "Home Oxygen Therapy",
   "status": "draft",
-  "subjectType": ["Patient"],
+  "subjectType": [
+    "Patient"
+  ],
   "date": "2019-12-06",
   "publisher": "Da Vinci DTR",
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeOxygenTherapy-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
     }
   ],
   "item": [
     {
       "linkId": "1",
-      "text": "Patient Information",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "1.1",
-          "text": "Last Name but Different This Time",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.2",
-          "text": "First Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.4",
-          "text": "Date Of Birth",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.5",
-          "text": "Gender",
-          "type": "choice",
-          "required": true,
-          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "1.6",
-          "text": "Medicare ID",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
-              }
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
         }
-      ]
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Patient/Beneficiary Demographics"
     },
     {
       "linkId": "2",
-      "text": "Provider who is performing face-to-face evaluation",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "2.1",
-          "text": "Last Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.2",
-          "text": "First Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.4",
-          "text": "NPI",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "2.5",
-          "text": "Date of Face-To-Face Evaluation",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".Today"
-              }
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/practitioner-info"
         }
-      ]
-    },
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Physician/NPP Demographics"
+    },    
     {
       "linkId": "3",
       "text": "Coverage Requirements",
@@ -215,64 +51,42 @@
       "item": [
         {
           "linkId": "3.1",
-          "text": "Relevant Patient Diagnoses (conditions that might be expected to improve with oxygen therapy)",
-          "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "answerOption": [
+          "type": "group",
+          "text": "Diagnoses",
+          "item": [
             {
-              "valueCoding": {
-                "display": "COPD"
-              }
+              "linkId": "3.1.1",
+              "text": "Relevant Patient Diagnoses (conditions that might be expected to improve with oxygen therapy)",
+              "type": "open-choice",
+              "required": true,
+              "repeats": true,
+              "answerOption": [],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
+                  }
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "display": "Bronchiectasis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Hypoxemia"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Diffuse interstitial lung disease"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Cystic fibrosis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Pulmonary neoplasm"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Erythrocytosis"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Pulmonary hypertension"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Recurring CHF d/t Cor Pulmonale"
-              }
-            }
-          ],
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
-              }
+              "linkId": "3.1.2",
+              "text": "Other Diagnoses",
+              "type": "open-choice",
+              "required": true,
+              "repeats": true,
+              "answerOption": [],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"HomeOxygenTherapyPrepopulation\".OtherDiagnoses"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -664,7 +478,23 @@
         },
         {
           "linkId": "5.4",
-          "text": "Type of order",
+          "text": "Order Intent",
+          "type": "choice",
+          "required": true,
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.5",
+          "text": "Order Reason",
           "type": "choice",
           "required": true,
           "answerOption": [
@@ -689,106 +519,110 @@
               }
             }
           ],
-          "extension": [
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.5",
-          "text": "Reason for Change in Status",
-          "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "enableWhen": [
-            {
-              "question": "5.4",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Change in status"
-              }
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Patient relocated"
-              }
+              "linkId": "5.5.1",
+              "text": "Reason for Change in Status",
+              "type": "open-choice",
+              "required": true,
+              "repeats": true,
+              "enableWhen": [
+                {
+                  "question": "5.5",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "Change in status"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "Patient relocated"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Different supplier"
+                  }
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "code": "Different supplier"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.6",
-          "text": "Reason for Revision or change in equipment",
-          "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "enableWhen": [
-            {
-              "question": "5.4",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Revision or change in equipment"
-              }
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "New Physician order"
-              }
+              "linkId": "5.5.2",
+              "text": "Reason for Revision or change in equipment",
+              "type": "open-choice",
+              "required": true,
+              "repeats": true,
+              "enableWhen": [
+                {
+                  "question": "5.5",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "Revision or change in equipment"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "New Physician order"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Beneficiary requested upgrade with signed ABN"
+                  }
+                }
+              ]
             },
             {
-              "valueCoding": {
-                "code": "Beneficiary requested upgrade with signed ABN"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.7",
-          "text": "Reason for Replacement",
-          "type": "open-choice",
-          "required": true,
-          "repeats": true,
-          "enableWhen": [
-            {
-              "question": "5.4",
-              "operator": "=",
-              "answerCoding": {
-                "code": "Replacement"
-              }
-            }
-          ],
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "Lost or stolen"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "End of lifetime"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Repair exceeds 60% of cost"
-              }
+              "linkId": "5.5.3",
+              "text": "Reason for Replacement",
+              "type": "choice",
+              "required": true,
+              "repeats": true,
+              "enableWhen": [
+                {
+                  "question": "5.5",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "Replacement"
+                  }
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "Lost or stolen"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "End of lifetime"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Repair exceeds 60% of cost"
+                  }
+                }
+              ]
             }
           ]
         }
       ]
+    },
+    {
+      "linkId": "6",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display",
+      "text": "This is a placeholder for Provider Signature"
     }
   ]
 }

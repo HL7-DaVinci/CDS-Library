@@ -7,16 +7,12 @@
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
     }
   ],
   "id": "HospitalBedsAndAccessories",
   "name": "HospitalBedsAndAccessories",
-  "title": "Hospital Bed Questionnaire",
+  "title": "Hospital Bed And Accessories Questionnaire",
   "status": "draft",
   "date": "2019-12-18",
   "publisher": "Da Vinci DTR",
@@ -26,112 +22,13 @@
   "item": [
     {
       "linkId": "1",
-      "type": "group",
-      "text": "Patient Information:",
-      "item": [
+      "extension": [
         {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
-              }
-            }
-          ],
-          "linkId": "1.1",
-          "text": "Last Name:",
-          "type": "string",
-          "required": true
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
-              }
-            }
-          ],
-          "linkId": "1.2",
-          "text": "First Name:",
-          "type": "string",
-          "required": true
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
-              }
-            }
-          ],
-          "linkId": "1.3",
-          "text": "Middle Initial:",
-          "type": "string",
-          "required": true
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
-              }
-            }
-          ],
-          "linkId": "1.4",
-          "text": "Date of Birth:",
-          "type": "date"
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
-              }
-            }
-          ],
-          "linkId": "1.5",
-          "text": "Gender:",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "male",
-                "display": "Male"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "female",
-                "display": "Female"
-              }
-            }
-          ]
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
-              }
-            }
-          ],
-          "linkId": "1.6",
-          "text": "Medicare ID:",
-          "type": "string",
-          "required": true
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
         }
-      ]
+      ],
+      "type": "display"
     },
     {
       "linkId": "2",
@@ -155,7 +52,7 @@
         },
         {
           "linkId": "2.2",
-          "text": "Relevant Diagnosis:",
+          "text": "Relevant Diagnoses",
           "type": "group",
           "item": [
             {
@@ -164,15 +61,20 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".CurrentDiagnoses"
+                    "expression": "\"BasicClinicalInfoPrepopulation\".AllDiagnoese"
                   }
                 }
               ],
               "linkId": "2.2.1",
-              "text": "Diagnosis:",
+              "text": "Diagnoses",
               "type": "open-choice",
               "repeats": true,
               "answerOption": []
+            },
+            {
+              "linkId": "2.2.2",
+              "text": "Describe",
+              "type": "text"
             }
           ]
         }
@@ -221,50 +123,8 @@
     {
       "linkId": "5",
       "text": "Type of order:",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "5.1",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "initial",
-                "display": "Initial or original order"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "revision",
-                "display": "Revision or change order"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "replacement",
-                "display": "Replacement"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "newSupplier",
-                "display": "New Supplier"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "other",
-                "display": "Other"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.2",
-          "type": "text",
-          "text": "Other"
-        }
-      ]
+      "type": "choice",
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
     },
     {
       "linkId": "6",
@@ -316,59 +176,13 @@
     },
     {
       "linkId": "8",
-      "type": "group",
-      "item": [
+      "extension": [
         {
-          "linkId": "8.1",
-          "text": "Signature:",
-          "type": "string",
-          "required": true
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
-              }
-            }
-          ],
-          "linkId": "8.2",
-          "text": "Name (Printed):",
-          "type": "string",
-          "required": true
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
-              }
-            }
-          ],
-          "linkId": "8.3",
-          "text": "Date (MM/DD/YYYY):",
-          "type": "date",
-          "required": true
-        },
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
-            }
-          ],
-          "linkId": "8.4",
-          "text": "NPI:",
-          "type": "string"
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
         }
-      ]
+      ],
+      "type": "display"
     }
   ]
 }

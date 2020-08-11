@@ -1,0 +1,50 @@
+{
+  "resourceType": "Library",
+  "id": "HomeBloodGlucoseMonitorOrder-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorOrder-prepopulation",
+  "name": "HomeBloodGlucoseMonitorOrder-prepopulation",
+  "version": "0.0.1",
+  "title": "Blood Glucose Monitor Prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.35"
+        }
+      ]
+    }, 
+    {
+      "type": "Medication",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.85"
+        }
+      ] 
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/HomeBloodGlucoseMonitor/r4/HomeBloodGlucoseMonitorOrderPrepopulation-0.0.1.cql"
+    }
+  ]
+}

@@ -6,44 +6,33 @@ codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
-//Obstructive Sleep Apnea
-code "G47.33": 'G47.33' from "ICD-10-CM"
-
-// AHI codes
-code "LP145624-5" :'LP145624-5' from "LOINC"
-//RDI codes
-code "90566-1": '90566-1' from "LOINC"
+valueset "Sleep Apnea or Breathing Related Sleep Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.31'
+valueset "Apnea Hypopnea Index Rate Measurement": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.123'
+valueset "Respiratory Disturbance Index": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.133'
 
 parameter device_request DeviceRequest
 
-
-define "OSA_Codes": { "G47.33" }
-
-define "AHI_Codes": { "LP145624-5" }
-define "RDI_Codes": { "90566-1" }
-
 context Patient
 
+define "False": false
 // coverage requirement info
-define OsaDiagnosis:
-  if exists(Confirmed(ActiveOrRecurring([Condition: "OSA_Codes"]))) then 'OSA' else 'null'
-
-define OsaDiagnosisExists: exists(Confirmed(ActiveOrRecurring([Condition: "OSA_Codes"])))
+define "RelevantDiagnoses": CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Sleep Apnea or Breathing Related Sleep Disorder"])))
 
 define OtherDiagnoses:
-  distinct(flatten(
-    [Condition] C
-      let ICD10Codings:
-        ((C.code.coding) CODING where CODING.system.value in {
-          'http://hl7.org/fhir/sid/icd-10',
-          'http://hl7.org/fhir/sid/icd-10-cm'
-        }
-        return CODING.code.value + ' - ' + CODING.display.value)
-      where C.clinicalStatus.coding.code = 'active'
-      and exists(ICD10Codings)
-      return ICD10Codings
-  ))
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except "RelevantDiagnoses"
 
+define function CodesFromConditions(CondList List<Condition>):
+  distinct(flatten(
+    CondList C
+      let DiagnosesCodings:
+          (C.code.coding) CODING where CODING.system.value in {
+            'http://hl7.org/fhir/sid/icd-10',
+            'http://hl7.org/fhir/sid/icd-10-cm',
+            'http://snomed.info/sct'
+          }
+          return FHIRHelpers.ToCode(CODING)
+      return DiagnosesCodings
+  ))
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -55,29 +44,18 @@ define PapDeviceRequested:
   else if  "DeviceRequestHcpcsCoding".code.value = 'E0601' then 'E0601'
   else 'null'
 
-define "Today": Today()
+define "AHI": GetObservationValue(LastestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Apnea Hypopnea Index Rate Measurement"], 3 months)), '/h')))
+define "RDI": GetObservationValue(LastestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Respiratory Disturbance Index"], 3 months)), '/h')))
 
-define "True": true
+define function LastestObservation(ObsList List<Observation>):
+  First(ObsList O sort by FHIRHelpers."ToDateTime"(issued) desc)
 
-define "False": false
+define function GetObservationValue(Obs Observation): 
+  NullSafeToQuantityWithoutUnit(cast Obs.value as Quantity)
 
-define "AHI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "AHI_Codes"], 3 months)), '/h'))
-define "RDI": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "RDI_Codes"], 3 months)), '/h'))
-
-define "AllAlergy": ConfirmedAllergy([AllergyIntolerance])
-
-define "AllDrugAllergyWithCode": 
-  distinct(flatten(
-    [AllergyIntolerance] A
-      let Codings: 
-        (A.code.coding) CODING where CODING.system.value in {
-          'http://www.nlm.nih.gov/research/umls/rxnorm'
-        }
-        return CODING.display.value + '-' + CODING.code.value
-      where exists(Codings)
-      return Codings 
-  ))
-
+define function NullSafeToQuantityWithoutUnit(Qty FHIR.Quantity):
+  if Qty is not null then Qty.value.value 
+  else null
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
@@ -98,22 +76,9 @@ define function Verified(ObsList List<Observation>):
 define function WithUnit(ObsList List<Observation>, Unit String):
   ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
 
-define function HighestObservation(ObsList List<Observation>):
-  Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-
 define function Confirmed(CondList List<Condition>):
   CondList C where C.verificationStatus.coding.code = 'confirmed'
 
-define function NullSafeToQuantity(Qty FHIR.Quantity):
-  if Qty is not null then
-    System.Quantity {
-      value: Qty.value.value,
-      unit: Coalesce(Qty.unit.value, Qty.code.value)
-    }
-  else null
 
-define function LowestObservation(ObsList List<Observation>):
-  Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
 
-define function ConfirmedAllergy(AllergyList List<AllergyIntolerance>):
-  AllergyList A where A.verificationStatus.coding.code in {'confirmed'}
+

@@ -37,28 +37,13 @@ define function ConvertEncounterDetails(EncounterList List<Encounter>):
             system: CODING.system.value,
             display: CODING.display.value,
             periodStart: E.period.start.value,
+            encounterReason: E.reasonCode[0].coding.display.value,
             type: 'encounter'
           }
         
         return EncounterCodings
     )
   )
-
-define OtherDiagnoses:
-  distinct(flatten(
-    [Condition] C
-      let ICD10Codings:
-        ((C.code.coding) CODING where CODING.system.value in {
-          'http://hl7.org/fhir/sid/icd-10',
-          'http://hl7.org/fhir/sid/icd-10-cm'
-        }
-        return CODING.code.value + ' - ' + CODING.display.value)
-      where C.clinicalStatus.coding.code = 'active'
-      and exists(ICD10Codings)
-      return ICD10Codings
-  ))
-
-define CurrentDiagnoses: ActiveConfirmedDiagnoese([Condition])
 
 define "DeviceRequestHcpcsCoding": singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -77,57 +62,13 @@ define "TrapezeOrdered": "DeviceRequestHcpcsCoding" in "TrapezeCodes"
 define "BedcradleOrdered": "DeviceRequestHcpcsCoding" in "BedcradleCodes"
 define "SafetyrailOrdered": "DeviceRequestHcpcsCoding" in "SafetyrailCodes"
 
-define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
-  distinct(
-    flatten(
-      CondList C
-        let DiagnosesCodings:
-          (C.code.coding) CODING where CODING.system.value in {
-            'http://hl7.org/fhir/sid/icd-10',
-            'http://hl7.org/fhir/sid/icd-10-cm',
-            'http://snomed.info/sct'
-          }
-          return Tuple {
-            code: CODING.code.value,
-            system: CODING.system.value,
-            display: CODING.display.value
-          }
-        where C.verificationStatus.coding.code = 'confirmed'
-          and C.clinicalStatus.coding.code in {'active', 'relapse'}
-          and exists(DiagnosesCodings)
-        return DiagnosesCodings
-    )
-  )
-
 define function EncounterLookBack(EncounterList List<Encounter>, LookBack System.Quantity):
   EncounterList E
     let LookBackInterval: Interval[Now() - LookBack, Now()]
     where (cast E.period.start as dateTime).value in LookBackInterval
       or NullSafeToInterval(cast E.period as Period) overlaps LookBackInterval
 
-define "True": true
-
-define "AllAlergy": ConfirmedAllergy([AllergyIntolerance])
-
-define "AllDrugAllergyWithCode": 
-  distinct(flatten(
-    [AllergyIntolerance] A
-      let Codings: 
-        (A.code.coding) CODING where CODING.system.value in {
-          'http://www.nlm.nih.gov/research/umls/rxnorm'
-        }
-        return CODING.display.value + '-' + CODING.code.value
-      where exists(Codings)
-      return Codings 
-  ))
-
-define function ConfirmedAllergy(AllergyList List<AllergyIntolerance>):
-  AllergyList A where A.verificationStatus.coding.code in {'confirmed'}
-
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
-define function ActiveOrRecurring(CondList List<Condition>):
-  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
-
 define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
   ObsList O
     let LookBackInterval: Interval[Now() - LookBack, Now()]
