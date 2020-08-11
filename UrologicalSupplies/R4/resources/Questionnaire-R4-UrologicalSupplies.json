@@ -121,9 +121,18 @@
           "item": [
             {
               "linkId": "5.1.1",
-              "type": "choice",
+              "type": "string",
               "text": "Order",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.60"
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.60",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"
+                  }
+                }
+              ]
             },
             {
               "linkId": "5.1.2",
@@ -170,9 +179,18 @@
           "item": [
             {
               "linkId": "5.2.1",
-              "type": "choice",
+              "type": "string",
               "text": "Order",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.59"
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.59",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"
+                  }
+                }
+              ]
             },
             {
               "linkId": "5.2.2",
@@ -219,9 +237,18 @@
           "item": [
             {
               "linkId": "5.3.1",
-              "type": "choice",
+              "type": "string",
               "text": "Order",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.62"
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.62",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"
+                  }
+                }
+              ]
             },
             {
               "linkId": "5.3.2",
@@ -268,9 +295,18 @@
           "item": [
             {
               "linkId": "5.4.1",
-              "type": "choice",
+              "type": "string",
               "text": "Order",
-              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.63"
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.63",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"
+                  }
+                }
+              ]
             },
             {
               "linkId": "5.4.2",
