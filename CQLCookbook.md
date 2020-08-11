@@ -1,6 +1,7 @@
 # CQL Cookbook
 Reference for creating a CQL prepopulation file for a DRLS Ruleset.
 
+
 ## Overview
 As described in [Ruleset Development 101](https://confluence.mitre.org/pages/editpage.action?pageId=200598742) *(this will eventually have to have a different public link)*, DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fethches FHIR resources form the EHR.
 
@@ -18,6 +19,7 @@ Every ruleset within the CDS-Library repo will contain at least one CQL prepopul
 3. [Example Prepopulation.cql file](#3-example-prepopulationcql-file) An example of a prepopulation DRLS file.
 4. [Links and Other Resources](#4-links-and-other-resources)
 
+***
 
 ## 1) CQL Template
 The structure of your CQL prepopulation file will generally follow the format below:
@@ -85,12 +87,13 @@ define function HighestObservation(ObsList List<Observation>):
 ```
 Note: See Part 2 below for a list CQL define statements that are commonly used within DRLS.
 
+***
 
 ## 2) DRLS-Specific Statements
 
 [Define statements](#g-define-statement) in CQL can be used to query specific information. Since most statements in DRLS prepopulation files come under the the `context Patient` declaration, these statements are typically used to pull specific information from a patient's electronic health record (EHR). Declaration statements
 
-### Headers
+### *Headers*
 #### 'Variable' Statements
 Define statements in CQL begin with the header:
 ```sql
@@ -112,22 +115,60 @@ define function myFunction(parameter1 parameter1_type, parameter2 parameter2_typ
 
 The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library.
 
-### DRLS Statement Templates
+
+### *DRLS Statement Templates*
 The statements below are all used in many currently existing DRLS propopulation files. They are generic templates instructing how to extract elements from a patient's EHR so that they can be used to prepopulate a FHIR questionnaire. Feel free to copy them and make small adjustments so that they may match the needs of any given ruleset. 
 
-#### Casting
+Each statement will include:
+1. A short description describing the context when the statement would be used
+2. A generic CQL snipped of the statement along with dependant helper functions. These can be copied and modified slightly in order to accomodate the needs of a new CQL prepopulation file
+3. A list of variables that should be changed in order to tailor the CQL statement to a specific need (ex. a specific valueset, condition, observation, etc.)
+4. An example from CDS-Libray where this type of code is implemented
+
+### Casting
 - Extract a CodeableConcept as a Code
 - Convert a FHIR Resource Timestamp into a FHIR Date Type
 
-#### Basic Queries
-- List of All of a Patient's Conditions
-- Extract a Numeric Value of an Observation
+### Basic Queries
+#### List of All of a Patient's Conditions
+#### Extract a Numeric Value of an Observation
+#### Extract the date of an Observation
+Find the most recent date that an Observation from a value set or from a list of codes occured. This is typically useful for pulling lab information.
+```sql
+// Find recent Observation in health record
+define "RecentObservation": ObservationLookBack([Observation: "Observation_Codes_Or_Valueset"], time_interval)
 
-#### Advanced Queries
-- **List of All Active Conditions**
-- **List of All Relevant Conditions (as specified by a partiular value set)**
-Use
-:Return a list of all active patient conditions that are relevant to a specific device or service request (the specific list of conditions is defined by the value set)
+// Extract date of Observation
+define "ReentObservationDate": ObservationLatestDate("RecentObservation")
+
+
+// Helper Functions
+
+// Look for any instances from a list of observations over a recent time interval
+define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
+  ObsList O
+    let LookBackInterval: Interval[Now() - LookBack, Now()]
+    where (cast O.effective as dateTime).value in LookBackInterval
+      or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
+      or FHIRHelpers."ToDateTime"(O.issued) in LookBackInterval
+    
+define function NullSafeToInterval(Pd FHIR.Period):
+  if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
+
+// Helper function to find most recent observation from a list
+define function ObservationLatestDate(ObsList List<Observation>):
+  Max(ObsList O return FHIRHelpers."ToDateTime"(O.issued))
+```
+Variables:
+- *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of observations or a defined group of codes that has been established in a previoud define statement.
+- *time_interval:* How far back from today you want to look in the patient's EHR for the observation.
+
+Example Implementation: `HomeOxygenTherapyPrepopulation-0.1.0.cql`
+
+### Advanced Queries
+#### List of All Active Conditions
+#### List of All Relevant Conditions (as specified by a partiular value set)
+Return a list of all active patient conditions that are relevant to a specific device or service request (the specific list of conditions is defined by the value set)
 ```sql
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "My Condition Valueset"]))) 
@@ -146,13 +187,41 @@ define function CodesFromConditions(CondList List<Condition>):
   ))
 
 ```
-Required Changes
-:Relace "My Condition Valueset with a condition valueset previously defined in the library
+Variables:
+- *My Condition Valueset:* with a condition valueset previously defined in the library
 
-- Highest Numerical Lab Result
-- Extract a reference from a FHIR Resource
-- Display Name of a Reference
+Example Implementation: `VentilatorsPrepopulation-0.1.0.cql`
 
+#### Highest Numerical Lab Result
+
+```sql
+define "HighestObservationResult": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Observation_Codes_or_Valueset"], time_interval)), 'unit'))
+
+
+// Helper Functions
+
+define function HighestObservation(ObsList List<Observation>):
+  Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
+  
+define function NullSafeToQuantity(Qty FHIR.Quantity):
+  if Qty is not null then
+    System.Quantity {
+      value: Qty.value.value,
+      unit: Coalesce(Qty.unit.value, Qty.code.value)
+    }
+  else null
+```
+Variables:
+- *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of observations or a defined group of codes that has been established in a previoud define statement.
+- *time_interval:* How far back from today you want to look in the patient's EHR for the observation.
+- *unit:* Unit of measurement for lab result (ex. mm[Hg], %, pH).
+
+Example Implementation: `HomeOxygenTherapyPrepopulation-0.1.0.cql`
+
+#### Extract a reference from a FHIR Resource
+#### Display Name of a Reference
+
+***
 
 ## 3) Example Prepopulation.cql file
 Below is a full example of a ruleset prepopulation file. This file prepopulates the questionnaire for the Non Emergency Ambulance Transportation ruleset, and is stored in [CDS-Library/NonEmergencyAmbulanceTransportation/R4/files/NonEmergencyAmbulanceTransportationPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/Shared_CQL_Library/NonEmergencyAmbulanceTransportation/R4/files/NonEmergencyAmbulanceTransportationPrepopulation-0.1.0.cql).
@@ -192,6 +261,8 @@ define "ServiceEndDate": FHIRHelpers.ToDateTime(
     )
   )
 ```
+
+***
 
 ## 4) Links and Other Resources
 
