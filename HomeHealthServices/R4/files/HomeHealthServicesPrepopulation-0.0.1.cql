@@ -2,20 +2,14 @@ library HomeHealthServicesPrepopulation  version '0.1.1'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
-// This cql and questionnaire combo can be considered a partial implementation of these forms:
-//  https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/Medicare-Home-Health-Benefit-Text-Only.pdf
-
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 
-
-
 parameter service_request ServiceRequest
 
-
-context Patient 
+context Patient
 
 define "Today": Today()
 
@@ -65,4 +59,3 @@ define function getCondition(index Integer) : singleton from (
       where ('Condition/' + cond.id ) = Diagnosis[index].condition.reference.value)
     
 
-define "DateF2F": RequestEncounter.period.start.value
