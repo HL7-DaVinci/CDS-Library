@@ -3,6 +3,7 @@ using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 
 valueset "Ambulance Transport Procedure": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.108'
+valueset "NEAT Qualifying Conditions": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.188'
 
 parameter service_request ServiceRequest
 
@@ -33,17 +34,13 @@ define "ServiceEndDate": FHIRHelpers.ToDateTime(
     )
   )
 
-// TODO: Patient Conditions will need to be filtered by NEAT Condition Value once they have been created
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "NEAT Qualifying Conditions"]))) 
 
 define OtherDiagnoses:
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
 
 // Helpers
-
-// TODO: Evaluation Date will need to be replaced with the Evaluation Date subquestionnaire once it has been merged into master
-// define "Today": Today()
 
 define function CodesFromConditions(CondList List<Condition>):
   distinct(flatten(

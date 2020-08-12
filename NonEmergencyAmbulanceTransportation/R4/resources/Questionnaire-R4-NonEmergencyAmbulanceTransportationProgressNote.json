@@ -389,92 +389,67 @@
           ]
         },
         {
-          "type": "boolean",
-          "code": [],
-          "required": false,
-          "linkId": "8.10",
-          "text": "Are there services that cannot be provided in the patient’s current setting?"
-        },
-        {
           "type": "group",
+          "linkId": "8.10",
           "code": [],
           "required": false,
-          "linkId": "8.11",
-          "text": "If Yes, specify by checking one or more of the following and adding a description:",
-          "enableWhen": [
-            {
-              "answerBoolean": true,
-              "question": "8.10",
-              "operator": "="
-            }
-          ],
+          "text": "Required services that necessitate abulance transport",
           "item": [
             {
               "type": "boolean",
               "code": [],
-              "required": false,
-              "linkId": "8.11.1",
-              "text": "Dialysis"
+              "required": true,
+              "linkId": "8.10.1",
+              "text": "Are there services that cannot be provided in the patient’s current setting?"
             },
             {
-              "type": "boolean",
-              "code": [],
+              "type": "open-choice",
               "required": false,
-              "linkId": "8.11.2",
-              "text": "Wound care"
-            },
-            {
-              "type": "boolean",
-              "code": [],
-              "required": false,
-              "linkId": "8.11.3",
-              "text": "Radiation therapy"
-            },
-            {
-              "type": "boolean",
-              "code": [],
-              "required": false,
-              "linkId": "8.11.4",
-              "text": "Chemotherapy"
-            },
-            {
-              "type": "boolean",
-              "code": [],
-              "required": false,
-              "linkId": "8.11.5",
-              "text": "O&P services"
-            },
-            {
-              "type": "boolean",
-              "code": [],
-              "required": false,
-              "linkId": "8.11.6",
-              "text": "Imaging"
-            },
-            {
-              "type": "boolean",
-              "code": [],
-              "required": false,
-              "linkId": "8.11.7",
-              "text": "Outpatient therapy"
-            },
-            {
-              "type": "boolean",
-              "code": [],
-              "required": false,
-              "linkId": "8.11.8",
-              "text": "Other"
-            },
-            {
-              "type": "string",
-              "code": [],
-              "required": false,
-              "linkId": "8.11.9",
+              "repeats": true,
+              "linkId": "8.10.2",
+              "text": "If Yes, specify by selecting one or more of the following:",
               "enableWhen": [
                 {
                   "answerBoolean": true,
-                  "question": "8.11.8",
+                  "question": "8.10.1",
                   "operator": "="
+                }
+              ],
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "code": "Dialysis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Wound care"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Radiation therapy"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Chemotherapy"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "O&P services"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Imaging"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Outpatient therpay"
+                  }
                 }
               ]
             },
@@ -482,8 +457,15 @@
               "type": "text",
               "code": [],
               "required": false,
-              "linkId": "8.11.10",
-              "text": "Description"
+              "linkId": "8.10.3",
+              "enableWhen": [
+                {
+                  "answerBoolean": true,
+                  "question": "8.10.1",
+                  "operator": "="
+                }
+              ],
+              "text": "List any other required services:"
             }
           ]
         }
