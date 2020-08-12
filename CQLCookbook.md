@@ -127,8 +127,9 @@ Each statement will include:
 
 
 
-### Basic Queries
-#### List of Patient's 'Other Diagnoses'
+### *Condition Resource Statements*
+
+### List of Patient's 'Other Diagnoses'
 If you are looking for all of a patient's conditions excluding the conditions defined by a previous statement
 ```sql
 define "OtherDiagnoses": [Condition] except "Excluding_These_Diagnoses"
@@ -190,7 +191,7 @@ Variables:
 
 Example Implementation: `HomeOxygenTherapyPrepopulation-0.1.0.cql`
 
-### *Advanced Queries*
+### *Observation Resource Queries*
 
 #### List of All Active Conditions
 Return a list of all Conditions that are active or occuring from a designated value set or condition list.
@@ -257,7 +258,37 @@ Variables:
 Example Implementation: `HomeOxygenTherapyPrepopulation-0.1.0.cql`
 
 #### Extract a reference from a FHIR Resource
-#### Display Name of a Reference
+#### Extract performer field of Observation (the performer field has a value of an array with references)
+Extract the display name of a reference within an Observation. Examples of this can be a referene to a Practitioner who performed the observation or the organization where the observation was performed.
+```sql
+// Retrieve the 'performer' field of the first observation in the lab.
+define "Lab Performer":
+  First([Observation: "My_Lab"]).performer
+  
+// Extract the display value of the Practitioner
+define "Tester":
+  if exists("Lab Performer") then 
+    "Lab" P
+    where P.type = 'Practitioner'
+    return P.display.value
+  else
+    null  
+    
+// Extract the display value of the Organization
+define "TestLaboratory":
+  if exists("Lab Performer") then 
+    "Lab" P
+    where P.type = 'Organization'
+    return P.display.value
+  else
+    null  
+```
+Variables:
+- *My_Lab:* Name of a list of lab observations or an observation value set.
+- 
+
+Example Implementation: `RespiratoryAssistDevicesPrepopulation-0.1.0.cql`
+
 
 ***
 
