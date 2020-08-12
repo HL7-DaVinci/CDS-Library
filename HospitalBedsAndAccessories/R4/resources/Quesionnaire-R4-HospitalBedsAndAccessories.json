@@ -12,7 +12,7 @@
   ],
   "id": "HospitalBedsAndAccessories",
   "name": "HospitalBedsAndAccessories",
-  "title": "Hospital Bed Questionnaire",
+  "title": "Hospital Bed And Accessories Questionnaire",
   "status": "draft",
   "date": "2019-12-18",
   "publisher": "Da Vinci DTR",
@@ -52,7 +52,7 @@
         },
         {
           "linkId": "2.2",
-          "text": "Relevant Diagnosis:",
+          "text": "Relevant Diagnoses",
           "type": "group",
           "item": [
             {
@@ -66,10 +66,15 @@
                 }
               ],
               "linkId": "2.2.1",
-              "text": "Diagnosis:",
+              "text": "Diagnoses",
               "type": "open-choice",
               "repeats": true,
               "answerOption": []
+            },
+            {
+              "linkId": "2.2.2",
+              "text": "Describe",
+              "type": "text"
             }
           ]
         }

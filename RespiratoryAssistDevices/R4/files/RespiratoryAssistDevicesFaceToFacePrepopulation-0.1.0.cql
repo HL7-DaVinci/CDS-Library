@@ -5,10 +5,6 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 codesystem "LOINC": 'http://loinc.org'
 codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 
-
-//Respiratory Assist Device Qualifying Condition grouping value set
-valueset "RAD Qualifying Condition": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.122'
-
 //Motor Neuron Disease or Spinal Muscular Atrophy Disorder
 valueset "Neuromuscular Disease": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.44'
 //Chronic Obstructive Lung Disease (COPD)
@@ -35,28 +31,6 @@ parameter device_request DeviceRequest
 
 
 context Patient
-
-
-define "RADDiagnoses":  [Condition: "RAD Qualifying Condition"]
-define "OtherDiagnoses": [Condition] except "RADDiagnoses"
-define "RADCodings": GetConditionCodings(ConfirmedActiveOrOccurringCondition("RADDiagnoses"))
-define "OtherDiagnosesCodings": GetConditionCodings(ConfirmedActiveOrOccurringCondition("OtherDiagnoses"))
-
-define function GetConditionCodings(ConditionList List<FHIR.Condition>):
-  distinct(
-    flatten(
-      ConditionList C
-        let ConditionCodings:
-          (C.code.coding) CODING
-          return FHIRHelpers.ToCode(CODING)
-        where exists(ConditionCodings)
-        return ConditionCodings
-    )
-  )
-
-define function ConfirmedActiveOrOccurringCondition(ConditionList List<FHIR.Condition>):
-  ConditionList C
-  where C.clinicalStatus.coding.code in {'active', 'relapse'} and C.verificationStatus.coding.code = 'confirmed'
 
 define "HasNeuromuscularDisease": exists([Condition: "Neuromuscular Disease"])
 define "HasCOPD": exists([Condition: "COPD"])
