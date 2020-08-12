@@ -49,7 +49,6 @@
       "item": [
         {
           "type": "date",
-          "required": false,
           "linkId": "2.1",
           "text": "Date of F2F encounter (MM/DD/YYYY)",
           "extension": [
@@ -412,36 +411,30 @@
     {
       "linkId": "8",
       "type": "group",
-      "required": false,
       "text": "Confined to Home Assessment",
       "item": [
         {
           "type": "group",
-          "required": false,
           "linkId": "8.1",
           "text": "Does beneficiary, because of illness or injury, need: (check all that apply)",
           "item": [
             {
               "type": "boolean",
-              "required": false,
               "linkId": "8.1.1",
               "text": "supportive devices"
             },
             {
               "type": "boolean",
-              "required": false,
               "linkId": "8.1.2",
               "text": "special transportation"
             },
             {
               "type": "boolean",
-              "required": false,
               "linkId": "8.1.3",
               "text": "assistance to leave residence"
             },
             {
               "type": "string",
-              "required": false,
               "linkId": "8.1.4",
               "text": "Describe"
             }
@@ -531,46 +524,21 @@
         },
         {
           "type": "group",
-          "required": false,
           "linkId": "8.5",
           "text": "Related physical limitations that support homebound status – impairment (check all that apply)",
           "item": [
             {
               "type": "group",
-              "code": [
-                {
-                  "code": "8.5.1",
-                  "display": "Nervous system/mental functions",
-                  "system": "linkId"
-                }
-              ],
-              "required": false,
               "linkId": "8.5.1",
               "text": "Nervous system/mental functions",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.1.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.1.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.1.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.1.2",
                   "text": "Functional"
                 }
@@ -578,40 +546,16 @@
             },
             {
               "type": "group",
-              "code": [
-                {
-                  "code": "8.5.2",
-                  "display": "sensory functions (eye, ear and related structures)",
-                  "system": "linkId"
-                }
-              ],
-              "required": false,
               "linkId": "8.5.2",
               "text": "sensory functions (eye, ear and related structures)",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.2.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.2.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.2.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.2.2",
                   "text": "Functional"
                 }
@@ -619,33 +563,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.3",
               "text": "voice and speech",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.3.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.3.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.3.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.3.2",
                   "text": "Functional"
                 }
@@ -653,33 +580,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.4",
               "text": "cardiovascular system",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.4.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.4.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.4.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.4.2",
                   "text": "Functional"
                 }
@@ -687,33 +597,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.5",
               "text": "hematological and immunological system",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.5.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.5.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.5.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.5.2",
                   "text": "Functional"
                 }
@@ -721,33 +614,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.6",
               "text": "respiratory system",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.6.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.6.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.6.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.6.2",
                   "text": "Functional"
                 }
@@ -755,33 +631,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.7",
               "text": "digestive system",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.7.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.7.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.7.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.7.2",
                   "text": "Functional"
                 }
@@ -789,33 +648,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.8",
               "text": "metabolic and endocrine system",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.8.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.8.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.8.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.8.2",
                   "text": "Functional"
                 }
@@ -823,33 +665,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.9",
               "text": "genitourinary system",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.9.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.9.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.9.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.9.2",
                   "text": "Functional"
                 }
@@ -857,33 +682,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.10",
               "text": "skin and related structures",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.10.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.10.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.10.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.10.2",
                   "text": "Functional"
                 }
@@ -891,33 +699,16 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.11",
               "text": "neuromusculoskeletal and movement-related structure",
               "item": [
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.11.1",
-                      "display": "Structural",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.11.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "code": [
-                    {
-                      "code": "8.5.11.2",
-                      "display": "Functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.11.2",
                   "text": "Functional"
                 }
@@ -925,20 +716,11 @@
             },
             {
               "type": "group",
-              "required": false,
               "linkId": "8.5.12",
               "text": "other",
               "item": [
                 {
                   "type": "string",
-                  "code": [
-                    {
-                      "code": "8.5.12.1",
-                      "display": "Describe this and state structural or functional",
-                      "system": "linkId"
-                    }
-                  ],
-                  "required": false,
                   "linkId": "8.5.12.1",
                   "text": "Describe this and state structural or functional"
                 }
@@ -951,13 +733,11 @@
     {
       "linkId": "9",
       "type": "string",
-      "required": false,
       "text": "Additional information necessary to describe why the above selected structural and functional and activity impairments/limitations support homebound status"
     },
     {
       "linkId": "10",
       "type": "string",
-      "required": false,
       "text": "Treatment plan:( required if necessary to support patient need for home health services)"
     },
     {
@@ -1061,13 +841,11 @@
         {
           "linkId": "11.2",
           "type": "string",
-          "required": false,
           "text": "Justification and signature if the patient's sole skilled service need is for skilled oversight of unskilled services (management and evaluation of the care plan or complex care plan management)"
         },
         {
           "linkId": "11.3",
           "type": "string",
-          "required": false,
           "text": "Signature"
         }
       ]
@@ -1293,7 +1071,6 @@
       "linkId": "15",
       "text": "Other Services",
       "type": "group",
-      "repeats": true,
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -1312,7 +1089,6 @@
           "linkId": "15.1",
           "text": "Service",
           "type": "choice",
-          "required": true,
           "repeats": true,
           "answerOption": [
             {
@@ -1342,37 +1118,31 @@
     {
       "linkId": "16",
       "type": "group",
-      "required": false,
       "text": "Other orders",
       "item": [
         {
           "linkId": "16.1",
           "type": "string",
-          "required": false,
           "text": "Medications (other drugs)"
         },
         {
           "linkId": "16.2",
           "type": "string",
-          "required": false,
           "text": "Supplies"
         },
         {
           "linkId": "16.3",
           "type": "string",
-          "required": false,
           "text": "Investigation/diagnostic testing"
         },
         {
           "linkId": "16.4",
           "type": "string",
-          "required": false,
           "text": "Consults"
         },
         {
           "linkId": "16.5",
           "type": "string",
-          "required": false,
           "text": "Other"
         }
       ]
@@ -1398,13 +1168,13 @@
                   "valueBoolean": true
                 }
               ],
-              "type": "display", 
-              "linkId": "17.1.1", 
+              "type": "display",
+              "linkId": "17.1.1",
               "text": "This is a placeholder for encounter provider signature"
             },
             {
-              "linkId": "17.2", 
-              "text": "Telephone number", 
+              "linkId": "17.2",
+              "text": "Telephone number",
               "type": "text"
             }
           ]
@@ -1432,13 +1202,13 @@
                   "valueBoolean": true
                 }
               ],
-              "type": "display", 
-              "linkId": "17.1.1", 
+              "type": "display",
+              "linkId": "18.1.1",
               "text": "This is a placeholder for encounter provider signature"
             },
             {
-              "linkId": "18.2", 
-              "text": "Telephone number", 
+              "linkId": "18.2",
+              "text": "Telephone number",
               "type": "text"
             }
           ]
