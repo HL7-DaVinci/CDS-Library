@@ -103,7 +103,7 @@
         {
           "required": false,
           "linkId": "5.1",
-          "text": "Orders",
+          "text": "Current Order",
           "type": "group",
           "extension": [
             {
@@ -154,13 +154,12 @@
               "type": "string"
             }
           ],
-          "repeats": true,
           "answerOption": []
         },
         {
           "required": false,
           "linkId": "5.2",
-          "text": "Other Order (category)",
+          "text": "Other Orders",
           "type": "group",
           "repeats": true,
           "extension": [
