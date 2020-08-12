@@ -23,7 +23,7 @@
   ],
   "dataRequirement": [
     {
-      "type": "Condition",
+      "type": "Observation",
       "codeFilter": [
         {
           "path": "code",
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "type": "Procedure",
+      "type": "Observation",
       "codeFilter": [
         {
           "path": "code",
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "type": "Procedure",
+      "type": "Observation",
       "codeFilter": [
         {
           "path": "code",
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "type": "Procedure",
+      "type": "Observation",
       "codeFilter": [
         {
           "path": "code",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "type": "Condition",
+      "type": "Observation",
       "codeFilter": [
         {
           "path": "code",
