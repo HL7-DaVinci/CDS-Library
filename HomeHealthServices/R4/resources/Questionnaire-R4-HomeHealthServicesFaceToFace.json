@@ -434,7 +434,7 @@
               "text": "assistance to leave residence"
             },
             {
-              "type": "string",
+              "type": "text",
               "linkId": "8.1.4",
               "text": "Describe"
             }
@@ -479,18 +479,12 @@
           ]
         },
         {
-          "type": "boolean",
-          "required": true,
           "linkId": "8.3",
-          "text": "Is there a normal inability to leave home?"
-        },
-        {
-          "linkId": "8.4",
-          "text": "Does leaving home require a considerable and taxing effort?",
+          "text": "Is there a medical contraindication to leaving home?",
           "type": "group",
           "item": [
             {
-              "linkId": "8.4.1",
+              "linkId": "8.3.1",
               "text": "Answer",
               "type": "choice",
               "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
@@ -516,7 +510,51 @@
               ]
             },
             {
-              "linkId": "8.4.2",
+              "linkId": "8.3.2",
+              "text": "Describe",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "boolean",
+          "required": true,
+          "linkId": "8.4",
+          "text": "Is there a normal inability to leave home?"
+        },
+        {
+          "linkId": "8.5",
+          "text": "Does leaving home require a considerable and taxing effort?",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "8.5.1",
+              "text": "Answer",
+              "type": "choice",
+              "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"
+                  }
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "code": "radio-button",
+                        "system": "http://hl7.org/fhir/questionnaire-item-control"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "8.5.2",
               "text": "Describe",
               "type": "text"
             }
@@ -524,204 +562,204 @@
         },
         {
           "type": "group",
-          "linkId": "8.5",
+          "linkId": "8.6",
           "text": "Related physical limitations that support homebound status – impairment (check all that apply)",
           "item": [
             {
               "type": "group",
-              "linkId": "8.5.1",
+              "linkId": "8.6.1",
               "text": "Nervous system/mental functions",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.1.1",
+                  "linkId": "8.6.1.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.1.2",
+                  "linkId": "8.6.1.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.2",
+              "linkId": "8.6.2",
               "text": "sensory functions (eye, ear and related structures)",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.2.1",
+                  "linkId": "8.6.2.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.2.2",
+                  "linkId": "8.6.2.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.3",
+              "linkId": "8.6.3",
               "text": "voice and speech",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.3.1",
+                  "linkId": "8.6.3.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.3.2",
+                  "linkId": "8.6.3.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.4",
+              "linkId": "8.6.4",
               "text": "cardiovascular system",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.4.1",
+                  "linkId": "8.6.4.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.4.2",
+                  "linkId": "8.6.4.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.5",
+              "linkId": "8.6.5",
               "text": "hematological and immunological system",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.5.1",
+                  "linkId": "8.6.5.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.5.2",
+                  "linkId": "8.6.5.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.6",
+              "linkId": "8.6.6",
               "text": "respiratory system",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.6.1",
+                  "linkId": "8.6.6.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.6.2",
+                  "linkId": "8.6.6.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.7",
+              "linkId": "8.6.7",
               "text": "digestive system",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.7.1",
+                  "linkId": "8.6.7.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.7.2",
+                  "linkId": "8.6.7.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.8",
+              "linkId": "8.6.8",
               "text": "metabolic and endocrine system",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.8.1",
+                  "linkId": "8.6.8.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.8.2",
+                  "linkId": "8.6.8.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.9",
+              "linkId": "8.6.9",
               "text": "genitourinary system",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.9.1",
+                  "linkId": "8.6.9.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.9.2",
+                  "linkId": "8.6.9.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.10",
+              "linkId": "8.6.10",
               "text": "skin and related structures",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.10.1",
+                  "linkId": "8.6.10.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.10.2",
+                  "linkId": "8.6.10.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.11",
+              "linkId": "8.6.11",
               "text": "neuromusculoskeletal and movement-related structure",
               "item": [
                 {
                   "type": "boolean",
-                  "linkId": "8.5.11.1",
+                  "linkId": "8.6.11.1",
                   "text": "Structural"
                 },
                 {
                   "type": "boolean",
-                  "linkId": "8.5.11.2",
+                  "linkId": "8.6.11.2",
                   "text": "Functional"
                 }
               ]
             },
             {
               "type": "group",
-              "linkId": "8.5.12",
+              "linkId": "8.6.12",
               "text": "other",
               "item": [
                 {
-                  "type": "string",
-                  "linkId": "8.5.12.1",
+                  "type": "text",
+                  "linkId": "8.6.12.1",
                   "text": "Describe this and state structural or functional"
                 }
               ]
@@ -737,7 +775,7 @@
     },
     {
       "linkId": "10",
-      "type": "string",
+      "type": "text",
       "text": "Treatment plan:( required if necessary to support patient need for home health services)"
     },
     {
@@ -767,85 +805,35 @@
             {
               "linkId": "11.1.1",
               "text": "Service",
-              "type": "choice",
+              "type": "open-choice",
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.105",
               "answerOption": [
-                {
-                  "valueCoding": {
-                    "display": "Administration of medications"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Tube feeding"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Wound care"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Catheters"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Ostomy care"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "NG and tracheostomy aspiration/care"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Psychiatric evaluation and therapy"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Teaching/training"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Observe/assess"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Complex care plan management"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Rehabilitation nursing"
-                  }
-                }
               ]
             },
             {
-              "linkId": "12.2",
-              "type": "text",
-              "text": "Frequency"
+              "linkId": "11.2",
+              "text": "Frequency",
+              "type": "choice",
+              "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+              "extension": [
+                {}
+              ]
             },
             {
-              "linkId": "12.3",
+              "linkId": "11.3",
               "type": "text",
               "text": "Duration"
             }
           ]
         },
         {
-          "linkId": "11.2",
-          "type": "string",
+          "linkId": "11.4",
+          "type": "text",
           "text": "Justification and signature if the patient's sole skilled service need is for skilled oversight of unskilled services (management and evaluation of the care plan or complex care plan management)"
         },
         {
-          "linkId": "11.3",
-          "type": "string",
+          "linkId": "11.5",
+          "type": "text",
           "text": "Signature"
         }
       ]
@@ -875,38 +863,18 @@
           "type": "choice",
           "required": true,
           "repeats": true,
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.99",
           "answerOption": [
-            {
-              "valueCoding": {
-                "display": "Restore patient function"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Perform maintenance therapy"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Therapeutic exercises"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Gait and balance training"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "ADL training"
-              }
-            }
           ]
         },
         {
           "linkId": "12.2",
-          "type": "text",
-          "text": "Frequency"
+          "text": "Frequency",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "extension": [
+            {}
+          ]
         },
         {
           "linkId": "12.3",
@@ -943,33 +911,18 @@
               "linkId": "13.1.1",
               "text": "Service",
               "type": "choice",
+              "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.101",
               "answerOption": [
-                {
-                  "valueCoding": {
-                    "display": "Restore patient function"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Perform maintenance therapy"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "Therapeutic exercises"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "display": "ADL training"
-                  }
-                }
               ]
             },
             {
               "linkId": "13.1.2",
-              "type": "text",
-              "text": "Frequency"
+              "text": "Frequency",
+              "type": "choice",
+              "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+              "extension": [
+                {}
+              ]
             },
             {
               "linkId": "13.1.3",
@@ -1006,7 +959,6 @@
         }
       ]
     },
-    ,
     {
       "linkId": "14",
       "text": "Speech-language Pathology",
@@ -1032,33 +984,18 @@
           "type": "choice",
           "required": true,
           "repeats": true,
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.103",
           "answerOption": [
-            {
-              "valueCoding": {
-                "display": "Swallowing"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Restore language function"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Restore cognitive function"
-              }
-            },
-            {
-              "valueCoding": {
-                "display": "Perform maintenance therapy"
-              }
-            }
           ]
         },
         {
           "linkId": "14.2",
-          "type": "text",
-          "text": "Frequency"
+          "text": "Frequency",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+          "extension": [
+            {}
+          ]
         },
         {
           "linkId": "14.3",
