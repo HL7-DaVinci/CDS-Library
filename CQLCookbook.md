@@ -161,12 +161,12 @@ Looking for all of a patient's conditions excluding the conditions defined by a 
 define "OtherDiagnoses": [Condition] except "Excluding_These_Diagnoses"
 ```
 Variables:
-- *Excluding_These_Diagnoses:* A statement querying certain conditions that was previosuly defined in the CQL Library. These are condtions that you don't wanted to be included in 'OtherDiagnoses'.
+- *Excluding_These_Diagnoses:* A statement querying a certain group of conditions that was previously defined in the CQL Library. These are condtions that you don't wanted to be included in 'OtherDiagnoses'.
 
 Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeBloodGlucoseMonitor/R4/files/HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql)
 
 ### List of All Relevant Conditions (as specified by a partiular value set)
-Return a list of all active patient conditions that are relevant to a specific device, service or medication request (the specific list of conditions is defined by the value set)
+Return a list of all active patient conditions that are relevant to a specific device, service, or medication request (the specific list of conditions is defined by the value set)
 ```sql
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "My_Condition_Valueset"]))) 
@@ -183,14 +183,14 @@ define function CodesFromConditions(CondList List<Condition>):
 
 ```
 Variables:
-- *My_Condition_Valueset:* A condition valueset that was previously defined in the library. This valueset should include diagnoses of conditions that are relevant to the ruleset at hand.
+- *My_Condition_Valueset:* A condition valueset that was previously defined in the library. This valueset should include diagnoses or conditions that are relevant to the ruleset at hand.
 
 Example Implementation: [VentilatorsPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Ventilators/R4/files/VentilatorsPrepopulation-0.1.0.cql)
 
 
 ### *II) Observation Resource Statements*
 
-### Extract a Numeric Value of an Observation
+### Extract Numeric Value of an Observation
 If an Observation Resource has a numeric value (as opposed to a code or a string), extract the numeric value from the resource.
 ```sql
 define "Numeric Observation Value": GetObservationValue("Observation_Resource")
@@ -243,7 +243,7 @@ Variables:
 Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeOxygenTherapy/R4/files/HomeOxygenTherapyPrepopulation-0.1.0.cql)
 
 ### Highest Numerical Lab Result
-
+From a group of lab Observation codes or a valueset, extract the Observation with the highest numeric value.
 ```sql
 define "HighestObservationResult": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Observation_Codes_or_Valueset"], time_interval)), 'unit'))
 
@@ -268,7 +268,7 @@ Variables:
 Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeOxygenTherapy/R4/files/HomeOxygenTherapyPrepopulation-0.1.0.cql)
 
 ### Extract performer field information from an Observation
-The Performer field has a value of an array with references. Extract the display name of a reference within an Observation. Examples of this can be a reference to a Practitioner who performed the observation or the organization where the observation was performed.
+The 'performer' field has a value of an array with references. Extract the display name of a reference within an Observation. Examples of this can be a reference to a Practitioner who performed the observation or the organization where the observation was performed.
 ```sql
 // Retrieve the 'performer' field of the first observation in the lab.
 define "Lab Performer":
