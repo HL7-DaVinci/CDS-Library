@@ -43,5 +43,5 @@ define City: HomeAddress.city.value
 define State: HomeAddress.state.value
 define Zip: HomeAddress.postalCode.value
 
-define Telecom: Coalesce (Patient.telecom telecom where telecom.system.value = 'phone' )
+define Telecom: Coalesce( Patient.telecom telecom where telecom.system.value = 'phone' )
 define Phone: Telecom.value.value
