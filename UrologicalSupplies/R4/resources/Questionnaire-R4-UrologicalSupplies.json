@@ -103,7 +103,7 @@
         {
           "required": false,
           "linkId": "5.1",
-          "text": "Order: Indwelling catheters",
+          "text": "Orders",
           "type": "group",
           "extension": [
             {
@@ -160,7 +160,7 @@
         {
           "required": false,
           "linkId": "5.2",
-          "text": "Other Order",
+          "text": "Other Order (category)",
           "type": "group",
           "repeats": true,
           "extension": [
