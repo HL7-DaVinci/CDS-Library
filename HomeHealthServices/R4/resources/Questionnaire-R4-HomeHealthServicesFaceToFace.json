@@ -770,7 +770,7 @@
     },
     {
       "linkId": "9",
-      "type": "string",
+      "type": "text",
       "text": "Additional information necessary to describe why the above selected structural and functional and activity impairments/limitations support homebound status"
     },
     {
@@ -862,7 +862,6 @@
           "text": "Service",
           "type": "choice",
           "required": true,
-          "repeats": true,
           "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.99",
           "answerOption": [
           ]
@@ -983,8 +982,7 @@
           "text": "Service",
           "type": "choice",
           "required": true,
-          "repeats": true,
-          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.103  ",
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.103",
           "answerOption": [
           ]
         },
@@ -1026,7 +1024,6 @@
           "linkId": "15.1",
           "text": "Service",
           "type": "choice",
-          "repeats": true,
           "answerOption": [
             {
               "valueCoding": {
