@@ -3,33 +3,31 @@ Reference for creating a CQL prepopulation file for a DRLS Ruleset.
 
 
 ## Overview
-As described in [Ruleset Development 101](https://confluence.mitre.org/pages/editpage.action?pageId=200598742) *(this will eventually have to have a different public link)*, DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fethches FHIR resources form the EHR.
+As described in [Ruleset Development 101](https://confluence.mitre.org/pages/editpage.action?pageId=200598742), DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fethches FHIR resources form the EHR.
 
 ## Contents
 Every ruleset within the CDS-Library repo will contain at least one CQL prepopulation file. These CQL files tend to follow the same generic format. The instructions below will provide:
 1. [CQL Template](#1-cql-template): A generic template to set up your DRLS prepopulation file.
    - A) Header
    - B) Codesystems
-   - C) Valusets
+   - C) Valuesets
    - D) Codes
    - E) Request Parameter
    - F) Patient Context
    - G) Define Statement
-2. [DRLS-Specific Statements](#2-drls-specific-statements): A list of frequently used functions that can be copied and used within your respective prepopulation file. 
-   - A) Headers
-      - "Variable" Statements
+      - "Query" Statements
       - "Function" Statements
-   - B) DRLS Statement Templates
-      - I) [Condition Resource Statements](#i-condition-resource-statements)
-         - *List of All Active Conditions*
-         - *List of Patient's 'Other Diagnoses'*
-         - *List of All Relevant Conditions (as specified by a partiular value set)*
-      - II) [Observation Resource Statements](#ii-observation-resource-statements)
-         - *Extract a Numeric Value of an Observation*
-         - *Extract the date of an Observation*
-         - *Highest Numerical Lab Result*
-         - *Extract performer field of Observation (the performer field has a value of an array with references)*
-3. [Example Prepopulation.cql file](#3-example-prepopulationcql-file) An example of a prepopulation DRLS file.*
+2. [DRLS Statement Templates](#2-drls-statement-templates): A list of frequently used functions that can be copied and modified to be used within your respective prepopulation file. 
+   - I) [Condition Resource Statements](#i-condition-resource-statements)
+      - *List of All Active Conditions*
+      - *List of Patient's 'Other Diagnoses'*
+      - *List of All Relevant Conditions (as specified by a partiular value set)*
+   - II) [Observation Resource Statements](#ii-observation-resource-statements)
+      - *Extract a Numeric Value of an Observation*
+      - *Extract the date of an Observation*
+      - *Highest Numerical Lab Result*
+      - *Extract performer field of Observation (the performer field has a value of an array with references)*
+3. [Example Prepopulation.cql file](#3-example-prepopulationcql-file) An example of a prepopulation DRLS file.
 4. [Links and Other Resources](#4-links-and-other-resources)
 
 ***
@@ -37,9 +35,9 @@ Every ruleset within the CDS-Library repo will contain at least one CQL prepopul
 ## 1) CQL Template
 The structure of your CQL prepopulation file will generally follow the format below:
 
-*Notes:
+*Notes:*
   - Most of the information from this section is described in futher detail within HL7's [CQL Authoring Guide](https://cql.hl7.org/02-authorsguide.html).
-  - The code exerpts below are taken from the [Home Oxygen Therapy Prepopulation file](https://github.com/HL7-DaVinci/CDS-Library/tree/Shared_CQL_Library/HomeOxygenTherapy).*
+  - The code excerpts below are taken from the [Home Oxygen Therapy Prepopulation file](https://github.com/HL7-DaVinci/CDS-Library/tree/Shared_CQL_Library/HomeOxygenTherapy).
 
 ### A) Header
 Name library, define FHIR version, and include any helper libraries.
@@ -48,7 +46,7 @@ library HomeOxygenTherapyPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 ```
-Note: Library name should match CQL filename (without the version number).
+*Note:* Library name should match CQL filename (without the version number).
 
 ### B) Codesystems
 Define the codesystems that will be used within the patient's FHIR resources.
@@ -59,7 +57,7 @@ codesystem "SNOMED-CT": 'http://snomed.info/sct'
 codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 codesystem "FHIRRequestIntent": 'http://hl7.org/fhir/request-intent'
 ```
-Note: Above are frequently used codesystems for Conditions, Observations, and Procedures.
+*Note:* Above are frequently used codesystems for Conditions, Observations, and Procedures.
 
 ### C) Valuesets
 Define coding valuesets that can be called upon later in the library.
@@ -67,7 +65,7 @@ Define coding valuesets that can be called upon later in the library.
 valueset "Home Oxygen Therapy Qualifying Conditions": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.25'
 valueset "Stationary Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.80'
 ```
-Note: Value Set Object Identifier Codes (OIDs) can be found through the [Value Set Authority Center (VSAC)](https://vsac.nlm.nih.gov/authoring).
+*Note:* Value Set Object Identifier Codes (OIDs) can be found through the [Value Set Authority Center (VSAC)](https://vsac.nlm.nih.gov/authoring).
 
 ### D) Codes
 Define codes from codesystems (defined above) that can be called upon later in the library.
@@ -76,11 +74,11 @@ code "Hematocrit [Volume Fraction] of Arterial blood": '32354-3' from "LOINC"
 ```
 
 ### E) Request Parameter
-Define a parameter which can be referenced anywhere in the CQL Libray.
+Define a request parameter which can be referenced anywhere in the CQL Libray.
 ```sql
 parameter device_request DeviceRequest
 ```
-Note: DRLS typically uses DeviceRequest, ServiceRequest and MedicationRequest as common parameters.
+*Note:* DRLS typically uses DeviceRequest, ServiceRequest and MedicationRequest as common parameters.
 
 ### F) Patient Context
 Specify that the statements below this should be interpreted with reference to a single patient.
@@ -89,8 +87,8 @@ context Patient
 ```
 
 ### G) Define Statement
-The basic unit of logic within a library, a define statement introduces a named expression that can be referenced within tbe library, or by other libraries.
-This can operate like a variable of like a function
+The basic unit of logic within a library, a define statement introduces a named expression that can be referenced within the library, or by other libraries.
+This can operate like a query or like a function:
 ```sql
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Home Oxygen Therapy Qualifying Conditions"])))
@@ -98,17 +96,10 @@ define RelevantDiagnoses:
 define function HighestObservation(ObsList List<Observation>):
   Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
 ```
-Note: See Part 2 below for a list CQL define statements that are commonly used within DRLS.
 
-***
+Define statements in CQL can be used to query specific information. Since most statements in DRLS prepopulation files come under the the `context Patient` declaration, these statements are typically used to pull specific information from a patient's electronic health record (EHR). Declaration statements come in two forms: queries and functions.
 
-## 2) DRLS-Specific Statements
-
-[Define statements](#g-define-statement) in CQL can be used to query specific information. Since most statements in DRLS prepopulation files come under the the `context Patient` declaration, these statements are typically used to pull specific information from a patient's electronic health record (EHR). Declaration statements
-
-### *A) Headers*
-
-#### 'Variable' Statements
+#### 'Query' Statements
 Define statements in CQL begin with the header:
 ```sql
 define myStatement:
@@ -130,7 +121,11 @@ define function myFunction(parameter1 parameter1_type, parameter2 parameter2_typ
 The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library.
 
 
-### *B) DRLS Statement Templates* 
+*Note:* See [Part 2](#2-drls-specific-statements) below for a list CQL define statements that are commonly used within DRLS.
+
+***
+
+## 2) DRLS Statement Templates
 
 The statements below are all used in many currently existing DRLS propopulation files. They are generic templates instructing how to extract elements from a patient's EHR so that they can be used to prepopulate a FHIR questionnaire. Feel free to copy them and make small adjustments so that they may match the needs of any given ruleset. 
 
@@ -139,7 +134,6 @@ Each statement will include:
 2. A generic CQL snipped of the statement along with dependant helper functions. These can be copied and modified slightly in order to accomodate the needs of a new CQL prepopulation file
 3. A list of variables that should be changed in order to tailor the CQL statement to a specific need (ex. a specific valueset, condition, observation, etc.)
 4. An example from CDS-Libray where this type of code is implemented
-
 
 
 ### *I) Condition Resource Statements*
