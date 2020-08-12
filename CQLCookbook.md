@@ -3,7 +3,7 @@ Reference for creating a CQL prepopulation file for a DRLS Ruleset.
 
 
 ## Overview
-As described in the Ruleset Development 101 document, DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fethches FHIR resources form the EHR.
+As described in the Ruleset Development 101 document, DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fetches FHIR resources form the EHR.
 
 ## Contents
 Every ruleset within the CDS-Library repo will contain at least one CQL prepopulation file. These CQL files tend to follow the same generic format. The instructions below will provide:
