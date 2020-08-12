@@ -267,7 +267,7 @@ Variables:
 
 Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeOxygenTherapy/R4/files/HomeOxygenTherapyPrepopulation-0.1.0.cql)
 
-### Extract performer field information from ab Observation
+### Extract performer field information from an Observation
 The Performer field has a value of an array with references. Extract the display name of a reference within an Observation. Examples of this can be a reference to a Practitioner who performed the observation or the organization where the observation was performed.
 ```sql
 // Retrieve the 'performer' field of the first observation in the lab.
