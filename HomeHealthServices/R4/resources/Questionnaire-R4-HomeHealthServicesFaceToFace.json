@@ -984,7 +984,7 @@
           "type": "choice",
           "required": true,
           "repeats": true,
-          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.103",
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.103  ",
           "answerOption": [
           ]
         },
@@ -1059,27 +1059,27 @@
       "item": [
         {
           "linkId": "16.1",
-          "type": "string",
+          "type": "text",
           "text": "Medications (other drugs)"
         },
         {
           "linkId": "16.2",
-          "type": "string",
+          "type": "text",
           "text": "Supplies"
         },
         {
           "linkId": "16.3",
-          "type": "string",
+          "type": "text",
           "text": "Investigation/diagnostic testing"
         },
         {
           "linkId": "16.4",
-          "type": "string",
+          "type": "text",
           "text": "Consults"
         },
         {
           "linkId": "16.5",
-          "type": "string",
+          "type": "text",
           "text": "Other"
         }
       ]
