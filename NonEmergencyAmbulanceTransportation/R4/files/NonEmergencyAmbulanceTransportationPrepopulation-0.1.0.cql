@@ -43,7 +43,7 @@ define OtherDiagnoses:
 // Helpers
 
 // TODO: Evaluation Date will need to be replaced with the Evaluation Date subquestionnaire once it has been merged into master
-define "Today": Today()
+// define "Today": Today()
 
 define function CodesFromConditions(CondList List<Condition>):
   distinct(flatten(

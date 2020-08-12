@@ -53,51 +53,15 @@
       "text": "This is a placeholder for Physician/NPP Demographics"
     },
     {
-      "type": "group",
-      "code": [],
-      "required": false,
-      "linkId": "3",
-      "text": "Evaluation",
-      "item": [
+      "extension": [
         {
-          "type": "date",
-          "code": [],
-          "required": true,
-          "linkId": "3.1",
-          "text": "Date of evaluation (MM/DD/YYYY):",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".Today"
-              }
-            }
-          ]
-        },
-        {
-          "type": "boolean",
-          "code": [],
-          "required": true,
-          "linkId": "3.2",
-          "text": "Is this an evaluation for Non-Emergency Ambulance Transportation and related services?",
-          "answerValueSet": "http://terminology.hl7.org/ValueSet/v2-0136"
-        },
-        {
-          "type": "string",
-          "code": [],
-          "required": false,
-          "linkId": "3.3",
-          "text": "If No, purpose of the encounter:",
-          "enableWhen": [
-            {
-              "answerBoolean": false,
-              "question": "3.2",
-              "operator": "="
-            }
-          ]
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/encounter"
         }
-      ]
+      ],
+      "linkId": "3",
+      "type": "display",
+      "text": "This is a placeholder for Encounter"
     },
     {
       "linkId": "4",
