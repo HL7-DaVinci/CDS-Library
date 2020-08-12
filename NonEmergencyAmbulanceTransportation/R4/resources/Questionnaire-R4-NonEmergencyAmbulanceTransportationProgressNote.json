@@ -452,20 +452,6 @@
                   }
                 }
               ]
-            },
-            {
-              "type": "text",
-              "code": [],
-              "required": false,
-              "linkId": "8.10.3",
-              "enableWhen": [
-                {
-                  "answerBoolean": true,
-                  "question": "8.10.1",
-                  "operator": "="
-                }
-              ],
-              "text": "List any other required services:"
             }
           ]
         }
