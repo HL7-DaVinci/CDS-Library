@@ -151,7 +151,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HomeHealthServicesPrepopulation\".RelavantDiagnosisCoding"
+                "expression": "\"HomeHealthServicesPrepopulation\".PatientDiagnoses"
               }
             }
           ]
@@ -167,7 +167,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"HomeHealthServicesPrepopulation\".OtherDiagnosesCoding"
+                "expression": "\"HomeHealthServicesPrepopulation\".PatientDiagnoses"
               }
             }
           ]
