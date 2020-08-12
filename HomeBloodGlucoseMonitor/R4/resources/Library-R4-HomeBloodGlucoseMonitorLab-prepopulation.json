@@ -2,6 +2,7 @@
     "resourceType": "Library",
     "id": "HomeBloodGlucoseMonitorLab-prepopulation",
     "name": "HomeBloodGlucoseMonitorLab-prepopulation",
+    "url": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeBloodGlucoseMonitorLab-prepopulation",
     "version": "0.0.1",
     "title": "Blood Glucose Monitor Lab Prepopulation",
     "status": "draft",
