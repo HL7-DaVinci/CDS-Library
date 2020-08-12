@@ -3,7 +3,7 @@ Reference for creating a CQL prepopulation file for a DRLS Ruleset.
 
 
 ## Overview
-As described in [Ruleset Development 101](https://confluence.mitre.org/pages/editpage.action?pageId=200598742), DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fethches FHIR resources form the EHR.
+As described in the Ruleset Development 101 document, DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fethches FHIR resources form the EHR.
 
 ## Contents
 Every ruleset within the CDS-Library repo will contain at least one CQL prepopulation file. These CQL files tend to follow the same generic format. The instructions below will provide:
@@ -97,7 +97,7 @@ define function HighestObservation(ObsList List<Observation>):
   Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
 ```
 
-Define statements in CQL can be used to query specific information. Since most statements in DRLS prepopulation files come under the the `context Patient` declaration, these statements are typically used to pull specific information from a patient's electronic health record (EHR). Declaration statements come in two forms: queries and functions.
+Define statements in CQL can be used to query specific information. Since most statements in DRLS prepopulation files come under the `context Patient` declaration, these statements are typically used to pull specific information from a patient's electronic health record (EHR). Declaration statements come in two forms: queries and functions.
 
 #### 'Query' Statements
 Define statements in CQL begin with the header:
@@ -111,6 +111,7 @@ The header is succeeded by a flow of logical arguments that describe which speci
 Sometimes the logic defined in a CQL statement can either:
 1) Be quite complex
 2) Need to be reused in multiple 'define' statements throughout the CQL library
+
 In this case, it is typically advantageous to define a CQL function statement. Formatted very similarly to normal 'Define' statements, function statements have the following header:
 ```sql
 define function myFunction(parameter1 parameter1_type, parameter2 parameter2_type, ...)
@@ -127,13 +128,13 @@ The header is again succeeded by a flow of logical arguments. These arguments ca
 
 ## 2) DRLS Statement Templates
 
-The statements below are all used in many currently existing DRLS propopulation files. They are generic templates instructing how to extract elements from a patient's EHR so that they can be used to prepopulate a FHIR questionnaire. Feel free to copy them and make small adjustments so that they may match the needs of any given ruleset. 
+The statements below are used in many currently existing DRLS prepopulation files. They are generic templates instructing how to extract elements from a patient's EHR so that they can be used to prepopulate a FHIR questionnaire. Feel free to copy them and make small adjustments so that they may match the needs of any given ruleset. 
 
 Each statement will include:
 1. A short description describing the context when the statement would be used
-2. A generic CQL snipped of the statement along with dependant helper functions. These can be copied and modified slightly in order to accomodate the needs of a new CQL prepopulation file
+2. A generic CQL snippet of the statement along with dependant helper functions. These can be copied and modified slightly in order to accomodate the needs of a new CQL prepopulation file.
 3. A list of variables that should be changed in order to tailor the CQL statement to a specific need (ex. a specific valueset, condition, observation, etc.)
-4. An example from CDS-Libray where this type of code is implemented
+4. An example from CDS-Library where this type of code is implemented
 
 
 ### *I) Condition Resource Statements*
@@ -155,20 +156,20 @@ Variables:
 Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeBloodGlucoseMonitor/R4/files/HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql)
 
 ### List of Patient's 'Other Diagnoses'
-If you are looking for all of a patient's conditions excluding the conditions defined by a previous statement
+Looking for all of a patient's conditions excluding the conditions defined by a previous statement
 ```sql
 define "OtherDiagnoses": [Condition] except "Excluding_These_Diagnoses"
 ```
 Variables:
-- *Excluding_These_Diagnoses:* A statement querying certain conditions that was previosuly defined in the CQL Library. These are condtions that you don't wanted to be included in 'OtherDiagnoses'
+- *Excluding_These_Diagnoses:* A statement querying certain conditions that was previosuly defined in the CQL Library. These are condtions that you don't wanted to be included in 'OtherDiagnoses'.
 
 Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeBloodGlucoseMonitor/R4/files/HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql)
 
 ### List of All Relevant Conditions (as specified by a partiular value set)
-Return a list of all active patient conditions that are relevant to a specific device or service request (the specific list of conditions is defined by the value set)
+Return a list of all active patient conditions that are relevant to a specific device, service or medication request (the specific list of conditions is defined by the value set)
 ```sql
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "My Condition Valueset"]))) 
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "My_Condition_Valueset"]))) 
 
 define function CodesFromConditions(CondList List<Condition>):
   distinct(flatten(
@@ -182,7 +183,7 @@ define function CodesFromConditions(CondList List<Condition>):
 
 ```
 Variables:
-- *My Condition Valueset:* with a condition valueset previously defined in the library
+- *My_Condition_Valueset:* A condition valueset that was previously defined in the library. This valueset should include diagnoses of conditions that are relevant to the ruleset at hand.
 
 Example Implementation: [VentilatorsPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Ventilators/R4/files/VentilatorsPrepopulation-0.1.0.cql)
 
@@ -236,7 +237,7 @@ define function ObservationLatestDate(ObsList List<Observation>):
   Max(ObsList O return FHIRHelpers."ToDateTime"(O.issued))
 ```
 Variables:
-- *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of observations or a defined group of codes that has been established in a previoud define statement.
+- *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of observations or a defined group of Observation codes that has been established in a previous CQL statement.
 - *time_interval:* How far back from today you want to look in the patient's EHR for the observation.
 
 Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeOxygenTherapy/R4/files/HomeOxygenTherapyPrepopulation-0.1.0.cql)
@@ -245,7 +246,6 @@ Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://githu
 
 ```sql
 define "HighestObservationResult": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Observation_Codes_or_Valueset"], time_interval)), 'unit'))
-
 
 // Helper Functions
 
@@ -261,14 +261,14 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
   else null
 ```
 Variables:
-- *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of observations or a defined group of codes that has been established in a previoud define statement.
+- *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of Observations or a defined group of Observation codes that has been established in a previous define statement.
 - *time_interval:* How far back from today you want to look in the patient's EHR for the observation.
 - *unit:* Unit of measurement for lab result (ex. mm[Hg], %, pH).
 
 Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeOxygenTherapy/R4/files/HomeOxygenTherapyPrepopulation-0.1.0.cql)
 
-### Extract performer field of Observation (the performer field has a value of an array with references)
-Extract the display name of a reference within an Observation. Examples of this can be a referene to a Practitioner who performed the observation or the organization where the observation was performed.
+### Extract performer field information from ab Observation
+The Performer field has a value of an array with references. Extract the display name of a reference within an Observation. Examples of this can be a reference to a Practitioner who performed the observation or the organization where the observation was performed.
 ```sql
 // Retrieve the 'performer' field of the first observation in the lab.
 define "Lab Performer":
@@ -346,4 +346,4 @@ define "ServiceEndDate": FHIRHelpers.ToDateTime(
 : This is the most up-to-date Clinical Quality Language Specification, describing the semantics of CQL. Much of the [CQL Template](#1-cql-template) information is derived from this CQL Spec.
 
 [CDS Library](https://github.com/HL7-DaVinci/CDS-Library/)
-: The GitGub repository containing the existing DRLS rulesets
+: The GitHub repository containing the existing DRLS rulesets
