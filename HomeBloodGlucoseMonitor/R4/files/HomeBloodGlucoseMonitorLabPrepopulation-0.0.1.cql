@@ -29,42 +29,24 @@ define RelevantDiagnoses: {
  * Lab information *************************************************************
  * *****************************************************************************
  */
-// define "Laboratory": 'Quest Diagnostics'
-define "Lab_Tech_NPI": '7852907749'
-define "Lab_Tech_Name": 'John S Doe'
-
-
-
-define "Plasma Lab":
+define "Plasma Lab Performer":
   First([Observation: "Fasting Plasma Glucose Lab"]).performer
 
 define "Tester":
-  if exists("Plasma Lab") then 
-    "Plasma Lab" P
+  if exists("Plasma Lab Performer") then 
+    "Plasma Lab Performer" P
     where P.type = 'Practitioner'
     return P.display.value
   else
     null  
 
 define "TestLaboratory":
-  if exists("Plasma Lab") then 
-    "Plasma Lab" P
+  if exists("Plasma Lab Performer") then 
+    "Plasma Lab Performer" P
     where P.type = 'Organization'
     return P.display.value
   else
     null  
-
-/*
-define "Laboratory_Performer":
-  singleton from ("Plasma Lab".performer P
-    where StartsWith(FHIRHelpers.ToString(P.reference), 'Practitioner')
-    return FHIRHelpers.ToString(P.display))
-
-define "Laboratory_Org":
-  Last("Plasma Lab".organization O
-    where StartsWith(FHIRHelpers.ToString(O.reference), 'Organization')
-    return FHIRHelpers.ToString(O.display))
-    */
 
 /*
  * *****************************************************************************
