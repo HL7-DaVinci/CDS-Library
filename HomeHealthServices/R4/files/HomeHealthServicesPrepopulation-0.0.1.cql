@@ -16,12 +16,6 @@ parameter service_request ServiceRequest
 
 context Patient 
 
-define "Today": Today()
-
-define "True": true
-
-define "False": false
-
 define RelevantDiagnoses: 
   [Condition] condition
   	where ('Condition/' + condition.id) = RequestEncounter.diagnosis[0].condition.reference.value
