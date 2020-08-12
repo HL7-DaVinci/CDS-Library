@@ -125,12 +125,19 @@ Each statement will include:
 3. A list of variables that should be changed in order to tailor the CQL statement to a specific need (ex. a specific valueset, condition, observation, etc.)
 4. An example from CDS-Libray where this type of code is implemented
 
-### Casting
-- Extract a CodeableConcept as a Code
-- Convert a FHIR Resource Timestamp into a FHIR Date Type
+
 
 ### Basic Queries
-#### List of All of a Patient's Conditions
+#### List of Patient's 'Other Diagnoses'
+If you are looking for all of a patient's conditions excluding the conditions defined by a previous statement
+```sql
+define "OtherDiagnoses": [Condition] except "Excluding_These_Diagnoses"
+```
+Variables:
+- *Excluding_These_Diagnoses:* A statement querying certain conditions that was previosuly defined in the CQL Library. These are condtions that you don't wanted to be included in 'OtherDiagnoses'
+
+Example Implementation: `HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql`
+
 #### Extract a Numeric Value of an Observation
 If an Observation Resource has a numeric value (as opposed to a code or a string), extract the numeric value from the resource.
 ```sql
@@ -186,6 +193,21 @@ Example Implementation: `HomeOxygenTherapyPrepopulation-0.1.0.cql`
 ### *Advanced Queries*
 
 #### List of All Active Conditions
+Return a list of all Conditions that are active or occuring from a designated value set or condition list.
+```sql
+// Define list of patient Conditions from a value set
+define "ActiveConditions": ActiveOrOccuringCondition([Condition: "Condition_Value_Set"])
+
+// Helper Function
+define function ActiveOrOccurringCondition(ConditionList List<FHIR.Condition>):
+  ConditionList C
+  where C.clinicalStatus.coding.code in {'active', 'relapse'}
+```
+Variables:
+- *Condition_Value_Set:* List of conditions or value set that the statement will search over to check whether each condition is active or occuring.
+
+Example Implementation: `HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql`
+
 #### List of All Relevant Conditions (as specified by a partiular value set)
 Return a list of all active patient conditions that are relevant to a specific device or service request (the specific list of conditions is defined by the value set)
 ```sql
@@ -196,12 +218,9 @@ define function CodesFromConditions(CondList List<Condition>):
   distinct(flatten(
     CondList C
       let DiagnosesCodings:
-          (C.code.coding) CODING where CODING.system.value in {
-            'http://hl7.org/fhir/sid/icd-10',
-            'http://hl7.org/fhir/sid/icd-10-cm',
-            'http://snomed.info/sct'
-          }
+          (C.code.coding) CODING 
           return FHIRHelpers.ToCode(CODING)
+      where exists(ConditionCodings)
       return DiagnosesCodings
   ))
 
