@@ -463,62 +463,26 @@
     },
     {
       "linkId": "10",
-      "text": "Signature, name, signature date, NPI, address, and telephone number of ordering physician",
       "type": "group",
+      "text": "Signature, name, signature date, NPI, address, and telephone number of ordering physician",
       "item": [
         {
           "linkId": "10.1",
-          "text": "Signature",
-          "type": "string",
-          "required": true
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+              "valueCanonical": "questionnaire/provider-signature"
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
+              "valueBoolean": true
+            }
+          ],
+          "type": "display",
+          "text": "This is a placeholder for Provider Signature"
         },
         {
           "linkId": "10.2",
-          "text": "Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "10.3",
-          "text": "Date",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"HomeHealthServicesPrepopulation\".Today"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "10.4",
-          "text": "Physician/NPP NPI (Note: Required if WOPD)",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "10.5",
           "text": "Telephone",
           "type": "string",
           "required": true,
