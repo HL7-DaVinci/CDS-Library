@@ -1,0 +1,219 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "UrologicalSupplies",
+  "name": "UrologicalSuppliesOrder",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/UrologicalSupplies-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+    }
+  ],
+  "title": "UrologicalSupplies Order Questionnaire",
+  "status": "draft",
+  "date": "2020-06-22",
+  "publisher": "Da Vinci DTR",
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    },
+    {
+      "linkId": "2",
+      "type": "group",
+      "required": false,
+      "text": "Diagnosis",
+      "item": [
+        {
+          "linkId": "2.1",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".RelevantDiagnoses"
+              }
+            }
+          ],
+          "text": "Patient Qualifying Diagnoses",
+          "type": "open-choice",
+          "repeats": true,
+          "required": true,
+          "answerOption": []
+        },
+        {
+          "linkId": "2.2",
+          "text": "Other Diagnoses",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"UrologicalSuppliesPrepopulation\".CurrentDiagnoses"
+              }
+            }
+          ],
+          "type": "open-choice",
+          "require": true,
+          "repeats": true,
+          "answerOption": []
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "type": "group",
+      "required": false,
+      "text": "Order Start Date",
+      "item": [
+        {
+          "type": "date",
+          "required": false,
+          "linkId": "3.1",
+          "text": "Order start date, if different from date of order"
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "required": false,
+      "text": "Type of Order",
+      "type": "open-choice",
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
+    },
+    {
+      "linkId": "5",
+      "type": "group",
+      "required": false,
+      "text": "Order",
+      "item": [
+        {
+          "required": false,
+          "linkId": "5.1",
+          "text": "Current Order",
+          "type": "group",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
+          "item": [
+            {
+              "linkId": "5.1.1",
+              "type": "string",
+              "text": "Order",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "5.1.2",
+              "text": "Item Description",
+              "type": "string"
+            },
+            {
+              "linkId": "5.1.3",
+              "text": "Usual Max/Mo.",
+              "type": "string"
+            },
+            {
+              "linkId": "5.1.4",
+              "text": "Quantity",
+              "type": "string"
+            },
+            {
+              "linkId": "5.1.5",
+              "text": "Refills",
+              "type": "string"
+            }
+          ],
+          "answerOption": []
+        },
+        {
+          "required": false,
+          "linkId": "5.2",
+          "text": "Other Orders",
+          "type": "group",
+          "repeats": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "gtable"
+                  }
+                ]
+              }
+            }
+          ],
+          "item": [
+            {
+              "linkId": "5.2.1",
+              "type": "string",
+              "text": "Order"
+            },
+            {
+              "linkId": "5.2.2",
+              "text": "Item Description",
+              "type": "string"
+            },
+            {
+              "linkId": "5.2.3",
+              "text": "Usual Max/Mo.",
+              "type": "string"
+            },
+            {
+              "linkId": "5.2.4",
+              "text": "Quantity",
+              "type": "string"
+            },
+            {
+              "linkId": "5.2.5",
+              "text": "Refills",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "6",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}
