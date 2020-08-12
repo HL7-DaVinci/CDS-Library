@@ -132,6 +132,24 @@ Each statement will include:
 ### Basic Queries
 #### List of All of a Patient's Conditions
 #### Extract a Numeric Value of an Observation
+If an Observation Resource has a numeric value (as opposed to a code or a string), extract the numeric value from the resource.
+```sql
+define "Numeric Observation Value": GetObservationValue("Observation_Resource")
+
+// Helper Functions
+define function GetObservationValue(Obs Observation): 
+  NullSafeToQuantity(cast Obs.value as Quantity)
+  
+define function NullSafeToQuantity(Qty FHIR.Quantity):
+  if Qty is not null then
+    Qty.value.value  
+  else null
+```
+Variables:
+- *Observation_Resource:* An observation resource that has previously been defined in the CQL library.
+
+Example Implementation: `RespiratoryAssistDevicesPrepopulation-0.1.0.cql`
+
 #### Extract the date of an Observation
 Find the most recent date that an Observation from a value set or from a list of codes occured. This is typically useful for pulling lab information.
 ```sql
@@ -165,7 +183,8 @@ Variables:
 
 Example Implementation: `HomeOxygenTherapyPrepopulation-0.1.0.cql`
 
-### Advanced Queries
+### *Advanced Queries*
+
 #### List of All Active Conditions
 #### List of All Relevant Conditions (as specified by a partiular value set)
 Return a list of all active patient conditions that are relevant to a specific device or service request (the specific list of conditions is defined by the value set)
