@@ -115,7 +115,7 @@
               }
             }
           ],
-          "text": "Patient Diagnoses related to need for a ventilator",
+          "text": "Patient Diagnoses related to need for a non-emergency ambulance transportation",
           "type": "open-choice",
           "required": true,
           "repeats": true,
