@@ -20,8 +20,8 @@ Every ruleset within the CDS-Library repo will contain at least one CQL prepopul
 2. [DRLS Statement Templates](#2-drls-statement-templates): A list of frequently used functions that can be copied and modified to be used within your respective prepopulation file. 
    - I) [Condition Resource Statements](#i-condition-resource-statements)
       - *List of All Active Conditions*
-      - *List of Patient's 'Other Diagnoses'*
       - *List of All Relevant Conditions (as specified by a partiular value set)*
+      - *List of Patient's 'Other Diagnoses'*
    - II) [Observation Resource Statements](#ii-observation-resource-statements)
       - *Extract a Numeric Value of an Observation*
       - *Extract the date of an Observation*
@@ -155,16 +155,6 @@ Variables:
 
 Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeBloodGlucoseMonitor/R4/files/HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql)
 
-### List of Patient's 'Other Diagnoses'
-Looking for all of a patient's Conditions excluding the Conditions defined by a previous statement
-```sql
-define "OtherDiagnoses": [Condition] except "Excluding_These_Diagnoses"
-```
-Variables:
-- *Excluding_These_Diagnoses:* A statement querying a certain group of Conditions that was previously defined in the CQL Library. These are Conditions that you don't wanted to be included in 'OtherDiagnoses'.
-
-Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeBloodGlucoseMonitor/R4/files/HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql)
-
 ### List of All Relevant Conditions (as specified by a partiular value set)
 Return a list of all active patient Conditions that are relevant to a specific device, service, or medication request (the specific list of Conditions is defined by the value set)
 ```sql
@@ -186,6 +176,16 @@ Variables:
 - *My_Condition_Valueset:* A Condition valueset that was previously defined in the library. This valueset should include diagnoses or conditions that are relevant to the ruleset at hand.
 
 Example Implementation: [VentilatorsPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Ventilators/R4/files/VentilatorsPrepopulation-0.1.0.cql)
+
+### List of Patient's 'Other Diagnoses'
+Looking for all of a patient's Conditions excluding the Conditions defined by a previous statement
+```sql
+define "OtherDiagnoses": [Condition] except "Excluding_These_Diagnoses"
+```
+Variables:
+- *Excluding_These_Diagnoses:* A statement querying a certain group of Conditions that was previously defined in the CQL Library. These are Conditions that you don't wanted to be included in 'OtherDiagnoses'.
+
+Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeBloodGlucoseMonitor/R4/files/HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql)
 
 
 ### *II) Observation Resource Statements*
