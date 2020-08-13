@@ -1,0 +1,574 @@
+{
+  "status": "draft",
+  "resourceType": "Questionnaire",
+  "id": "pain-assessment",
+  "name": "Pain-Assessment",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|2.7"
+    ],
+    "tag": [
+      {
+        "code": "lformsVersion: 24.0.0"
+      }
+    ]
+  },
+  "item": [
+    {
+      "type": "group",
+      "required": false,
+      "linkId": "PA",
+      "text": "Pain Assessment",
+      "item": [
+        {
+          "type": "choice",
+          "code": [
+            {
+              "code": "39111-0",
+              "display": "Body site",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "PA.1.1",
+          "text": "Body site",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "LA12706-0",
+                "display": "Abdomen"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA29192-4",
+                "display": "Upper Extremity-Left"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA29191-6",
+                "display": "Upper Extremity-Right"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA24413-9",
+                "display": "Lower Extremity-Left"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA24414-7",
+                "display": "Lower Extremity-Right"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA18111-7",
+                "display": "Chest"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA18116-6",
+                "display": "Head"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA16744-7",
+                "display": "Pelvis"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA4476-3",
+                "display": "Stomach"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA18788-2",
+                "display": "Eye-left"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA18789-0",
+                "display": "Eye-right"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA4584-4",
+                "display": "Liver"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA4654-5",
+                "display": "Pancreas"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA4591-9",
+                "display": "Kidney"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA4255-1",
+                "display": "Breast"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA4340-1",
+                "display": "Spine"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA4331-0",
+                "display": "Skull"
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "code": [
+            {
+              "code": "32419-4",
+              "display": "Quality",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "check-box",
+                    "display": "Check-box"
+                  }
+                ],
+                "text": "Check-box"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "PA.1.2",
+          "text": "Quality",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "LA27491-2",
+                "display": "Ache"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA25279-3",
+                "display": "Burning"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27492-0",
+                "display": "Cramping"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27493-8",
+                "display": "Crushing pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA12709-4",
+                "display": "Dull"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA24760-3",
+                "display": "Intermittent"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27496-1",
+                "display": "Phantom limb"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27497-9",
+                "display": "Piercing"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27498-7",
+                "display": "Pressure"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27499-5",
+                "display": "Pruritus"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA12708-6",
+                "display": "Sharp"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27501-8",
+                "display": "Shock-like electrical pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27502-6",
+                "display": "Stabbing"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27503-4",
+                "display": "Tearing pain"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA27505-9",
+                "display": "Throbbing"
+              }
+            }
+          ]
+        },
+        {
+          "type": "open-choice",
+          "code": [
+            {
+              "code": "72514-3",
+              "display": "Severity",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ],
+                "text": "Radio Button"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "PA.1.3",
+          "text": "Severity",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "6736007",
+                "display": "Moderate"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "24484000",
+                "display": "Severe",
+                "system": "http://snomed.info/sct"
+              }
+            }
+          ]
+        },
+        {
+          "type": "quantity",
+          "code": [
+            {
+              "code": "38207-7",
+              "display": "Duration",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+              "valueCoding": {
+                "display": "minutes"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+              "valueCoding": {
+                "display": "hours"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+              "valueCoding": {
+                "display": "days"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+              "valueCoding": {
+                "display": "weeks"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+              "valueCoding": {
+                "display": "months"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+              "valueCoding": {
+                "display": "years"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "PA.1.4",
+          "text": "Duration"
+        },
+        {
+          "type": "open-choice",
+          "code": [
+            {
+              "code": "38206-9",
+              "display": "Temporal pattern",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "check-box",
+                    "display": "Check-box"
+                  }
+                ],
+                "text": "Check-box"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "PA.1.5",
+          "text": "Temporal pattern",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "314642004",
+                "display": "Intermittent",
+                "system": "http://snomed.info/sct"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "426206001",
+                "display": "Constant",
+                "system": "http://snomed.info/sct"
+              }
+            }
+          ]
+        },
+        {
+          "type": "open-choice",
+          "code": [
+            {
+              "code": "38209-3",
+              "display": "Exacerbating factors",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "check-box",
+                    "display": "Check-box"
+                  }
+                ],
+                "text": "Check-box"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "PA.1.6",
+          "text": "Exacerbating factors",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "309604004",
+                "display": "During exercise",
+                "system": "http://snomed.info/sct"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "255214003",
+                "display": "After exercise",
+                "system": "http://snomed.info/sct"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "263678003",
+                "display": "Rest",
+                "system": "http://snomed.info/sct"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "309610004",
+                "display": "Sleep",
+                "system": "http://snomed.info/sct"
+              }
+            }
+          ]
+        },
+        {
+          "type": "open-choice",
+          "code": [
+            {
+              "code": "38210-1",
+              "display": "Alleviating factors",
+              "system": "http://loinc.org/modified"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "check-box",
+                    "display": "Check-box"
+                  }
+                ],
+                "text": "Check-box"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "PA.1.7",
+          "text": "Alleviating factors",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "266694003",
+                "display": "Heat",
+                "system": "http://snomed.info/sct"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "229580007",
+                "display": "Ice",
+                "system": "http://snomed.info/sct"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "263678003",
+                "display": "Rest",
+                "system": "http://snomed.info/sct"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "226029000",
+                "display": "Exercise",
+                "system": "http://snomed.info/sct"
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "code": [
+            {
+              "code": "80317-1",
+              "display": "Assessment Interpretation",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ],
+                "text": "Radio Button"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "PA.1.8",
+          "text": "Assessment Interpretation",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "LA25085-4",
+                "display": "Within Defined Limits"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "LA46-8",
+                "display": "Other"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
