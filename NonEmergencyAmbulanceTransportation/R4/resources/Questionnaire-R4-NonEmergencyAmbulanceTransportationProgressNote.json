@@ -6,14 +6,6 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
       "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/NonEmergencyAmbulanceTransportation-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
     }
   ],
   "meta": {
@@ -95,7 +87,7 @@
                 "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".OtherDiagnoses"
               }
             }
-          ],          
+          ],
           "text": "Other Diagnoses",
           "type": "open-choice",
           "repeats": true,
@@ -138,35 +130,30 @@
     },
     {
       "type": "group",
-      "code": [],
       "required": false,
       "linkId": "8",
       "text": "Reasons that non-emergency ambulance transport is required",
       "item": [
         {
           "type": "group",
-          "code": [],
           "required": false,
           "linkId": "8.1",
           "text": "Mobility",
           "item": [
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.1.1",
               "text": "Bed confined"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.1.2",
               "text": "Unable to maintain erect sitting position in a chair for time needed to transport, due to moderate muscular weakness and de-conditioning"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.1.3",
               "text": "Risk of falling off wheelchair or stretcher while in motion (not related to obesity)"
@@ -175,49 +162,42 @@
         },
         {
           "type": "group",
-          "code": [],
           "required": false,
           "linkId": "8.2",
           "text": "Musculoskeletal",
           "item": [
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.2.1",
               "text": "Non-healed fractures requiring ambulance"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.2.2",
               "text": "Contractures that impair mobility and result in bed confinement"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.2.3",
               "text": "Incapacitating Osteoarthritis"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.2.4",
               "text": "Severe muscular weakness and de-conditioned state precludes any significant physical activity"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.2.5",
               "text": "Orthopedic device required in transit"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.2.6",
               "text": "Amputation(s)"
@@ -226,21 +206,18 @@
         },
         {
           "type": "group",
-          "code": [],
           "required": false,
           "linkId": "8.3",
           "text": "Cardiovascular",
           "item": [
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.3.1",
               "text": "CVA with sequelea (late effect of CVA) that impair mobility and result in bed confinement"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.3.2",
               "text": "DVT requires elevation of lower extremity"
@@ -249,28 +226,24 @@
         },
         {
           "type": "group",
-          "code": [],
           "required": false,
           "linkId": "8.4",
           "text": "Neurological",
           "item": [
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.4.1",
               "text": "Spinal Cord Injury – Paralysis"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.4.2",
               "text": "Progressive demyelinating disease"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.4.3",
               "text": "Moderate to severe pain on movement"
@@ -279,21 +252,18 @@
         },
         {
           "type": "group",
-          "code": [],
           "required": false,
           "linkId": "8.5",
           "text": "Wound",
           "item": [
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.5.1",
               "text": "Unable to sit in chair or wheelchair due to Grade II or greater decubitus ulcers on buttocks"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.5.2",
               "text": "Chronic wounds requiring immobilization"
@@ -302,42 +272,36 @@
         },
         {
           "type": "group",
-          "code": [],
           "required": false,
           "linkId": "8.6",
           "text": "Attendant required during transport",
           "item": [
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.6.1",
               "text": "Morbid obesity requires additional personnel/equipment to handle"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.6.2",
               "text": "Third party attendant required to regulate or adjust oxygen en route"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.6.3",
               "text": "Special handling en route – isolation"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.6.4",
               "text": "IV medications/fluids required during transport"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.6.5",
               "text": "Restraints (physical or chemical) anticipated or used during transport"
@@ -346,21 +310,18 @@
         },
         {
           "type": "group",
-          "code": [],
           "required": false,
           "linkId": "8.7",
           "text": "Mental",
           "item": [
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.7.1",
               "text": "Danger to self or others"
             },
             {
               "type": "boolean",
-              "code": [],
               "required": false,
               "linkId": "8.7.2",
               "text": "Confused, combative, lethargic, comatose"
@@ -369,14 +330,12 @@
         },
         {
           "type": "boolean",
-          "code": [],
           "required": false,
           "linkId": "8.8",
           "text": "Other"
         },
         {
           "type": "text",
-          "code": [],
           "required": false,
           "linkId": "8.9",
           "text": "Describe",
@@ -391,13 +350,11 @@
         {
           "type": "group",
           "linkId": "8.10",
-          "code": [],
           "required": false,
-          "text": "Required services that necessitate abulance transport",
+          "text": "Required services that necessitate ambulance transport",
           "item": [
             {
               "type": "boolean",
-              "code": [],
               "required": true,
               "linkId": "8.10.1",
               "text": "Are there services that cannot be provided in the patient’s current setting?"
@@ -448,7 +405,7 @@
                 },
                 {
                   "valueCoding": {
-                    "code": "Outpatient therpay"
+                    "code": "Outpatient therapy"
                   }
                 }
               ]
