@@ -190,12 +190,24 @@ Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cq
 
 ### *II) Observation Resource Statements*
 
-### Extract Numeric Value of an Observation
-If an Observation resource has a numeric value (as opposed to a code or a string), extract the numeric value from the resource.
+### Extract Numeric Value of the Latest Observation
+If an list of Observation resources has contains numeric values (as opposed to codes or a strings), extract the numeric value from the latest resource.
 ```sql
-define "Numeric Observation Value": GetObservationValue("Observation_Resource")
+define "Latest Numeric Observation": LastestObservation(WithUnit(Verified("Observation_Resource_List"), 'unit'))
+
+define "Numeric Observation Value": GetObservationValue("Latest Numeric Observation")
 
 // Helper Functions
+
+define function Verified(ObsList List<Observation>):
+  ObsList O where O.status.value in {'final', 'amended'}
+  
+define function WithUnit(ObsList List<Observation>, Unit String):
+  ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit  
+
+define function LastestObservation(ObsList List<Observation>):
+  First(ObsList O sort by FHIRHelpers."ToDateTime"(issued) desc)
+
 define function GetObservationValue(Obs Observation): 
   NullSafeToQuantity(cast Obs.value as Quantity)
   
@@ -205,7 +217,8 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
   else null
 ```
 Variables:
-- *Observation_Resource:* An Observation resource that has previously been defined in the CQL library.
+- *Observation_Resource_List:* A list of Observation resources that has previously been defined in the CQL library.
+- *unit:* Unit of measurement for the value of the Observation being queried (ex. mm[Hg], %, pH).
 
 Example Implementation: [RespiratoryAssistDevicesPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/RespiratoryAssistDevices/R4/files/RespiratoryAssistDevicesPrepopulation-0.1.0.cql)
 
