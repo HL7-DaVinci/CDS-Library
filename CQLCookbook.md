@@ -40,13 +40,16 @@ The structure of your CQL prepopulation file will generally follow the format be
   - The code excerpts below are taken from the [Home Oxygen Therapy Prepopulation file](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeOxygenTherapy/R4/files/HomeOxygenTherapyPrepopulation-0.1.0.cql).
 
 ### A) Header
-Name library, define FHIR version, and include any helper libraries.
+Name library, define FHIR version, and include any helper libraries. 
+
 ```sql
 library HomeOxygenTherapyPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 ```
-*Note:* Library name should match CQL filename (without the version number).
+*Notes:*
+  - Library name should match CQL filename (without the version number).
+  - The FHIRHelpers library should always be included as it contains many useful functions to fetch data within FHIR Resources. Below the FHIRHelpers inclusion, be sure to include any other helper libraries that contain functions you use in your CQL prepopulation file.
 
 ### B) Codesystems
 Define the codesystems that will be used within the patient's FHIR resources.
@@ -117,12 +120,15 @@ In this case, it is typically advantageous to define a CQL function statement. F
 define function myFunction(parameter1 parameter1_type, parameter2 parameter2_type, ...)
 //  Describe logic here
 ```
-*Note: Function headers do not necesarily need to contain parameters.*
-
-The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library.
+The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library. 
 
 
-*Note:* See [Part 2](#2-drls-specific-statements) below for a list CQL define statements that are commonly used within DRLS.
+*Notes*:
+  - Function headers do not necesarily need to contain parameters.
+  - When calling functions that are defined in an external library (ex. FHIRHelpers), be sure to reference the library name before the function call in the following manner: `FHIRHelpers.myFunction(parameters)`.
+  - See [Part 2](#2-drls-specific-statements) below for a list CQL define statements that are commonly used within DRLS.
+
+
 
 ***
 
