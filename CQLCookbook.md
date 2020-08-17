@@ -1,8 +1,11 @@
 # CQL Cookbook
-Reference for creating a CQL prepopulation file for a DRLS Ruleset.
+Reference guide for using the Clinical Quality Language (CQL) to prepopulate DRLS questionnaires.
 
 
-## Overview
+## Purpose of the cookbook
+This document is a reference guide for using the Clinical Quality Language (CQL) to prepopulate DRLS questionnaires.
+
+One of the key features of DRLS is to pre-populate prior authorization questionnaires with relevant information about patients, providers, lab results, etc. that can be pulled from a patient's electronic health record (EHR). DRLS uses CQL to fetch this data from the EHR
 As described in the Ruleset Development 101 document, DRLS invovles the prepopulation of clinical questionnaires from a patient's electronic health record (EHR). This prepopulation is done by means of a clinical quality language (CQL) file that fetches FHIR resources form the EHR.
 
 ## Contents
