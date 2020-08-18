@@ -78,9 +78,9 @@ define Today: Today()
 // Relevant Diagnoses Definition
 define "RelevantConditions": [Condition: "Home Oxygen Therapy Qualifying Conditions"]
 define RelevantDiagnoses: 
-  CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring("RelevantConditions")))
+  CodesFromConditions(DTR.Confirmed(DTR.ActiveOrRecurring("RelevantConditions")))
 
-define OtherDiagnoses: CodesFromConditions(Confirmed(ActiveOrRecurring([Condition] except "RelevantConditions")))
+define OtherDiagnoses: CodesFromConditions(DTR.Confirmed(DTR.ActiveOrRecurring([Condition] except "RelevantConditions")))
 // Codes From Condition Helper Function - Used to display relevant diagnoses
 define function CodesFromConditions(CondList List<Condition>):
   distinct(flatten(
@@ -104,7 +104,7 @@ define "VerifiedArterialOxygenSaturationExercise": CDS.Verified(CDS.ObservationL
 define ArterialOxygenSaturationExercise: DTR.LowestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)), '%'))
 
 // Mobile Patient
-define PatientMobile: not exists(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "Immobilization"])))
+define PatientMobile: not exists(DTR.Confirmed(DTR.ActiveOrRecurring([Condition: "Immobilization"])))
 
 // High Hematocrit
 define HematocritThatIsGreaterThanThreshold: CDS.HighestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Hematocrit_lab_test_Codes"], 3 months)), '%'))
