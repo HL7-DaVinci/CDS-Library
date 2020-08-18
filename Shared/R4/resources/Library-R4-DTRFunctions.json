@@ -1,0 +1,30 @@
+{
+    "resourceType": "Library",
+    "id": "DTRFunctions",
+    "url": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicRulesetFunctions-prepopulation",
+    "name": "DTRFunctions",
+    "version": "0.1.0",
+    "title": "DTR Shared Functions",
+    "status": "draft",
+    "type": {
+      "coding": [
+        {
+          "code": "logic-library"
+        }
+      ]
+    },
+    "relatedArtifact": [
+      {
+        "type": "depends-on",
+        "resource": {
+          "reference": "Library/FHIRHelpers-4.0.0"
+        }
+      }
+    ],
+    "content": [
+      {
+        "contentType": "application/elm+json",
+        "url": "files/Shared/r4/DTRFunctions-0.1.0.cql"
+      }
+    ]
+  }
