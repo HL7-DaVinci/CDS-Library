@@ -37,10 +37,8 @@ define "ServiceEndDate": FHIRHelpers.ToDateTime(
 define RelevantDiagnoses: 
   CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "NEAT Qualifying Conditions"]))) 
 
-define PrincipalDiagnoses: {}
-
-define OtherDiagnoses:
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
+define AllDiagnoses:
+  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition])))
 
 // Helpers
 

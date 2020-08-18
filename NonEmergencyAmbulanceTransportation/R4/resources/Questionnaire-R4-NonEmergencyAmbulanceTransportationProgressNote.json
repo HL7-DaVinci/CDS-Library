@@ -71,7 +71,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".PrincipalDiagnoses"
+                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".AllDiagnoses"
               }
             }
           ],
@@ -88,7 +88,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".OtherDiagnoses"
+                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".AllDiagnoses"
               }
             }
           ],
@@ -161,7 +161,7 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                   "language": "text/cql",
-                  "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"
+                  "expression": "\"BasicClinicalInfoPrepopulation\".AnswerNo"
                   }
               },
               {
@@ -186,6 +186,7 @@
                   "text": "List reasons for required attendant:",
                   "type": "open-choice",
                   "required": true,
+                  "repeats": true,
                   "answerOption": [
                     {
                       "valueCoding": {
@@ -233,7 +234,7 @@
                     "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                     "valueExpression": {
                     "language": "text/cql",
-                    "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"
+                    "expression": "\"BasicClinicalInfoPrepopulation\".AnswerNo"
                     }
                 },
                 {
@@ -258,6 +259,7 @@
                   "text": "List services:",
                   "type": "open-choice",
                   "required": true,
+                  "repeats": true,
                   "answerOption": [
                     {
                       "valueCoding": {
@@ -281,7 +283,7 @@
                     },
                     {
                       "valueCoding": {
-                        "code": "O&P services"
+                        "code": "Orthotics and Prosthetics services"
                       }
                     },
                     {
