@@ -71,11 +71,11 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".RelevantDiagnoses"
+                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".PrincipalDiagnoses"
               }
             }
           ],
-          "text": "Patient Diagnoses related to need for a non-emergency ambulance transportation",
+          "text": "Principal Diagnoses",
           "type": "open-choice",
           "required": true,
           "repeats": true,
