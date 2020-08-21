@@ -10,7 +10,7 @@
   ],
   "title": "Non Emergency Ambulance Transportation Questionnaire",
   "status": "draft",
-  "date": "2020-01-21",
+  "date": "2020-08-20",
   "publisher": "Da Vinci DTR",
   "subjectType": [
     "Patient"
@@ -106,136 +106,62 @@
     },
     {
       "linkId": "4",
-      "text": "Reasons for Transport",
+      "text": "Reasons for Transport and Instructions for Ambulance Personnel",
       "type": "group",
       "item": [
         {
           "linkId": "4.1",
-          "type": "open-choice",
-          "text": "Reasons for Transport",
-          "required": true,
-          "option": [
+          "extension": [
             {
-              "valueCoding": {
-                "code": "Mobility: Bed confined"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Mobility: Unable to maintain erect sitting position in a chair"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Mobility: Risk of falling off wheelchair or stretcher"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Musculoskeletal: Non-healed fractures requiring ambulance"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Musculoskeletal: Contractures that impair mobility and result in be confinement"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Musculoskeletal: Incapacitating Osteoarthritis"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Musculoskeletal: Severe muscular weakness precludes significant activity"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Musculoskeletal: Orthopedic device required in transit"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Musculoskeletal: Amputation(s)"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Cardiovascular: CVA with sequelea (late effect of CVA) that impair mobility and result in bed confinement"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Cardiovascular: DVT requires elevation of lower extremity"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Neurological: Spinal Cord Injury – Paralysis"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Neurological: Progressive demyelinating disease"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Neurological: Moderate to severe pain on movemente"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Wound: Unable to sit to Grade II or greater decubitus ulcers on buttocks"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Wound: Chronic wounds requiring immobilization"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Attendant: Morbid obesity requires additional personnel/equipment"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Attendant: Third party attendant to regulate or adjust oxygen en route"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Attendant: Special handling en route – isolation"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Attendant: IV medications/fluids required during transport"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Attendant: Restraints (physical or chemical) anticipated or used during transport"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Mental: Danger to self or others"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Mental: Confused, combative, lethargic, comatose"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".RelevantDiagnoses"
               }
             }
-          ]
+          ],
+          "text": "Reason(s) that non-emergency ground transport by ambulance is required:",
+          "type": "open-choice",
+          "required": true,
+          "repeats": true,
+          "answerOption": []
         },
         {
           "linkId": "4.2",
-          "text": "Other:",
-          "type": "string"
+          "type": "group",
+          "text": "Instructions for ambulance personnel:",
+          "item": [
+            {
+              "linkId": "4.2.1",
+              "text": "Severe obesity requires additional personnel/equipment to handle",
+              "type": "boolean",
+              "required": true
+            },
+            {
+              "linkId": "4.2.2",
+              "text": "Third party attendant required to regulate or adjust oxygen en route",
+              "type": "boolean",
+              "required": true
+            },
+            {
+              "linkId": "4.2.3",
+              "text": "Special handling en route - isolation",
+              "type": "boolean",
+              "required": true
+            },
+            {
+              "linkId": "4.2.4",
+              "text": "IV medications/fluids required during transport",
+              "type": "boolean",
+              "required": true
+            },
+            {
+              "linkId": "4.2.5",
+              "text": "Restraints (physical or chemical) anticipated or used during transport",
+              "type": "boolean",
+              "required": true
+            }
+          ]
         }
       ]
     },
