@@ -6,7 +6,8 @@
       "value": "united_health_care-stress_echocardiogram"
     }
   ],
-  "name": "StressEchoCardiography",
+  "name": "EchoCardiography",
+  "id": "EchoCardiography",
   "version": "1.0.0",
   "title": "Stress Echocardiography",
   "status": "draft",
