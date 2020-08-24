@@ -1,8 +1,10 @@
 {
   "resourceType": "Library",
   "version": "1.0.0",
+  "id": "EchoCardiography-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/EchoCardiography-prepopulation",
   "title": "Stress Echo Cardiography",
-  "name": "StressEchoCardiography",
+  "name": "EchoCardiography-prepopulation",
   "status": "draft",
   "type": {
     "coding": [
@@ -14,11 +16,15 @@
   "relatedArtifact": [
     {
       "type": "depends-on",
-      "resource": "Library/FHIRHelpers"
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
     },
     {
       "type": "depends-on",
-      "resource": "Library/library-unitedhealthcare-stressechocommon"
+      "resource": {
+        "reference": "Library/library-unitedhealthcare-stressechocommon"
+      }
     }
   ],
   "dataRequirement": [
@@ -112,7 +118,7 @@
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "files/StressEchoCardiography/r4/StressEchoCardiography.cql"
+      "url": "files/StressEchoCardiography/r4/EchoCardiography-1.0.0.cql"
     }
   ]
 }
