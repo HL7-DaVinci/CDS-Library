@@ -50,7 +50,7 @@
         },
         {
           "linkId": "3.2",
-          "text": "Order Data",
+          "text": "Order Date",
           "type": "date",
           "required": false
         },
