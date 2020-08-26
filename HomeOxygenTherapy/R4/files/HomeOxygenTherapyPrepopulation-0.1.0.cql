@@ -1,6 +1,8 @@
 library HomeOxygenTherapyPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
+include CDS_Connect_Commons_for_FHIRv400 version '1.0.2' called CDS
+include DTRFunctions version '0.1.0' called DTR
 
 // This cql and questionnaire combo can be considered a partial implementation of these forms:
 // https://www.cms.gov/Medicare/CMS-Forms/CMS-Forms/Downloads/CMS484.pdf
@@ -76,9 +78,9 @@ define Today: Today()
 // Relevant Diagnoses Definition
 define "RelevantConditions": [Condition: "Home Oxygen Therapy Qualifying Conditions"]
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring("RelevantConditions")))
+  CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring("RelevantConditions")))
 
-define OtherDiagnoses: CodesFromConditions(Confirmed(ActiveOrRecurring([Condition] except "RelevantConditions")))
+define OtherDiagnoses: CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition] except "RelevantConditions")))
 // Codes From Condition Helper Function - Used to display relevant diagnoses
 define function CodesFromConditions(CondList List<Condition>):
   distinct(flatten(
@@ -94,29 +96,29 @@ define function CodesFromConditions(CondList List<Condition>):
   ))
 
 // Arterial Oxygen Saturation - Definitions to display most recent observation on patient health record
-define "VerifiedArterialOxygenSatuation": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months))
-define ArterialOxygenSaturation: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months)), '%'))
-define "VerifiedArterialPartialPressureOfOxygen": Verified(ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months))
-define ArterialPartialPressureOfOxygen: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months)), 'mm[Hg]'))
-define "VerifiedArterialOxygenSaturationExercise": Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months))
-define ArterialOxygenSaturationExercise: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)), '%'))
+define "VerifiedArterialOxygenSatuation": CDS.Verified(CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months))
+define ArterialOxygenSaturation: DTR.LowestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months)), '%'))
+define "VerifiedArterialPartialPressureOfOxygen": CDS.Verified(CDS.ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months))
+define ArterialPartialPressureOfOxygen: DTR.LowestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months)), 'mm[Hg]'))
+define "VerifiedArterialOxygenSaturationExercise": CDS.Verified(CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months))
+define ArterialOxygenSaturationExercise: DTR.LowestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)), '%'))
 
 // Mobile Patient
-define PatientMobile: not exists(Confirmed(ActiveOrRecurring([Condition: "Immobilization"])))
+define PatientMobile: not exists(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "Immobilization"])))
 
 // High Hematocrit
-define HematocritThatIsGreaterThanThreshold: HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Hematocrit_lab_test_Codes"], 3 months)), '%'))
+define HematocritThatIsGreaterThanThreshold: CDS.HighestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Hematocrit_lab_test_Codes"], 3 months)), '%'))
 define PatientHasHematocritThatIsGreaterThanThreshold: exists("HematocritThatIsGreaterThanThreshold")
 
 // FACE TO FACE ENCOUNTER
 
 // Oxygen Saturation Exercise
-define "OxygenSatExercise": ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)
+define "OxygenSatExercise": CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)
 define "OxygenSatExerciseDate": ObservationLatestDate("OxygenSatExercise")
 define "IsArterialOxygenSaturationExerciseTested": "ArterialOxygenSaturationExercise" is not null
 
 // High Blood Pressure
-define "PulmonaryArteryPressure": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Pulmonary_artery_pressure_Codes"], 3 months)), 'mm[Hg]'))
+define "PulmonaryArteryPressure": CDS.HighestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Pulmonary_artery_pressure_Codes"], 3 months)), 'mm[Hg]'))
 
 
 // DEVICE REQUEST INFO
@@ -184,41 +186,3 @@ define "BloodGasTestDate": ObservationLatestDate("BloodTestObservations")
 // Helper function to find most recent observation from a list
 define function ObservationLatestDate(ObsList List<Observation>):
   Max(ObsList O return FHIRHelpers."ToDateTime"(O.issued))
-
-
-////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with stu3 version of helper library
-define function ActiveOrRecurring(CondList List<Condition>):
-  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
-
-define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
-  ObsList O
-    let LookBackInterval: Interval[Now() - LookBack, Now()]
-    where (cast O.effective as dateTime).value in LookBackInterval
-      or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
-      or FHIRHelpers."ToDateTime"(O.issued) in LookBackInterval
-
-define function NullSafeToInterval(Pd FHIR.Period):
-  if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
-
-define function Verified(ObsList List<Observation>):
-  ObsList O where O.status.value in {'final', 'amended'}
-
-define function WithUnit(ObsList List<Observation>, Unit String):
-  ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
-
-define function HighestObservation(ObsList List<Observation>):
-  Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-
-define function Confirmed(CondList List<Condition>):
-  CondList C where C.verificationStatus.coding.code = 'confirmed'
-
-define function NullSafeToQuantity(Qty FHIR.Quantity):
-  if Qty is not null then
-    System.Quantity {
-      value: Qty.value.value,
-      unit: Coalesce(Qty.unit.value, Qty.code.value)
-    }
-  else null
-
-define function LowestObservation(ObsList List<Observation>):
-  Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
