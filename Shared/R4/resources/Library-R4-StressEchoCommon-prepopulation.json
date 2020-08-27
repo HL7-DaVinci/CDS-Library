@@ -1,0 +1,52 @@
+{
+  "resourceType": "Library",
+  "version": "1.0.0",
+  "id": "StressEchoCommon-1.0.0",
+  "title": "StressEchoCommon",
+  "name": "StressEchoCommon-1.0.0",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "clinical-status",
+          "searchParam": "active"
+        }
+      ]
+    },
+    {
+      "type": "Procedure"
+    },
+    {
+      "type": "Encounter"
+    },
+    {
+      "type": "ServiceRequest"
+    },
+    {
+      "type": "Observation"
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/Shared/r4/StressEchoCommon-1.0.0.cql"
+    }
+  ]
+}

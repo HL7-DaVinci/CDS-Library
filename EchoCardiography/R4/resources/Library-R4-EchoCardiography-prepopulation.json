@@ -23,7 +23,7 @@
     {
       "type": "depends-on",
       "resource": {
-        "reference": "Library/library-unitedhealthcare-stressechocommon"
+        "reference": "Library/StressEchoCommon-1.0.0"
       }
     }
   ],
@@ -92,7 +92,7 @@
       "codeFilter": [
         {
           "path": "code",
-          "valueSet": "urn:oid:2.16.840.1.113762.1.4.1138.566"
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1138.566"
         }
       ]
     },
@@ -118,7 +118,7 @@
   "content": [
     {
       "contentType": "application/elm+json",
-      "url": "files/StressEchoCardiography/r4/EchoCardiography-1.0.0.cql"
+      "url": "files/EchoCardiography/r4/EchoCardiography-1.0.0.cql"
     }
   ]
 }
