@@ -147,7 +147,7 @@ The statements below are used in many currently existing DRLS prepopulation file
 
 Each statement will include:
 1. A short description describing the context of when the statement would be used
-2. A generic CQL snippet of the statement along with dependant helper functions. These can be copied and modified slightly in order to accomodate the needs of a new CQL prepopulation file.
+2. A generic CQL snippet of the statement. These can be copied and modified slightly in order to accomodate the needs of a new CQL prepopulation file (note these snippets can reference functions from helper libraries, which are not included here).
 3. A list of variables that should be changed in order to tailor the CQL statement to a specific need (ex. a specific valueset, condition, observation, etc.)
 4. An example from CDS-Library where this type of code is implemented
 
@@ -158,12 +158,7 @@ Each statement will include:
 Return a list of all Conditions that are active or occuring from a designated value set or Condition list.
 ```sql
 // Define list of patient Conditions from a value set
-define "ActiveConditions": ActiveOrOccuringCondition([Condition: "Condition_Value_Set"])
-
-// Helper Function
-define function ActiveOrOccurringCondition(ConditionList List<FHIR.Condition>):
-  ConditionList C
-  where C.clinicalStatus.coding.code in {'active', 'relapse'}
+define "ActiveConditions": CDS.ActiveOrRecurring([Condition: "Condition_Value_Set"])
 ```
 Variables:
 - *Condition_Value_Set:* List of Conditions or value set that the statement will search over to check whether each Condition is active or occuring.
@@ -174,18 +169,7 @@ Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cq
 Return a list of all active patient Conditions that are relevant to a specific device, service, or medication request (the specific list of Conditions is defined by the value set)
 ```sql
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "My_Condition_Valueset"]))) 
-
-define function CodesFromConditions(CondList List<Condition>):
-  distinct(flatten(
-    CondList C
-      let DiagnosesCodings:
-          (C.code.coding) CODING 
-          return FHIRHelpers.ToCode(CODING)
-      where exists(ConditionCodings)
-      return DiagnosesCodings
-  ))
-
+  DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "My_Condition_Valueset"]))) 
 ```
 Variables:
 - *My_Condition_Valueset:* A Condition valueset that was previously defined in the library. This valueset should include diagnoses or conditions that are relevant to the ruleset at hand.
@@ -206,30 +190,11 @@ Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cq
 ### *II) Observation Resource Statements*
 
 ### Extract Numeric Value of the Latest Observation
-If an list of Observation resources has contains numeric values (as opposed to codes or a strings), extract the numeric value from the latest resource.
+If a list of Observation resources contains numeric values (as opposed to codes or a strings), extract the numeric value from the latest resource.
 ```sql
-define "Latest Numeric Observation": LastestObservation(WithUnit(Verified("Observation_Resource_List"), 'unit'))
+define "Latest Numeric Observation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("Observation_Resource_List"), 'unit'))
 
-define "Numeric Observation Value": GetObservationValue("Latest Numeric Observation")
-
-// Helper Functions
-
-define function Verified(ObsList List<Observation>):
-  ObsList O where O.status.value in {'final', 'amended'}
-  
-define function WithUnit(ObsList List<Observation>, Unit String):
-  ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit  
-
-define function LastestObservation(ObsList List<Observation>):
-  First(ObsList O sort by FHIRHelpers."ToDateTime"(issued) desc)
-
-define function GetObservationValue(Obs Observation): 
-  NullSafeToQuantity(cast Obs.value as Quantity)
-  
-define function NullSafeToQuantity(Qty FHIR.Quantity):
-  if Qty is not null then
-    Qty.value.value  
-  else null
+define "Numeric Observation Value": DTR.GetObservationValue("Latest Numeric Observation")
 ```
 Variables:
 - *Observation_Resource_List:* A list of Observation resources that has previously been defined in the CQL library.
@@ -241,28 +206,10 @@ Example Implementation: [RespiratoryAssistDevicesPrepopulation-0.1.0.cql](https:
 Find the most recent date that an Observation from a value set or from a list of codes occured. This is typically useful for pulling lab information.
 ```sql
 // Find recent Observation in health record
-define "RecentObservation": ObservationLookBack([Observation: "Observation_Codes_Or_Valueset"], time_interval)
+define "RecentObservation": CDS.ObservationLookBack([Observation: "Observation_Codes_Or_Valueset"], time_interval)
 
 // Extract date of Observation
-define "ReentObservationDate": ObservationLatestDate("RecentObservation")
-
-
-// Helper Functions
-
-// Look for any instances from a list of observations over a recent time interval
-define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
-  ObsList O
-    let LookBackInterval: Interval[Now() - LookBack, Now()]
-    where (cast O.effective as dateTime).value in LookBackInterval
-      or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
-      or FHIRHelpers."ToDateTime"(O.issued) in LookBackInterval
-    
-define function NullSafeToInterval(Pd FHIR.Period):
-  if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
-
-// Helper function to find most recent observation from a list
-define function ObservationLatestDate(ObsList List<Observation>):
-  Max(ObsList O return FHIRHelpers."ToDateTime"(O.issued))
+define "RecentObservationDate": CDS.FindDate(CDS.MostRecent("RecentObservation"))
 ```
 Variables:
 - *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of Observations or a defined group of Observation codes that has been established in a previous CQL statement.
@@ -273,20 +220,7 @@ Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://githu
 ### Highest Numerical Lab Result
 From a group of lab Observation codes or a valueset, extract the Observation with the highest numeric value.
 ```sql
-define "HighestObservationResult": HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Observation_Codes_or_Valueset"], time_interval)), 'unit'))
-
-// Helper Functions
-
-define function HighestObservation(ObsList List<Observation>):
-  Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-  
-define function NullSafeToQuantity(Qty FHIR.Quantity):
-  if Qty is not null then
-    System.Quantity {
-      value: Qty.value.value,
-      unit: Coalesce(Qty.unit.value, Qty.code.value)
-    }
-  else null
+define "HighestObservationResult": CDS.HighestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Observation_Codes_or_Valueset"], time_interval)), 'unit'))
 ```
 Variables:
 - *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of Observations or a defined group of Observation codes that has been established in a previous define statement.
@@ -328,42 +262,45 @@ Example Implementation: [RespiratoryAssistDevicesPrepopulation-0.1.0.cql](https:
 ***
 
 ## 3) Example Prepopulation.cql file
-Below is a full example of a ruleset prepopulation file. This file prepopulates the questionnaire for the Non Emergency Ambulance Transportation ruleset, and is stored in [CDS-Library/NonEmergencyAmbulanceTransportation/R4/files/NonEmergencyAmbulanceTransportationPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/Shared_CQL_Library/NonEmergencyAmbulanceTransportation/R4/files/NonEmergencyAmbulanceTransportationPrepopulation-0.1.0.cql).
+Below is a full example of a ruleset prepopulation file. This file prepopulates the questionnaire for the Positive Airway Pressure Devices ruleset, and is stored in [https://github.com/HL7-DaVinci/CDS-Library/blob/master/PositiveAirwayPressureDevices/R4/files/PositiveAirwayPressureDevicesPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/PositiveAirwayPressureDevices/R4/files/PositiveAirwayPressureDevicesPrepopulation-0.1.0.cql).
 ```sql
-library NonEmergencyAmbulanceTransportationPrepopulation  version '0.1.0'
+library PositiveAirwayPressureDevicePrepopulation  version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
+include CDS_Connect_Commons_for_FHIRv400 version '1.0.2' called CDS
+include DTRHelpers version '0.1.0' called DTR
 
-valueset "Ambulance Transport Procedure": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.108'
+codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
+codesystem "LOINC": 'http://loinc.org'
+codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
-parameter service_request ServiceRequest
+valueset "Sleep Apnea or Breathing Related Sleep Disorder": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.31'
+valueset "Apnea Hypopnea Index Rate Measurement": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.123'
+valueset "Respiratory Disturbance Index": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.133'
+
+parameter device_request DeviceRequest
 
 context Patient
 
-define "ServiceRequestHcpcsCoding": singleton from (
-  ((cast service_request.code as CodeableConcept).coding) coding
-    where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
-    return FHIRHelpers.ToCode(coding))
+define "False": false
+// coverage requirement info
+define "RelevantDiagnoses": DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "Sleep Apnea or Breathing Related Sleep Disorder"])))
 
-define NeatServiceRequested: 
-  if "ServiceRequestHcpcsCoding" in "Ambulance Transport Procedure" then "ServiceRequestHcpcsCoding".code
-  else null
+define OtherDiagnoses:
+  DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition]))) except "RelevantDiagnoses"
 
-define "ServiceRequestReason": service_request.reasonCode[0].text.value
+define DeviceRequestHcpcsCoding: singleton from (
+  ((cast device_request.code as CodeableConcept).coding) coding
+    where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
 
-define "ServiceStartDate": FHIRHelpers.ToDateTime(
-    Coalesce(
-      service_request.occurrence as FHIR.dateTime, 
-      (service_request.occurrence as FHIR.Period).start
-    )
-  )
+define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
+define PapDeviceRequested:
+  if "DeviceRequestHcpcsCoding".code.value = 'E0470' then 'E0470'
+  else if  "DeviceRequestHcpcsCoding".code.value = 'E0601' then 'E0601'
+  else 'null'
 
-define "ServiceEndDate": FHIRHelpers.ToDateTime(
-    Coalesce(
-      service_request.occurrence as FHIR.dateTime, 
-      (service_request.occurrence as FHIR.Period).end
-    )
-  )
+define "AHI": DTR.GetObservationValue(CDS.MostRecent(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Apnea Hypopnea Index Rate Measurement"], 3 months)), '/h')))
+define "RDI": DTR.GetObservationValue(CDS.MostRecent(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Respiratory Disturbance Index"], 3 months)), '/h')))
 ```
 
 ***
