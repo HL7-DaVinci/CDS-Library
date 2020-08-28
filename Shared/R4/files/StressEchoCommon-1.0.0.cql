@@ -186,32 +186,32 @@ define ComputerTomography:
 			and P.status.value = 'completed'
 			
 define function "Normalize Interval Procedure"(choice Choice<FHIR.dateTime, FHIR.Age, FHIR.Period, FHIR.Range, FHIR.string>):
- 	 if choice is FHIR.dateTime then
+ 	 if (choice as FHIR.dateTime) is not null then
  		  Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
-	  else if choice is FHIR.Period then
+	  else if (choice as FHIR.Period) is not null then
 		  FHIRHelpers.ToInterval(choice as FHIR.Period)
-		else if choice is FHIR.string then
+		else if (choice as FHIR.string) is not null then
     Message(null as Interval<DateTime>, true, '1', 'Error', 'Cannot compute an interval from a String value')
-	  else if choice is FHIR.Age then
+	  else if (choice as FHIR.Age) is not null then
 	 	  Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(choice as FHIR.Age),
  		FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(choice as FHIR.Age) + 1 year)
-		else if choice is FHIR.Range then
+		else if (choice as FHIR.Range) is not null then
 	  Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).low),
 		  FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).high) + 1 year)
 	  else null
 	
 	
 define function "Normalize Onset"(onset Choice<FHIR.dateTime, FHIR.Age, FHIR.Period, FHIR.Range, FHIR.string>):
-  if onset is FHIR.dateTime then
+  if (onset as FHIR.dateTime) is not null then
 	  Interval[FHIRHelpers.ToDateTime(onset as FHIR.dateTime), FHIRHelpers.ToDateTime(onset as FHIR.dateTime)]
-	else if onset is FHIR.Period then
+	else if (onset as FHIR.Period) is not null then
 	  FHIRHelpers.ToInterval(onset as FHIR.Period)
-	else if onset is FHIR.string then
+	else if (onset as FHIR.string) is not null then
     Message(null as Interval<DateTime>, true, '1', 'Error', 'Cannot compute an interval from a String value')
-	else if onset is FHIR.Age then
+	else if (onset as FHIR.Age) is not null then
 	  Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(onset as FHIR.Age),
 		  FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(onset as FHIR.Age) + 1 year)
-	else if onset is FHIR.Range then
+	else if (onset as FHIR.Range) is not null then
 	  Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((onset as FHIR.Range).low),
 		  FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((onset as FHIR.Range).high) + 1 year)
 	else null
