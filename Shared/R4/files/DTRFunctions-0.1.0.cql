@@ -7,9 +7,8 @@ context Patient
 
 // -------------------------------------------------- CONDITIONS -----------------------------------------------------
 
-// Codes From Condition Helper Function - Used to display relevant diagnoses
-// Use Case: DeviceRequest relevant diagnoses
-// Used by: HOT, Immunosuppressive Drugs, NEAT, PAP, RAD, Uroligcal Supplies
+// Returns formatted relvant diagnoses codes from a list of conditions
+// Use Case: Retrieve DeviceRequest relevant diagnoses
 define function CodesFromConditions(CondList List<Condition>):
   distinct(flatten(
     CondList C
@@ -23,40 +22,41 @@ define function CodesFromConditions(CondList List<Condition>):
       return DiagnosesCodings
   ))
 
-// The first chronologically recorded condition of a ConditionList
-// Note: CDS_Connect_Commons_for_FHIR supports last condition but not first.
-
+// Returns the first chronologically recorded condition of a ConditionList
+// Use Case: Access earlierst condition from a list
 define function FirstDateConditionRecorded(ConditionList List<FHIR.Condition>):
   First(ConditionList C sort by FHIRHelpers."ToDateTime"(recordedDate))  
 
 // -------------------------------------------------- OBSERVATIONS -----------------------------------------------------
 
-// Used by: HBGM, HOT, Immunosuppressive Drugs, PAP
+// Returns the Observation with the lowest value from an ObservationList
+// Use Case: Finding the lowest numerical lab result
 define function LowestObservation(ObsList List<Observation>):
   Min(ObsList O return FHIRHelpers.ToQuantity(O.value as Quantity))
 
-// Get value of an observation, without a unit (CDS_Connect_Commons_for_FHIR only allows access to an observations value with it's unit)
-// Used by: PAP
+// Returns the numerical value of an Observation, without a unit
+// Use Case: Displaying only the numerical part of a lab result
 define function GetObservationValue(Obs Observation): 
   NullSafeToQuantityWithoutUnit(cast Obs.value as Quantity)
 
-//Retrieve the numerical value of a FHIR quantity, without units
-// Use Case: Quantity value of Observation
-// Used by: PAP, RAD
+// Retrieve the numerical value of a FHIR quantity, without units
+// Use Case: Helper function for GetObservationValue() 
 define function NullSafeToQuantityWithoutUnit(Qty FHIR.Quantity):
   if Qty is not null then Qty.value.value 
   else null
 
 // -------------------------------------------------- ENCOUNTERS -----------------------------------------------------
 
-// Used by: HospitalBedsAndAccessories
+// Takes in a list of encounters and a lookback period, and returns a subset of that list containing encounters occuring during that lookback period.
+// Use Case: Retrieve encounters that occur during a recent time period
 define function EncounterLookBack(EncounterList List<Encounter>, LookBack System.Quantity):
   EncounterList E
     let LookBackInterval: Interval[Now() - LookBack, Now()]
     where (cast E.period.start as dateTime).value in LookBackInterval
       or CDS.PeriodToInterval(cast E.period as Period) overlaps LookBackInterval
 
-// Used by: HospitalBedsAndAccessories
+// Returns formatted codings from a list of Encounters
+// Use Case: Query relevant Encounters
 define function ConvertEncounterDetails(EncounterList List<Encounter>):
   distinct(
     flatten(
@@ -76,7 +76,8 @@ define function ConvertEncounterDetails(EncounterList List<Encounter>):
   )
 
   // -------------------------------------------------- PROCEDURES -----------------------------------------------------
-
+// Returns formatted codings from a list of Procedures
+// Use Case: Query relevant procedures for a MedicationRequest
 define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
   distinct(
     flatten(
