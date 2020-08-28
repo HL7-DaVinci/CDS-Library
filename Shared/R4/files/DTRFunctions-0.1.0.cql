@@ -74,3 +74,20 @@ define function ConvertEncounterDetails(EncounterList List<Encounter>):
         return EncounterCodings
     )
   )
+
+  // -------------------------------------------------- PROCEDURES -----------------------------------------------------
+
+define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
+  distinct(
+    flatten(
+      ProcedureList P
+        let DiagnosesCodings:
+          (P.code.coding) CODING 
+          return Tuple {
+            code: CODING.code.value,
+            system: CODING.system.value,
+            display: CODING.display.value
+          }
+        return DiagnosesCodings
+    )
+  )
