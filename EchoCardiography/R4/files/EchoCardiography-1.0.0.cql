@@ -93,7 +93,7 @@ define function "GetId"(uri String):
 define ServiceDiagnosticReport:
 	First([Observation]D
 	where D.subject.reference.value = 'Patient/'+ Patient.id.value
-		and StressEchoCommon."Normalize Interval Procedure"(D.effective) starts after (Today() -60 days))
+		and StressEchoCommon."Normalize Interval Procedure for Observation effective"(D.effective) starts after (Today() -60 days))
 		
 define ImagingTest:
 	"ServiceDiagnosticReport" R

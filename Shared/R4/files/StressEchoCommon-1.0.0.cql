@@ -200,7 +200,17 @@ define function "Normalize Interval Procedure"(choice Choice<FHIR.dateTime, FHIR
 		  FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).high) + 1 year)
 	  else null
 	
-	
+define function "Normalize Interval Procedure for Observation effective"(choice Choice<FHIR.dateTime, FHIR.Timing, FHIR.Period, FHIR.instant>):
+ 	 if (choice as FHIR.dateTime) is not null then
+ 		  Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
+	  else if (choice as FHIR.Period) is not null then
+		  FHIRHelpers.ToInterval(choice as FHIR.Period)
+	  else if (choice as FHIR.Timing) is not null then
+		Interval[FHIRHelpers.ToDateTime((choice as FHIR.Timing).event), FHIRHelpers.ToDateTime((choice as FHIR.Timing).event)]	
+	  else if (choice as FHIR.instant) is not null then
+		Interval[FHIRHelpers.ToDateTime(choice as FHIR.instant), FHIRHelpers.ToDateTime(choice as FHIR.instant)]
+	  else null
+
 define function "Normalize Onset"(onset Choice<FHIR.dateTime, FHIR.Age, FHIR.Period, FHIR.Range, FHIR.string>):
   if (onset as FHIR.dateTime) is not null then
 	  Interval[FHIRHelpers.ToDateTime(onset as FHIR.dateTime), FHIRHelpers.ToDateTime(onset as FHIR.dateTime)]
