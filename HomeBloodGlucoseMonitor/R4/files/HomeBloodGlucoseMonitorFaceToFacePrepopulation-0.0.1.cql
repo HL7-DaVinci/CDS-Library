@@ -18,11 +18,11 @@ context Patient
 
 define "DMDiagnoses":  [Condition: "DiabetesMellitusValueSet"]
 define "OtherDiagnoses": [Condition] except "DMDiagnoses"
-define "DMCodings": GetConditionCodings(ConfirmedActiveOrOccurringCondition("DMDiagnoses"))
-define "OtherDiagnosesCodings": GetConditionCodings(ConfirmedActiveOrOccurringCondition("OtherDiagnoses"))
+define "DMCodings": DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring("DMDiagnoses")))
+define "OtherDiagnosesCodings": DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring("OtherDiagnoses")))
 
 define "ConfirmingDiabetesCondition": not exists("DMDiagnoses") 
-define "DMConfirmedDate": FHIRHelpers."ToDateTime"(FirstDateConditionRecorded("DMDiagnoses").recordedDate)
+define "DMConfirmedDate": FHIRHelpers."ToDateTime"(DTR.FirstDateConditionRecorded("DMDiagnoses").recordedDate)
 
 define "DeviceRequestHcpcsCoding": singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -35,22 +35,3 @@ define "MonitorFrequency": "MonitorTiming".repeat.frequency.value
 define "MonitorEvent": FHIRHelpers.ToCode("MonitorTiming".code.coding)
 
 define "InsulinTreated": exists([MedicationStatement: "InsulinMedicationValueSet"])
-
-define function GetConditionCodings(ConditionList List<FHIR.Condition>):
-  distinct(
-    flatten(
-      ConditionList C
-        let ConditionCodings:
-          (C.code.coding) CODING 
-          return FHIRHelpers.ToCode(CODING)
-        where exists(ConditionCodings)  
-        return ConditionCodings
-    )
-  )
-
-define function ConfirmedActiveOrOccurringCondition(ConditionList List<FHIR.Condition>):
-  ConditionList C
-  where C.clinicalStatus.coding.code in {'active', 'relapse'} and C.verificationStatus.coding.code = 'confirmed'
-
-define function FirstDateConditionRecorded(ConditionList List<FHIR.Condition>):
-  First(ConditionList C sort by FHIRHelpers."ToDateTime"(recordedDate))  

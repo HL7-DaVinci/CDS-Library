@@ -24,10 +24,10 @@ context Patient
 
 // coverage requirement info
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Urinary Incontinence or Chronic Urinary Retention Disorder"]))) 
+  DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "Urinary Incontinence or Chronic Urinary Retention Disorder"]))) 
 
 define CurrentDiagnoses:
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except RelevantDiagnoses
+  DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition]))) except RelevantDiagnoses
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -40,53 +40,3 @@ define DeviceRequested:
   else if "DeviceRequestHcpcsCoding".code in "Miscellaneous Urinary Catheter Supply" then "DeviceRequestHcpcsCoding".code.value
   else if "DeviceRequestHcpcsCoding".code in "Indwelling Urinary Catheter Supply or Urological Supply for Indwelling Urinary Catheter Supply" then "DeviceRequestHcpcsCoding".code.value
   else 'null'
-
-define function CodesFromConditions(CondList List<Condition>):
-  distinct(flatten(
-    CondList C
-      let DiagnosesCodings:
-          (C.code.coding) CODING where CODING.system.value in {
-            'http://hl7.org/fhir/sid/icd-10',
-            'http://hl7.org/fhir/sid/icd-10-cm',
-            'http://snomed.info/sct'
-          }
-          return FHIRHelpers.ToCode(CODING)
-      return DiagnosesCodings
-  ))
-
-////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
-define function ActiveOrRecurring(CondList List<Condition>):
-  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
-
-define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
-  ObsList O
-    let LookBackInterval: Interval[Now() - LookBack, Now()]
-    where (cast O.effective as dateTime).value in LookBackInterval
-      or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
-      or FHIRHelpers."ToDateTime"(O.issued) in LookBackInterval
-
-define function NullSafeToInterval(Pd FHIR.Period):
-  if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
-
-define function Verified(ObsList List<Observation>):
-  ObsList O where O.status.value in {'final', 'amended'}
-
-define function WithUnit(ObsList List<Observation>, Unit String):
-  ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
-
-define function HighestObservation(ObsList List<Observation>):
-  Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-
-define function Confirmed(CondList List<Condition>):
-  CondList C where C.verificationStatus.coding.code = 'confirmed'
-
-define function NullSafeToQuantity(Qty FHIR.Quantity):
-  if Qty is not null then
-    System.Quantity {
-      value: Qty.value.value,
-      unit: Coalesce(Qty.unit.value, Qty.code.value)
-    }
-  else null
-
-define function LowestObservation(ObsList List<Observation>):
-  Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))

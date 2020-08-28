@@ -18,23 +18,10 @@ context Patient
 
 define "False": false
 // coverage requirement info
-define "RelevantDiagnoses": CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Sleep Apnea or Breathing Related Sleep Disorder"])))
+define "RelevantDiagnoses": DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "Sleep Apnea or Breathing Related Sleep Disorder"])))
 
 define OtherDiagnoses:
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition]))) except "RelevantDiagnoses"
-
-define function CodesFromConditions(CondList List<Condition>):
-  distinct(flatten(
-    CondList C
-      let DiagnosesCodings:
-          (C.code.coding) CODING where CODING.system.value in {
-            'http://hl7.org/fhir/sid/icd-10',
-            'http://hl7.org/fhir/sid/icd-10-cm',
-            'http://snomed.info/sct'
-          }
-          return FHIRHelpers.ToCode(CODING)
-      return DiagnosesCodings
-  ))
+  DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition]))) except "RelevantDiagnoses"
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -46,41 +33,5 @@ define PapDeviceRequested:
   else if  "DeviceRequestHcpcsCoding".code.value = 'E0601' then 'E0601'
   else 'null'
 
-define "AHI": GetObservationValue(LastestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Apnea Hypopnea Index Rate Measurement"], 3 months)), '/h')))
-define "RDI": GetObservationValue(LastestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Respiratory Disturbance Index"], 3 months)), '/h')))
-
-define function LastestObservation(ObsList List<Observation>):
-  First(ObsList O sort by FHIRHelpers."ToDateTime"(issued) desc)
-
-define function GetObservationValue(Obs Observation): 
-  NullSafeToQuantityWithoutUnit(cast Obs.value as Quantity)
-
-define function NullSafeToQuantityWithoutUnit(Qty FHIR.Quantity):
-  if Qty is not null then Qty.value.value 
-  else null
-////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
-define function ActiveOrRecurring(CondList List<Condition>):
-  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
-
-define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
-  ObsList O
-    let LookBackInterval: Interval[Now() - LookBack, Now()]
-    where (cast O.effective as dateTime).value in LookBackInterval
-      or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
-      or FHIRHelpers."ToDateTime"(O.issued) in LookBackInterval
-
-define function NullSafeToInterval(Pd FHIR.Period):
-  if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
-
-define function Verified(ObsList List<Observation>):
-  ObsList O where O.status.value in {'final', 'amended'}
-
-define function WithUnit(ObsList List<Observation>, Unit String):
-  ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
-
-define function Confirmed(CondList List<Condition>):
-  CondList C where C.verificationStatus.coding.code = 'confirmed'
-
-
-
-
+define "AHI": DTR.GetObservationValue(CDS.MostRecent(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Apnea Hypopnea Index Rate Measurement"], 3 months)), '/h')))
+define "RDI": DTR.GetObservationValue(CDS.MostRecent(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Respiratory Disturbance Index"], 3 months)), '/h')))

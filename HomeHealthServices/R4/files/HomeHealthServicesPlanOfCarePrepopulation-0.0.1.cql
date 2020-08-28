@@ -36,18 +36,7 @@ define "RelavantDiagnosis":
   [Condition] condition
     where ('Condition/' + condition.id) = RequestEncounter.diagnosis[0].condition.reference.value
 
-define "RelavantDiagnosisCoding": ConvertConditionDetails(RelavantDiagnosis)
-
-define function ConvertConditionDetails(CondList List<Condition>):
-  distinct(
-    flatten(
-      CondList C
-        let ConditionCodings:
-          (C.code.coding) CODING
-          return FHIRHelpers.ToCode(CODING)     
-        return ConditionCodings
-    )
-  )
+define "RelavantDiagnosisCoding": DTR.CodesFromConditions(RelavantDiagnosis)
 
 // Care plan related queries
 define "RequestCarePlan": singleton from (

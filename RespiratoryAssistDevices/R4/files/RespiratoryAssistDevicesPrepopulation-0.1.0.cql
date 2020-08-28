@@ -43,9 +43,9 @@ context Patient
 
 // coverage requirement info
 define "RADDiagnoses":[Condition: "RADQualifyingDiagnosisValueSet"]
-define "RADCodings": GetConditionCodings(ConfirmedActiveOrRecurring("RADDiagnoses"))
+define "RADCodings": DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring("RADDiagnoses")))
 define "OtherDiagnoses": [Condition] except "RADDiagnoses"
-define "OtherDiagnosesCodings": GetConditionCodings(ConfirmedActiveOrRecurring("OtherDiagnoses"))
+define "OtherDiagnosesCodings": DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring("OtherDiagnoses")))
 
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
@@ -88,99 +88,49 @@ define "TestLaboratory":
 
 // O2 Saturation Test with treatment 
 define "ObservationO2SatTreatmentList": [Observation: "59409-3"]
-define "LatestO2SatTreatmentObservation": LastestObservation(WithUnit(Verified("ObservationO2SatTreatmentList"),'%'))
-define "LatestO2SatTreatmentResult": GetObservationValue("LatestO2SatTreatmentObservation")
+define "LatestO2SatTreatmentObservation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("ObservationO2SatTreatmentList"),'%'))
+define "LatestO2SatTreatmentResult": DTR.GetObservationValue("LatestO2SatTreatmentObservation")
 define "IsPatientReceivingOxygenDuringTest": exists("LatestO2SatTreatmentResult")
 define "LatestO2SatTreatmentTestDate": "LatestO2SatTreatmentObservation".issued.value
 
 // O2 Sat during sleep
 define "O2SatDuringSleepTestList": [Observation: "BreathingTestProcedureDuringSleepValueSet"]
-define "LatestO2SatDuringSleepObservation": LastestObservation(WithUnit(Verified("O2SatDuringSleepTestList"),'%'))
-define "LatestO2SatDuringSleepResult": GetObservationValue("LatestO2SatDuringSleepObservation")
+define "LatestO2SatDuringSleepObservation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("O2SatDuringSleepTestList"),'%'))
+define "LatestO2SatDuringSleepResult": DTR.GetObservationValue("LatestO2SatDuringSleepObservation")
 define "LatestO2SatDuringSleepTestDate": "LatestO2SatDuringSleepObservation".issued.value
 
 // ph in arterial blood
 define "ObservationPHList": [Observation: "2744-1"]
-define "LatestPHObservation": LastestObservation(WithUnit(Verified("ObservationPHList"), 'pH'))
-define "LatestPHResult": GetObservationValue("LatestPHObservation")
+define "LatestPHObservation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("ObservationPHList"), 'pH'))
+define "LatestPHResult": DTR.GetObservationValue("LatestPHObservation")
 define "LatestPHTestDate": "LatestPHObservation".issued.value
 
 // PaCO2
 define "ObservationPaCO2List": [Observation: "2019-8"]
-define "LatestPaCO2Observation": LastestObservation(WithUnit(Verified("ObservationPaCO2List"), 'mm[Hg]'))
-define "LatestPaCO2Result": GetObservationValue("LatestPaCO2Observation")
+define "LatestPaCO2Observation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("ObservationPaCO2List"), 'mm[Hg]'))
+define "LatestPaCO2Result": DTR.GetObservationValue("LatestPaCO2Observation")
 define "LatestPaCO2TestDate": "LatestPaCO2Observation".issued.value
 
 // O2Sat Resting
 define "ObservationO2SatRestingList": [Observation: "59417-6"]
-define "LatestO2SatRestingObservation": LastestObservation(WithUnit(Verified("ObservationO2SatRestingList"), '%'))
-define "LatestO2SatRestingResult": GetObservationValue("LatestO2SatRestingObservation")
+define "LatestO2SatRestingObservation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("ObservationO2SatRestingList"), '%'))
+define "LatestO2SatRestingResult": DTR.GetObservationValue("LatestO2SatRestingObservation")
 define "LatestO2SatRestingTestDate": "LatestO2SatRestingObservation".issued.value
 
 // HCO3
 define "ObservationHCO3List": [Observation: "1960-4"]
-define "LatestHCO3Observation": LastestObservation(WithUnit(Verified("ObservationHCO3List"), 'mmol/L'))
-define "LatestHCO3Result": GetObservationValue("LatestHCO3Observation")
+define "LatestHCO3Observation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("ObservationHCO3List"), 'mmol/L'))
+define "LatestHCO3Result": DTR.GetObservationValue("LatestHCO3Observation")
 define "LatestHCO3TestDate": "LatestHCO3Observation".issued.value
 
 // Hematocrit
 define "ObservationHematocritList": [Observation: "32354-3"]
-define "LatestHematocritObservation": LastestObservation(WithUnit(Verified("ObservationHematocritList"), '%'))
-define "LatestHematocritResult": GetObservationValue("LatestHematocritObservation")
+define "LatestHematocritObservation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("ObservationHematocritList"), '%'))
+define "LatestHematocritResult": DTR.GetObservationValue("LatestHematocritObservation")
 define "LatestHematocritTestDate": "LatestHematocritObservation".issued.value
 
 // PaO2
 define "ObservationPaO2List": [Observation: "2703-7"]
-define "LatestPaO2Observation": LastestObservation(WithUnit(Verified("ObservationPaO2List"), 'mm[Hg]'))
-define "LatestPaO2Result": GetObservationValue("LatestPaO2Observation")
+define "LatestPaO2Observation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("ObservationPaO2List"), 'mm[Hg]'))
+define "LatestPaO2Result": DTR.GetObservationValue("LatestPaO2Observation")
 define "LatestPaO2TestDate": "LatestPaO2Observation".issued.value
-
-define function LastestObservation(ObsList List<Observation>):
-  First(ObsList O sort by FHIRHelpers."ToDateTime"(issued) desc)
-
-define function GetObservationValue(Obs Observation): 
-  NullSafeToQuantity(cast Obs.value as Quantity)
-  
-define function GetConditionCodings(ConditionList List<FHIR.Condition>):
-  distinct(
-    flatten(
-      ConditionList C
-        let ConditionCodings:
-          (C.code.coding) CODING 
-          return FHIRHelpers.ToCode(CODING)
-        where exists(ConditionCodings)  
-        return ConditionCodings
-    )
-  )
-  
-define function ConfirmedActiveOrRecurring(CondList List<Condition>):
-  CondList C 
-  where C.clinicalStatus.coding.code in {'active', 'relapse'} and C.verificationStatus.coding.code = 'confirmed'
-
-////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with r4 version of helper library
-define function ActiveOrRecurring(CondList List<Condition>):
-  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
-
-define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
-  ObsList O
-    let LookBackInterval: Interval[Now() - LookBack, Now()]
-    where (cast O.effective as dateTime).value in LookBackInterval
-      or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
-      or FHIRHelpers."ToDateTime"(O.issued) in LookBackInterval
-
-define function NullSafeToInterval(Pd FHIR.Period):
-  if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
-
-define function Verified(ObsList List<Observation>):
-  ObsList O where O.status.value in {'final', 'amended'}
-
-define function WithUnit(ObsList List<Observation>, Unit String):
-  ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
-
-define function Confirmed(CondList List<Condition>):
-  CondList C where C.verificationStatus.coding.code = 'confirmed'
-
-define function NullSafeToQuantity(Qty FHIR.Quantity):
-  if Qty is not null then
-    Qty.value.value  
-  else null
