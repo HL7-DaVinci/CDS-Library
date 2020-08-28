@@ -29,7 +29,7 @@
     {
       "type": "depends-on",
       "resource": {
-        "reference": "Library/DTRFunctions"
+        "reference": "Library/DTRHelpers"
       }
     }
   ],
