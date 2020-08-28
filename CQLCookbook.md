@@ -46,10 +46,16 @@ Name library, define FHIR version, and include any helper libraries.
 library HomeOxygenTherapyPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
+include CDS_Connect_Commons_for_FHIRv400 version '1.0.2' called CDS
+include DTRHelpers version '0.1.0' called DTR
 ```
 *Notes:*
   - Library name should match CQL filename (without the version number).
-  - The FHIRHelpers library should always be included as it contains many useful functions to fetch data within FHIR Resources. Below the FHIRHelpers inclusion, be sure to include any other helper libraries that contain functions you use in your CQL prepopulation file.
+  - These three libraries should always be included within a DRLS prepopulation file:
+      - `FHIRHelpers`: Contains many useful functions to fetch data within FHIR Resources
+      - `CDS_Connect_Commons`: Contains many FHIR Resource-specific helper functions
+      - `DTRHelpers`: Contains DRLS-specific functions that specifically help with rendering querires to the questionnaire
+  - Be sure to include any additional libraries that contain functions you use in your CQL prepopulation file.
 
 ### B) Codesystems
 Define the codesystems that will be used within the patient's FHIR resources.
@@ -94,8 +100,9 @@ The basic unit of logic within a library, a define statement introduces a named 
 This can operate like a query or like a function:
 ```sql
 define RelevantDiagnoses: 
-  CodesFromConditions(Confirmed(ActiveOrRecurring([Condition: "Home Oxygen Therapy Qualifying Conditions"])))
-  
+  DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "Home Oxygen Therapy Qualifying Conditions"])))
+```
+```sql
 define function HighestObservation(ObsList List<Observation>):
   Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
 ```
@@ -120,7 +127,9 @@ In this case, it is typically advantageous to define a CQL function statement. F
 define function myFunction(parameter1 parameter1_type, parameter2 parameter2_type, ...)
 //  Describe logic here
 ```
-The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library. 
+The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library.
+
+Most DRLS functions that are not built into the CQL Specification come from either the the [FHIRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/FHIRHelpers-4.0.0.cql), [CDS_Connect_Commons_for_FHIRv400](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/CDS_Connect_Commons_for_FHIRv400-1.0.2.cql), or the [DTRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/DTRFunctions-0.1.0.cql) libraries.
 
 
 *Notes*:
