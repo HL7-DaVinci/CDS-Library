@@ -17,16 +17,16 @@ Every ruleset within the CDS-Library repo will contain at least one CQL prepopul
    - G) Define Statement
       - "Query" Statements
       - "Function" Statements
-2. [DRLS Statement Templates](#2-drls-statement-templates): A list of frequently used functions that can be copied and modified to be used within your respective prepopulation file. 
-   - I) [Condition Resource Statements](#i-condition-resource-statements)
-      - *List of All Active Conditions*
-      - *List of All Relevant Conditions (as specified by a partiular value set)*
-      - *List of Patient's 'Other Diagnoses'*
-   - II) [Observation Resource Statements](#ii-observation-resource-statements)
-      - *Extract a Numeric Value of an Observation*
-      - *Extract the date of an Observation*
-      - *Highest Numerical Lab Result*
-      - *Extract performer field of Observation (the performer field has a value of an array with references)*
+2. [DRLS Statement Templates](#2-drls-statement-templates): A list of frequently used 'define' statements that can be copied and modified to be included within your respective prepopulation file. 
+   - A) [Condition Resource Statements](#a-condition-resource-statements)
+      - List of All Active Conditions
+      - List of All Relevant Conditions (as specified by a partiular value set)
+      - List of Patient's 'Other Diagnoses'
+   - B) [Observation Resource Statements](#b-observation-resource-statements)
+      - Extract a Numeric Value of an Observation
+      - Extract the date of an Observation
+      - Highest Numerical Lab Result
+      - Extract performer field of Observation (the performer field has a value of an array with references)
 3. [Example Prepopulation.cql file](#3-example-prepopulationcql-file) An example of a prepopulation DRLS file.
 4. [Links and Other Resources](#4-links-and-other-resources)
 
@@ -54,7 +54,7 @@ include DTRHelpers version '0.1.0' called DTR
   - These three libraries should always be included within a DRLS prepopulation file:
       - `FHIRHelpers`: Contains many useful functions to fetch data within FHIR Resources
       - `CDS_Connect_Commons`: Contains many FHIR Resource-specific helper functions
-      - `DTRHelpers`: Contains DRLS-specific functions that specifically help with rendering querires to the questionnaire
+      - `DTRHelpers`: Contains DRLS-specific functions that specifically help with rendering queries to the questionnaire
   - Be sure to include any additional libraries that contain functions you use in your CQL prepopulation file.
 
 ### B) Codesystems
@@ -66,7 +66,8 @@ codesystem "SNOMED-CT": 'http://snomed.info/sct'
 codesystem "HCPCS": 'https://bluebutton.cms.gov/resources/codesystem/hcpcs'
 codesystem "FHIRRequestIntent": 'http://hl7.org/fhir/request-intent'
 ```
-*Note:* Above are frequently used codesystems for Conditions, Observations, and Procedures.
+Note:
+- Above are frequently used codesystems for Conditions, Observations, and Procedures.
 
 ### C) Value Sets
 Define coding value sets that can be called upon later in the library.
@@ -74,7 +75,8 @@ Define coding value sets that can be called upon later in the library.
 valueset "Home Oxygen Therapy Qualifying Conditions": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.25'
 valueset "Stationary Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.80'
 ```
-*Note:* Value set Object Identifier Codes (OIDs) can be found through the [Value Set Authority Center (VSAC)](https://vsac.nlm.nih.gov/authoring).
+Note:
+- Value set Object Identifier Codes (OIDs) can be found through the [Value Set Authority Center (VSAC)](https://vsac.nlm.nih.gov/authoring).
 
 ### D) Codes
 Define codes from codesystems (defined above) that can be called upon later in the library.
@@ -87,7 +89,8 @@ Define a request parameter which can be referenced anywhere in the CQL Libray.
 ```sql
 parameter device_request DeviceRequest
 ```
-*Note:* DRLS typically uses DeviceRequest, ServiceRequest and MedicationRequest as common parameters.
+Note:
+- DRLS typically uses DeviceRequest, ServiceRequest and MedicationRequest as common parameters.
 
 ### F) Patient Context
 Specify that the statements below this should be interpreted with reference to a single patient.
@@ -129,10 +132,10 @@ define function myFunction(parameter1 parameter1_type, parameter2 parameter2_typ
 ```
 The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library.
 
-Most DRLS functions that are not built into the CQL Specification come from either the the [FHIRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/FHIRHelpers-4.0.0.cql), [CDS_Connect_Commons_for_FHIRv400](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/CDS_Connect_Commons_for_FHIRv400-1.0.2.cql), or the [DTRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/DTRHelpers-0.1.0.cql) libraries.
+Most DRLS functions that are not built into the CQL Specification come from either the the [FHIRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/FHIRHelpers-4.0.0.cql), [CDS_Connect_Commons_for_FHIRv400](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/CDS_Connect_Commons_for_FHIRv400-1.0.2.cql), or the [DTRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/DTRFunctions-0.1.0.cql) libraries.
 
 
-*Notes*:
+Notes:
   - Function headers do not necesarily need to contain parameters.
   - When calling functions that are defined in an external library (ex. FHIRHelpers), be sure to reference the library name before the function call in the following manner: `FHIRHelpers.myFunction(parameters)`.
   - See [Part 2](#2-drls-specific-statements) below for a list CQL define statements that are commonly used within DRLS.
@@ -148,11 +151,11 @@ The statements below are used in many currently existing DRLS prepopulation file
 Each statement will include:
 1. A short description describing the context of when the statement would be used
 2. A generic CQL snippet of the statement. These can be copied and modified slightly in order to accomodate the needs of a new CQL prepopulation file (note these snippets can reference functions from helper libraries, which are not included here).
-3. A list of variables that should be changed in order to tailor the CQL statement to a specific need (ex. a specific valueset, condition, observation, etc.)
+3. A list of variables that should be changed in order to tailor the CQL statement to a specific need (ex. a specific value set, condition, observation, etc.)
 4. An example from CDS-Library where this type of code is implemented
 
 
-### *I) Condition Resource Statements*
+### *A) Condition Resource Statements*
 
 ### List of All Active Conditions
 Return a list of all Conditions that are active or occuring from a designated value set or Condition list.
@@ -172,7 +175,7 @@ define RelevantDiagnoses:
   DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "My_Condition_Valueset"]))) 
 ```
 Variables:
-- *My_Condition_Valueset:* A Condition valueset that was previously defined in the library. This valueset should include diagnoses or conditions that are relevant to the ruleset at hand.
+- *My_Condition_Valueset:* A Condition value set that was previously defined in the library. This value set should include diagnoses or conditions that are relevant to the ruleset at hand.
 
 Example Implementation: [VentilatorsPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Ventilators/R4/files/VentilatorsPrepopulation-0.1.0.cql)
 
@@ -187,7 +190,7 @@ Variables:
 Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeBloodGlucoseMonitor/R4/files/HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cql)
 
 
-### *II) Observation Resource Statements*
+### *B) Observation Resource Statements*
 
 ### Extract Numeric Value of the Latest Observation
 If a list of Observation resources contains numeric values (as opposed to codes or a strings), extract the numeric value from the latest resource.
@@ -212,18 +215,18 @@ define "RecentObservation": CDS.ObservationLookBack([Observation: "Observation_C
 define "RecentObservationDate": CDS.FindDate(CDS.MostRecent("RecentObservation"))
 ```
 Variables:
-- *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of Observations or a defined group of Observation codes that has been established in a previous CQL statement.
+- *Observation_Codes_Or_Valueset:* Replace with the name of a value set of Observations or a defined group of Observation codes that has been established in a previous CQL statement.
 - *time_interval:* How far back from today you want to look in the patient's EHR for the Observation.
 
 Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/HomeOxygenTherapy/R4/files/HomeOxygenTherapyPrepopulation-0.1.0.cql)
 
 ### Highest Numerical Lab Result
-From a group of lab Observation codes or a valueset, extract the Observation with the highest numeric value.
+From a group of lab Observation codes or a value set, extract the Observation with the highest numeric value.
 ```sql
 define "HighestObservationResult": CDS.HighestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Observation_Codes_or_Valueset"], time_interval)), 'unit'))
 ```
 Variables:
-- *Observation_Codes_Or_Valueset:* Replace with the name of a valueset of Observations or a defined group of Observation codes that has been established in a previous define statement.
+- *Observation_Codes_Or_Valueset:* Replace with the name of a value set of Observations or a defined group of Observation codes that has been established in a previous define statement.
 - *time_interval:* How far back from today you want to look in the patient's EHR for the Observation.
 - *unit:* Unit of measurement for lab result (ex. mm[Hg], %, pH).
 
