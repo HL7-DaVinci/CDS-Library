@@ -42,7 +42,7 @@ The structure of your CQL prepopulation file will generally follow the format be
 ### A) Header
 Name library, define FHIR version, and include any helper libraries. 
 
-```sql
+```cql
 library HomeOxygenTherapyPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
@@ -59,7 +59,7 @@ include DTRHelpers version '0.1.0' called DTR
 
 ### B) Codesystems
 Define the codesystems that will be used within the patient's FHIR resources.
-```sql
+```cql
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
@@ -71,7 +71,7 @@ Note:
 
 ### C) Value Sets
 Define coding value sets that can be called upon later in the library.
-```sql
+```cql
 valueset "Home Oxygen Therapy Qualifying Conditions": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.25'
 valueset "Stationary Oxygen Therapy Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.80'
 ```
@@ -80,13 +80,13 @@ Note:
 
 ### D) Codes
 Define codes from codesystems (defined above) that can be called upon later in the library.
-```sql
+```cql
 code "Hematocrit [Volume Fraction] of Arterial blood": '32354-3' from "LOINC"
 ```
 
 ### E) Request Parameter
 Define a request parameter which can be referenced anywhere in the CQL Libray.
-```sql
+```cql
 parameter device_request DeviceRequest
 ```
 Note:
@@ -94,18 +94,18 @@ Note:
 
 ### F) Patient Context
 Specify that the statements below this should be interpreted with reference to a single patient.
-```sql
+```cql
 context Patient
 ```
 
 ### G) Define Statement
 The basic unit of logic within a library, a define statement introduces a named expression that can be referenced within the library, or by other libraries.
 This can operate like a query or like a function:
-```sql
+```cql
 define RelevantDiagnoses: 
   DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "Home Oxygen Therapy Qualifying Conditions"])))
 ```
-```sql
+```cql
 define function HighestObservation(ObsList List<Observation>):
   Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
 ```
@@ -114,7 +114,7 @@ Define statements in CQL can be used to query specific information. Since most s
 
 #### 'Query' Statements
 Define statements in CQL begin with the header:
-```sql
+```cql
 define myStatement:
 //  Describe logic here
 ```
@@ -126,7 +126,7 @@ Sometimes the logic defined in a CQL statement can either:
 2) Need to be reused in multiple 'define' statements throughout the CQL library
 
 In this case, it is typically advantageous to define a CQL function statement. Formatted very similarly to normal 'Define' statements, function statements have the following header:
-```sql
+```cql
 define function myFunction(parameter1 parameter1_type, parameter2 parameter2_type, ...)
 //  Describe logic here
 ```
@@ -159,7 +159,7 @@ Each statement will include:
 
 ### List of All Active Conditions
 Return a list of all Conditions that are active or occuring from a designated value set or Condition list.
-```sql
+```cql
 // Define list of patient Conditions from a value set
 define "ActiveConditions": CDS.ActiveOrRecurring([Condition: "Condition_Value_Set"])
 ```
@@ -170,7 +170,7 @@ Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cq
 
 ### List of All Relevant Conditions (as specified by a partiular value set)
 Return a list of all active patient Conditions that are relevant to a specific device, service, or medication request (the specific list of Conditions is defined by the value set)
-```sql
+```cql
 define RelevantDiagnoses: 
   DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "My_Condition_Valueset"]))) 
 ```
@@ -181,7 +181,7 @@ Example Implementation: [VentilatorsPrepopulation-0.1.0.cql](https://github.com/
 
 ### List of Patient's 'Other Diagnoses'
 Looking for all of a patient's Conditions excluding the Conditions defined by a previous statement
-```sql
+```cql
 define "OtherDiagnoses": [Condition] except "Excluding_These_Diagnoses"
 ```
 Variables:
@@ -194,7 +194,7 @@ Example Implementation: [HomeBloodGlucoseMonitorFaceToFacePrepopulation-0.0.1.cq
 
 ### Extract Numeric Value of the Latest Observation
 If a list of Observation resources contains numeric values (as opposed to codes or a strings), extract the numeric value from the latest resource.
-```sql
+```cql
 define "Latest Numeric Observation": CDS.MostRecent(CDS.WithUnit(CDS.Verified("Observation_Resource_List"), 'unit'))
 
 define "Numeric Observation Value": DTR.GetObservationValue("Latest Numeric Observation")
@@ -207,7 +207,7 @@ Example Implementation: [RespiratoryAssistDevicesPrepopulation-0.1.0.cql](https:
 
 ### Extract the Date of an Observation
 Find the most recent date that an Observation from a value set or from a list of codes occured. This is typically useful for pulling lab information.
-```sql
+```cql
 // Find recent Observation in health record
 define "RecentObservation": CDS.ObservationLookBack([Observation: "Observation_Codes_Or_Valueset"], time_interval)
 
@@ -222,7 +222,7 @@ Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://githu
 
 ### Highest Numerical Lab Result
 From a group of lab Observation codes or a value set, extract the Observation with the highest numeric value.
-```sql
+```cql
 define "HighestObservationResult": CDS.HighestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Observation_Codes_or_Valueset"], time_interval)), 'unit'))
 ```
 Variables:
@@ -234,7 +234,7 @@ Example Implementation: [HomeOxygenTherapyPrepopulation-0.1.0.cql](https://githu
 
 ### Extract Performer Field Information from an Observation
 The 'performer' field has a value of an array with references. Extract the display name of a reference within an Observation. Examples of this can be a reference to a Practitioner who performed the observation or the Organization where the Observation was performed.
-```sql
+```cql
 // Retrieve the 'performer' field of the first observation in the lab.
 define "Lab Performer":
   First([Observation: "My_Lab"]).performer
@@ -266,7 +266,7 @@ Example Implementation: [RespiratoryAssistDevicesPrepopulation-0.1.0.cql](https:
 
 ## 3) Example Prepopulation.cql file
 Below is a full example of a ruleset prepopulation file. This file prepopulates the questionnaire for the Positive Airway Pressure Devices ruleset, and is stored in [https://github.com/HL7-DaVinci/CDS-Library/blob/master/PositiveAirwayPressureDevices/R4/files/PositiveAirwayPressureDevicesPrepopulation-0.1.0.cql](https://github.com/HL7-DaVinci/CDS-Library/blob/master/PositiveAirwayPressureDevices/R4/files/PositiveAirwayPressureDevicesPrepopulation-0.1.0.cql).
-```sql
+```cql
 library PositiveAirwayPressureDevicePrepopulation  version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
