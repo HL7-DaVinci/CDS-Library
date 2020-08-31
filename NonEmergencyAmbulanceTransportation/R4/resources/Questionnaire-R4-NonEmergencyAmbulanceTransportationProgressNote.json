@@ -75,7 +75,7 @@
               }
             }
           ],
-          "text": "Principal Diagnoses",
+          "text": "Relevant Diagnoses",
           "type": "open-choice",
           "required": true,
           "repeats": true,
