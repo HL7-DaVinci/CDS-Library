@@ -8,6 +8,9 @@ codesystem "SNOMED-CT": 'http://snomed.info/sct'
 
 valueset "OrganTransplantHistoryValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.81'
 valueset "OrganTransplantProcedureValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.90'
+valueset "ImmunosuppressiveMedicationValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.192'
+valueset "ImmunosuppressiveSupportiveMedicationValueSet": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.193'
+
 
 parameter medication_request MedicationRequest
 
@@ -41,11 +44,14 @@ define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
   )
 
 // Get all medication related information
-define "Medication": medication_request.medication
+define MedicationCoding: singleton from (
+  (medication_request.medication.coding) CODING
+    where CODING in "ImmunosuppressiveMedicationValueSet" 
+    or CODING in "ImmunosuppressiveSupportiveMedicationValueSet")
 
-define "MedicationName": Medication.coding[0].display.value
+define "MedicationName": MedicationCoding.display.value
 
-define "MedicationHCPCS" : Medication.coding[0].code.value
+define "MedicationCode" : MedicationCoding.code.value
 
 define "MedicationDosage": medication_request.dosageInstruction[0]
 
