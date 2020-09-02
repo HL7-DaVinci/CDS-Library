@@ -70,13 +70,13 @@
         {
           "linkId": "5.1",
           "type": "text",
-          "text": "HCPCS Code",
+          "text": "RxNorm Code",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationHCPCS"
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationCode"
               }
             }
           ]

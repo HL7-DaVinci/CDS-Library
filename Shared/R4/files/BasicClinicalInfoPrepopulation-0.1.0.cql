@@ -5,6 +5,7 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 codesystem "HL7-V2-0136": 'http://terminology.hl7.org/CodeSystem/v2-0136' 
 
 code "Yes": 'Y' from "HL7-V2-0136" display 'Yes'
+code "No": 'N' from "HL7-V2-0136" display 'No'
 
 parameter device_request DeviceRequest
 parameter service_request ServiceRequest
@@ -85,6 +86,7 @@ define function GetMiddleInitials(name FHIR.HumanName):
    So we cannot use Questionnaire initial to setup the default value. 
 */
 define AnswerYes: "Yes"
+define AnswerNo: "No"
 
 define Allergies:
   CodesFromAllergies(ConfirmedAllergies([AllergyIntolerance]))
