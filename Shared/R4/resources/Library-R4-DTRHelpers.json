@@ -1,8 +1,8 @@
 {
     "resourceType": "Library",
-    "id": "DTRFunctions",
+    "id": "DTRHelpers",
     "url": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicRulesetFunctions-prepopulation",
-    "name": "DTRFunctions",
+    "name": "DTRHelpers",
     "version": "0.1.0",
     "title": "DTR Shared Functions",
     "status": "draft",
@@ -24,7 +24,7 @@
     "content": [
       {
         "contentType": "application/elm+json",
-        "url": "files/Shared/r4/DTRFunctions-0.1.0.cql"
+        "url": "files/Shared/r4/DTRHelpers-0.1.0.cql"
       }
     ]
   }
