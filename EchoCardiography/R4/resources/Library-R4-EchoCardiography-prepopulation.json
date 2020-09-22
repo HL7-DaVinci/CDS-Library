@@ -1,0 +1,124 @@
+{
+  "resourceType": "Library",
+  "version": "1.0.0",
+  "id": "EchoCardiography-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/EchoCardiography-prepopulation",
+  "title": "Stress Echo Cardiography",
+  "name": "EchoCardiography-prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    },
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/StressEchoCommon-1.0.0"
+      }
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "searchParam": "I27.20,I34.0,I50.810,I34.1,I34.2,I34.8,I34.9,I27.20,I42.2,I95.9,I20.9,I25.9,I49.9,I25.10,I47.2,I10,I45.6 "
+        },
+        {
+          "path": "verification-status",
+          "searchParam": "confirmed"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "searchParam": "I25.10,Z01.810,I50.9,I42.9,I25.9,I38,R07.9,M17.0,M79.603,R68.84,R06.02,I44.7,I49.3,I51.7,I45.6,E08,E09,E10,E11,E13,I25.6,R55,I21.9,I21.3 "
+        },
+        {
+          "path": "verification-status",
+          "searchParam": "unconfirmed"
+        }
+      ]
+    },
+    {
+      "type": "DiagnosticReport",
+      "codeFilter": [
+        {
+          "path": "code",
+          "searchParam": "34534-8,2160-0,34552-0,71575-5,36554-4,LP6730-8,18752-6,8480-6,8462-4,39156-5,8867-4,9279-1"
+        }
+      ]
+    },
+    {
+      "type": "Coverage"
+    },
+    {
+      "type": "Encounter"
+    },
+    {
+      "type": "Organization"
+    },
+    {
+      "type": "Practitioner"
+    },
+    {
+      "type": "ServiceRequest"
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "searchParam": "93000,93010,93040,93042,93224,93227,93015,93016,93017,93018"
+        }
+      ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1138.566"
+        }
+      ]
+    },
+    {
+      "type": "Observation",
+      "codeFilter": [
+        {
+          "path": "code",
+          "searchParam": "34534-8,2160-0,34552-0,71575-5,36554-4,LP6730-8,18752-6,85353-1"
+        }
+      ]
+    },
+    {
+      "type": "DocumentReference",
+      "codeFilter": [
+        {
+          "path": "code",
+          "searchParam": "34117-2,57133-1"
+        }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/EchoCardiography/r4/EchoCardiography-1.0.0.cql"
+    }
+  ]
+}
