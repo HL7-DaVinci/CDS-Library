@@ -21,6 +21,14 @@
       }
     }
   ],
+  "dataRequirement": [
+    { "type": "Condition" },
+    { "type": "Encounter" },
+    { "type": "Practitioner" },
+    { "type": "AllergyIntolerance" },
+    { "type": "Procedure" },
+    { "type": "MedicationStatement" }
+  ],
   "content": [
     {
       "contentType": "application/elm+json",
