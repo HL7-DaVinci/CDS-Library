@@ -1,86 +1,14 @@
 # CDS-Library: Clinical Decision Support File Library
-The CDS-Library stores the "rule" files necessary to make the [Coverage Requirements Discovery (CRD)](https://github.com/HL7-DaVinci/CRD) and [Documentation Templates and Rules (DTR)](https://github.com/HL7-DaVinci/dtr) use cases work. These use cases are being developed as part of the [Da Vinci Project](http://www.hl7.org/about/davinci/index.cfm?ref=common) within the [HL7 Standards Organization](http://www.hl7.org/).
+The CDS-Library stores common files necessary to make the [Coverage Requirements Discovery (CRD)](https://github.com/HL7-DaVinci/CRD), [Documentation Templates and Rules (DTR)](https://github.com/HL7-DaVinci/dtr) and [Prior Authorization Support (PAS)](https://github.com/HL7-DaVinci/prior-auth) use cases work. These use cases are being developed as part of the [Da Vinci Project](http://www.hl7.org/about/davinci/index.cfm?ref=common) within the [HL7 Standards Organization](http://www.hl7.org/).
 
-## File Layout
-The files must be stored in the following structure:
+## CRD-DTR
+The "rule" files necessary to make the [Coverage Requirements Discovery (CRD)](https://github.com/HL7-DaVinci/CRD) and [Documentation Templates and Rules (DTR)](https://github.com/HL7-DaVinci/dtr) use cases work. For more documentation on the file structure, click [here](https://github.com/HL7-DaVinci/CDS-Library/CRD-DTR#file-layout]).
 
-	topic/
-		TopicMetadata.json
-		fhirVersion/
-			resources/
-				Library-fhirVersion-topicPrepopulation.json
-				Questionnaire-fhirVersion-topic.json
-			files/
-				topicRule-version.cql
-				topicPrepopulation-version.cql
-	shared/
-		fhirVersion/
-			resource/
-				Library-fhirVersino-FHIRHelpers-version.json
-			files/
-				FHIRHelpers-version.cql
+## Examples
+The "rule" files for CRD and DTR that were not created as part of the reference implementation. For more documentation on the file structure, click [here](https://github.com/HL7-DaVinci/CDS-Library/CRD-DTR#file-layout]).
 
-[example](HomeOxygenTherapy/):
+## PriorAuth
+Rules the [Prior Authorization Support (PAS)](https://github.com/HL7-DaVinci/prior-auth) reference implementation uses for deciding on the approval of a Claim.
 
-	HomeOxygenTherapy/
-		TopicMetadata.json
-		R4/
-			resources/
-				Library-R4-HomeOxygenTherapyPrepopulation.json
-				Questionnaire-R4-HomeOxygenTherapy.json
-			files/
-				HomeOxygenTherapyRule-0.1.0.cql
-				HomeOxygenTherapyPrepopulation-0.0.1.cql
-	shared/
-		fhirVersion/
-			resource/
-				Library-R4-FHIRHelpers-4.0.0.json
-			files/
-				FHIRHelpers-4.0.0.cql
-
-## TopicMetadata.json
-The contents of the TopicMetadata.json file should look like the following:
-
-	{
-	    "topic": "Topic",
-	    "mappings": [
-	        {
-	            "codeSystem": "CodeSystem1",
-	            "codes": [
-	                "code1", "code2", "code3", "code4", "code5"
-	            ]
-	        },
-	        {
-	            "codeSystem": "CodeSystem2",
-	            "codes": [
-	                "code1", "code2", "code3", "code4", "code5"
-	            ]
-	        }
-	    ],
-	    "payers": [
-	        "Payer"
-	    ],
-	    "fhirVersions": [
-	        "STU3", "R4"
-	    ]
-	}
-
-[example](HomeOxygenTherapy/TopicMetadata.json):
-
-	{
-	    "topic": "HomeOxygenTherapy",
-	    "mappings": [
-	        {
-	            "codeSystem": "hcpcs",
-	            "codes": [
-	                "E0424", "E0431", "E0433", "E0434", "E0439", "E0441", "E0442", "E0443", "E0444", "E1390", "E1391", "E1392", "K0738"
-	            ]
-	        }
-	    ],
-	    "payers": [
-	        "cms"
-	    ],
-	    "fhirVersions": [
-	        "STU3", "R4"
-	    ]
-	}
+## RuleUtils
+A java library for helping to process CQL as well as converting CQL to ELM for execution.
