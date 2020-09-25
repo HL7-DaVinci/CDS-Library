@@ -44,7 +44,7 @@
       ]
     },
     {
-      "type": "DeviceRequest",
+      "type": "DeviceRequestValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "type": "DeviceRequest",
+      "type": "DeviceRequestValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "type": "DeviceRequest",
+      "type": "DeviceRequestValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "type": "DeviceRequest",
+      "type": "DeviceRequestValueSet",
       "codeFilter": [
         {
           "path": "code",

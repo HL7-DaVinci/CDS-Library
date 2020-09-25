@@ -35,7 +35,7 @@
   ],
   "dataRequirement": [
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
