@@ -21,6 +21,9 @@
       }
     }
   ],
+  "dataRequirement": [
+    { "type": "Practitioner" }
+  ],
   "content": [
     {
       "contentType": "application/elm+json",

@@ -34,6 +34,12 @@
     }
   ],
   "dataRequirement": [
+    { "type": "Encounter" },
+    { "type": "Consent" },
+    { "type": "Condition" },
+    { "type": "CarePlan" },
+    { "type": "ClinicalImpression" },
+    { "type": "Provenance" }
   ],
   "content": [
     {
