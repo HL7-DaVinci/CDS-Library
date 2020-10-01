@@ -21,6 +21,9 @@
       }
     }
   ],
+  "dataRequirement": [
+    { "type": "Coverage" }
+  ],
   "content": [
     {
       "contentType": "application/elm+json",
