@@ -2,7 +2,7 @@ library HomeOxygenTherapyPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
 include CDS_Connect_Commons_for_FHIRv400 version '1.0.2' called CDS
-include DTRFunctions version '0.1.0' called DTR
+include DTRHelpers version '0.1.0' called DTR
 
 // This cql and questionnaire combo can be considered a partial implementation of these forms:
 // https://www.cms.gov/Medicare/CMS-Forms/CMS-Forms/Downloads/CMS484.pdf
@@ -78,22 +78,9 @@ define Today: Today()
 // Relevant Diagnoses Definition
 define "RelevantConditions": [Condition: "Home Oxygen Therapy Qualifying Conditions"]
 define RelevantDiagnoses: 
-  CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring("RelevantConditions")))
+  DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring("RelevantConditions")))
 
-define OtherDiagnoses: CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition] except "RelevantConditions")))
-// Codes From Condition Helper Function - Used to display relevant diagnoses
-define function CodesFromConditions(CondList List<Condition>):
-  distinct(flatten(
-    CondList C
-      let DiagnosesCodings:
-          (C.code.coding) CODING where CODING.system.value in {
-            'http://hl7.org/fhir/sid/icd-10',
-            'http://hl7.org/fhir/sid/icd-10-cm',
-            'http://snomed.info/sct'
-          }
-          return FHIRHelpers.ToCode(CODING)
-      return DiagnosesCodings
-  ))
+define OtherDiagnoses: DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition] except "RelevantConditions")))
 
 // Arterial Oxygen Saturation - Definitions to display most recent observation on patient health record
 define "VerifiedArterialOxygenSatuation": CDS.Verified(CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months))
@@ -114,7 +101,7 @@ define PatientHasHematocritThatIsGreaterThanThreshold: exists("HematocritThatIsG
 
 // Oxygen Saturation Exercise
 define "OxygenSatExercise": CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)
-define "OxygenSatExerciseDate": ObservationLatestDate("OxygenSatExercise")
+define "OxygenSatExerciseDate": CDS.FindDate(CDS.MostRecent("OxygenSatExercise"))
 define "IsArterialOxygenSaturationExerciseTested": "ArterialOxygenSaturationExercise" is not null
 
 // High Blood Pressure
@@ -181,8 +168,4 @@ define "BloodGasOrderedAndEvaluated": "ArterialOxygenSaturation" is not null or 
 define "BloodTestObservations": "VerifiedArterialOxygenSatuation" union "VerifiedArterialPartialPressureOfOxygen" union "VerifiedArterialOxygenSaturationExercise"
 
 /// Find the observation date for the blood gas test
-define "BloodGasTestDate": ObservationLatestDate("BloodTestObservations")
-
-// Helper function to find most recent observation from a list
-define function ObservationLatestDate(ObsList List<Observation>):
-  Max(ObsList O return FHIRHelpers."ToDateTime"(O.issued))
+define "BloodGasTestDate": CDS.FindDate(CDS.MostRecent("BloodTestObservations"))

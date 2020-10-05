@@ -19,11 +19,23 @@
       "resource": {
         "reference": "Library/FHIRHelpers-4.0.0"
       }
+    },
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/CDS_Connect_Commons_for_FHIRv400"
+      }
+    },
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/DTRHelpers"
+      }
     }
   ],
   "dataRequirement": [
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -32,7 +44,7 @@
       ]
     },
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -41,7 +53,7 @@
       ]
     },
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -50,7 +62,7 @@
       ]
     },
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
@@ -59,13 +71,19 @@
       ]
     },
     {
-      "type": "Observation",
+      "type": "ObservationValueSet",
       "codeFilter": [
         {
           "path": "code",
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.104"
         }
       ]
+    },
+    {
+      "type": "Condition"
+    },
+    {
+      "type": "Encounter"
     }
   ],
   "content": [

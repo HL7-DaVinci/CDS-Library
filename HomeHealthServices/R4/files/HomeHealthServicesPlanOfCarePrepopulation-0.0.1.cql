@@ -1,6 +1,8 @@
 library HomeHealthServicesPlanOfCarePrepopulation version '0.0.1'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
+include CDS_Connect_Commons_for_FHIRv400 version '1.0.2' called CDS
+include DTRHelpers version '0.1.0' called DTR
 
 parameter service_request ServiceRequest
 
@@ -34,18 +36,7 @@ define "RelavantDiagnosis":
   [Condition] condition
     where ('Condition/' + condition.id) = RequestEncounter.diagnosis[0].condition.reference.value
 
-define "RelavantDiagnosisCoding": ConvertConditionDetails(RelavantDiagnosis)
-
-define function ConvertConditionDetails(CondList List<Condition>):
-  distinct(
-    flatten(
-      CondList C
-        let ConditionCodings:
-          (C.code.coding) CODING
-          return FHIRHelpers.ToCode(CODING)     
-        return ConditionCodings
-    )
-  )
+define "RelavantDiagnosisCoding": DTR.CodesFromConditions(RelavantDiagnosis)
 
 // Care plan related queries
 define "RequestCarePlan": singleton from (

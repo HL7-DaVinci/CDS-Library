@@ -1,0 +1,399 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://identifiers.mettles.com/prior_authorization",
+      "value": "united_health_care-stress_echocardiogram"
+    }
+  ],
+  "name": "EchoCardiography",
+  "id": "EchoCardiography",
+  "version": "1.0.0",
+  "title": "Stress Echocardiography",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2019-12-03",
+  "publisher": "Mettle Solutions",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/EchoCardiography-prepopulation"
+    }
+  ],
+  "contained": [
+    {
+      "resourceType": "ValueSet",
+      "id": "gender",
+      "name": "Gender",
+      "status": "draft",
+      "description": "Gender",
+      "compose": {
+        "include": [
+          {
+            "concept": [
+              {
+                "code": "male",
+                "display": "Male"
+              },
+              {
+                "code": "female",
+                "display": "Female"
+              },
+              {
+                "code": "other",
+                "display": "Other"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "text": "Diagnosis/Procedure",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "1.1",
+          "text": "Relevant Diagnosis",
+          "type": "string",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "RelevantDiagnosis"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.2",
+          "text": "Details of Prior Imaging studies performed",
+          "type": "text",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "PriorImagingTest"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.3",
+          "text": "Date of Prior Imaging Performed",
+          "type": "dateTime",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "DateOfImaging"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.4",
+          "text": "Assessment of any Cardiac Disease",
+          "type": "string",
+          "required": true,
+          "repeats": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "Reason"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.5",
+          "text": "Date of Cardiac Disease Assessment Performed",
+          "type": "dateTime",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "DateOfAssessment"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.6",
+          "text": "Details of Prior Treatment Performed",
+          "type": "text",
+          "required": true,
+          "repeats": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "ProceduresPerformed"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "1.7",
+          "text": "Date of Treatment Performed",
+          "type": "dateTime",
+          "required": true,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "TreatmentDate"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "2",
+      "text": "Symptoms for assessment",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "2.1",
+          "text": "Is there chest pain ?",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "ChestPain"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.2",
+          "text": "Date of Onset of Chest Pain",
+          "type": "dateTime",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "2.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "ChestPainDate"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.3",
+          "text": "Is there arm pain?",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "ArmPain"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.4",
+          "text": "Date of Onset of Arm Pain",
+          "type": "dateTime",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "2.3",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "ArmPainDate"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.5",
+          "text": "Is there jaw pain?",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "JawPain"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.6",
+          "text": "Date of Onset of Jaw Pain",
+          "type": "dateTime",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "2.5",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "JawPainDate"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.7",
+          "text": "Is the pain relieved with nitroglycerin or rest?",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "linkId": "2.8",
+          "text": "Is there shortness of breath?",
+          "type": "boolean",
+          "required": false,
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "ShortnessOfBreath"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "2.9",
+          "text": "Date of Onset of Shortness of Breath",
+          "type": "dateTime",
+          "required": false,
+          "enableWhen": [
+            {
+              "question": "2.8",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "ShortnessOfBreathDate"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "text": "Clinical Assessment",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "3.1",
+          "text": "Is a decision made to perform cardiac catheterization or other angiography ?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "3.2",
+          "text": "Is there substernal chest discomfort (generally described as pressure,heaviness, burning, or tightness) ?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "3.3",
+          "text": "Is the chest pain  brought on by exertion or emotional stress and relieved by rest?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "3.4",
+          "text": "Does the pain radiate to the left arm or jaw ?",
+          "type": "boolean",
+          "required": true
+        }
+      ]
+    },
+    {
+      "linkId": "4",
+      "text": "Assessment of Functional Capacity",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "4.1",
+          "text": "Can walk four blocks without stopping ?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "4.2",
+          "text": "Can walk up a hill ?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "4.3",
+          "text": "Can climb one flights of stairs without stopping ?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "4.4",
+          "text": "Can perform heavy work around the house ?",
+          "type": "boolean",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

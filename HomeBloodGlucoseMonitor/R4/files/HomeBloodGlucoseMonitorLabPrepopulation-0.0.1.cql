@@ -1,6 +1,8 @@
 library HomeBloodGlucoseMonitorLabPrepopulation version '0.0.1'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
+include CDS_Connect_Commons_for_FHIRv400 version '1.0.2' called CDS
+include DTRHelpers version '0.1.0' called DTR
 
 // 	Code system definition
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
@@ -21,7 +23,7 @@ context Patient
 
 // Check for qualifying diagnosis (Diabetes Mellitus)
 define RelevantDiagnoses: {
-	if exists(Confirmed(ActiveOrRecurring([Condition: "Diabetes Mellitus Disorder"]))) then 'Diabetes confirmed' else null
+	if exists(CDS.Confirmed(CDS.ActiveOrRecurring([Condition: "Diabetes Mellitus Disorder"]))) then 'Diabetes confirmed' else null
 } except { null }
 
 /*
@@ -114,10 +116,3 @@ define "Confirmed_Two_hour_Glucose_Tolerance_Level": {
 define "Confirmed_A1c_Level": {
   if exists("RelevantDiagnoses") then null else FHIRHelpers.ToQuantity((Last([Observation: "A1c Lab"]).value as Quantity)).value
 } except { null }
-
-// Helpers
-define function ActiveOrRecurring(CondList List<Condition>):
-  CondList C where C.clinicalStatus.coding.code in {'active', 'relapse'}
-
-define function Confirmed(CondList List<Condition>):
-  CondList C where C.verificationStatus.coding.code = 'confirmed'

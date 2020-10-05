@@ -1,0 +1,17 @@
+{
+    "topic": "EchoCardiography",
+    "payers": [
+        "uhc"
+    ],
+    "mappings": [
+        {
+            "codeSystem": "cpt",
+            "codes": [
+                "93350"
+            ]
+        }
+    ],
+    "fhirVersions": [
+        "R4"
+    ]
+}
