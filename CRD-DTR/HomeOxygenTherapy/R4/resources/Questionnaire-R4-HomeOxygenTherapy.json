@@ -4,6 +4,7 @@
   "name": "HomeOxygenTherapy",
   "meta": {
     "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
   },
@@ -59,9 +60,10 @@
               "type": "open-choice",
               "required": true,
               "repeats": true,
+              "answerOption": [],
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
@@ -75,9 +77,10 @@
               "type": "open-choice",
               "required": true,
               "repeats": true,
+              "answerOption": [],
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeOxygenTherapyPrepopulation\".OtherDiagnoses"
@@ -94,7 +97,7 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".ArterialOxygenSaturation"
@@ -109,7 +112,7 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".ArterialPartialPressureOfOxygen"
@@ -124,7 +127,7 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".ArterialOxygenSaturationExercise"
@@ -151,7 +154,7 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".PatientMobile"
@@ -208,7 +211,7 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".PatientHasHematocritThatIsGreaterThanThreshold"
@@ -230,7 +233,7 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".HematocritThatIsGreaterThanThreshold"
@@ -252,7 +255,7 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".Today"
@@ -267,7 +270,7 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".LengthOfNeed"
@@ -351,7 +354,7 @@
           ],
           "extension": [
             {
-              "url": "hhttp://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".FrequencyOfUse"
@@ -373,7 +376,7 @@
           "readOnly": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceRequestDescription"
@@ -388,7 +391,7 @@
           "readOnly": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceRequestedIsPortable"
@@ -421,7 +424,7 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceType"
@@ -481,7 +484,7 @@
           "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent",
           "extension": [
             {
-              "url": "hhttp://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceOrderType"
