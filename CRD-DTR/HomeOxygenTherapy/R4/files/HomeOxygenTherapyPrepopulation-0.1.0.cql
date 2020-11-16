@@ -176,8 +176,8 @@ define "TestDateIsOperator": "TestIsOperator"("Today")
 
 define function "TestIsOperator"(choice Choice<Integer, Date>):
   if choice is Integer
-    then 'Paramter is Integer'
+    then 'Parameter is Integer'
   else if choice is Date
     then 'Parameter is Date'
   else 
-    'Paramter is not one of the choices'   
+    'Parameter is not one of the choices'   
