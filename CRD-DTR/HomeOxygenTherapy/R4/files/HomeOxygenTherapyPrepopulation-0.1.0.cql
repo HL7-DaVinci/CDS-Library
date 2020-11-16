@@ -97,8 +97,8 @@ define PatientMobile: not exists(CDS.Confirmed(CDS.ActiveOrRecurring([Condition:
 define HematocritThatIsGreaterThanThreshold: CDS.HighestObservation(CDS.WithUnit(CDS.Verified(CDS.ObservationLookBack([Observation: "Hematocrit_lab_test_Codes"], 3 months)), '%'))
 define PatientHasHematocritThatIsGreaterThanThreshold: exists("HematocritThatIsGreaterThanThreshold")
 
-// FACE TO FACE ENCOUNTER
-
+// FACE TO FACE ENCOUNTER 
+      
 // Oxygen Saturation Exercise
 define "OxygenSatExercise": CDS.ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)
 define "OxygenSatExerciseDate": CDS.FindDate(CDS.MostRecent("OxygenSatExercise"))
@@ -169,3 +169,15 @@ define "BloodTestObservations": "VerifiedArterialOxygenSatuation" union "Verifie
 
 /// Find the observation date for the blood gas test
 define "BloodGasTestDate": CDS.FindDate(CDS.MostRecent("BloodTestObservations"))
+
+// Test Is operator
+define "TestIntegerIsOperator": "TestIsOperator"(5)
+define "TestDateIsOperator": "TestIsOperator"("Today")
+
+define function "TestIsOperator"(choice Choice<Integer, Date>):
+  if choice is Integer
+    then 'Paramter is Integer'
+  else if choice is Date
+    then 'Parameter is Date'
+  else 
+    'Paramter is not one of the choices'   
