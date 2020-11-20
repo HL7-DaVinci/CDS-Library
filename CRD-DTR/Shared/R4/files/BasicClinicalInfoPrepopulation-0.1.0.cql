@@ -138,16 +138,19 @@ define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
 
   define "True": true
 
-  define "MedicationList": GetMedicationsList([MedicationStatement])
-  define function GetMedicationsList(MedStatementList List<MedicationStatement>):
+ define "MedicationTupleList": GetMedicationsTupleList([MedicationStatement])
+ define function GetMedicationsTupleList(MedStatementList List<MedicationStatement>):
     distinct(
       flatten(
         MedStatementList MedStatement
           let MedicationList:
             (MedStatement.medication.coding) CODING
-            return FHIRHelpers.ToCode(CODING)
+            return Tuple {
+              RxNorm: FHIRHelpers.ToCode(CODING).display + '-' + FHIRHelpers.ToCode(CODING).code ,
+              Description: FHIRHelpers.ToCode(CODING).display
+            }
           return MedicationList  
       )
-    )
+    )   
 
 
