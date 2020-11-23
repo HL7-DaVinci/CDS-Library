@@ -28,7 +28,7 @@
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".Today"
+                "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
               }
             }
           ],

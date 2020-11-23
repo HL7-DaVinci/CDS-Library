@@ -27,7 +27,7 @@ define "RequestEncounter":
 
 define "RequestEncounterDate":
   if exists("RequestEncounter") then "RequestEncounter".period.start.value
-  else "Today"
+  else null
 
 define "RequestEncounterParticipants": "RequestEncounter".participant
 define "RequestEncounterFirstParticipantReference": 
