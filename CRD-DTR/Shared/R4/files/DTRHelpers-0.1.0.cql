@@ -92,3 +92,18 @@ define function ProcedureCoding(ProcedureList List<FHIR.Procedure>):
         return DiagnosesCodings
     )
   )
+
+// Returns formatted codings from a list of Procedures
+// Use Case: Query relevant procedures for a MedicationRequest
+  define function CodesFromProcedures(ProcedureList List<FHIR.Procedure>):
+    distinct(flatten(
+      ProcedureList P
+        let DiagnosesCodings:
+            (P.code.coding) CODING where CODING.system.value in {
+              'http://hl7.org/fhir/sid/icd-10',
+              'http://hl7.org/fhir/sid/icd-10-cm',
+              'http://snomed.info/sct'
+            }
+            return FHIRHelpers.ToCode(CODING)
+        return DiagnosesCodings
+  ))

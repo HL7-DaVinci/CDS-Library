@@ -22,7 +22,7 @@ define "QualifyingTransplant": [Condition: "OrganTransplantHistoryValueSet"]
 
 define "QualifyingTransplantProcedures": [Procedure: "OrganTransplantProcedureValueSet"]
 
-define "QualifyingTransplantCodings": DTR.CodesFromConditions("QualifyingTransplant") union DTR.ProcedureCoding("QualifyingTransplantProcedures")
+define "QualifyingTransplantCodings": DTR.CodesFromConditions("QualifyingTransplant") union DTR.CodesFromProcedures("QualifyingTransplantProcedures")
 
 // get the first transplant date
 define "TransplantDate": 
