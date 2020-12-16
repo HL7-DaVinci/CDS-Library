@@ -814,10 +814,7 @@
               "linkId": "11.2",
               "text": "Frequency",
               "type": "choice",
-              "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
-              "extension": [
-                {}
-              ]
+              "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation"
             },
             {
               "linkId": "11.3",
@@ -918,10 +915,7 @@
               "linkId": "13.1.2",
               "text": "Frequency",
               "type": "choice",
-              "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
-              "extension": [
-                {}
-              ]
+              "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation"
             },
             {
               "linkId": "13.1.3",
@@ -990,10 +984,7 @@
           "linkId": "14.2",
           "text": "Frequency",
           "type": "choice",
-          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
-          "extension": [
-            {}
-          ]
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/timing-abbreviation"
         },
         {
           "linkId": "14.3",

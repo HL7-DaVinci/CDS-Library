@@ -64,7 +64,7 @@
     },
     {
       "linkId": "5",
-      "text": "Order",
+      "text": "Immunosuppressive drug(s) ordered and dispensed",
       "type": "group",
       "item": [
         {
@@ -133,6 +133,34 @@
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationFrequency"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.6",
+          "type": "integer",
+          "text": "Quantity",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationQuantity"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.7",
+          "type": "integer",
+          "text": "Refill",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationRefill"
               }
             }
           ]

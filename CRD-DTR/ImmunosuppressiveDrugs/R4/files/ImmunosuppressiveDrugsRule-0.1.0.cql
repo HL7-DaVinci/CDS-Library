@@ -4,6 +4,7 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 
 parameter Patient Patient
 parameter medication_request MedicationRequest
+parameter medication_dispense MedicationDispense
 
 define RULE_APPLIES:
     true
@@ -24,10 +25,16 @@ define RESULT_InfoLink:
     'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/ProviderComplianceTipsforHospitalBedsandAccessories-ICN909476.pdf'
 
 define RESULT_QuestionnaireOrderUri:
-    'Questionnaire/ImmunosuppressiveDrugs'
+    'Questionnaire/ImmunosuppressiveDrugs'  
+
+define RESULT_QuestionnaireDispenseUri:
+    'Questionnaire/ImmunosuppressiveDrugs'  
 
 define RESULT_QuestionnaireProgressNoteUri:
     'Questionnaire/ImmunosuppressiveDrugsProgressNote'
 
 define RESULT_requestId:
   medication_request
+
+define RESULT_dispense:
+  medication_dispense

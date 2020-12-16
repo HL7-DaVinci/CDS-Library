@@ -15,6 +15,7 @@ valueset "ImmunosuppressiveSupportiveMedicationValueSet": 'http://cts.nlm.nih.go
 
 
 parameter medication_request MedicationRequest
+parameter medication_dispense MedicationDispense
 
 context Patient
 
@@ -30,8 +31,10 @@ define "TransplantDate":
   else First("QualifyingTransplantProcedures").performed.value union First("QualifyingTransplantProcedures").performed.start.value
 
 // Get all medication related information
+define "MedicationCodingFromParameter": Coalesce(medication_request.medication.coding, medication_dispense.medication.coding)
+
 define MedicationCoding: singleton from (
-  (medication_request.medication.coding) CODING
+    "MedicationCodingFromParameter" CODING
     where CODING in "ImmunosuppressiveMedicationValueSet" 
     or CODING in "ImmunosuppressiveSupportiveMedicationValueSet")
 
@@ -39,11 +42,11 @@ define "MedicationName": MedicationCoding.display.value
 
 define "MedicationCode" : MedicationCoding.code.value
 
-define "MedicationDosage": medication_request.dosageInstruction[0]
+define "MedicationDosage": Coalesce(medication_request.dosageInstruction[0], medication_dispense.dosageInstruction[0])
 
 define "MedicationDoseAndRate": MedicationDosage.doseAndRate[0]
 
-define "MedicationDoseWithUnit": ToString(MedicationDoseAndRate.dose.value.value) + '' + MedicationDoseAndRate.dose.unit.value
+define "MedicationDoseWithUnit": ToString(MedicationDoseAndRate.dose.value.value) + ' ' + MedicationDoseAndRate.dose.unit.value
 
 define "MedicationRoute": MedicationDosage.route.coding[0].display.value
 
@@ -51,3 +54,11 @@ define "MedicationFrequency" : ToString(MedicationDosage.timing.repeat.frequency
 
 define CurrentDiagnoses:
   DTR.CodesFromConditions(CDS.Confirmed(CDS.ActiveOrRecurring([Condition]))) except QualifyingTransplant
+
+define "MedicationQuantity": Coalesce(medication_dispense.quantity.value, medication_request.dispenseRequest.quantity.value.value)
+
+define "MedicationRefill": 
+  if medication_request.dispenseRequest is not null
+    then medication_request.dispenseRequest.numberOfRepeatsAllowed.value
+  else
+    null  
