@@ -62,3 +62,5 @@ define "MedicationRefill":
     then medication_request.dispenseRequest.numberOfRepeatsAllowed.value
   else
     null  
+
+define "IsMedicationRequest": medication_request.id is not null

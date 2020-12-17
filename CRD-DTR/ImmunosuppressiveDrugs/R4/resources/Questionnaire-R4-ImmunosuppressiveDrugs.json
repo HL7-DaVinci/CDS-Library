@@ -153,15 +153,80 @@
         },
         {
           "linkId": "5.7",
-          "type": "integer",
-          "text": "Refill",
-          "extension": [
+          "text": "More details",
+          "type": "group",
+          "item": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
-              "valueExpression": {
-                "language": "text/cql",
-                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationRefill"
-              }
+              "linkId": "5.7.1",
+              "type": "boolean",
+              "readOnly": true,
+              "text": "Is for Medication Request?",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"ImmunosuppressiveDrugsPrepopulation\".IsMedicationRequest"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.2",
+              "type": "integer",
+              "text": "Refill",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationRefill"
+                  }
+                }
+              ],
+              "enableWhen": [
+                {
+                  "question": "5.7.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.3",
+              "type": "date",
+              "text": "Date the above drugs and supplies were dispensed to the patient",
+              "enableWhen": [
+                {
+                  "question": "5.7.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.4",
+              "type": "text",
+              "text": "NSC number",
+              "enableWhen": [
+                {
+                  "question": "5.7.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.5",
+              "type": "text",
+              "text": "State dispensing license number",
+              "enableWhen": [
+                {
+                  "question": "5.7.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                }
+              ]
             }
           ]
         }
