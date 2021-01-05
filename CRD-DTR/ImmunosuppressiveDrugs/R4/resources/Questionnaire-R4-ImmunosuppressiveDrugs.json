@@ -64,7 +64,7 @@
     },
     {
       "linkId": "5",
-      "text": "Order",
+      "text": "Immunosuppressive drug(s) ordered and dispensed",
       "type": "group",
       "item": [
         {
@@ -134,6 +134,99 @@
                 "language": "text/cql",
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationFrequency"
               }
+            }
+          ]
+        },
+        {
+          "linkId": "5.6",
+          "type": "integer",
+          "text": "Quantity",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationQuantity"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "5.7",
+          "text": "More details",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "5.7.1",
+              "type": "boolean",
+              "readOnly": true,
+              "text": "Is for Medication Request?",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"ImmunosuppressiveDrugsPrepopulation\".IsMedicationRequest"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.2",
+              "type": "integer",
+              "text": "Refill",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression": {
+                    "language": "text/cql",
+                    "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationRefill"
+                  }
+                }
+              ],
+              "enableWhen": [
+                {
+                  "question": "5.7.1",
+                  "operator": "=",
+                  "answerBoolean": true
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.3",
+              "type": "date",
+              "text": "Date the above drugs and supplies were dispensed to the patient",
+              "enableWhen": [
+                {
+                  "question": "5.7.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.4",
+              "type": "text",
+              "text": "NSC number",
+              "enableWhen": [
+                {
+                  "question": "5.7.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                }
+              ]
+            },
+            {
+              "linkId": "5.7.5",
+              "type": "text",
+              "text": "State dispensing license number",
+              "enableWhen": [
+                {
+                  "question": "5.7.1",
+                  "operator": "=",
+                  "answerBoolean": false
+                }
+              ]
             }
           ]
         }
