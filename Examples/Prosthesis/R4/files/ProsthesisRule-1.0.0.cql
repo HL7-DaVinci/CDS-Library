@@ -1,0 +1,29 @@
+library ProsthesisRule version '0.1.0'
+using FHIR version '4.0.0'
+
+parameter Patient Patient
+parameter device_request DeviceRequest
+
+define RULE_APPLIES:
+  true
+
+define PRIORAUTH_REQUIRED:
+  true 
+
+define DOCUMENTATION_REQUIRED:
+  true
+
+define RESULT_Summary:
+  'Authorization is required.'
+
+define RESULT_Details:
+  'Authorization is required, follow the link for more information.'
+
+define RESULT_InfoLink:
+  'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/ProviderComplianceTipsforGlucoseMonitors-ICN909465.pdf'
+
+define RESULT_QuestionnaireOrderUri:
+  'Questionnaire/Prosthesis'
+
+define RESULT_requestId:
+  device_request

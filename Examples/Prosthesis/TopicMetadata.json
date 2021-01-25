@@ -1,0 +1,17 @@
+{
+    "topic": "Prosthesis",
+    "payers": [
+        "medicare"
+    ],
+    "mappings": [
+        {
+            "codeSystem": "hcpcs",
+            "codes": [
+                "L5856"
+            ]
+        }
+    ],
+    "fhirVersions": [
+        "R4"
+    ]
+}
