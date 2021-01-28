@@ -1,4 +1,4 @@
-library ProsthesisRule version '0.1.0'
+library ProsthesisRule version '1.0.0'
 using FHIR version '4.0.0'
 
 parameter Patient Patient
@@ -23,7 +23,7 @@ define RESULT_InfoLink:
   'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/ProviderComplianceTipsforGlucoseMonitors-ICN909465.pdf'
 
 define RESULT_QuestionnaireOrderUri:
-  'Questionnaire/Prosthesis'
+  'Questionnaire/LowerLimbProsthesis'
 
 define RESULT_requestId:
   device_request

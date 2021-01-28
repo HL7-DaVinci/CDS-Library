@@ -1,0 +1,99 @@
+{
+    "resourceType": "Library",
+    "version": "1.0.0",
+    "title": "LowerLimbDecision",
+    "name": "LowerLimbDecision",
+    "status": "draft",
+    "type": {
+      "coding": [
+        {
+          "code": "logic-library"
+        }
+      ]
+    },
+    "relatedArtifact": [
+      {
+        "type": "depends-on",
+        "resource": "Library/FHIRHelpers"
+      },
+      {
+        "type": "depends-on",
+        "resource": "Library/library-lowerlimbprostheses-LowerLimbProsthesis"
+      }
+    ],
+    "dataRequirement": [
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "2.16.840.1.113883.3.7643.3.1031"
+          }
+          ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "2.16.840.1.113883.3.7643.3.1032"
+          }
+          ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "2.16.840.1.113883.3.6037.1001.23.95.31"
+          }
+          ]
+      },
+      {
+        "type": "Condition",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "2.16.840.1.113883.17.4077.3.2006"
+          }
+          ]
+      },
+      {
+        "type": "Condition",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "2.16.840.1.113883.3.464.1003.199.12.1055"
+          }
+          ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "2.16.840.1.113883.3.6037.1001.23.95.21"
+          }
+          ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "2.16.840.1.113762.1.4.1045.159"
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "2.16.840.1.113883.3.464.1003.121.12.1014"
+          }
+        ]
+      }
+    ]
+  }
+  
