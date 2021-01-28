@@ -1,8 +1,9 @@
 {
     "resourceType": "Library",
     "version": "1.0.0",
-    "title": "LowerLimbDecision",
-    "name": "LowerLimbDecision",
+    "title": "LowerLimbProsthesis",
+    "name": "LowerLimbProsthesis",
+    "id": "LowerLimbProsthesis",
     "status": "draft",
     "type": {
       "coding": [
@@ -15,10 +16,6 @@
       {
         "type": "depends-on",
         "resource": "Library/FHIRHelpers"
-      },
-      {
-        "type": "depends-on",
-        "resource": "Library/library-lowerlimbprostheses-LowerLimbProsthesis"
       }
     ],
     "dataRequirement": [
@@ -93,6 +90,12 @@
             "valueSet": "2.16.840.1.113883.3.464.1003.121.12.1014"
           }
         ]
+      }
+    ],
+    "content": [
+      {
+        "contentType": "application/elm+json",
+        "url": "files/LowerLimbProsthesis/r4/LowerLimbProsthesis-1.0.0.cql"
       }
     ]
   }

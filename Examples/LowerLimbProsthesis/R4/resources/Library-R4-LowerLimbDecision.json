@@ -1,9 +1,9 @@
 {
     "resourceType": "Library",
     "version": "1.0.0",
-    "title": "LowerLimbProsthesis",
-    "name": "LowerLimbProsthesis",
-    "id": "LowerLimbProsthesis",
+    "title": "LowerLimbDecision",
+    "name": "LowerLimbDecision",
+    "id": "LowerLimbDecision",
     "status": "draft",
     "type": {
       "coding": [
@@ -16,6 +16,10 @@
       {
         "type": "depends-on",
         "resource": "Library/FHIRHelpers"
+      },
+      {
+        "type": "depends-on",
+        "resource": "Library/LowerLimbProsthesis"
       }
     ],
     "dataRequirement": [

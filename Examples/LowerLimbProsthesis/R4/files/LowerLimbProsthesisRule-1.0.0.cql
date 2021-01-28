@@ -1,4 +1,4 @@
-library ProsthesisRule version '1.0.0'
+library LowerLimbProsthesisRule version '1.0.0'
 using FHIR version '4.0.0'
 
 parameter Patient Patient
