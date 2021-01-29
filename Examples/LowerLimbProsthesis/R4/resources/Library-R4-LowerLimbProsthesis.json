@@ -4,6 +4,7 @@
     "title": "LowerLimbProsthesis",
     "name": "LowerLimbProsthesis",
     "id": "LowerLimbProsthesis",
+    "url": "http://hl7.org/fhir/us/davinci-dtr/Library/LowerLimbProsthesis",
     "status": "draft",
     "type": {
       "coding": [
@@ -15,7 +16,9 @@
     "relatedArtifact": [
       {
         "type": "depends-on",
-        "resource": "Library/FHIRHelpers"
+        "resource": {
+          "reference": "Library/FHIRHelpers-4.0.0"
+        }
       }
     ],
     "dataRequirement": [
@@ -24,7 +27,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSet": "2.16.840.1.113883.3.7643.3.1031"
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.7643.3.1031"
           }
           ]
       },
@@ -33,16 +36,17 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSet": "2.16.840.1.113883.3.7643.3.1032"
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.7643.3.1032"
           }
           ]
       },
+      
       {
-        "type": "Procedure",
+        "type": "Condition",
         "codeFilter": [
           {
             "path": "code",
-            "valueSet": "2.16.840.1.113883.3.6037.1001.23.95.31"
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.17.4077.3.2006"
           }
           ]
       },
@@ -51,16 +55,35 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSet": "2.16.840.1.113883.17.4077.3.2006"
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.199.12.1055"
           }
           ]
       },
+      
       {
-        "type": "Condition",
+        "type": "Observation",
         "codeFilter": [
           {
             "path": "code",
-            "valueSet": "2.16.840.1.113883.3.464.1003.199.12.1055"
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.159"
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.121.12.1014"
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "<server-path>ValueSet/2.16.840.1.113883.3.6037.1001.23.95.21"
           }
           ]
       },
@@ -69,27 +92,9 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSet": "2.16.840.1.113883.3.6037.1001.23.95.21"
+            "valueSet": "<server-path>ValueSet/2.16.840.1.113883.3.6037.1001.23.95.31"
           }
           ]
-      },
-      {
-        "type": "Observation",
-        "codeFilter": [
-          {
-            "path": "code",
-            "valueSet": "2.16.840.1.113762.1.4.1045.159"
-          }
-        ]
-      },
-      {
-        "type": "Observation",
-        "codeFilter": [
-          {
-            "path": "code",
-            "valueSet": "2.16.840.1.113883.3.464.1003.121.12.1014"
-          }
-        ]
       }
     ],
     "content": [

@@ -18,7 +18,7 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "Library/LowerLimbProsthesis"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/LowerLimbProsthesis"
     }
   ],
   "contained": [
@@ -62,7 +62,7 @@
                 "url" : "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression" : {
                   "language" : "text/cql",
-                  "expression" : "RequestType"
+                  "expression" : "\"LowerLimbProsthesis\".RequestType"
                 }
               }
             ],
@@ -93,7 +93,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "DescriptionOfItem"
+                  "expression": "\"LowerLimbProsthesis\".DescriptionOfItem"
                 }
               }
             ],
@@ -115,7 +115,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "PhysicalExamination"
+                  "expression": "\"LowerLimbProsthesis\".PhysicalExamination"
                 }
               }
             ],
@@ -130,7 +130,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "PhysicalExaminationType"
+                  "expression": "\"LowerLimbProsthesis\".PhysicalExaminationType"
                 }
               }
             ],
@@ -153,7 +153,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "Comorbidities"
+                  "expression": "\"LowerLimbProsthesis\".Comorbidities"
                 }
               }
             ],
@@ -168,7 +168,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "ComorbiditiesDetails"
+                  "expression": "\"LowerLimbProsthesis\".ComorbiditiesDetails"
                 }
               }
             ],
@@ -198,7 +198,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "DateOfOrder"
+                  "expression": "\"LowerLimbProsthesis\".DateOfOrder"
                 }
               }
             ],
@@ -228,7 +228,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "FFEncounter"
+                  "expression": "\"LowerLimbProsthesis\".FFEncounter"
                 }
               }
             ],
@@ -263,7 +263,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "Mobility"
+                  "expression": "\"LowerLimbProsthesis\".Mobility"
                 }
               }
             ],
@@ -278,7 +278,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "MobilityEstimation"
+                  "expression": "\"LowerLimbProsthesis\".MobilityEstimation"
                 }
               }
             ],
@@ -301,7 +301,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "MusculoskeletalAnalysis"
+                  "expression": "\"LowerLimbProsthesis\".MusculoskeletalAnalysis"
                 }
               }
             ],
@@ -316,7 +316,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "MusculoskeletalEstimation"
+                  "expression": "\"LowerLimbProsthesis\".MusculoskeletalEstimation"
                 }
               }
             ],
@@ -339,7 +339,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "NeurologicalAnalysis"
+                  "expression": "\"LowerLimbProsthesis\".NeurologicalAnalysis"
                 }
               }
             ],
@@ -354,7 +354,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "NeurologicalEstimation"
+                  "expression": "\"LowerLimbProsthesis\".NeurologicalEstimation"
                 }
               }
             ],
@@ -377,7 +377,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "CardioPulmonaryAnalysis"
+                  "expression": "\"LowerLimbProsthesis\".CardioPulmonaryAnalysis"
                 }
               }
             ],
@@ -392,7 +392,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "CardioPulmonaryEstimation"
+                  "expression": "\"LowerLimbProsthesis\".CardioPulmonaryEstimation"
                 }
               }
             ],
@@ -422,7 +422,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "RightorLeft"
+                  "expression": "\"LowerLimbProsthesis\".RightorLeft"
                 }
               }
             ],
@@ -448,7 +448,7 @@
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/cql",
-                  "expression": "FunctionLevel"
+                  "expression": "\"LowerLimbProsthesis\".FunctionLevel"
                 }
               }
             ],
