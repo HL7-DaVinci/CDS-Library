@@ -323,7 +323,7 @@
             "linkId": "5.4",
             "text": "Details of the Musculoskeletal Assessment",
             "type": "open-choice",
-            "answerValueSet": "2.16.840.1.113883.3.7643.3.1031",
+            "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.7643.3.1031",
             "enableWhen": [
               {
                 "question": "5.3",
@@ -361,7 +361,7 @@
             "linkId": "5.6",
             "text": "Details of the Neurological Assessment",
             "type": "open-choice",
-            "answerValueSet": "2.16.840.1.113883.3.7643.3.1032",
+            "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.7643.3.1032",
             "enableWhen": [
               {
                 "question": "5.5",

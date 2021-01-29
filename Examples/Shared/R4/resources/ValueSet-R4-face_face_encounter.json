@@ -1,0 +1,71 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113762.1.4.1047.428",
+    "meta": {
+      "versionId": "5",
+      "lastUpdated": "2020-11-29T17:08:52.000+00:00",
+      "source": "#7OHEDqIaVqOSmoAZ"
+    },
+    "url": "https://fhir-dev.mettles.com/interop/fhir/ValueSet/2.16.840.1.113762.1.4.1047.428",
+    "identifier": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "2.16.840.1.113762.1.4.1047.428"
+      }
+    ],
+    "version": "Latest",
+    "name": "FacetoFaceEncounter",
+    "title": "Face to Face Encounter",
+    "status": "active",
+    "publisher": "NLM",
+    "compose": {
+      "include": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "2020-03",
+          "concept": [
+            {
+              "code": "185349003",
+              "display": "Encounter for check up (procedure)"
+            },
+            {
+              "code": "185463005",
+              "display": "Visit out of hours (procedure)"
+            },
+            {
+              "code": "185465003",
+              "display": "Weekend visit (procedure)"
+            },
+            {
+              "code": "270427003",
+              "display": "Patient-initiated encounter (procedure)"
+            },
+            {
+              "code": "270430005",
+              "display": "Provider-initiated encounter (procedure)"
+            },
+            {
+              "code": "308335008",
+              "display": "Patient encounter procedure (procedure)"
+            },
+            {
+              "code": "390906007",
+              "display": "Follow-up encounter (procedure)"
+            },
+            {
+              "code": "406547006",
+              "display": "Urgent follow-up (procedure)"
+            },
+            {
+              "code": "439708006",
+              "display": "Home visit (procedure)"
+            },
+            {
+              "code": "90526000",
+              "display": "Initial evaluation and management of healthy individual (procedure)"
+            }
+          ]
+        }
+      ]
+    }
+  }
