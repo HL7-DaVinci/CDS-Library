@@ -137,7 +137,7 @@
             "linkId": "2.2",
             "text": "Details of Physical Examination performed",
             "type": "open-choice",
-            "answerValueSet": "2.16.840.1.113883.11.20.9.65",
+            "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.11.20.9.65",
             "enableWhen": [
               {
                 "question": "2.1",
@@ -175,7 +175,7 @@
             "linkId": "2.4",
             "text": "Diagnosis of the Cormorbidity",
             "type": "open-choice",
-            "answerValueSet": "2.16.840.1.113883.3.464.1003.199.12.1055",
+            "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.199.12.1055",
             "enableWhen": [
               {
                 "question": "2.3",
@@ -399,7 +399,7 @@
             "linkId": "5.8",
             "text": "Details of the CardioPulmonary examination",
             "type": "open-choice",
-            "answerValueSet": "2.16.840.1.113883.3.6037.1001.23.95.21",
+            "answerValueSet": "<server-path>ValueSet/2.16.840.1.113883.3.6037.1001.23.95.21",
             "enableWhen": [
               {
                 "question": "5.7",
