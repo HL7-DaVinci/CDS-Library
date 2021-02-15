@@ -180,7 +180,13 @@ define PhyExam:
 
 
 define PhysicalExaminationType:
-    PhyExam.code
+    {
+        {
+            code: PhyExam.code.coding[0].code.value,
+            display: PhyExam.code.coding[0].display.value,
+            system: PhyExam.code.coding[0].system.value
+        }
+    }
 
 define PhysicalExamination:
     if (exists([Procedure] P
@@ -226,7 +232,13 @@ define Mobility:
     else false
 
 define MobilityEstimation:
-    "MobilityDiagnosis".code
+    {
+        {
+            code: "MobilityDiagnosis".code.coding[0].code.value,
+            display: "MobilityDiagnosis".code.coding[0].display.value,
+            system: "MobilityDiagnosis".code.coding[0].system.value
+        }
+    }
 
 
 define Musculoskeletal:
@@ -241,7 +253,14 @@ define MusculoskeletalAnalysis:
     else false
 
 define MusculoskeletalEstimation:
-    "Musculoskeletal".code
+    {
+        {
+            code: "Musculoskeletal".code.coding[0].code.value,
+            display: "Musculoskeletal".code.coding[0].display.value,
+            system: "Musculoskeletal".code.coding[0].system.value
+        }
+    }
+
 
 
 define Neurological:
@@ -257,7 +276,13 @@ define NeurologicalAnalysis:
 
 
 define NeurologicalEstimation:
-    "Neurological".code
+    {
+        {
+            code: "Neurological".code.coding[0].code.value,
+            display: "Neurological".code.coding[0].display.value,
+            system: "Neurological".code.coding[0].system.value
+        }
+    }
 
 
 define CardioPulmonary:
@@ -273,7 +298,13 @@ define CardioPulmonaryAnalysis:
 
 
 define CardioPulmonaryEstimation:
-    "CardioPulmonary".code
+    {
+        {
+            code: "CardioPulmonary".code.coding[0].code.value,
+            display: "CardioPulmonary".code.coding[0].display.value,
+            system: "CardioPulmonary".code.coding[0].system.value
+        }
+    }
 
 
 define Weight:
