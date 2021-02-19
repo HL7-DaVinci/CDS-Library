@@ -19,7 +19,7 @@ valueset "Serious or Life Threatening Illness": 'http://cts.nlm.nih.gov/fhir/Val
 valueset "CardioPulmonary Examination": '2.16.840.1.113883.3.6037.1001.23.95.21'
 valueset "Body weight": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.159'
 valueset "Height": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.121.12.1014'
-valueset "Face to Face Encounter": '2.16.840.1.113762.1.4.1047.428'
+valueset "Face to Face Encounter": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.428'
 valueset "Inpatient Encounter": '2.16.840.1.113883.3.117.1.7.1.23'
 valueset "Right Modifier": '2.16.840.1.113883.3.6037.1001.23.95.24'
 valueset "Left Modifier": '2.16.840.1.113883.3.6037.1001.23.95.25'
