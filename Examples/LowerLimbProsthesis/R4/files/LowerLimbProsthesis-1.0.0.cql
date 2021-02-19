@@ -203,7 +203,13 @@ define ComorbiditiesType:
             and C.encounter.reference.value = "EncounterResource".id.value)
 
 define ComorbiditiesDetails:
-    "ComorbiditiesType".code
+    {
+        {
+            code: "ComorbiditiesType".code.coding[0].code.value,
+            display: "ComorbiditiesType".code.coding[0].display.value,
+            system: "ComorbiditiesType".code.coding[0].system.value
+        }
+    }
 
 
 define Comorbidities:
