@@ -1,7 +1,7 @@
 {
     "topic": "LowerLimbProsthesis",
     "payers": [
-        "medicare"
+        "cms"
     ],
     "mappings": [
         {
