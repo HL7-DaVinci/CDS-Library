@@ -1,0 +1,46 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.6037.1001.23.95.31",
+    "meta": {
+      "versionId": "2",
+      "lastUpdated": "2020-12-07T09:41:58.000+00:00",
+      "source": "#tFqYizmmziSFP3mm"
+    },
+    "identifier": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "2.16.840.1.113883.3.6037.1001.23.95.31"
+      }
+    ],
+    "version": "Latest",
+    "name": "Physical Examination",
+    "title": "Physical Examination",
+    "status": "active",
+    "publisher": "Mettles",
+    "compose": {
+      "include": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "2020-03",
+          "concept": [
+            {
+              "code": "5880005",
+              "display": "Physical examination procedure (procedure)"
+            }
+          ]
+        }
+      ]
+    },
+    "expansion": {
+      "identifier": "2.16.840.1.113883.3.6037.1001.23.95.31",
+      "timestamp": "2020-12-07",
+      "contains": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "2020-03",
+          "code": "5880005",
+          "display": "Physical examination procedure (procedure)"
+        }
+      ]
+    }
+  }

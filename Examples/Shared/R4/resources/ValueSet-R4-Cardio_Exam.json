@@ -1,0 +1,42 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.6037.1001.23.95.21",
+    "meta": {
+      "versionId": "1",
+      "lastUpdated": "2020-11-11T12:43:51.000+00:00",
+      "source": "#Aa1M1Jx1a2PIA76w"
+    },
+    "identifier": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "2.16.840.1.113883.3.6037.1001.23.95.21"
+      }
+    ],
+    "version": "Latest",
+    "name": "CardioPulmonary Examination",
+    "title": "CardioPulmonary Examination",
+    "status": "active",
+    "publisher": "Mettles",
+    "compose": {
+      "include": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "2020-03",
+          "concept": [
+            {
+              "code": "447346005",
+              "display": "Cardiopulmonary exercise test (procedure)"
+            },
+            {
+                "code": "787878002",
+                "display": "Cardiopulmonary exercise test using arm ergometer (procedure)"
+              },
+              {
+                "code": "787877007",
+                "display": "Cardiopulmonary exercise test using bicycle ergometer (procedure)"
+              }
+          ]
+        }
+      ]
+    }
+  }

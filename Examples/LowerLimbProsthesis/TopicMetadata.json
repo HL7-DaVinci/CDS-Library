@@ -1,13 +1,13 @@
 {
-    "topic": "EchoCardiography",
+    "topic": "LowerLimbProsthesis",
     "payers": [
-        "uhc"
+        "cms"
     ],
     "mappings": [
         {
-            "codeSystem": "cpt",
+            "codeSystem": "hcpcs",
             "codes": [
-                "93350"
+                "L5856"
             ]
         }
     ],

@@ -1,0 +1,481 @@
+{
+  "resourceType": "Questionnaire",
+  "identifier": [
+    {
+      "system": "http://identifiers.mettles.com/prior_authorization",
+      "value": "medicare-LowerLimbProsthesis"
+    }
+  ],
+  "id": "LowerLimbProsthesis",
+  "name": "LowerLimbProsthesis",
+  "title": "LowerLimbProsthesis",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2019-12-03",
+  "publisher": "Mettle Solutions",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/LowerLimbProsthesis"
+    }
+  ],
+  "contained": [
+    {
+      "resourceType": "ValueSet",
+      "id": "gender",
+      "name": "Gender",
+      "status": "draft",
+      "description": "Gender",
+      "compose": {
+        "include": [
+          {
+            "concept": [
+              {
+                "code": "male",
+                "display": "Male"
+              },
+              {
+                "code": "female",
+                "display": "Female"
+              },
+              {
+                "code": "other",
+                "display": "Other"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+    "item": [
+      {
+        "linkId": "1",
+        "text": "Certification",
+        "type": "group",
+        "item": [
+          {
+            "extension" : [
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression" : {
+                  "language" : "text/cql",
+                  "expression" : "\"LowerLimbProsthesis\".RequestType"
+                }
+              }
+            ],
+            "linkId": "1.1",
+            "text": "Type of Request",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+              {
+                "valueString": "Initial"
+              },
+              {
+                "valueString": "Revision or change in shoes or inserts"
+              },
+              {
+                "valueString": "Replacement"
+              }
+            ],
+            "initial": [
+              {
+                "valueString": "Initial"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".DescriptionOfItem"
+                }
+              }
+            ],
+            "linkId": "1.2",
+            "text": "Description of the item or device being ordered",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      {
+        "linkId": "2",
+        "text": "Clinical Assessment of the Patient",
+        "type": "group",
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".PhysicalExamination"
+                }
+              }
+            ],
+            "linkId": "2.1",
+            "text": "Is Physical Examination of the patient performed",
+            "type": "boolean",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".PhysicalExaminationType"
+                }
+              }
+            ],
+            "linkId": "2.2",
+            "text": "Details of Physical Examination performed",
+            "type": "open-choice",
+            "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.11.20.9.65",
+            "enableWhen": [
+              {
+                "question": "2.1",
+                "operator": "=",
+                "answerBoolean": true
+              }
+            ],
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".Comorbidities"
+                }
+              }
+            ],
+            "linkId": "2.3",
+            "text": "Is the patient diagnosed with any co-morbidities?",
+            "type": "boolean",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".ComorbiditiesDetails"
+                }
+              }
+            ],
+            "linkId": "2.4",
+            "text": "Diagnosis of the Cormorbidity",
+            "type": "open-choice",
+            "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.199.12.1055",
+            "enableWhen": [
+              {
+                "question": "2.3",
+                "operator": "=",
+                "answerBoolean": true
+              }
+            ],
+            "required": true
+          }
+        ]
+      },
+      {
+        "linkId": "3",
+        "text": "Prostheses Order Details",
+        "type": "group",
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".DateOfOrder"
+                }
+              }
+            ],
+            "linkId": "3.1",
+            "text": "Date of Order",
+            "type": "date",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "StartDate"
+                }
+              }
+            ],
+            "linkId": "3.2",
+            "text": "Start Date",
+            "type": "date",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".FFEncounter"
+                }
+              }
+            ],
+            "linkId": "3.3",
+            "text": "Does the patient have Face-Face Encounter with Ordering Practitioner?" ,
+            "type": "boolean",
+            "required": true
+          },
+          {
+            "linkId": "3.4",
+            "text": "Face-Face Encounter requirement is relaxed for encounters post 1st, March 2020",
+            "type": "display",
+            "enableWhen": [
+              {
+                "question": "3.3",
+                "operator": "=",
+                "answerBoolean": false
+              }
+            ],
+            "required": true
+          }
+        ]
+      },
+      {
+        "linkId": "5",
+        "text": "Functional Analysis of the patient",
+        "type": "group",
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".Mobility"
+                }
+              }
+            ],
+            "linkId": "5.1",
+            "text": "Does the patient have mobility dysfunction ?",
+            "type": "boolean",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".MobilityEstimation"
+                }
+              }
+            ],
+            "linkId": "5.2",
+            "text": "Details of the mobility dysfunction",
+            "answerValueSet": "2.16.840.1.113883.17.4077.2.2006",
+            "type": "open-choice",
+            "enableWhen": [
+              {
+                "question": "5.1",
+                "operator": "=",
+                "answerBoolean": true
+              }
+            ],
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".MusculoskeletalAnalysis"
+                }
+              }
+            ],
+            "linkId": "5.3",
+            "text": "Did the patient go through Musculoskeletal Assessment?",
+            "type": "boolean",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".MusculoskeletalEstimation"
+                }
+              }
+            ],
+            "linkId": "5.4",
+            "text": "Details of the Musculoskeletal Assessment",
+            "type": "open-choice",
+            "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.7643.3.1031",
+            "enableWhen": [
+              {
+                "question": "5.3",
+                "operator": "=",
+                "answerBoolean": true
+              }
+            ],
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".NeurologicalAnalysis"
+                }
+              }
+            ],
+            "linkId": "5.5",
+            "text": "Did the patient go through Neurological Assessment?",
+            "type": "boolean",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".NeurologicalEstimation"
+                }
+              }
+            ],
+            "linkId": "5.6",
+            "text": "Details of the Neurological Assessment",
+            "type": "open-choice",
+            "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.7643.3.1032",
+            "enableWhen": [
+              {
+                "question": "5.5",
+                "operator": "=",
+                "answerBoolean": true
+              }
+            ],
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".CardioPulmonaryAnalysis"
+                }
+              }
+            ],
+            "linkId": "5.7",
+            "text": "Did the patient go through CardioPulmonary examination?",
+            "type": "boolean",
+            "required": true
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".CardioPulmonaryEstimation"
+                }
+              }
+            ],
+            "linkId": "5.8",
+            "text": "Details of the CardioPulmonary examination",
+            "type": "open-choice",
+            "answerValueSet": "<server-path>ValueSet/2.16.840.1.113883.3.6037.1001.23.95.21",
+            "enableWhen": [
+              {
+                "question": "5.7",
+                "operator": "=",
+                "answerBoolean": true
+              }
+            ],
+            "required": true
+          }
+        ]
+      },
+      {
+        "linkId": "6",
+        "text": "Functional Assessment",
+        "type": "group",
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".RightorLeft"
+                }
+              }
+            ],
+            "linkId": "6.1",
+            "text": "Side of the body affected",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+                {
+                  "valueString": "Right"
+                },
+                {
+                  "valueString": "Left"
+                },
+                {
+                  "valueString": "Both"
+                }
+              ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"LowerLimbProsthesis\".FunctionLevel"
+                }
+              }
+            ],
+            "linkId": "6.2",
+            "text": "Level of Functionality",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+                {
+                  "valueString": "Level 0"
+                },
+                {
+                  "valueString": "Level 1"
+                },
+                {
+                  "valueString": "Level 2"
+                },
+                {
+                  "valueString": "Level 3"
+                },
+                {
+                  "valueString": "Level 4"
+                }
+              ]
+          }
+        ]
+      }
+    ]
+  }
+  
