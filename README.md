@@ -7,8 +7,8 @@ The "rule" files necessary to make the [Coverage Requirements Discovery (CRD)](h
 ## Examples
 The "rule" files for CRD and DTR that were not created as part of the reference implementation. For more documentation on the file structure, click [here](https://github.com/HL7-DaVinci/CDS-Library/CRD-DTR#file-layout]).
 
-To run the rule sets under Examples with test-ehr, need to load the data for the rule sets from test-ehr repo by running the following command:
-gradle loadBundleResource 
+To run the rule sets under the Examples folder with the test-ehr, you need to load the data for the rule sets from test-ehr repo by running the following command:
+>gradle loadBundleResource 
 
 ## PriorAuth
 Rules the [Prior Authorization Support (PAS)](https://github.com/HL7-DaVinci/prior-auth) reference implementation uses for deciding on the approval of a Claim.
