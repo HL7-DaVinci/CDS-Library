@@ -24,6 +24,59 @@
       "resource": {
         "reference": "Library/FHIRHelpers-4.0.0"
       }
+    },
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/MCGHelpers"
+      }
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/ro-arterial-partial-pressure-oxygen-mmHg"
+        }
+        ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/rc-hypoxemia"
+        }
+        ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/rc-supplementalOxygenDependence"
+        }
+        ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/ro-arterial-oxygen-saturation-percent"
+        }
+        ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/ro-oxygenDelivery-L-per-min"
+        }
+        ]
     }
   ],
     "content": [

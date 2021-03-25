@@ -7,11 +7,11 @@ include MCGHelpers version '1.0.0' called MCGHelpers
 
 //codesystem "LOINC": 'http://loinc.org'
 
-valueset "Hypoxemia Valueset": 'http://mcg.com/fhir/ValueSet/rc-hypoxemia'
-valueset "Supplemental Oxygen Dependence Valueset": 'http://mcg.com/fhir/ValueSet/rc-supplementalOxygenDependence'
-valueset "Oxygen Saturation Percent": 'http://mcg.com/fhir/ValueSet/ro-arterial-oxygen-saturation-percent'
-valueset "Arterial Partial Pressure Oxygen": 'http://mcg.com/fhir/ValueSet/ro-arterial-partial-pressure-oxygen-mmHg'
-valueset "Oxygen Delivery L per min": 'http://mcg.com/fhir/ValueSet/ro-oxygenDelivery-L-per-min'
+valueset "Hypoxemia Valueset": 'rc-hypoxemia'
+valueset "Supplemental Oxygen Dependence Valueset": 'rc-supplementalOxygenDependence'
+valueset "Oxygen Saturation Percent": 'ro-arterial-oxygen-saturation-percent'
+valueset "Arterial Partial Pressure Oxygen": 'ro-arterial-partial-pressure-oxygen-mmHg'
+valueset "Oxygen Delivery L per min": 'ro-oxygenDelivery-L-per-min'
 
 //code "Arterial Partial Pressure Oxygen": '2703-7' from "LOINC"
 //code "Oxygen Saturation Percent": '2708-6' from "LOINC"
