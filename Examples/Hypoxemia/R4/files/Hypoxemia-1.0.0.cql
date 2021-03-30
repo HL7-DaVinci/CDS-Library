@@ -45,6 +45,10 @@ define "New-onset hypoxemia that persists despite observation care treatment":
     /* or ((paO2kPa_new < 8.0) and (paO2kPa_new > 2.0))
     and not (paO2kPa_baseline < 8.0) */
 
+define "All Conditions" : [Condition]
+
+define "All Procedures": [Procedure]
+
 define "Hypoxemia Conditions":
   ["Condition": "Hypoxemia Valueset"]
 

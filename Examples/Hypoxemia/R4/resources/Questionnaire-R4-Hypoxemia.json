@@ -324,7 +324,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
           "valueExpression": {
             "language": "text/cql",
-            "expression": "Most Recent Oxygen Delivery L per min"
+            "expression": "\"Hypoxemia\".Most Recent Oxygen Delivery L per min"
           }
         }
       ],
@@ -351,7 +351,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
           "valueExpression": {
             "language": "text/cql",
-            "expression": "O2 Saturation"
+            "expression": "\"Hypoxemia\".O2 Saturation"
           }
         }
       ],
@@ -378,7 +378,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
           "valueExpression": {
             "language": "text/cql",
-            "expression": "Baseline O2 Saturation"
+            "expression": "\"Hypoxemia\".Baseline O2 Saturation"
           }
         }
       ],
@@ -405,7 +405,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
           "valueExpression": {
             "language": "text/cql",
-            "expression": "Arterial PO2"
+            "expression": "\"Hypoxemia\".Arterial PO2"
           }
         }
       ],
@@ -432,7 +432,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
           "valueExpression": {
             "language": "text/cql",
-            "expression": "Baseline Arterial PO2"
+            "expression": "\"Hypoxemia\".Baseline Arterial PO2"
           }
         }
       ],

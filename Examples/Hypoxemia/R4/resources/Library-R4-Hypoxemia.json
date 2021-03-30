@@ -40,16 +40,16 @@
           "path": "code",
           "valueSet": "<server-path>ValueSet/ro-arterial-partial-pressure-oxygen-mmHg"
         }
-        ]
+      ]
     },
     {
-      "type": "Procedure",
+      "type": "Condition",
       "codeFilter": [
         {
           "path": "code",
           "valueSet": "<server-path>ValueSet/rc-hypoxemia"
         }
-        ]
+      ]
     },
     {
       "type": "Procedure",
@@ -58,16 +58,16 @@
           "path": "code",
           "valueSet": "<server-path>ValueSet/rc-supplementalOxygenDependence"
         }
-        ]
+      ]
     },
     {
-      "type": "Procedure",
+      "type": "Observation",
       "codeFilter": [
         {
           "path": "code",
           "valueSet": "<server-path>ValueSet/ro-arterial-oxygen-saturation-percent"
         }
-        ]
+      ]
     },
     {
       "type": "Procedure",
@@ -76,13 +76,13 @@
           "path": "code",
           "valueSet": "<server-path>ValueSet/ro-oxygenDelivery-L-per-min"
         }
-        ]
+      ]
     }
   ],
-    "content": [
-      {
-        "contentType": "application/elm+json",
-        "url": "files/Hypoxemia/r4/Hypoxemia-1.0.0.cql"
-      }
-    ]
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/Hypoxemia/r4/Hypoxemia-1.0.0.cql"
+    }
+  ]
 }

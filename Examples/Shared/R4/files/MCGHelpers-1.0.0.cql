@@ -29,7 +29,7 @@ context Patient
 define "Current DateTime":
   //Now()
   //@2020-04-09T11:00:00.000-07:00
-  @2020-01-01T12:00:00.000-06:00
+  @2020-03-28T12:00:00.000-06:00
 
 define "Encounter Start DateTime":
   // TODO: Determine how to get this value
