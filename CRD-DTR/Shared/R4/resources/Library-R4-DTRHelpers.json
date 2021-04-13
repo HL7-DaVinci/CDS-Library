@@ -16,9 +16,7 @@
     "relatedArtifact": [
       {
         "type": "depends-on",
-        "resource": {
-          "reference": "Library/FHIRHelpers-4.0.0"
-        }
+        "resource": "Library/FHIRHelpers-4.0.0"
       }
     ],
     "content": [
