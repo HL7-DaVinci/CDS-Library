@@ -1,0 +1,150 @@
+{
+    "resourceType": "ValueSet",
+    "id": "rc-hypoxemia",
+    "version": "1.0.0",
+    "name": "Hypoxemia",
+    "title": "Hypoxemia",
+    "status": "active",
+    "publisher": "TODO: UNKNOWN",
+    "expansion": {
+        "identifier": "urn:hl7:mcg:valueset-rc-hypoxemia",
+        "timestamp": "2021-03-29T17:45:07Z",
+        "contains": [
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "P28.2",
+                "display": "[P28.2] Cyanotic attacks of newborn"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "R23.0",
+                "display": "[R23.0] Cyanosis"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "R09.02",
+                "display": "[R09.02] Hypoxemia"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "K76.81",
+                "display": "[K76.81] Hepatopulmonary syndrome"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "P28.5",
+                "display": "[P28.5] Respiratory failure of newborn"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "J96.01",
+                "display": "[J96.01] Acute respiratory failure with hypoxia"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "J96.11",
+                "display": "[J96.11] Chronic respiratory failure with hypoxia"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "J96.21",
+                "display": "[J96.21] Acute and chronic respiratory failure with hypoxia"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "J96.91",
+                "display": "[J96.91] Respiratory failure, unspecified with hypoxia"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "12770006",
+                "display": "Cyanotic congenital heart disease (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "162742005",
+                "display": "On examination - central cyanosis (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "288581000119102",
+                "display": "Sleep related hypoxemia (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "238159008",
+                "display": "Desaturation of blood (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "389087006",
+                "display": "Hypoxemia (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "42883007",
+                "display": "Anoxia caused by high altitude (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "431335002",
+                "display": "Hypoxemia in newborn (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "371067004",
+                "display": "Hepatopulmonary syndrome (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "62369005",
+                "display": "Subacute mountain sickness (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "78590007",
+                "display": "Acute mountain sickness (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "84260001",
+                "display": "Hemoglobinopathy with cyanosis (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "95837007",
+                "display": "Central cyanosis (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "713890008",
+                "display": "Hypoxemia during surgery (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "10676831000119101",
+                "display": "Hypoxemic respiratory failure (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "709111008",
+                "display": "Acute hypoxemic respiratory failure (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "735386008",
+                "display": "Acute hypoxemic respiratory failure co-occurrent with acute hypercapnic respiratory failure (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "10672271000119100",
+                "display": "Acute-on-chronic hypoxemic respiratory failure (disorder)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "428173007",
+                "display": "Chronic hypoxemic respiratory failure (disorder)"
+            }
+        ]
+    }
+}

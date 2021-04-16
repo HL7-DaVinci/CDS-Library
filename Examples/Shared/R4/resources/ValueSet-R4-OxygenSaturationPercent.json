@@ -1,0 +1,78 @@
+{
+   "resourceType":"ValueSet",
+   "id":"ro-arterial-oxygen-saturation-percent",
+   "version":"1.0.0",
+   "name":"OxygenSaturationPercent",
+   "title":"Oxygen Saturation Percent",
+   "status":"active",
+   "publisher":"TODO: UNKNOWN",
+   "expansion": {
+      "identifier": "urn:hl7:mcg:valueset-rc-hypoxemia",
+      "timestamp": "2021-03-29T17:45:07Z",
+      "contains": [
+         {
+            "system":"http://loinc.org",
+            "code":"2713-6",
+            "display":"Oxygen saturation Calculated from oxygen partial pressure in Blood"
+         },
+         {
+            "system":"http://loinc.org",
+            "code":"2714-4",
+            "display":"Fractional oxyhemoglobin in Arterial blood"
+         },
+         {
+            "system":"http://loinc.org",
+            "code":"2708-6",
+            "display":"Oxygen saturation in Arterial blood"
+         },
+         {
+            "system":"http://loinc.org",
+            "code":"59408-5",
+            "display":"Oxygen saturation in Arterial blood by Pulse oximetry"
+         },
+         {
+            "system":"http://loinc.org",
+            "code":"59417-6",
+            "display":"Oxygen saturation in Arterial blood by Pulse oximetry --resting"
+         },
+         {
+            "system":"http://loinc.org",
+            "code":"20564-1",
+            "display":"Oxygen saturation in Blood"
+         }
+      ]
+   },
+   "compose":{
+      "include":[
+         {
+            "system":"http://loinc.org",
+            "concept":[
+               {
+                  "code":"2713-6",
+                  "display":"Oxygen saturation Calculated from oxygen partial pressure in Blood"
+               },
+               {
+                  "code":"2714-4",
+                  "display":"Fractional oxyhemoglobin in Arterial blood"
+               },
+               {
+                  "code":"2708-6",
+                  "display":"Oxygen saturation in Arterial blood"
+               },
+               {
+                  "code":"59408-5",
+                  "display":"Oxygen saturation in Arterial blood by Pulse oximetry"
+               },
+               {
+                  "code":"59417-6",
+                  "display":"Oxygen saturation in Arterial blood by Pulse oximetry --resting"
+               },
+               {
+                  "code":"20564-1",
+                  "display":"Oxygen saturation in Blood"
+               }
+            ]
+         }
+      ]
+   }
+}

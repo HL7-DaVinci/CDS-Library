@@ -1,0 +1,88 @@
+{
+  "resourceType": "Library",
+  "id": "Hypoxemia",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/Hypoxemia",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"grid dict\"><tr><th scope=\"row\"><b>Id: </b></th><td style=\"padding-left: 25px; padding-right: 25px;\">library-MCGHelpers-1.0.000</td></tr><tr><th scope=\"row\"><b>Type: </b></th><td style=\"padding-right: 25px;\"> logic-library </td></tr><tr><th scope=\"row\"><b>Version: </b></th><td style=\"padding-left: 25px; padding-right: 25px;\">1.0.000</td></tr><tr><th scope=\"row\"><b>Status: </b></th><td style=\"padding-left: 25px; padding-right: 25px;\">active</td></tr><tr style=\"vertical-align: top;\"><th rowspan=\"1\" scope=\"row\"><b>Related: </b></th><td style=\"padding-left: 25px; padding-right: 25px;\"><p style=\"margin-bottom: 5px;\"><b>type: </b><span>depends-on</span></p><p style=\"margin-bottom: 5px;\"><b>Resource: </b><br/><span>Library/library-FHIRHelpers-4.0.0</span></p></td></tr><tr style=\"vertical-align: top;\"><th scope=\"row\"><b>Content: </b></th><td style=\"padding-left: 25px; padding-right: 25px;\"><b>type: </b><span>text/cql</span></td></tr><tr><td colspan=\"2\" style=\"padding-left: 25px; padding-right: 25px;\"><pre><code class=\"language-cql\">library MCGHelpers version '1.0.000'\n\nusing FHIR version '4.0.0'\n\ninclude FHIRHelpers version '4.0.0' called FHIRHelpers\n\ncodesystem &quot;ConditionClinicalStatusCodes&quot;: 'http://terminology.hl7.org/CodeSystem/condition-clinical'\ncodesystem &quot;ConditionVerificationStatusCodes&quot;: 'http://terminology.hl7.org/CodeSystem/condition-verification'\n\n\n// Condition Clinical Status Codes - Consider value sets for these\ncode &quot;active&quot;: 'active' from &quot;ConditionClinicalStatusCodes&quot;\ncode &quot;recurrence&quot;: 'recurrence' from &quot;ConditionClinicalStatusCodes&quot;\ncode &quot;relapse&quot;: 'relapse' from &quot;ConditionClinicalStatusCodes&quot;\ncode &quot;inactive&quot;: 'inactive' from &quot;ConditionClinicalStatusCodes&quot;\ncode &quot;remission&quot;: 'remission' from &quot;ConditionClinicalStatusCodes&quot;\ncode &quot;resolved&quot;: 'resolved' from &quot;ConditionClinicalStatusCodes&quot;\n\n// Condition Verification Status Codes - Consider value sets for these\ncode &quot;unconfirmed&quot;: 'unconfirmed' from ConditionVerificationStatusCodes\ncode &quot;provisional&quot;: 'provisional' from ConditionVerificationStatusCodes\ncode &quot;differential&quot;: 'differential' from ConditionVerificationStatusCodes\ncode &quot;confirmed&quot;: 'confirmed' from ConditionVerificationStatusCodes\ncode &quot;refuted&quot;: 'refuted' from ConditionVerificationStatusCodes\ncode &quot;entered-in-error&quot;: 'entered-in-error' from ConditionVerificationStatusCodes\n\ncontext Patient\n\ndefine &quot;Current DateTime&quot;:\n  //Now()\n  //@2020-04-09T11:00:00.000-07:00\n  @2020-01-01T12:00:00.000-06:00\n\ndefine &quot;Encounter Start DateTime&quot;:\n  // TODO: Determine how to get this value\n  @2020-01-01T08:00:00.000-06:00\n\ndefine function &quot;CalendarAgeInDaysAt&quot;(BirthDateTime DateTime, AsOf DateTime):\n\tdays between ToDate(BirthDateTime) and ToDate(AsOf)\n\ndefine function &quot;CalendarAgeInDays&quot;(BirthDateTime DateTime):\n\tCalendarAgeInDaysAt(BirthDateTime, &quot;Current DateTime&quot;)\n\ndefine function &quot;CalendarAgeInMonthsAt&quot;(BirthDateTime DateTime, AsOf DateTime):\n\tmonths between ToDate(BirthDateTime) and ToDate(AsOf)\n\ndefine function &quot;CalendarAgeInMonths&quot;(BirthDateTime DateTime):\n\tCalendarAgeInMonthsAt(BirthDateTime, &quot;Current DateTime&quot;)\n\ndefine function &quot;CalendarAgeInYearsAt&quot;(BirthDateTime DateTime, AsOf DateTime):\n\tyears between ToDate(BirthDateTime) and ToDate(AsOf)\n\ndefine function &quot;CalendarAgeInYears&quot;(BirthDateTime DateTime):\n\tCalendarAgeInYearsAt(BirthDateTime, &quot;Current DateTime&quot;)\n\ndefine function &quot;GetPositiveIndications&quot;(value List&lt;System.Boolean&gt;):\n  value Indication\n    where Indication = true\n    return all Indication\n\ndefine function &quot;FilterToActiveConditions&quot;(value List&lt;FHIR.Condition&gt;):\n    value Condition\n        where (\n            FHIRHelpers.ToConcept(Condition.clinicalStatus) ~ &quot;active&quot;\n                or Condition.clinicalStatus = null\n        )\n        and (\n            FHIRHelpers.ToConcept(Condition.verificationStatus) ~ &quot;confirmed&quot;\n                or Condition.verificationStatus = null\n        )\n\ndefine function &quot;RecentObservations&quot;(value List&lt;FHIR.Observation&gt;, quantity System.Quantity):\n    DateRangeObservations(value, quantity, 0 hours)\n    /* value Observation\n        where Observation.effective as dateTime in\n          Interval[&quot;Current DateTime&quot; - quantity, &quot;Current DateTime&quot;] */\n\ndefine function &quot;DateRangeObservations&quot;(value List&lt;FHIR.Observation&gt;, lowerQuantity System.Quantity, upperQuantity System.Quantity):\n    value Observation\n        where Observation.effective as dateTime in\n          Interval[&quot;Current DateTime&quot; - lowerQuantity, &quot;Current DateTime&quot; - upperQuantity]\n\ndefine function &quot;ObservationsDuringEncounter&quot;(value List&lt;FHIR.Observation&gt;):\n  value Observation\n    where Observation.effective as dateTime in\n      Interval[&quot;Encounter Start DateTime&quot;, &quot;Current DateTime&quot;]\n\ndefine function &quot;MostRecentObservation&quot;(value List&lt;FHIR.Observation&gt;):\n  Last(\n    value Observation\n      sort by (ToDate(effective as dateTime))\n  )\n\ndefine function &quot;LeastRecentObservation&quot;(value List&lt;FHIR.Observation&gt;):\n  First(\n    value Observation\n      sort by (ToDate(effective as dateTime))\n  )\n\ndefine function &quot;MinObservation&quot;(value List&lt;FHIR.Observation&gt;):\n  First(\n    value Observation\n      sort by ((value as Quantity).value)\n  )\n\ndefine function &quot;MaxObservation&quot;(value List&lt;FHIR.Observation&gt;):\n  Last(\n    value Observation\n      sort by ((value as Quantity).value)\n  )\n\ndefine function &quot;MinRecentObservation&quot;(value List&lt;FHIR.Observation&gt;, quantity System.Quantity):\n  MinObservation(RecentObservations(value, quantity))\n\ndefine function &quot;RecentConditions&quot;(value List&lt;FHIR.Condition&gt;, quantity System.Quantity):\n  value Condition\n    where Condition.onset as dateTime in\n      Interval[&quot;Current DateTime&quot; - quantity, &quot;Current DateTime&quot;]\n</code></pre>\n                    \n                    \n                </td>\n            </tr>\n        \n    </table>\n</div>"
+  },
+  "version": "1.0.000",
+  "name": "Hypoxemia",
+  "status": "active",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/codesystem-library-type.html",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/FHIRHelpers-4.0.0"
+      }
+    },
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/MCGHelpers"
+      }
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/ro-arterial-partial-pressure-oxygen-mmHg"
+        }
+      ]
+    },
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/rc-hypoxemia"
+        }
+      ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/rc-supplementalOxygenDependence"
+        }
+      ]
+    },
+    {
+      "type": "Observation",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/ro-arterial-oxygen-saturation-percent"
+        }
+      ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSet": "<server-path>ValueSet/ro-oxygenDelivery-L-per-min"
+        }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/Hypoxemia/r4/Hypoxemia-1.0.0.cql"
+    }
+  ]
+}

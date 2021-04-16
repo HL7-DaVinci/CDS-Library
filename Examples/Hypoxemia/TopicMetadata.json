@@ -1,0 +1,17 @@
+{
+    "topic": "Hypoxemia",
+    "payers": [
+        "cms"
+    ],
+    "mappings": [
+        {
+            "codeSystem": "cpt",
+            "codes": [
+                "94640"
+            ]
+        }
+    ],
+    "fhirVersions": [
+        "R4"
+    ]
+}

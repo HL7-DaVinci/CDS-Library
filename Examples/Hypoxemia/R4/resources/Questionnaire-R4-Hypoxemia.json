@@ -1,0 +1,444 @@
+{
+  "id": "Hypoxemia",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|2.7"
+    ],
+    "tag": [
+      {
+        "code": "lformsVersion: 25.1.2"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/Hypoxemia"
+    }
+  ],
+  "status": "draft",
+  "name": "Hypoxemia",
+  "title": "Hypoxemia Questionnaire",
+  "resourceType": "Questionnaire",
+  "item": [
+    {
+      "type": "reference",
+      "code": [
+        {
+          "code": "fhirContext",
+          "display": "FHIR Context",
+          "system": "Custom"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+          "valueBoolean": true
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "FHIR Context"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "/fhir-context",
+      "text": "FHIR Context"
+    },
+    {
+      "type": "group",
+      "code": [
+        {
+          "code": "hypoxemia-conditions",
+          "display": "Pre-existing Hypoxemia",
+          "system": "Custom"
+        }
+      ],
+      "required": false,
+      "repeats": true,
+      "linkId": "/hypoxemia-conditions",
+      "text": "Pre-existing Hypoxemia",
+      "item": [
+        {
+          "type": "open-choice",
+          "code": [
+            {
+              "code": "condition",
+              "display": "Pre-existing Hypoxemia",
+              "system": "Custom"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "autocomplete",
+                    "display": "Auto-complete"
+                  }
+                ],
+                "text": "Auto-complete"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-externallydefined",
+              "valueUri": "https://clinicaltables.nlm.nih.gov/api/conditions/v3/search"
+            }
+          ],
+          "required": false,
+          "linkId": "/hypoxemia-conditions/condition",
+          "text": "Condition"
+        },
+        {
+          "type": "choice",
+          "code": [
+            {
+              "code": "cond_status",
+              "display": "Status",
+              "system": "Custom"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "/hypoxemia-conditions/cond_status",
+          "text": "Status",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "A",
+                "display": "Active"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "I",
+                "display": "Inactive"
+              }
+            }
+          ]
+        },
+        {
+          "type": "date",
+          "code": [
+            {
+              "code": "cond_started",
+              "display": "Started",
+              "system": "Custom"
+            }
+          ],
+          "required": false,
+          "linkId": "/hypoxemia-conditions/cond_started",
+          "text": "Started"
+        },
+        {
+          "type": "date",
+          "code": [
+            {
+              "code": "cond_stopped",
+              "display": "Stopped",
+              "system": "Custom"
+            }
+          ],
+          "required": false,
+          "linkId": "/hypoxemia-conditions/cond_stopped",
+          "text": "Stopped"
+        },
+        {
+          "type": "text",
+          "code": [
+            {
+              "code": "cond_comment",
+              "display": "Description/Comment",
+              "system": "Custom"
+            }
+          ],
+          "required": false,
+          "linkId": "/hypoxemia-conditions/cond_comment",
+          "text": "Description/Comment"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "code": [
+        {
+          "code": "current-hypoxemia-conditions",
+          "display": "Current Hypoxemia",
+          "system": "Custom"
+        }
+      ],
+      "required": false,
+      "repeats": false,
+      "linkId": "/current-hypoxemia-conditions",
+      "text": "Current Hypoxemia (< 24 hours)",
+      "item": [
+        {
+          "type": "open-choice",
+          "code": [
+            {
+              "code": "condition",
+              "display": "Hypoxemia conditions in Past 24 hours",
+              "system": "Custom"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "autocomplete",
+                    "display": "Auto-complete"
+                  }
+                ],
+                "text": "Auto-complete"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-externallydefined",
+              "valueUri": "https://clinicaltables.nlm.nih.gov/api/conditions/v3/search"
+            }
+          ],
+          "required": false,
+          "linkId": "/current-hypoxemia-conditions/condition",
+          "text": "Condition"
+        },
+        {
+          "type": "choice",
+          "code": [
+            {
+              "code": "cond_status",
+              "display": "Status",
+              "system": "Custom"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ],
+                "text": "Drop down"
+              }
+            }
+          ],
+          "required": false,
+          "linkId": "/current-hypoxemia-conditions/cond_status",
+          "text": "Status",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "A",
+                "display": "Active"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "I",
+                "display": "Inactive"
+              }
+            }
+          ]
+        },
+        {
+          "type": "date",
+          "code": [
+            {
+              "code": "cond_started",
+              "display": "Started",
+              "system": "Custom"
+            }
+          ],
+          "required": false,
+          "linkId": "/current-hypoxemia-conditions/cond_started",
+          "text": "Started"
+        },
+        {
+          "type": "date",
+          "code": [
+            {
+              "code": "cond_stopped",
+              "display": "Stopped",
+              "system": "Custom"
+            }
+          ],
+          "required": false,
+          "linkId": "/current-hypoxemia-conditions/cond_stopped",
+          "text": "Stopped"
+        },
+        {
+          "type": "text",
+          "code": [
+            {
+              "code": "cond_comment",
+              "display": "Description/Comment",
+              "system": "Custom"
+            }
+          ],
+          "required": false,
+          "linkId": "/current-hypoxemia-conditions/cond_comment",
+          "text": "Description/Comment"
+        }
+      ]
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "19941-4",
+          "display": "Oxygen gas flow Oxygen delivery system"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "display": "L/min"
+          }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"Hypoxemia\".Most Recent Oxygen Delivery L per min"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "/19941-4",
+      "text": "Current Supplemental Oxygen Required"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "20564-1",
+          "display": "Oxygen saturation in Blood"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "display": "%"
+          }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"Hypoxemia\".O2 Saturation"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "/20564-1-current",
+      "text": "Current oxygen saturation (< 2 hours)?"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "20564-1",
+          "display": "Oxygen saturation in Blood"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "display": "%"
+          }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"Hypoxemia\".Baseline O2 Saturation"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "/20564-1-baseline",
+      "text": "Baseline oxygen saturation?"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "2703-7",
+          "display": "Oxygen [Partial pressure] in Arterial blood"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "display": "mm[Hg]"
+          }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"Hypoxemia\".Arterial PO2"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "/2703-7-current",
+      "text": "Current arterial PO2 (< 2 hours)?"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "2703-7",
+          "display": "Oxygen [Partial pressure] in Arterial blood"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "display": "mm[Hg]"
+          }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "valueExpression": {
+            "language": "text/cql",
+            "expression": "\"Hypoxemia\".Baseline Arterial PO2"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "/2703-7-baseline",
+      "text": "Baseline arterial PO2?"
+    }
+  ]
+}
