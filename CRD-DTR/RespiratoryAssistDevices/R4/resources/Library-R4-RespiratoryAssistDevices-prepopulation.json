@@ -21,21 +21,15 @@
   "relatedArtifact": [
     {
       "type": "depends-on",
-      "resource": {
-        "reference": "Library/FHIRHelpers-4.0.0"
-      }
+      "resource": "Library/FHIRHelpers-4.0.0"
     },
     {
       "type": "depends-on",
-      "resource": {
-        "reference": "Library/CDS_Connect_Commons_for_FHIRv400"
-      }
+      "resource": "Library/CDS_Connect_Commons_for_FHIRv400"
     },
     {
       "type": "depends-on",
-      "resource": {
-        "reference": "Library/DTRHelpers"
-      }
+      "resource": "Library/DTRHelpers"
     }
   ],
   "dataRequirement": [
