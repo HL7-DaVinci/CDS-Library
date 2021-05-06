@@ -1,0 +1,25 @@
+{
+   "resourceType": "ValueSet",
+   "id": "ro-oxygenDelivery-L-per-min",
+   "version": "1.0.0",
+   "name": "OxygenDeliveryLperMin",
+   "title": "Oxygen Delivery L per Min",
+   "status": "active",
+   "publisher": "TODO: UNKNOWN",
+   "expansion": {
+      "identifier": "urn:hl7:mcg:valueset-ro-oxygenDelivery-L-per-min",
+      "timestamp": "2021-03-29T17:45:07Z",
+      "contains": [
+         {
+            "system": "http://loinc.org",
+            "code": "19941-4",
+            "display": "Oxygen gas flow Oxygen delivery system"
+         },
+         {
+            "system": "http://loinc.org",
+            "code": "19942-2",
+            "display": "Oxygen gas flow setting Oxymiser"
+         }
+      ]
+   }
+}

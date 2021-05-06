@@ -1,0 +1,51 @@
+{
+   "resourceType":"ValueSet",
+   "id":"ro-arterial-partial-pressure-oxygen-mmHg",
+   "version":"1.0.0",
+   "name":"ArterialPartialPressureOxygen",
+   "title":"Arterial Partial Pressure Oxygen",
+   "status":"active",
+   "publisher":"TODO: UNKNOWN",
+   "expansion": {
+      "identifier": "urn:hl7:mcg:valueset-rc-hypoxemia",
+      "timestamp": "2021-03-29T17:45:07Z",
+      "contains": [
+         {
+            "system":"http://loinc.org",
+            "code":"11556-8",
+            "display":"Oxygen [Partial pressure] in Blood"
+         },
+         {
+            "system":"http://loinc.org",
+            "code":"2703-7",
+            "display":"Oxygen [Partial pressure] in Arterial blood"
+         },
+         {
+            "system":"http://loinc.org",
+            "code":"19254-2",
+            "display":"Oxygen [Partial pressure] adjusted to patient's actual temperature in Blood"
+         }
+      ]
+   },
+   "compose":{
+      "include":[
+         {
+            "system":"http://loinc.org",
+            "concept":[
+               {
+                  "code":"11556-8",
+                  "display":"Oxygen [Partial pressure] in Blood"
+               },
+               {
+                  "code":"2703-7",
+                  "display":"Oxygen [Partial pressure] in Arterial blood"
+               },
+               {
+                  "code":"19254-2",
+                  "display":"Oxygen [Partial pressure] adjusted to patient's actual temperature in Blood"
+               }
+            ]
+         }
+      ]
+   }
+}
