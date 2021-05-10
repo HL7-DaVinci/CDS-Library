@@ -105,9 +105,9 @@ define function CodesFromAllergies(AllergyList List<AllergyIntolerance>):
 define function ConfirmedAllergies(AllergyList List<AllergyIntolerance>):
   AllergyList C where C.verificationStatus.coding.code = 'confirmed'
 
-define "AllDiagnoese": ActiveConfirmedDiagnoese([Condition])
+define "AllDiagnoses": ActiveConfirmedDiagnoses([Condition])
 
-define function ActiveConfirmedDiagnoese(CondList List<FHIR.Condition>):
+define function ActiveConfirmedDiagnoses(CondList List<FHIR.Condition>):
   distinct(
     flatten(
       CondList C
