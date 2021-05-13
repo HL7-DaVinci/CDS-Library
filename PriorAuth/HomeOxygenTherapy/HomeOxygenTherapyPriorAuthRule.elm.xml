@@ -24,24 +24,10 @@
          </expression>
       </def>
       <def name="PRIORAUTH_GRANTED" context="Patient" accessLevel="Public">
-         <expression xsi:type="First">
-            <source xsi:type="Query">
-               <source alias="C">
-                  <expression dataType="fhir:Claim" xsi:type="Retrieve"/>
-               </source>
-               <return>
-                  <expression xsi:type="Equal">
-                     <operand path="value" xsi:type="Property">
-                        <source path="status" scope="C" xsi:type="Property"/>
-                     </operand>
-                     <operand valueType="t:String" value="active" xsi:type="Literal"/>
-                  </expression>
-               </return>
-            </source>
-         </expression>
+         <expression valueType="t:Boolean" value="false" xsi:type="Literal"/>
       </def>
       <def name="PRIORAUTH_PENDED" context="Patient" accessLevel="Public">
-         <expression valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         <expression valueType="t:Boolean" value="true" xsi:type="Literal"/>
       </def>
    </statements>
 </library>
