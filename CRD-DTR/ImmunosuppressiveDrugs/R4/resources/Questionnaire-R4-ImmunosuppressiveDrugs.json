@@ -34,7 +34,7 @@
       "answerOption": [],
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
           "valueExpression": {
             "language": "text/cql",
             "expression": "\"ImmunosuppressiveDrugsPrepopulation\".QualifyingTransplantCodings"
@@ -48,7 +48,7 @@
       "type": "date",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
           "valueExpression": {
             "language": "text/cql",
             "expression": "\"ImmunosuppressiveDrugsPrepopulation\".TransplantDate"
@@ -73,7 +73,7 @@
           "text": "RxNorm Code",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationCode"
@@ -87,7 +87,7 @@
           "text": "Drug",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationName"
@@ -101,7 +101,7 @@
           "text": "Route",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationRoute"
@@ -115,7 +115,7 @@
           "text": "Dose",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationDoseWithUnit"
@@ -129,7 +129,7 @@
           "text": "Frequency",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationFrequency"
@@ -143,7 +143,7 @@
           "text": "Quantity",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationQuantity"
@@ -163,7 +163,7 @@
               "text": "Is for Medication Request?",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"ImmunosuppressiveDrugsPrepopulation\".IsMedicationRequest"
@@ -177,7 +177,7 @@
               "text": "Refill",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"ImmunosuppressiveDrugsPrepopulation\".MedicationRefill"

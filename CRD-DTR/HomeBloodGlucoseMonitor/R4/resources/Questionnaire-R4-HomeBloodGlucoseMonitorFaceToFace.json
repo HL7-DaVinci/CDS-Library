@@ -62,7 +62,7 @@
           "type": "open-choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".DMCodings"
@@ -78,7 +78,7 @@
           "type": "open-choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".OtherDiagnosesCodings"
@@ -101,7 +101,7 @@
           "text": "Confirming diagnosis of Diabetes Mellitus",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".ConfirmingDiabetesCondition"
@@ -134,7 +134,7 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".DMConfirmedDate"
@@ -235,7 +235,7 @@
           "type": "boolean",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".IsNonContinuousBloodGlucoseMonitorOrdered"
@@ -254,7 +254,7 @@
               "text": "Is patient insulin treated?",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".InsulinTreated"
@@ -268,7 +268,7 @@
               "type": "integer",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorFrequency"
@@ -307,7 +307,7 @@
               "type": "integer",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorFrequency"
@@ -347,7 +347,7 @@
               "answerValueSet": "http://hl7.org/fhir/ValueSet/event-timing",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorEvent"

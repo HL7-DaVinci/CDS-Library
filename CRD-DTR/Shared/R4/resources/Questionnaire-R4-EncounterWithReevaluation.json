@@ -25,7 +25,7 @@
                     "linkId": "ENC.1",
                     "extension": [
                         {
-                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                             "valueExpression": {
                                 "language": "text/cql",
                                 "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
@@ -40,7 +40,7 @@
                     "linkId": "ENC.2",
                     "extension": [
                         {
-                            "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                             "valueExpression": {
                             "language": "text/cql",
                             "expression": "\"BasicClinicalInfoPrepopulation\".AnswerYes"

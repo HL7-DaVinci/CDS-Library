@@ -64,7 +64,7 @@
       "type": "open-choice",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
           "valueExpression": {
             "language": "text/cql",
             "expression": "\"BasicClinicalInfoPrepopulation\".AllDiagnoses"
@@ -127,7 +127,7 @@
               "text": "Ordered",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".FixedHeightBedsOrdered"
@@ -187,7 +187,7 @@
               "text": "Ordered",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".VariableHeightBedsOrdered"
@@ -232,7 +232,7 @@
               "text": "Ordered",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".SemiElectricBedsOrdered"
@@ -277,7 +277,7 @@
               "text": "Ordered",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".TrapezeOrdered"
@@ -322,7 +322,7 @@
               "text": "Ordered",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".BedcradleOrdered"
@@ -367,7 +367,7 @@
               "text": "Ordered",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".SafetyrailOrdered"

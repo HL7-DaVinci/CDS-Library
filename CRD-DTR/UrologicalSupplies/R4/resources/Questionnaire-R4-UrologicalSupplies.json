@@ -41,7 +41,7 @@
           "linkId": "2.1",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"UrologicalSuppliesPrepopulation\".RelevantDiagnoses"
@@ -59,7 +59,7 @@
           "text": "Other Diagnoses",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"UrologicalSuppliesPrepopulation\".CurrentDiagnoses"
@@ -125,7 +125,7 @@
               "text": "Order",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"UrologicalSuppliesPrepopulation\".DeviceRequested"

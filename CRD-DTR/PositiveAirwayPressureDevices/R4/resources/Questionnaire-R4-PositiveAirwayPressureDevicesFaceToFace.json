@@ -64,7 +64,7 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"PositiveAirwayPressureDevicePrepopulation\".RelevantDiagnoses"
@@ -82,7 +82,7 @@
           "text": "Other diagnoses",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
@@ -112,7 +112,7 @@
               }
             },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"PositiveAirwayPressureDevicePrepopulation\".AHI"
@@ -132,7 +132,7 @@
               }
             },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"PositiveAirwayPressureDevicePrepopulation\".RDI"
@@ -266,7 +266,7 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"PositiveAirwayPressureDevicePrepopulation\".False"
