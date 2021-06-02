@@ -352,6 +352,10 @@
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorFaceToFacePrepopulation\".MonitorEvent"
                   }
+                },
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                  "valueCode": "horizontal"
                 }
               ]
             },

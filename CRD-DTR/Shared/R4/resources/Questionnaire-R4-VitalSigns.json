@@ -9,6 +9,23 @@
   },
   "name": "Vital Signs",
   "status": "draft",
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/variable",
+      "valueExpression" : {
+        "name": "weight",
+        "language": "text/fhirpath",
+        "expression": "%resource.item.where(linkId='VS.14').answer.valueDecimal"
+      }
+    }, {
+      "url" : "http://hl7.org/fhir/StructureDefinition/variable",
+      "valueExpression" : {
+        "name": "height",
+        "language": "text/fhirpath",
+        "expression": "%resource.item.where(linkId='VS.11').answer.valueDecimal*0.0254"
+      }
+    }
+  ],
   "item": [
     {
       "linkId": "OBJ.VS",
@@ -484,6 +501,14 @@
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
               "valueCoding": {
                 "display": "kg/m2"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
+              "valueExpression": {
+                "description": "BMI calculation",
+                "language" : "text/fhirpath",
+                "expression": "(%weight/%height/%height).round(1)"
               }
             }
           ],
