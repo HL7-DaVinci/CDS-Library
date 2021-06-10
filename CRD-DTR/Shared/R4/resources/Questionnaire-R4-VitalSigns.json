@@ -9,20 +9,37 @@
   },
   "name": "Vital Signs",
   "status": "draft",
-  "extension" : [
+  "extension": [
     {
-      "url" : "http://hl7.org/fhir/StructureDefinition/variable",
-      "valueExpression" : {
+      "url": "http://hl7.org/fhir/StructureDefinition/variable",
+      "valueExpression": {
         "name": "weight",
         "language": "text/fhirpath",
         "expression": "%resource.repeat(item).where(linkId='VS.14').answer.valueDecimal"
       }
-    }, {
-      "url" : "http://hl7.org/fhir/StructureDefinition/variable",
-      "valueExpression" : {
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/variable",
+      "valueExpression": {
         "name": "height",
         "language": "text/fhirpath",
         "expression": "%resource.repeat(item).where(linkId='VS.11').answer.valueDecimal*0.0254"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/variable",
+      "valueExpression": {
+        "name": "systolic",
+        "language": "text/fhirpath",
+        "expression": "%resource.repeat(item).where(linkId='VS.16.1').answer.valueDecimal"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/variable",
+      "valueExpression": {
+        "name": "diastolic",
+        "language": "text/fhirpath",
+        "expression": "%resource.repeat(item).where(linkId='VS.16.2').answer.valueDecimal"
       }
     }
   ],
@@ -507,7 +524,7 @@
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
               "valueExpression": {
                 "description": "BMI calculation",
-                "language" : "text/fhirpath",
+                "language": "text/fhirpath",
                 "expression": "(%weight/%height/%height).round(1)"
               }
             }
@@ -581,6 +598,14 @@
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
                   "valueCoding": {
                     "display": "mm[Hg]"
+                  }
+                },
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
+                  "valueExpression": {
+                    "description": "Mean arterial calculation",
+                    "language": "text/fhirpath",
+                    "expression": "((%systolic+2*(%diastolic))/3).round(0)"
                   }
                 }
               ],
