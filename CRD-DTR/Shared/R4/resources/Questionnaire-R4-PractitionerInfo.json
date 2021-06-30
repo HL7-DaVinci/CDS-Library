@@ -7,7 +7,7 @@
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
-  },  
+  },
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
@@ -57,6 +57,10 @@
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderFirstName"
               }
+            },
+            {
+               "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
+               "valueInteger": 6
             }
           ],
           "text": "First Name",
@@ -71,6 +75,10 @@
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderMiddleInitial"
               }
+            },
+            {
+               "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
+               "valueInteger": 6
             }
           ],
           "text": "Middle Initial",
