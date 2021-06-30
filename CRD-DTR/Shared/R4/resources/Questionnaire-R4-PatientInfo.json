@@ -1,7 +1,7 @@
 {
   "resourceType": "Questionnaire",
-  "id": "practitioner-info",
-  "name": "Practitioner Module",
+  "id": "patient-info",
+  "name": "Patient Module",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
@@ -11,7 +11,7 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicClinicalInfo-prepopulation"
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPatientInfo-prepopulation"
     }
   ],
   "status": "draft",
@@ -30,88 +30,99 @@
           }
         }
       ],
-      "linkId": "PND",
-      "text": "Provider who performed the in-person evaluation",
+      "linkId": "PBD",
       "type": "group",
+      "text": "Patient Information",
       "item": [
         {
-          "linkId": "PND.1",
+          "linkId": "PBD.1",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderLastName"
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
               }
-            },
-            {
-               "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-               "valueInteger": 5
             }
           ],
-          "text": "Last Name",
-          "type": "string"
+          "text": "Last Name:",
+          "type": "string",
+          "required": true
         },
         {
-          "linkId": "PND.2",
+          "linkId": "PBD.2",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderFirstName"
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
               }
-            },
-            {
-               "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-               "valueInteger": 5
             }
           ],
-          "text": "First Name",
-          "type": "string"
+          "text": "First Name:",
+          "type": "string",
+          "required": true
         },
         {
-          "linkId": "PND.3",
+          "linkId": "PBD.3",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderMiddleInitial"
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
               }
             }
           ],
-          "text": "Middle Initial",
-          "type": "string"
+          "text": "Middle Initial:",
+          "type": "string",
+          "required": true
         },
         {
-          "linkId": "PND.4",
+          "linkId": "PBD.4",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderNPI"
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
               }
             }
           ],
-          "text": "NPI",
-          "type": "string"
-        },
-        {
-          "linkId": "PND.5",
-          "text": "Date of F2F encounter",
+          "text": "Date of Birth:",
           "type": "date",
-          "required": true,
+          "required": true
+        },
+        {
+          "linkId": "PBD.5",
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
               "valueExpression": {
                 "language": "text/cql",
-                "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
               }
             }
-          ]
+          ],
+          "text": "Gender",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+        },
+        {
+          "linkId": "PBD.6",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              }
+            }
+          ],
+          "text": "Medicare ID:",
+          "type": "string",
+          "required": true
         }
       ]
     }
