@@ -43,10 +43,6 @@
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderLastName"
               }
-            },
-            {
-               "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-               "valueInteger": 5
             }
           ],
           "text": "Last Name",
@@ -61,10 +57,6 @@
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderFirstName"
               }
-            },
-            {
-               "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-               "valueInteger": 5
             }
           ],
           "text": "First Name",
