@@ -122,12 +122,7 @@
             {
               "url" : "http://hl7.org/fhir/StructureDefinition/maxValue",
               "valueDecimal" : 100
-            },
-              {
-                 "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-                 "valueInteger": 2
-              }
-              
+            }  
           ]
         },
         {
