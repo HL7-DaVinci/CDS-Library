@@ -46,12 +46,12 @@
             },
             {
                "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-               "valueInteger": 5
+               "valueInteger": 2
             }
           ],
           "text": "Last Name",
           "type": "string",
-          "maxLength": 10
+          "maxLength": 26
         },
         {
           "linkId": "PND.2",
@@ -65,12 +65,12 @@
             },
             {
                "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-               "valueInteger": 5
+               "valueInteger": 2
             }
           ],
           "text": "First Name",
           "type": "string",
-          "maxLength": 10
+          "maxLength": 26
         },
         {
           "linkId": "PND.3",
