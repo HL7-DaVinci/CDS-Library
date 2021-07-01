@@ -43,15 +43,12 @@
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderLastName"
               }
-            },
-            {
-               "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-               "valueInteger": 2
             }
           ],
           "text": "Last Name",
           "type": "string",
-          "maxLength": 26
+          "maxLength": 26,
+          "minLength": 2
         },
         {
           "linkId": "PND.2",
@@ -62,15 +59,12 @@
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderFirstName"
               }
-            },
-            {
-               "url" : "http://hl7.org/fhir/StructureDefinition/minLength",
-               "valueInteger": 2
             }
           ],
           "text": "First Name",
           "type": "string",
-          "maxLength": 26
+          "maxLength": 26,
+          "minLength": 2
         },
         {
           "linkId": "PND.3",
