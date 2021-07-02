@@ -42,7 +42,7 @@
       ],
       "type": "display",
       "text": "This is a placeholder for Physician/NPP Demographics"
-    },    
+    },
     {
       "linkId": "3",
       "text": "Coverage Requirements",
@@ -114,7 +114,15 @@
                 "language": "text/cql",
                 "expression": "\"HomeOxygenTherapyPrepopulation\".ArterialPartialPressureOfOxygen"
               }
-            }
+            },
+            {
+              "url" : "http://hl7.org/fhir/StructureDefinition/minValue",
+              "valueDecimal" : 0
+            },
+            {
+              "url" : "http://hl7.org/fhir/StructureDefinition/maxValue",
+              "valueDecimal" : 100
+            }  
           ]
         },
         {
