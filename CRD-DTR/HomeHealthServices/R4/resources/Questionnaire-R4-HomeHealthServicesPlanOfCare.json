@@ -55,7 +55,7 @@
           "type": "date",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FDate"
@@ -76,7 +76,7 @@
           "type": "text",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".PatientMedicalRecordNumber"
@@ -90,7 +90,7 @@
           "type": "text",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".PatientMedicalRecordNumber"
@@ -104,7 +104,7 @@
           "type": "date",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FStartDate"
@@ -118,7 +118,7 @@
           "type": "date",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".F2FEndDate"
@@ -139,7 +139,7 @@
           "type": "boolean",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ACDSigned"
@@ -160,7 +160,7 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ACDDetails"
@@ -176,7 +176,7 @@
       "type": "open-choice",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
           "valueExpression": {
             "language": "text/cql",
             "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".RelavantDiagnosisCoding"
@@ -192,7 +192,7 @@
       "type": "open-choice",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
           "valueExpression": {
             "language": "text/cql",
             "expression": "\"BasicClinicalInfoPrepopulation\".AllProcedures"
@@ -246,7 +246,7 @@
           "type": "open-choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForDeviceRequestsCodings"
@@ -262,7 +262,7 @@
           "type": "open-choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForSafetyCodings"
@@ -278,7 +278,7 @@
           "type": "open-choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".CarePlanActivityForNutritionOrderCodings"
@@ -301,7 +301,7 @@
           "type": "choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".ClinicalImpression"
@@ -363,7 +363,7 @@
           "type": "boolean",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".True"
@@ -399,7 +399,7 @@
           "type": "date",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeHealthServicesPlanOfCarePrepopulation\".RequestAuthoredOnDate"
@@ -435,7 +435,7 @@
           "text": "I authenticate that the verbal orders recorded above are accurate.",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".True"
@@ -482,7 +482,7 @@
               "type": "text",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"BasicPatientInfoPrepopulation\".FullName"
@@ -496,7 +496,7 @@
               "type": "date",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"BasicClinicalInfoPrepopulation\".Today"
@@ -522,7 +522,7 @@
               "type": "text",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
@@ -536,7 +536,7 @@
               "type": "date",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"BasicClinicalInfoPrepopulation\".Today"
@@ -562,7 +562,7 @@
               "type": "text",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
@@ -576,7 +576,7 @@
               "type": "date",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"BasicClinicalInfoPrepopulation\".Today"

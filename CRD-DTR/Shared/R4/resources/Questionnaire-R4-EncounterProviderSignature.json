@@ -50,7 +50,7 @@
           "linkId": "SIGPNP.3",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicPractitionerInfoPrepopulation\".Today"

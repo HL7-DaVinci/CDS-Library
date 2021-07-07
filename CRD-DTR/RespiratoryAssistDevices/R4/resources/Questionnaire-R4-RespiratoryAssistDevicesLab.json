@@ -58,7 +58,7 @@
           "text": "Laboratory",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesPrepopulation\".TestLaboratory"
@@ -77,7 +77,7 @@
           "type": "text",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesPrepopulation\".Tester"
@@ -108,7 +108,7 @@
               "type": "boolean",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"RespiratoryAssistDevicesPrepopulation\".IsPatientReceivingOxygenDuringTest"
@@ -147,7 +147,7 @@
                   "type": "decimal",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatTreatmentResult"
@@ -174,7 +174,7 @@
                   "type": "date",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatTreatmentTestDate"
@@ -259,7 +259,7 @@
                   ],
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPHResult"
@@ -273,7 +273,7 @@
                   "type": "date",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPHTestDate"
@@ -315,7 +315,7 @@
                       }
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPaCO2Result"
@@ -339,7 +339,7 @@
                   "type": "date",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPaCO2TestDate"
@@ -381,7 +381,7 @@
                       }
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatRestingResult"
@@ -405,7 +405,7 @@
                   "type": "date",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatRestingTestDate"
@@ -447,7 +447,7 @@
                       }
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestHCO3Result"
@@ -471,7 +471,7 @@
                   "type": "date",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestHCO3TestDate"
@@ -513,7 +513,7 @@
                       }
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestHematocritResult"
@@ -537,7 +537,7 @@
                   "type": "date",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestHematocritTestDate"
@@ -579,7 +579,7 @@
                       }
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPaO2Result"
@@ -603,7 +603,7 @@
                   "type": "date",
                   "extension": [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "language": "text/cql",
                         "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestPaO2TestDate"
@@ -647,7 +647,7 @@
                   }
                 },
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatDuringSleepResult"
@@ -688,7 +688,7 @@
               "type": "date",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"RespiratoryAssistDevicesPrepopulation\".LatestO2SatDuringSleepTestDate"

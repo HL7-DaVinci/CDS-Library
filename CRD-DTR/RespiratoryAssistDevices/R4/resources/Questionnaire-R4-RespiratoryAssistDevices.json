@@ -57,7 +57,7 @@
           "repeats": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesPrepopulation\".RADCodings"
@@ -71,7 +71,7 @@
           "type": "open-choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnosesCodings"
@@ -140,7 +140,7 @@
               "type": "choice",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"RespiratoryAssistDevicesPrepopulation\".RadDeviceRequested"

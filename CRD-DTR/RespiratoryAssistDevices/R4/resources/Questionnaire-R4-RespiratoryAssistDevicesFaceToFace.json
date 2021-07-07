@@ -71,7 +71,7 @@
           "type": "open-choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesPrepopulation\".RADCodings"
@@ -87,7 +87,7 @@
           "type": "open-choice",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesPrepopulation\".OtherDiagnosesCodings"
@@ -117,7 +117,7 @@
               }
             },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".AHI"
@@ -181,7 +181,7 @@
           "text": "Date of study:",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
@@ -223,7 +223,7 @@
           "type": "boolean",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".HasNeuromuscularDisease"
@@ -244,7 +244,7 @@
                   }
                 },
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".MIP"
@@ -272,7 +272,7 @@
                   }
                 },
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".FVC"
@@ -295,7 +295,7 @@
           "type": "boolean",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".HasCOPD"
@@ -350,7 +350,7 @@
           "type": "boolean",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".HasCSAorCompSA"
@@ -406,7 +406,7 @@
           "type": "boolean",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".HasHypoventilationDisorder"
@@ -427,7 +427,7 @@
                   }
                 },
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".FEV1_FVC_Ratio"
@@ -455,7 +455,7 @@
                   }
                 },
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".FEV1"
@@ -485,7 +485,7 @@
           "type": "boolean",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"RespiratoryAssistDevicesFaceToFacePrepopulation\".HasOSA"

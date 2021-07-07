@@ -61,7 +61,7 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".TestLaboratory"
@@ -88,7 +88,7 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Tester"
@@ -138,7 +138,7 @@
               "type": "date",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Fasting_Plasma_Glucose_Date"
@@ -156,7 +156,7 @@
               "required": true,
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Fasting_Plasma_Glucose_Level"
@@ -175,7 +175,7 @@
               "type": "decimal",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Random_Plasma_Glucose_Level"
@@ -197,7 +197,7 @@
               "type": "decimal",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Two_hour_Glucose_Tolerance_Level"
@@ -219,7 +219,7 @@
               "type": "decimal",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".A1c_Level"
@@ -255,7 +255,7 @@
               "type": "date",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_Fasting_Plasma_Glucose_Date"
@@ -273,7 +273,7 @@
               "required": true,
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_Fasting_Plasma_Glucose_Level"
@@ -292,7 +292,7 @@
               "type": "decimal",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_Random_Plasma_Glucose_Level"
@@ -314,7 +314,7 @@
               "type": "decimal",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_Two_hour_Glucose_Tolerance_Level"
@@ -336,7 +336,7 @@
               "type": "decimal",
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/cql",
                     "expression": "\"HomeBloodGlucoseMonitorLabPrepopulation\".Confirmed_A1c_Level"
