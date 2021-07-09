@@ -260,43 +260,7 @@
                   "type": "open-choice",
                   "required": true,
                   "repeats": true,
-                  "answerOption": [
-                    {
-                      "valueCoding": {
-                        "code": "Dialysis"
-                      }
-                    },
-                    {
-                      "valueCoding": {
-                        "code": "Wound care"
-                      }
-                    },
-                    {
-                      "valueCoding": {
-                        "code": "Radiation therapy"
-                      }
-                    },
-                    {
-                      "valueCoding": {
-                        "code": "Chemotherapy"
-                      }
-                    },
-                    {
-                      "valueCoding": {
-                        "code": "Orthotics and Prosthetics services"
-                      }
-                    },
-                    {
-                      "valueCoding": {
-                        "code": "Imaging"
-                      }
-                    },
-                    {
-                      "valueCoding": {
-                        "code": "Outpatient therapy"
-                      }
-                    }
-                  ],
+                  "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1219.194",
                   "enableWhen": [
                   {
                       "question": "8.3",
