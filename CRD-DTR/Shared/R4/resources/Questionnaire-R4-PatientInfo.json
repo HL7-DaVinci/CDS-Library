@@ -47,8 +47,7 @@
           ],
           "text": "Last Name:",
           "type": "string",
-          "required": true,
-          "readOnly": true
+          "required": true
         },
         {
           "linkId": "PBD.2",
@@ -63,8 +62,7 @@
           ],
           "text": "First Name:",
           "type": "string",
-          "required": true,
-          "readOnly": true
+          "required": true
         },
         {
           "linkId": "PBD.3",
@@ -79,8 +77,7 @@
           ],
           "text": "Middle Initial:",
           "type": "string", 
-          "required": true,
-          "readOnly": true
+          "required": true
         },
         {
           "linkId": "PBD.4",
@@ -95,8 +92,7 @@
           ],
           "text": "Date of Birth:",
           "type": "date",
-          "required": true,
-          "readOnly": true
+          "required": true
         },
         {
           "linkId": "PBD.5",
@@ -111,8 +107,7 @@
           ],
           "text": "Gender",
           "type": "choice",
-          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender",
-          "readOnly": true
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
         },
         {
           "linkId": "PBD.6",
@@ -127,8 +122,7 @@
           ],
           "text": "Medicare ID:",
           "type": "string",
-          "required": true,
-          "readOnly": true
+          "required": true
         }
       ]
     }
