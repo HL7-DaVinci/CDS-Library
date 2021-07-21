@@ -38,7 +38,7 @@
           "linkId": "PBD.1",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicPatientInfoPrepopulation\".LastName"
@@ -53,7 +53,7 @@
           "linkId": "PBD.2",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
@@ -68,7 +68,7 @@
           "linkId": "PBD.3",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
@@ -76,14 +76,14 @@
             }
           ],
           "text": "Middle Initial:",
-          "type": "string",
+          "type": "string", 
           "required": true
         },
         {
           "linkId": "PBD.4",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
@@ -98,7 +98,7 @@
           "linkId": "PBD.5",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicPatientInfoPrepopulation\".Gender"
@@ -113,7 +113,7 @@
           "linkId": "PBD.6",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"

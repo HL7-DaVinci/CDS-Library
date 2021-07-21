@@ -38,7 +38,7 @@
           "linkId": "PND.1",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderLastName"
@@ -57,7 +57,7 @@
           "linkId": "PND.2",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderFirstName"
@@ -76,7 +76,7 @@
           "linkId": "PND.3",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderMiddleInitial"
@@ -90,7 +90,7 @@
           "linkId": "PND.4",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".EncounterProviderNPI"
@@ -107,7 +107,7 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"

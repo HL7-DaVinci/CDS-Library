@@ -51,7 +51,7 @@
       "linkId": "3",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
           "valueExpression": {
             "language": "text/cql",
             "expression": "\"BasicClinicalInfoPrepopulation\".RequestEncounterDate"
@@ -69,7 +69,7 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"PositiveAirwayPressureDevicePrepopulation\".RelevantDiagnoses"
@@ -87,7 +87,7 @@
           "text": "Other diagnoses",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
@@ -137,7 +137,7 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"PositiveAirwayPressureDevicePrepopulation\".PapDeviceRequested"

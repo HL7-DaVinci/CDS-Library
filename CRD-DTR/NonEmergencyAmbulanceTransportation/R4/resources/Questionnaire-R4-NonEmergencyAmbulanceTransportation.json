@@ -113,7 +113,7 @@
           "linkId": "4.1",
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
               "valueExpression": {
                 "language": "text/cql",
                 "expression": "\"NonEmergencyAmbulanceTransportationPrepopulation\".RelevantDiagnoses"
