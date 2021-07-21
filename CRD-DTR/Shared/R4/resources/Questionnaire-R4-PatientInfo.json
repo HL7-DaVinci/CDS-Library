@@ -76,7 +76,7 @@
             }
           ],
           "text": "Middle Initial:",
-          "type": "string",
+          "type": "string", 
           "required": true
         },
         {
