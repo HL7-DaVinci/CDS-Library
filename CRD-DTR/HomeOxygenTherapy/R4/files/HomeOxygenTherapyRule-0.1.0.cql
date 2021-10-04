@@ -35,5 +35,8 @@ define RESULT_QuestionnaireFaceToFaceUri:
 define RESULT_QuestionnaireLabUri:
   'Questionnaire/HomeOxygenTherapyLab'
 
+define RESULT_QuestionnaireAdditionalUri:
+  'Questionnaire/HomeOxygenTherapyAdditional'
+
 define RESULT_requestId:
   device_request
