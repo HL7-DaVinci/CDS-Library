@@ -14,12 +14,6 @@ define PRIORAUTH_REQUIRED:
 define DOCUMENTATION_REQUIRED:
   true
 
-define RESULT_Summary:
-  'Documentation Required.'
-
-define RESULT_Details:
-  'Documentation Required, please complete form via Smart App link.'
-
 define RESULT_InfoLink:
     'https://www.cms.gov/Research-Statistics-Data-and-Systems/Computer-Data-and-Systems/Electronic-Clinical-Templates/Downloads/Respiratory-Assist-Device-Order-Template-Draft-20180412-R10b.pdf'
 
