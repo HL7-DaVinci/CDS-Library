@@ -70,7 +70,7 @@
           "type": "group",
           "item": [
             {
-              "linkId": "PND.5",
+              "linkId": "PND.6",
               "text": "Place of employment",
               "type": "string"
             },
@@ -84,7 +84,7 @@
                   }
                 }
               ],
-              "linkId": "PND.6",
+              "linkId": "PND.7",
               "text": "Address",
               "type": "string",
               "required": true
@@ -99,7 +99,7 @@
                   }
                 }
               ],
-              "linkId": "PND.7",
+              "linkId": "PND.8",
               "text": "City",
               "type": "string",
               "required": true
@@ -114,7 +114,7 @@
                   }
                 }
               ],
-              "linkId": "PND.8",
+              "linkId": "PND.9",
               "text": "State",
               "type": "string",
               "required": true
@@ -129,7 +129,7 @@
                   }
                 }
               ],
-              "linkId": "PND.9",
+              "linkId": "PND.10",
               "text": "Zip Code",
               "type": "string",
               "required": true
@@ -155,7 +155,7 @@
           "type": "group",
           "item": [
             {
-              "linkId": "PND.10",
+              "linkId": "PND.11",
               "text": "PTAN",
               "type": "integer"
             },
@@ -169,7 +169,7 @@
                   }
                 }
               ],
-              "linkId": "PND.11",
+              "linkId": "PND.12",
               "text": "Telephone Number",
               "type": "string"
             },
@@ -183,7 +183,7 @@
                   }
                 }
               ],
-              "linkId": "PND.12",
+              "linkId": "PND.13",
               "text": "Direct address",
               "type": "string"
             }

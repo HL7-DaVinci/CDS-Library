@@ -145,11 +145,13 @@
       "linkId": "8",
       "text": "Urologic Supplies Information",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "8.1a",
           "text": "Indwelling catheters",
           "type": "group",
+          "required": true,
           "item": [
             {
               "linkId": "8.1",
