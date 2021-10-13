@@ -60,12 +60,14 @@
       "linkId": "4",
       "text": "Type of order",
       "type": "choice",
+      "required": true,
       "answerValueSet": "http://hl7.org/fhir/ValueSet/medicationrequest-intent"
     },
     {
       "linkId": "5",
       "text": "Immunosuppressive drug(s) ordered and dispensed",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "5.1",

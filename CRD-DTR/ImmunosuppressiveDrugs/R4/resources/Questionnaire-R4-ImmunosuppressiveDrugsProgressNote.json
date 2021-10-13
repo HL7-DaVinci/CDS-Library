@@ -250,6 +250,7 @@
       "linkId": "9",
       "text": "Immunosuppressive Drug Treatment Plan",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "9.1",
