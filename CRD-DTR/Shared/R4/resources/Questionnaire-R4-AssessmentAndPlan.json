@@ -23,7 +23,8 @@
         {
           "linkId": "PLAN.1",
           "text": "Treatment Plan",
-          "type": "text"
+          "type": "text",
+          "required": true
         },
         {
           "linkId": "ORD.1",

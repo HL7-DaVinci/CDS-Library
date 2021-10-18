@@ -251,7 +251,8 @@
         }
       ],
       "type": "display",
-      "text": "This is a placeholder for Assessment and Plan"
+      "text": "This is a placeholder for Assessment and Plan",
+      "required": true
     },
     {
       "linkId": "10",
