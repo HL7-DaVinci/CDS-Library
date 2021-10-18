@@ -421,6 +421,7 @@
       "linkId": "23",
       "text": "Signature, Name, Date and NPI of physician signing the POC/Certification",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "23.1",

@@ -73,6 +73,7 @@
           "linkId": "5.1",
           "type": "text",
           "text": "RxNorm Code",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -87,6 +88,7 @@
           "linkId": "5.2",
           "type": "text",
           "text": "Drug",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -101,6 +103,7 @@
           "linkId": "5.3",
           "type": "text",
           "text": "Route",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -115,6 +118,7 @@
           "linkId": "5.4",
           "type": "text",
           "text": "Dose",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -129,6 +133,7 @@
           "linkId": "5.5",
           "type": "text",
           "text": "Frequency",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -143,6 +148,7 @@
           "linkId": "5.6",
           "type": "integer",
           "text": "Quantity",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -177,6 +183,7 @@
               "linkId": "5.7.2",
               "type": "integer",
               "text": "Refill",
+              "required": true,
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
