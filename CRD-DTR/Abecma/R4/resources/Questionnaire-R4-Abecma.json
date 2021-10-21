@@ -1,0 +1,30 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "Abecma",
+  "name": "Abecma",
+  "title": "Abecma",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2021-10-20",
+  "publisher": "FDA REMS",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/Abecma-prepopulation"
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/patient-info"
+        }
+      ],
+      "type": "display"
+    }
+  ]
+}

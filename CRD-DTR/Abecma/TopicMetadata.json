@@ -1,0 +1,17 @@
+{
+  "topic": "Abecma",
+  "payers": [
+    "cms"
+  ],
+  "mappings": [
+    {
+      "codeSystem": "rxnorm",
+      "codes":[
+        "2536435"
+      ]
+    }
+  ],
+  "fhirVersions": [
+    "R4"
+  ]
+}

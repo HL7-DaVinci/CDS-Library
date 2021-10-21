@@ -1,0 +1,36 @@
+{
+  "resourceType": "Library",
+  "id": "Abecma-prepopulation",
+  "url": "http://hl7.org/fhir/us/davinci-dtr/Library/Abecma-prepopulation",
+  "name": "Abecma-prepopulation",
+  "version": "0.1.0",
+  "title": "Abecma Prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": "Library/FHIRHelpers-4.0.0"
+    },
+    {
+      "type": "depends-on",
+      "resource": "Library/CDS_Connect_Commons_for_FHIRv400"
+    },
+    {
+      "type": "depends-on",
+      "resource": "Library/DTRHelpers"
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "files/Abecma/r4/AbecmaPrepopulation-0.1.0.cql"
+    }
+  ]
+}
