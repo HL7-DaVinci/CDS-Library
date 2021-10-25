@@ -17,12 +17,6 @@ define PRIORAUTH_REQUIRED:
 define DOCUMENTATION_REQUIRED:
   true
 
-define RESULT_Summary:
-  'Documentation Required'
-
-define RESULT_Details: 
-  'Documentation Required, please complete forms via Smart App links below.'
-
 define RESULT_InfoLink:
   'https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/downloads/home-oxygen-therapy-text-only.pdf'
 
