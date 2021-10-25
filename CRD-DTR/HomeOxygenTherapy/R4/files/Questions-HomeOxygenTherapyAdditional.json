@@ -73,13 +73,49 @@
 
                 {
                     "linkId": "1.2",
-                    "type": "display",
+                    "type": "text",
                     "text": "Status Reasoning, Patient relocated, etc."
                 },
                 {
                     "linkId": "1.3",
-                    "type": "display",
-                    "text": "Revision/Equipment change Reasoning, etc."
+                    "text": "Reason for Change in Status",
+                    "type": "open-choice",
+                    "required": true,
+                    "repeats": true,
+                    "answerOption": [
+                        {
+                            "valueCoding": {
+                                "code": "New Physician order"
+                            },
+                            "modifierExtension": [
+                                {
+                                    "url": "1.3.1"
+                                }
+                            ]
+                        },
+                        {
+                            "valueCoding": {
+                                "code": "Beneficiary requested upgrade with signed ABN"
+                            },
+                            "modifierExtension": [
+                                {
+                                    "url": "1.3.2"
+                                }
+                            ]
+                        }
+                    ],
+                    "item" : [
+                        {
+                            "linkId": "1.3.1",
+                            "type": "display",
+                            "text": "Submit the order form"
+                        }, 
+                        {
+                            "linkId": "1.3.2",
+                            "type": "text",
+                            "text": "More details"
+                        }
+                    ]
                 },
                 {
                     "linkId": "1.4",
