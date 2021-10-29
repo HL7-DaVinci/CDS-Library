@@ -55,7 +55,6 @@
       "linkId": "4",
       "type": "group",
       "text": "Patient diagnoses",
-      "required": true,
       "item": [
         {
           "linkId": "4.1",

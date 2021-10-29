@@ -223,19 +223,19 @@
         },
         {
           "linkId": "6.2",
-          "text": "Was E0601 (CPAP) not effective on therapeutic trial conducted above ",
+          "text": "Was E0601 (CPAP) not effective on therapeutic trial conducted above?",
           "type": "boolean",
           "required": true,
           "enableWhen": [
             {
               "question": "6",
               "operator": "=",
-              "answerBoolean": "a home setting"
+              "answerString": "a home setting"
             },
             {
               "question": "6",
               "operator": "=",
-              "answerBoolean": "facility"
+              "answerString": "facility"
             }
           ]
         },
