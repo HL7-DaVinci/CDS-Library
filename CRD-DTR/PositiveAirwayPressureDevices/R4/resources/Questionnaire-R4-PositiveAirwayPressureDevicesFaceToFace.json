@@ -228,14 +228,18 @@
           "required": true,
           "enableWhen": [
             {
-              "question": "6",
+              "question": "6.1",
               "operator": "=",
-              "answerString": "a home setting"
+              "answerCoding": {
+                "code": "a home setting"
+              }
             },
             {
-              "question": "6",
+              "question": "6.1",
               "operator": "=",
-              "answerString": "facility"
+              "answerCoding": {
+                "code": "facility"
+              }
             }
           ]
         },
