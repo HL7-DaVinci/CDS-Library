@@ -112,8 +112,8 @@
                 },
                 {
                     "linkId": "1.2",
-                    "type": "text",
-                    "text": "Status Reasoning, Patient relocated, etc."
+                    "type": "display",
+                    "text": "Submit the order form"
                 },
                 {
                     "linkId": "1.3",
@@ -234,13 +234,13 @@
                                     "item": [
                                         {
                                             "linkId": "SQ-1.4.3.1.a",
-                                            "text": "An additional test question that should be displayed with Question 1.4.3.1.",
+                                            "text": "SQ-1.4.3.1.a: An additional test question that should be displayed with Question 1.4.3.1.",
                                             "type": "text",
                                             "required": true
                                         },
                                         {
                                             "linkId": "SQ-1.4.3.1.b",
-                                            "text": "Another additional test question that should be displayed with Question 1.4.3.1.",
+                                            "text": "SQ-1.4.3.1.b: Another additional test question that should be displayed with Question 1.4.3.1.",
                                             "type": "text",
                                             "required": true
                                         }
@@ -253,13 +253,13 @@
                                     "item": [
                                         {
                                             "linkId": "SQ-1.4.3.2.a",
-                                            "text": "An additional test question that should be displayed with Question 1.4.3.2.",
+                                            "text": "SQ-1.4.3.2.a: An additional test question that should be displayed with Question 1.4.3.2.",
                                             "type": "text",
                                             "required": true
                                         },
                                         {
                                             "linkId": "SQ-1.4.3.2.b",
-                                            "text": "Relevant Patient Diagnoses (conditions that might be expected to improve with oxygen therapy)",
+                                            "text": "SQ-1.4.3.2.b: Relevant Patient Diagnoses (conditions that might be expected to improve with oxygen therapy)",
                                             "type": "open-choice",
                                             "required": true,
                                             "repeats": true,
@@ -316,7 +316,7 @@
                         },
                         {
                             "linkId": "SQ-1.4.b",
-                            "text": "Another additional test question that should be displayed with Question 1.4.",
+                            "text": "SQ-1.4.b: Another additional test question that should be displayed with Question 1.4.",
                             "type": "text",
                             "required": true
                         }
