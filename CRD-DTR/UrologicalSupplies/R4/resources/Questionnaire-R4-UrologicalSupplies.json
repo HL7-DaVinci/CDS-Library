@@ -89,7 +89,7 @@
     },
     {
       "linkId": "4",
-      "required": false,
+      "required": true,
       "text": "Type of Order",
       "type": "open-choice",
       "answerValueSet": "http://hl7.org/fhir/ValueSet/request-intent"
@@ -97,7 +97,7 @@
     {
       "linkId": "5",
       "type": "group",
-      "required": false,
+      "required": true,
       "text": "Order",
       "item": [
         {

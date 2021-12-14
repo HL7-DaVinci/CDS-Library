@@ -1,0 +1,73 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "encounter-non-physician-provider-signature",
+  "name": "Encounter Non Physician Provider Signature",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+      "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/BasicPractitionerInfo-prepopulation"
+    }
+  ],
+  "status": "draft",
+  "item": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "gtable"
+              }
+            ]
+          }
+        }
+      ],
+      "linkId": "SIGNPP",
+      "text": "Provider Signature",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "SIGNPP.1",
+          "text": "Signature",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "SIGNPP.2",
+          "text": "Name (Printed)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "SIGNPP.3",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
+              }
+            }
+          ],
+          "text": "Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "linkId": "SIGNPP.4",
+          "text": "NPI",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

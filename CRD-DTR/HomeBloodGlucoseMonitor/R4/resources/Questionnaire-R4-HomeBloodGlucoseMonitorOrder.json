@@ -519,6 +519,16 @@
           ]
         }
       ]
+    },
+    {
+      "linkId": "8",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
+          "valueCanonical": "questionnaire/provider-signature"
+        }
+      ],
+      "type": "display"
     }
   ]
 }

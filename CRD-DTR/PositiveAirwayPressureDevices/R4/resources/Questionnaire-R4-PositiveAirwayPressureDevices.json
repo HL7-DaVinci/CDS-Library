@@ -109,6 +109,7 @@
       "linkId": "6",
       "text": "Type of order:",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "6.1",

@@ -75,7 +75,8 @@
           "type": "open-choice",
           "text": "Relevant Diagnoses",
           "answerOption": [],
-          "repeats": "true"
+          "repeats": "true",
+          "required": true
         },
         {
           "linkId": "4.2",
@@ -99,6 +100,7 @@
       "linkId": "5",
       "type": "group",
       "text": "Sleep study results",
+      "required": true,
       "item": [
         {
           "linkId": "5.1",
@@ -124,6 +126,7 @@
           "linkId": "5.2",
           "text": "Respiratory Disturbance index (RDI) units of events per hour",
           "type": "integer",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -145,6 +148,7 @@
           "text": "Symptoms",
           "type": "open-choice",
           "repeats": true,
+          "required": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -197,11 +201,13 @@
       "linkId": "6",
       "text": "Re-evaluation for a bi-level pressure device E0470 (BiPAP without backup rate):",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "6.1",
           "text": "Was E0601 (CPAP) tried on therapeutic trial conducted in ",
           "type": "choice",
+          "required": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -217,13 +223,31 @@
         },
         {
           "linkId": "6.2",
-          "text": "Was E0601 (CPAP) tried not effective on therapeutic trial conducted above ",
-          "type": "boolean"
+          "text": "Was E0601 (CPAP) not effective on therapeutic trial conducted above?",
+          "type": "boolean",
+          "required": true,
+          "enableWhen": [
+            {
+              "question": "6.1",
+              "operator": "=",
+              "answerCoding": {
+                "code": "a home setting"
+              }
+            },
+            {
+              "question": "6.1",
+              "operator": "=",
+              "answerCoding": {
+                "code": "facility"
+              }
+            }
+          ]
         },
         {
           "linkId": "6.3",
           "text": "E0601 patient is not tolerating the therapy at current settings and lower pressures settings were tried and failed to",
           "type": "choice",
+          "required": true,
           "answerOption": [
             {
               "valueCoding": {
@@ -245,12 +269,14 @@
         {
           "linkId": "6.4",
           "text": "Have you reviewed and signed the written report of adherence data?",
-          "type": "boolean"
+          "type": "boolean",
+          "required": true
         },
         {
           "linkId": "6.5",
           "text": "Did patient use PAP device>= 4 hours per night on 70% of nights during consecutive 30-day period during the first three months of initial use?",
-          "type": "boolean"
+          "type": "boolean",
+          "required": true
         }
       ]
     },
@@ -263,7 +289,6 @@
           "linkId": "7.1",
           "text": "Is the patient capable of being trained to use the device in an appropriate manner?",
           "type": "boolean",
-          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -336,9 +361,9 @@
               "text": "This is a placeholder for Vital Signs"
             },
             {
-              "required": true,
               "linkId": "10.1.2",
               "text": "Neck circumference (cm)",
+              "required": true,
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",

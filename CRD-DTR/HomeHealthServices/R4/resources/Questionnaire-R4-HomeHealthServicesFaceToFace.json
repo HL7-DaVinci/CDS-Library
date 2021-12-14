@@ -1075,18 +1075,18 @@
     {
       "linkId": "17",
       "type": "group",
-      "text": "Signature of NPP who performed the face-to-face evaluation",
+      "text": "Signature of Non-Physician Provider who performed the face-to-face evaluation",
       "item": [
         {
           "linkId": "17.1",
           "type": "group",
-          "text": "NPP information",
+          "text": "Non-Physician Provider information",
           "item": [
             {
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-                  "valueCanonical": "questionnaire/encounter-provider-signature"
+                  "valueCanonical": "questionnaire/encounter-non-physician-provider-signature"
                 },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
@@ -1095,7 +1095,7 @@
               ],
               "type": "display",
               "linkId": "17.1.1",
-              "text": "This is a placeholder for encounter provider signature"
+              "text": "This is a placeholder for encounter non-physician provider signature"
             },
             {
               "linkId": "17.2",

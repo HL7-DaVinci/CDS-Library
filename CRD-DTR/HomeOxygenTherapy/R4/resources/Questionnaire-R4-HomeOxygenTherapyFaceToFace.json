@@ -66,13 +66,34 @@
         },
         {
           "linkId": "3.3",
-          "text": "Is this encounter an inpatient hospital stay?",
-          "type": "boolean"
+          "text": "Is this a face-to-face encounter for oxygen therapy?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "3.3.1",
+          "text": "If No, purpose of the encounter:  ",
+          "type": "text",
+          "required": true,
+          "enableWhen": [
+            {
+              "question": "3.3",
+              "operator": "=",
+              "answerBoolean": false
+            }
+          ]
         },
         {
           "linkId": "3.4",
-          "text": "Is patient currently mobile in their home? ",
+          "text": "Is this encounter an inpatient hospital stay?",
           "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "3.5",
+          "text": "Is patient currently mobile in their home?",
+          "type": "boolean",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -84,22 +105,36 @@
           ]
         },
         {
-          "linkId": "3.5",
-          "text": "If No and portable O2 is required, describe:  ",
-          "type": "text",
-          "required": false,
+          "linkId": "3.5.1",
+          "text": "If No, is portable O2 is required?",
+          "type": "boolean",
+          "required": true,
           "enableWhen": [
             {
-              "question": "3.4",
+              "question": "3.5",
               "operator": "=",
               "answerBoolean": false
             }
           ]
         },
         {
+          "linkId": "3.5.2",
+          "text": "If yes, describe why:",
+          "type": "text",
+          "required": true,
+          "enableWhen": [
+            {
+              "question": "3.5.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ]
+        },
+        {
           "linkId": "3.6",
-          "text": "Was blood gas study ordered and evaluated?",
+          "text": "Was arterial blood gas study ordered and evaluated?",
           "type": "boolean",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -111,10 +146,10 @@
           ]
         },
         {
-          "linkId": "3.7",
-          "text": "If Yes, date of testing (MM/DD/YYYY):",
+          "linkId": "3.6.1",
+          "text": "If Yes, what was the date of testing (MM/DD/YYYY):",
           "type": "date",
-          "required": false,
+          "required": true,
           "enableWhen": [
             {
               "question": "3.6",
@@ -133,19 +168,22 @@
           ]
         },
         {
-          "linkId": "3.8",
+          "linkId": "3.7",
           "text": "Is patient in a chronic stable state?",
-          "type": "boolean"
+          "type": "boolean",
+          "required": true
         },
         {
-          "linkId": "3.9",
+          "linkId": "3.7.1",
           "text": "describe:",
-          "type": "text"
+          "type": "text",
+          "required": true
         },
         {
-          "linkId": "3.10",
+          "linkId": "3.8",
           "text": "Is there an expectation that home oxygen therapy will improve O2 Saturation?",
           "type": "boolean",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
@@ -157,41 +195,44 @@
           ]
         },
         {
-          "linkId": "3.11",
+          "linkId": "3.8.1",
           "text": "describe:",
-          "type": "text"
-        },
-        {
-          "linkId": "3.12",
-          "text": "Does patient live or travel to an area at high elevation?",
-          "type": "boolean"
-        },
-        {
-          "linkId": "3.13",
-          "text": "If Yes, describe if relevant:",
           "type": "text",
-          "required": false,
+          "required": true
+        },
+        {
+          "linkId": "3.9",
+          "text": "Does patient live or travel to an area at high elevation?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "3.9.1",
+          "text": "If Yes, describe:",
+          "type": "text",
+          "required": true,
           "enableWhen": [
             {
-              "question": "3.12",
+              "question": "3.9",
               "operator": "=",
               "answerBoolean": true
             }
           ]
         },
         {
-          "linkId": "3.14",
+          "linkId": "3.10",
           "text": "Does patient have a reduced O2 carrying capacity?",
-          "type": "boolean"
+          "type": "boolean",
+          "required": true
         },
         {
-          "linkId": "3.15",
+          "linkId": "3.10.1",
           "text": "If Yes, describe:",
           "type": "text",
-          "required": false,
+          "required": true,
           "enableWhen": [
             {
-              "question": "3.14",
+              "question": "3.10",
               "operator": "=",
               "answerBoolean": true
             }
@@ -203,6 +244,7 @@
       "linkId": "4",
       "type": "group",
       "text": "Primary diagnosis (to support need for home oxygen):",
+      "required": true,
       "item": [
         {
           "linkId": "4.1",
@@ -526,11 +568,12 @@
           "linkId": "8.2",
           "type": "group",
           "text": "Details",
+          "required": true,
           "item": [
             {
               "linkId": "8.2.1",
               "type": "group",
-              "text": "Treatments that have been tried",
+              "text": "If Yes: Indicate the treatments that have been tried:",
               "item": [
                 {
                   "linkId": "8.2.1.1",
@@ -703,6 +746,12 @@
                   "valueCoding": {
                     "code": "Requires nocturnal O2 only"
                   }
+                },
+                {
+                  "valueCoding": {
+                    "code": "Other",
+                    "type": "text"
+                  }
                 }
               ]
             }
@@ -717,8 +766,9 @@
         },
         {
           "linkId": "8.3",
-          "type": "text",
-          "text": "Explain why any of the alternative treatments were not considered?",
+          "type": "boolean",
+          "text": "If No: Were any of the above treatments considered?",
+          "required": true,
           "enableWhen": [
             {
               "question": "8.1",
@@ -726,7 +776,33 @@
               "answerBoolean": false
             }
           ]
-        }
+        },
+        {
+          "linkId": "8.3.1",
+          "text": "If Yes, Contraindications?",
+          "type": "text",
+          "required": true,
+          "enableWhen": [
+            {
+              "question": "8.3",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "8.3.2",
+          "text": "If No: Why?",
+          "type": "text",
+          "required": true,
+          "enableWhen": [
+            {
+              "question": "8.3",
+              "operator": "=",
+              "answerBoolean": false
+            }
+          ]
+        }        
       ]
     },
     {

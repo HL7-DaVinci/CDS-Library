@@ -60,6 +60,7 @@
           "linkId": "4.1",
           "text": "Diabetes Mellitus Diagnoses",
           "type": "open-choice",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -76,6 +77,7 @@
           "linkId": "4.2",
           "text": "Other diagnoses",
           "type": "open-choice",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -178,6 +180,7 @@
     {
       "linkId": "12",
       "type": "text",
+      "required": true,
       "text": "Physician or allowed NPP assessment / summary"
     },
     {
@@ -205,22 +208,39 @@
         {
           "linkId": "13.3",
           "text": "Is the patient (or responsible caregiver) visually impaired severely enough to require a special monitoring system (voice, timer, special design) as documented in physical exam?",
-          "type": "boolean"
+          "type": "boolean",
+          "required": true
         },
         {
           "linkId": "13.4",
           "text": "Does the patient (or responsible caregiver) have impairment of manual dexterity severe enough to require a special monitoring system (voice, timer, special design) as documented in physical exam?",
-          "type": "boolean"
+          "type": "boolean",
+          "required": true
         },
         {
           "linkId": "13.5",
           "text": "Provider is certifying that a specialized glucose monitoring device is required to address the physical limitations of the patient or caregiver",
-          "type": "boolean"
+          "type": "boolean",
+          "required": true
         },
         {
           "linkId": "13.6",
           "text": "Is patient willing to perform blood glucose monitoring?",
-          "type": "boolean"
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "linkId": "13.6.1",
+          "text": "Is there a responsible care giver (willing to perform blood glucose monitoring)?",
+          "type": "boolean",
+          "required": true,
+          "enableWhen": [
+            {
+              "question": "13.6",
+              "operator": "=",
+              "answerBoolean": false
+            }
+          ]
         }
       ]
     },

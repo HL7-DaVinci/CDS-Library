@@ -145,11 +145,13 @@
       "linkId": "8",
       "text": "Urologic Supplies Information",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "8.1a",
           "text": "Indwelling catheters",
           "type": "group",
+          "required": true,
           "item": [
             {
               "linkId": "8.1",
@@ -184,6 +186,7 @@
               "text": "A specialty indwelling catheter or silicone catheter is necessary to prevent (check all relevant items)",
               "type": "open-choice",
               "repeats": true,
+              "required": true,
               "answerOption": [
                 {
                   "valueCoding": {
@@ -208,6 +211,7 @@
           "linkId": "8.3a",
           "text": "Urinary drainage collection systems",
           "type": "group",
+          "required": true,
           "item": [
             {
               "linkId": "8.3",
@@ -240,7 +244,8 @@
             {
               "linkId": "8.4",
               "text": "Is the patient ambulatory/chair-bound and requires a leg bag?",
-              "type": "boolean"
+              "type": "boolean",
+              "required": true
             }
           ]
         },
@@ -248,6 +253,7 @@
           "linkId": "8.5",
           "text": "Irrigation of indwelling catheters",
           "type": "group",
+          "required": true,
           "item": [
             {
               "linkId": "8.5.1",
@@ -349,12 +355,14 @@
             {
               "linkId": "8.10",
               "text": "Does patient (female only) have diagnosis of stress incontinence?",
-              "type": "boolean"
+              "type": "boolean",
+              "required": true
             },
             {
               "linkId": "8.10a",
               "text": "Note: Contraindication for the use of urethral inserts:",
               "type": "display",
+              "required": true,
               "item": [
                 {
                   "linkId": "8.10a.1",

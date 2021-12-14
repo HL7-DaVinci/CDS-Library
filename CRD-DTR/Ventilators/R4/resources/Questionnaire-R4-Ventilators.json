@@ -105,6 +105,7 @@
     {
       "linkId": "5",
       "text": "Type of order:",
+      "required": true,
       "type": "group",
       "item": [
         {

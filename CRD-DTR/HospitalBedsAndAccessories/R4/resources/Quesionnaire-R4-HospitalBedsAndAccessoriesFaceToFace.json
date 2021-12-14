@@ -62,6 +62,7 @@
       "linkId": "4",
       "text": "Patient Diagnosis:",
       "type": "open-choice",
+      "required": true,
       "extension": [
         {
           "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -115,11 +116,13 @@
       "linkId": "10",
       "type": "group",
       "text": "Qualifying Criteria for Hospital Beds",
+      "required": true,
       "item": [
         {
           "linkId": "10.1",
           "type": "group",
           "text": "Fixed Height Hospital Beds",
+          "required": true,
           "item": [
             {
               "linkId": "10.1.1",
@@ -163,7 +166,8 @@
                 {
                   "text": "Describe",
                   "type": "string",
-                  "linkId": "11.1.2.5"
+                  "linkId": "11.1.2.5",
+                  "required": true
                 }
               ],
               "enableWhen": [
@@ -180,6 +184,7 @@
           "linkId": "10.2",
           "type": "group",
           "text": "Variable Height Hospital Beds",
+          "required": true,
           "item": [
             {
               "linkId": "10.2.1",
@@ -199,6 +204,7 @@
               "linkId": "10.2.2",
               "type": "group",
               "text": "Qualification",
+              "required": true,
               "enableWhen": [
                 {
                   "question": "10.2.1",
@@ -215,7 +221,8 @@
                 {
                   "linkId": "10.2.2.2",
                   "text": "Describe",
-                  "type": "text"
+                  "type": "text",
+                  "required": true
                 }
               ]
             }
@@ -260,7 +267,8 @@
                 {
                   "linkId": "11.0.2.2",
                   "text": "Describe",
-                  "type": "text"
+                  "type": "text",
+                  "required": true
                 }
               ]
             }
@@ -270,6 +278,7 @@
           "linkId": "10.4",
           "type": "group",
           "text": "Trapeze Equipment",
+          "required": true,
           "item": [
             {
               "linkId": "10.4.1",
@@ -289,6 +298,7 @@
               "linkId": "10.4.2",
               "type": "group",
               "text": "Qualification",
+              "required": true,
               "enableWhen": [
                 {
                   "question": "10.4.1",
@@ -305,7 +315,8 @@
                 {
                   "linkId": "10.4.2.2",
                   "text": "Describe",
-                  "type": "text"
+                  "type": "text",
+                  "required": true
                 }
               ]
             }
@@ -315,6 +326,7 @@
           "linkId": "10.5",
           "type": "group",
           "text": "Bed Cradle",
+          "required": true,
           "item": [
             {
               "linkId": "10.5.1",
@@ -350,7 +362,8 @@
                 {
                   "linkId": "10.5.2.2",
                   "text": "Describe",
-                  "type": "text"
+                  "type": "text",
+                  "required": true
                 }
               ]
             }
@@ -360,6 +373,7 @@
           "linkId": "10.6",
           "type": "group",
           "text": "Side Rails or Safety Enclosures",
+          "required": true,
           "item": [
             {
               "linkId": "10.6.1",
@@ -395,7 +409,8 @@
                 {
                   "linkId": "10.6.2.2",
                   "text": "Describe",
-                  "type": "text"
+                  "type": "text",
+                  "required": true
                 }
               ]
             }
@@ -405,6 +420,7 @@
     },
     {
       "linkId": "11",
+      "required": true,
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",

@@ -102,6 +102,7 @@
           "linkId": "3.3",
           "text": "Initial start of care date",
           "type": "date",
+          "required": true,
           "extension": [
             {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -132,6 +133,7 @@
       "linkId": "4",
       "text": "Advanced Directives",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "4.1",
@@ -174,6 +176,7 @@
       "linkId": "5",
       "text": "Relevant diagnoses",
       "type": "open-choice",
+      "required": true,
       "extension": [
         {
           "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
@@ -418,6 +421,7 @@
       "linkId": "23",
       "text": "Signature, Name, Date and NPI of physician signing the POC/Certification",
       "type": "group",
+      "required": true,
       "item": [
         {
           "linkId": "23.1",

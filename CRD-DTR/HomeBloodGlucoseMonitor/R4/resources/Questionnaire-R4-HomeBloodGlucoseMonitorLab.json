@@ -118,7 +118,7 @@
           "display": "Test results"
         }
       ],
-      "required": false,
+      "required": true,
       "linkId": "4",
       "text": "Test results",
       "item": [
