@@ -1,0 +1,26 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "HomeOxygenTherapyAdditional",
+    "name": "HomeOxygenTherapyAdditional",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
+            "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4",
+            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+        ]
+    },
+    "title": "Home Oxygen Therapy Additional Questions",
+    "status": "draft",
+    "subjectType": [
+        "Patient"
+    ],
+    "date": "2021-10-06",
+    "publisher": "Da Vinci DTR",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+            "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeOxygenTherapy-prepopulation"
+        }
+    ],
+    "item": []
+}
