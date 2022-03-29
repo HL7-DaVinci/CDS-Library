@@ -106,6 +106,20 @@
                     ]
                 },
                 {
+                    "linkId": "SQ-1.c",
+                    "text": "SQ-1.c: Form Expiration Date",
+                    "type": "date",
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                            "valueExpression": {
+                                "language": "text/cql",
+                                "expression": "Today() + 14 day"
+                            }
+                        }
+                    ]
+                },
+                {
                     "linkId": "1.1",
                     "type": "display",
                     "text": "Submit the order form"
