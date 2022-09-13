@@ -4,12 +4,13 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 
 parameter Patient Patient
 parameter device_request DeviceRequest
+parameter Coverage Coverage
 
 define "Age":
     AgeInYears()
 
 define RULE_APPLIES:
-    "Age" > 0
+    "Age" > 0 and Coverage.class.value = 'Medicare Part A'
 
 define PRIORAUTH_REQUIRED:
   false 
