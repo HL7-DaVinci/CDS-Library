@@ -1,7 +1,8 @@
 {
     "resourceType": "Questionnaire",
     "id": "encounter-with-reevaluation",
-    "name": "Encounter With Reevaluation Module",
+    "name": "EncounterWithReevaluationModule",
+    "title": "Encounter With Reevaluation Module",
     "meta": {
         "profile": [
             "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",

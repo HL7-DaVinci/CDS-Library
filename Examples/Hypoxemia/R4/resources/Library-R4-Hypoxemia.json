@@ -9,6 +9,24 @@
   "version": "1.0.000",
   "name": "Hypoxemia",
   "status": "active",
+  "extension": [
+    {
+      "url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode":"cds"
+    }
+  ],
+  "publisher": "HL7 International / Clinical Decision Support",
+  "contact": [
+    {
+      "name": "HL7 International / Clinical Decision Support",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/dss"
+        }
+      ]
+    }
+  ],
   "experimental": true,
   "type": {
     "coding": [

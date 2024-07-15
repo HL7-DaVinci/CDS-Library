@@ -1,7 +1,8 @@
 {
   "resourceType": "Questionnaire",
   "id": "physical-exam-vital-signs",
-  "name": "Physican Exam Module",
+  "name": "PhysicanExamModule",
+  "title": "Physican Exam Module",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",

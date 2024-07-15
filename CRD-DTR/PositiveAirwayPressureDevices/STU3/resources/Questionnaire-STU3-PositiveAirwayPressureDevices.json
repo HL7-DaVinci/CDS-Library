@@ -42,8 +42,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".LastName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              }
             }
           ],
           "linkId": "1.1",
@@ -54,8 +57,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".FirstName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+              }
             }
           ],
           "linkId": "1.2",
@@ -66,8 +72,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              }
             }
           ],
           "linkId": "1.3",
@@ -78,8 +87,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              }
             }
           ],
           "linkId": "1.4",
@@ -90,8 +102,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".Gender"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+              }
             }
           ],
           "linkId": "1.5",
@@ -116,8 +131,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              }
             }
           ],
           "linkId": "1.6",
@@ -135,8 +153,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".LastName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
+              }
             }
           ],
           "linkId": "2.1",
@@ -147,8 +168,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              }
             }
           ],
           "linkId": "2.2",
@@ -159,8 +183,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+              }
             }
           ],
           "linkId": "2.3",
@@ -189,8 +216,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"PositiveAirwayPressureDevicePrepopulation\".OsaDiagnosis"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OsaDiagnosis"
+              }
             }
           ],
           "linkId": "4.1",
@@ -220,8 +250,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".OtherDiagnoses"
+              }
             }
           ],
           "linkId": "4.3",
@@ -315,8 +348,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"PositiveAirwayPressureDevicePrepopulation\".PapDeviceRequested"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"PositiveAirwayPressureDevicePrepopulation\".PapDeviceRequested"
+              }
             }
           ],
           "linkId": "7.2",
@@ -324,12 +360,14 @@
           "option": [
             {
               "valueCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                 "code": "E0601",
                 "display": "E0601 Continuous Positive Airway Pressure device"
               }
             },
             {
               "valueCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                 "code": "E0470",
                 "display": "E0470 Respiratory assist device, bi-level w/o backup"
               }
@@ -350,8 +388,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".FullName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FullName"
+              }
             }
           ],
           "linkId": "9.2",
@@ -362,8 +403,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".Today"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".Today"
+              }
             }
           ],
           "linkId": "9.3",
@@ -374,8 +418,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
             }
           ],
           "linkId": "9.4",

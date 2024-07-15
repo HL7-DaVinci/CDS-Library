@@ -2,10 +2,30 @@
   "resourceType": "ValueSet",
   "id": "condition-clinical",
   "meta": {
-    "versionId": "1",
-    "lastUpdated": "2018-12-14T02:04:58.254Z",
-    "profile": ["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]
+    "versionId": "b2c19d8d-0320-4d53-977a-bd908de6adb8",
+    "lastUpdated": "2024-05-27T17:07:49.185+00:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
   },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>The narrative has been removed to reduce the size of the distribution of the Hl7.Fhir.Specification library</p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "pc"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 3
+    }
+  ],
   "url": "http://hl7.org/fhir/ValueSet/condition-clinical",
   "identifier": [
     {
@@ -13,96 +33,76 @@
       "value": "urn:oid:2.16.840.1.113883.4.642.3.164"
     }
   ],
-  "version": "4.0.0",
+  "version": "4.0.1",
   "name": "ConditionClinicalStatusCodes",
   "title": "Condition Clinical Status Codes",
   "status": "draft",
   "experimental": false,
-  "date": "2018-12-14T01:14:32+00:00",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "FHIR Project team",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        }
+      ]
+    }
+  ],
+  "description": "Preferred value set for Condition Clinical Status.",
   "immutable": true,
-  "expansion": {
-    "identifier": "urn:uuid:995a6aa6-0388-41fa-8883-9ecd474dfe67",
-    "timestamp": "2020-07-22T21:20:14.229Z",
-    "parameter": [
+  "compose": {
+    "include": [
       {
-        "name": "expansion-source",
-        "valueString": "ValueSet/condition-clinical"
-      },
-      {
-        "name": "displayLanguage",
-        "valueString": "en-US,en;q=0.9"
-      },
-      {
-        "name": "version",
-        "valueString": "http://terminology.hl7.org/CodeSystem/condition-clinical|4.0.0"
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
       }
-    ],
+    ]
+  },
+  "expansion": {
+    "identifier": "urn:uuid:4e54f5b6-b277-4916-9422-834ce7927af3",
+    "timestamp": "2024-07-10T02:12:16.814596+00:00",
+    "total": 6,
     "contains": [
       {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/valueset-definition",
-            "valueString": "The subject is currently experiencing the symptoms of the condition or there is evidence of the condition."
-          }
-        ],
         "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "version": "4.0.1",
         "code": "active",
-        "display": "Active"
+        "display": "Active",
+        "contains": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+            "version": "4.0.1",
+            "code": "recurrence",
+            "display": "Recurrence"
+          },
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+            "version": "4.0.1",
+            "code": "relapse",
+            "display": "Relapse"
+          }
+        ]
       },
       {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/valueset-definition",
-            "valueString": "The subject is experiencing a re-occurence or repeating of a previously resolved condition, e.g. urinary tract infection, pancreatitis, cholangitis, conjunctivitis."
-          }
-        ],
         "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-        "code": "recurrence",
-        "display": "Recurrence"
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/valueset-definition",
-            "valueString": "The subject is experiencing a return of a condition, or signs and symptoms after a period of improvement or remission, e.g. relapse of cancer, multiple sclerosis, rheumatoid arthritis, systemic lupus erythematosus, bipolar disorder, [psychotic relapse of] schizophrenia, etc."
-          }
-        ],
-        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-        "code": "relapse",
-        "display": "Relapse"
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/valueset-definition",
-            "valueString": "The subject is no longer experiencing the symptoms of the condition or there is no longer evidence of the condition."
-          }
-        ],
-        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "version": "4.0.1",
         "code": "inactive",
-        "display": "Inactive"
-      },
-      {
-        "extension": [
+        "display": "Inactive",
+        "contains": [
           {
-            "url": "http://hl7.org/fhir/StructureDefinition/valueset-definition",
-            "valueString": "The subject is no longer experiencing the symptoms of the condition, but there is a risk of the symptoms returning."
-          }
-        ],
-        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-        "code": "remission",
-        "display": "Remission"
-      },
-      {
-        "extension": [
+            "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+            "version": "4.0.1",
+            "code": "remission",
+            "display": "Remission"
+          },
           {
-            "url": "http://hl7.org/fhir/StructureDefinition/valueset-definition",
-            "valueString": "The subject is no longer experiencing the symptoms of the condition and there is a negligible perceived risk of the symptoms returning."
+            "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+            "version": "4.0.1",
+            "code": "resolved",
+            "display": "Resolved"
           }
-        ],
-        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-        "code": "resolved",
-        "display": "Resolved"
+        ]
       }
     ]
   }

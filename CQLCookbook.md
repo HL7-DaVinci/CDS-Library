@@ -46,7 +46,7 @@ Name library, define FHIR version, and include any helper libraries.
 library HomeOxygenTherapyPrepopulation version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
-include CDS_Connect_Commons_for_FHIRv400 version '1.0.2' called CDS
+include CDSConnectCommonsForFHIRv400 version '1.0.2' called CDS
 include DTRHelpers version '0.1.0' called DTR
 ```
 *Notes:*
@@ -132,7 +132,7 @@ define function myFunction(parameter1 parameter1_type, parameter2 parameter2_typ
 ```
 The header is again succeeded by a flow of logical arguments. These arguments can then be accessed by simply calling the function elsewhere in the CQL Library.
 
-Most DRLS functions that are not built into the CQL Specification come from either the the [FHIRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/FHIRHelpers-4.0.0.cql), [CDS_Connect_Commons_for_FHIRv400](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/CDS_Connect_Commons_for_FHIRv400-1.0.2.cql), or the [DTRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/DTRFunctions-0.1.0.cql) libraries.
+Most DRLS functions that are not built into the CQL Specification come from either the the [FHIRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/FHIRHelpers-4.0.0.cql), [CDSConnectCommonsForFHIRv400](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/CDSConnectCommonsForFHIRv400-1.0.2.cql), or the [DTRHelpers](https://github.com/HL7-DaVinci/CDS-Library/blob/master/Shared/R4/files/DTRFunctions-0.1.0.cql) libraries.
 
 
 Notes:
@@ -270,7 +270,7 @@ Below is a full example of a ruleset prepopulation file. This file prepopulates 
 library PositiveAirwayPressureDevicePrepopulation  version '0.1.0'
 using FHIR version '4.0.0'
 include FHIRHelpers version '4.0.0' called FHIRHelpers
-include CDS_Connect_Commons_for_FHIRv400 version '1.0.2' called CDS
+include CDSConnectCommonsForFHIRv400 version '1.0.2' called CDS
 include DTRHelpers version '0.1.0' called DTR
 
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'

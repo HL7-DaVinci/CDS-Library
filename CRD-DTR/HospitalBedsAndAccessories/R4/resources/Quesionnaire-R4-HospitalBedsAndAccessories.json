@@ -88,8 +88,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBedsAndAccessoriesPrepopulation\".EncounterList"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                  "language": "text/cql",
+                  "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".EncounterList"
+                }
             }
           ],
           "linkId": "3.1",
@@ -139,8 +142,11 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HospitalBedsAndAccessoriesPrepopulation\".DeviceRequested"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HospitalBedsAndAccessoriesPrepopulation\".DeviceRequested"
+              }
             }
           ],
           "linkId": "7.1",
@@ -150,12 +156,14 @@
           "answerOption": [
             {
               "valueCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                 "code": "E0250",
                 "display": "E0250 Hospital bed, fixed height, with any type side rails, with mattress"
               }
             },
             {
               "valueCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                 "code": "E0251",
                 "display": "E0251 Hospital bed, fixed height, with any type side rails, without mattress"
               }

@@ -1,7 +1,8 @@
 {
   "resourceType": "Questionnaire",
   "id": "encounter-items",
-  "name": "Encounter Module",
+  "name": "EncounterModule",
+  "title": "Encounter Module",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",

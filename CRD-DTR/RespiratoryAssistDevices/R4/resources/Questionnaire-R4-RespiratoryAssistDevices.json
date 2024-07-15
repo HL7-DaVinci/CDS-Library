@@ -150,12 +150,14 @@
               "answerOption": [
                 {
                   "valueCoding": {
+                    "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                     "code": "E0470",
                     "display": "E0470 - Respiratory assist device, bi-level without backup rate"
                   }
                 },
                 {
                   "valueCoding": {
+                    "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                     "code": "E0471",
                     "display": "E0471 - Respiratory assist device, bi-level with backup rate (not covered for OSA)"
                   }
@@ -176,6 +178,7 @@
                   "question": "4.6.1",
                   "operator": "=",
                   "answerCoding": {
+                    "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                     "code": "E0471"
                   }
                 }

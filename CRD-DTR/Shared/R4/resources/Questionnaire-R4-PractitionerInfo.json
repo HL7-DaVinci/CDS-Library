@@ -1,7 +1,8 @@
 {
   "resourceType": "Questionnaire",
   "id": "practitioner-info",
-  "name": "Practitioner Module",
+  "name": "PractitionerModule",
+  "title": "Practitioner Module",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",

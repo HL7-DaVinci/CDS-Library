@@ -7,7 +7,7 @@
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
   },
-  "name": "Vital Signs",
+  "name": "VitalSigns",
   "status": "draft",
   "extension": [
     {

@@ -1,7 +1,8 @@
 {
   "resourceType": "Questionnaire",
   "id": "provider-signature",
-  "name": "Provider Signature",
+  "name": "ProviderSignature",
+  "title": "Provider Signature",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",

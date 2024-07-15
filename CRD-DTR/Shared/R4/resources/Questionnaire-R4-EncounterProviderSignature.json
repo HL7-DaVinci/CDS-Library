@@ -1,7 +1,8 @@
 {
   "resourceType": "Questionnaire",
   "id": "encounter-provider-signature",
-  "name": "Encounter Provider Signature",
+  "name": "EncounterProviderSignature",
+  "title": "Encounter Provider Signature",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",

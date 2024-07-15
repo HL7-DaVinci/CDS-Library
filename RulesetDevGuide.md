@@ -139,6 +139,7 @@ Here are the steps to do that:
       "type": {
         "coding": [
           {
+            "system": "http://terminology.hl7.org/CodeSystem/library-type",
             "code": "logic-library"
           }
         ]

@@ -71,8 +71,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".LastName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".LastName"
+              }
             }
           ]
         },
@@ -83,8 +86,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".FirstName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".FirstName"
+              }
             }
           ]
         },
@@ -95,8 +101,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MiddleInitial"
+              }
             }
           ]
         },
@@ -107,8 +116,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".DateOfBirth"
+              }
             }
           ]
         },
@@ -122,8 +134,11 @@
           },
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".Gender"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".Gender"
+              }
             }
           ]
         },
@@ -134,8 +149,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPatientInfoPrepopulation\".MedicareId"
+              }
             }
           ]
         }
@@ -153,8 +171,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".LastName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".LastName"
+              }
             }
           ]
         },
@@ -165,8 +186,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".FirstName"
+              }
             }
           ]
         },
@@ -177,8 +201,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".MiddleInitial"
+              }
             }
           ]
         },
@@ -189,8 +216,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"BasicPractitionerInfoPrepopulation\".NPI"
+              }
             }
           ]
         },
@@ -201,8 +231,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".Today"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".Today"
+              }
             }
           ]
         }
@@ -267,8 +300,11 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".RelevantDiagnoses"
+              }
             },
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
@@ -283,8 +319,11 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".ArterialOxygenSaturation"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".ArterialOxygenSaturation"
+              }
             }
           ]
         },
@@ -295,8 +334,11 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".ArterialPartialPressureOfOxygen"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".ArterialPartialPressureOfOxygen"
+              }
             }
           ]
         },
@@ -307,8 +349,11 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".ArterialOxygenSaturationExercise"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".ArterialOxygenSaturationExercise"
+              }
             }
           ]
         },
@@ -331,8 +376,11 @@
           "required": false,         
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".PatientMobile"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".PatientMobile"
+              }
             }
           ]
         },
@@ -382,8 +430,11 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".PatientHasHematocritThatIsGreaterThanThreshold"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".PatientHasHematocritThatIsGreaterThanThreshold"
+              }
             }
           ]
         },
@@ -400,8 +451,11 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".HematocritThatIsGreaterThanThreshold"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".HematocritThatIsGreaterThanThreshold"
+              }
             }
           ]
         }
@@ -419,8 +473,11 @@
           "required": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".Today"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".Today"
+              }
             }
           ]
         },
@@ -431,8 +488,11 @@
           "required": false,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"OxygenTherapyPrepopulation\".LengthOfNeed"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"OxygenTherapyPrepopulation\".LengthOfNeed"
+              }
             }
           ]
         },
@@ -511,8 +571,11 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"OxygenTherapyPrepopulation\".FrequencyOfUse"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"OxygenTherapyPrepopulation\".FrequencyOfUse"
+              }
             },
             {
               "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-answerRepeats",
@@ -534,8 +597,11 @@
           "readOnly": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".DeviceRequestDescription"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceRequestDescription"
+              }
             }
           ]
         },
@@ -546,8 +612,11 @@
           "readOnly": true,
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"HomeOxygenTherapyPrepopulation\".DeviceRequestedIsPortable"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"HomeOxygenTherapyPrepopulation\".DeviceRequestedIsPortable"
+              }
             }
           ]
         },
@@ -576,7 +645,7 @@
           ],                                                                                                                     
           "extension": [                                                                                                         
             {                                                                                                                    
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",                                             
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",                                             
               "valueString": "\"HomeOxygenTherapyPrepopulation\".DeviceType"                                                                      
             }
           ]
@@ -659,8 +728,11 @@
           ],
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "\"OxygenTherapy\".DeviceOrderType"
+              "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+              "valueExpression": {
+                "language": "text/cql",
+                "expression": "\"OxygenTherapyPrepopulation\".DeviceOrderType"
+              }
             }
           ]
         },

@@ -151,12 +151,14 @@
           "answerOption": [
             {
               "valueCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                 "code": "E0601",
                 "display": "E0601 Continuous Positive Airway Pressure device"
               }
             },
             {
               "valueCoding": {
+                "system": "https://bluebutton.cms.gov/resources/codesystem/hcpcs",
                 "code": "E0470",
                 "display": "E0470 Respiratory assist device, bi-level w/o backup"
               }

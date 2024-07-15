@@ -7,7 +7,8 @@
       "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
     ]
   },
-  "name": "Review Of System Module",
+  "name": "ReviewOfSystemModule",
+  "title": "Review Of System Module",
   "status": "draft",
   "item": [
     {
