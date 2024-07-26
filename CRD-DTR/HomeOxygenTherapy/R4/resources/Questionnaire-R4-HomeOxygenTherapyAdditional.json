@@ -2,11 +2,11 @@
     "resourceType": "Questionnaire",
     "id": "HomeOxygenTherapyAdditional",
     "name": "HomeOxygenTherapyAdditional",
+    "url": "http://example.org/Questionnaire/HomeOxygenTherapyAdditional",
     "meta": {
         "profile": [
             "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
-            "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4",
-            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+            "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-adapt-search"
         ]
     },
     "title": "Home Oxygen Therapy Additional Questions",
@@ -20,7 +20,10 @@
         {
             "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
             "valueCanonical": "http://hl7.org/fhir/us/davinci-dtr/Library/HomeOxygenTherapy-prepopulation"
+        },
+        {
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-questionnaireAdaptive",
+            "valueUrl": "Questionnaire/$next-question"
         }
-    ],
-    "item": []
+    ]
 }
