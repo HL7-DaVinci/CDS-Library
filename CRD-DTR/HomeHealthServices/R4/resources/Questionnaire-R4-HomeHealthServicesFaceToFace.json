@@ -5,7 +5,7 @@
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
-      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-std-questionnaire"
     ]
   },
   "extension": [
@@ -35,8 +35,8 @@
       "linkId": "1",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/patient-info"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/patient-info"
         }
       ],
       "type": "display"
@@ -283,8 +283,8 @@
       "linkId": "4",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/subjective"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/subjective"
         }
       ],
       "type": "display"
@@ -293,8 +293,8 @@
       "linkId": "5",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/review-of-system"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/review-of-system"
         }
       ],
       "type": "display"
@@ -303,8 +303,8 @@
       "linkId": "6",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/pain-assessment"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/pain-assessment"
         }
       ],
       "type": "display"
@@ -322,8 +322,8 @@
             {
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-                  "valueCanonical": "questionnaire/vital-signs"
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+                  "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/vital-signs"
                 },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
@@ -398,8 +398,8 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/physical-exam"
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+              "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/physical-exam"
             }
           ],
           "linkId": "7.2",
@@ -1085,8 +1085,8 @@
             {
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-                  "valueCanonical": "questionnaire/encounter-non-physician-provider-signature"
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+                  "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/encounter-non-physician-provider-signature"
                 },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",
@@ -1119,8 +1119,8 @@
             {
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-                  "valueCanonical": "questionnaire/encounter-provider-signature"
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+                  "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/encounter-provider-signature"
                 },
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire-expand",

@@ -4,7 +4,7 @@
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
-      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-std-questionnaire"
     ]
   },
   "name": "VitalSigns",

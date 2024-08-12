@@ -23,7 +23,7 @@
         },
         {
             "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-questionnaireAdaptive",
-            "valueUrl": "Questionnaire/$next-question"
+            "valueUrl": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/$next-question"
         }
     ],
     "publisher": "HL7 International / Clinical Decision Support",

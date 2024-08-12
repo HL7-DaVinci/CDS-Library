@@ -6,7 +6,7 @@
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
-      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-std-questionnaire"
     ]
   },  
   "status": "draft",
@@ -19,8 +19,8 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/vital-signs"
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+              "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/vital-signs"
             }
           ],
           "linkId": "VS",
@@ -30,8 +30,8 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/physical-exam"
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+              "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/physical-exam"
             }
           ],
           "linkId": "PE",

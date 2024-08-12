@@ -20,8 +20,8 @@
       "linkId": "1",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/patient-info"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/patient-info"
         }
       ],
       "type": "display",
@@ -31,8 +31,8 @@
       "linkId": "2",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/practitioner-info"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/practitioner-info"
         }
       ],
       "type": "display",
@@ -41,8 +41,8 @@
     {
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/encounter"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/encounter"
         }
       ],
       "linkId": "3",
@@ -94,8 +94,8 @@
       "linkId": "5",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/subjective"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/subjective"
         }
       ],
       "type": "display",
@@ -105,8 +105,8 @@
       "linkId": "6",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/review-of-system"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/review-of-system"
         }
       ],
       "type": "display",
@@ -120,8 +120,8 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/vital-signs"
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+              "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/vital-signs"
             }
           ],
           "linkId": "7.1",
@@ -131,8 +131,8 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/physical-exam"
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+              "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/physical-exam"
             }
           ],
           "linkId": "7.2",
@@ -404,8 +404,8 @@
       "linkId": "9",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/assessment-and-plan"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/assessment-and-plan"
         }
       ],
       "type": "display",
@@ -415,8 +415,8 @@
       "linkId": "10",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/provider-signature"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/provider-signature"
         }
       ],
       "type": "display",

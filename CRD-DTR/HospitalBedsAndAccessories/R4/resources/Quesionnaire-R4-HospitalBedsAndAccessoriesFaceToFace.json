@@ -24,8 +24,8 @@
       "linkId": "1",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/patient-info"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/patient-info"
         }
       ],
       "type": "display"
@@ -34,8 +34,8 @@
       "linkId": "2",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/practitioner-info"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/practitioner-info"
         }
       ],
       "type": "display"
@@ -48,8 +48,8 @@
         {
           "extension": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-              "valueCanonical": "questionnaire/encounter-items"
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+              "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/encounter-items"
             }
           ],
           "linkId": "3.1",
@@ -79,8 +79,8 @@
       "linkId": "6",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/subjective"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/subjective"
         }
       ],
       "type": "display"
@@ -89,8 +89,8 @@
       "linkId": "7",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/review-of-system"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/review-of-system"
         }
       ],
       "type": "display",
@@ -100,8 +100,8 @@
       "linkId": "8",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/physical-exam"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/physical-exam"
         }
       ],
       "type": "display",
@@ -423,8 +423,8 @@
       "required": true,
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/assessment-and-plan"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/assessment-and-plan"
         }
       ],
       "type": "display",
@@ -434,8 +434,8 @@
       "linkId": "12",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/provider-signature"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/provider-signature"
         }
       ],
       "type": "display",

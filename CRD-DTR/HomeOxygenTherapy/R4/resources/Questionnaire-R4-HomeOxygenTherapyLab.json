@@ -5,7 +5,7 @@
   "meta": {
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/cqf-questionnaire",
-      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-questionnaire-r4"
+      "http://hl7.org/fhir/us/davinci-dtr/StructureDefinition/dtr-std-questionnaire"
     ]
   },
   "title": "Home Oxygen Laboratory Test Results",
@@ -24,8 +24,8 @@
       "linkId": "1",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/patient-info"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/patient-info"
         }
       ],
       "type": "display",
@@ -35,8 +35,8 @@
       "linkId": "2",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/practitioner-info"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/practitioner-info"
         }
       ],
       "type": "display",
@@ -470,8 +470,8 @@
       "linkId": "7",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/provider-signature"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/provider-signature"
         }
       ],
       "type": "display",

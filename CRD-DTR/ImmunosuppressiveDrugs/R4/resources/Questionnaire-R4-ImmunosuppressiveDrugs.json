@@ -20,8 +20,8 @@
       "linkId": "1",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/patient-info"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/patient-info"
         }
       ],
       "type": "display"
@@ -245,8 +245,8 @@
       "linkId": "6",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/sub-questionnaire",
-          "valueCanonical": "questionnaire/provider-signature"
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+          "valueCanonical": "http://crd.davinci.hl7.org/fhir/R4/Questionnaire/provider-signature"
         }
       ],
       "type": "display"
