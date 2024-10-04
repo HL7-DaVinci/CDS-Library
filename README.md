@@ -1,6 +1,9 @@
 # CDS-Library: Clinical Decision Support File Library
 The CDS-Library stores common files necessary to make the [Coverage Requirements Discovery (CRD)](https://github.com/HL7-DaVinci/CRD), [Documentation Templates and Rules (DTR)](https://github.com/HL7-DaVinci/dtr) and [Prior Authorization Support (PAS)](https://github.com/HL7-DaVinci/prior-auth) use cases work. These use cases are being developed as part of the [Da Vinci Project](http://www.hl7.org/about/davinci/index.cfm?ref=common) within the [HL7 Standards Organization](http://www.hl7.org/).
 
+## Foundry
+Explore it yourself with [HL7 FHIR Foundry](https://foundry.hl7.org/products/6745a338-b5af-45a1-8f75-636414859059).
+
 ## CRD-DTR
 The "rule" files necessary to make the [Coverage Requirements Discovery (CRD)](https://github.com/HL7-DaVinci/CRD) and [Documentation Templates and Rules (DTR)](https://github.com/HL7-DaVinci/dtr) use cases work. For more documentation on the file structure, click [here](https://github.com/HL7-DaVinci/CDS-Library/CRD-DTR#file-layout]).
 
